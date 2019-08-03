@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on 黑書記事</title>
+    <link>http://localhost:1313/tags/git/</link>
+    <description>Recent content in git on 黑書記事</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 27 Jun 2015 03:28:21 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git 在不同操作階段的恢復方法</title>
+      <link>http://localhost:1313/post/git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Sat, 27 Jun 2015 03:28:21 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/</guid>
+      <description>初學 git 透過 GUI 添加檔案跟提交都很便利，但是要如何恢復卻常常卡住。 主要是不熟悉指令端實際的運作情況，所以不確定 GUI 該如何選擇來恢復檔案。 下面把自己</description>
+    </item>
+    
+  </channel>
+</rss>

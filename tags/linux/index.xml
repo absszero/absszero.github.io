@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 黑書記事</title>
+    <link>http://localhost:1313/tags/linux/</link>
+    <description>Recent content in Linux on 黑書記事</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 19 Jun 2010 07:26:16 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[ PHP ] Filesystem encoding and PHP</title>
+      <link>http://localhost:1313/post/php-filesystem-encoding-and-php/</link>
+      <pubDate>Sat, 19 Jun 2010 07:26:16 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/php-filesystem-encoding-and-php/</guid>
+      <description>許多 PHP 應用程式會將檔案儲存本地端的檔案系統當中。 對於大部分讀者而言在多數的情況下，妳很可能只使用 US-ASCII 編碼的方式儲存檔案， 可能是因為妳的檔名是基</description>
+    </item>
+    
+  </channel>
+</rss>

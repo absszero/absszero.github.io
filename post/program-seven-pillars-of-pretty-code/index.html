@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[ Program ] Seven Pillars of Pretty Code - 黑書記事</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="absszero" /><meta name="description" content="Seven Pillars of Pretty Code http://www.perforce.com/perforce/papers/prettycode.html 漂亮的程式碼本身應該是要讓人稍微瀏覽一下就能瞭解程式結構，而不需要完整的閱讀。 我稱呼這個為 &amp;ldquo;視覺解析&amp;rdquo;：" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.56.3 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/program-seven-pillars-of-pretty-code/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[ Program ] Seven Pillars of Pretty Code" />
+<meta property="og:description" content="Seven Pillars of Pretty Code http://www.perforce.com/perforce/papers/prettycode.html 漂亮的程式碼本身應該是要讓人稍微瀏覽一下就能瞭解程式結構，而不需要完整的閱讀。 我稱呼這個為 &ldquo;視覺解析&rdquo;：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/program-seven-pillars-of-pretty-code/" />
+<meta property="article:published_time" content="2010-06-12T12:26:46+00:00" />
+<meta property="article:modified_time" content="2010-06-12T12:26:46+00:00" />
+<meta itemprop="name" content="[ Program ] Seven Pillars of Pretty Code">
+<meta itemprop="description" content="Seven Pillars of Pretty Code http://www.perforce.com/perforce/papers/prettycode.html 漂亮的程式碼本身應該是要讓人稍微瀏覽一下就能瞭解程式結構，而不需要完整的閱讀。 我稱呼這個為 &ldquo;視覺解析&rdquo;：">
+
+
+<meta itemprop="datePublished" content="2010-06-12T12:26:46&#43;00:00" />
+<meta itemprop="dateModified" content="2010-06-12T12:26:46&#43;00:00" />
+<meta itemprop="wordCount" content="2493">
+
+
+
+<meta itemprop="keywords" content="IT 筆記," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[ Program ] Seven Pillars of Pretty Code"/>
+<meta name="twitter:description" content="Seven Pillars of Pretty Code http://www.perforce.com/perforce/papers/prettycode.html 漂亮的程式碼本身應該是要讓人稍微瀏覽一下就能瞭解程式結構，而不需要完整的閱讀。 我稱呼這個為 &ldquo;視覺解析&rdquo;："/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">I&#39;m fine thank you</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">I&#39;m fine thank you</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[ Program ] Seven Pillars of Pretty Code</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-06-12 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#seven-pillars-of-pretty-code">Seven Pillars of Pretty Code</a></li>
+<li><a href="#blend-in">Blend In</a></li>
+<li><a href="#bookish">Bookish</a></li>
+<li><a href="#disentangle-code-blocks">Disentangle Code Blocks</a></li>
+<li><a href="#comment-code-blocks">Comment Code Blocks</a></li>
+<li><a href="#declutter">Declutter</a></li>
+<li><a href="#make-alike-look-alike">Make Alike Look Alike</a></li>
+<li><a href="#overcome-indentation">Overcome Indentation</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="seven-pillars-of-pretty-code">Seven Pillars of Pretty Code</h2>
+
+<p><a href="http://www.perforce.com/perforce/papers/prettycode.html">http://www.perforce.com/perforce/papers/prettycode.html</a> 漂亮的程式碼本身應該是要讓人稍微瀏覽一下就能瞭解程式結構，而不需要完整的閱讀。 我稱呼這個為 &ldquo;視覺解析&rdquo;：從他的形式分析出程式碼重要的部位。 要把運作中的程式碼轉換成這種俱可讀性的程式需要一點小技巧， 而這些額外的步驟主要給與閱讀的人視覺上的暗示，而非針對編譯器。 這些漂亮的程式碼的建議有點複雜。 前五個建議比較籠統一點；而最後兩個則需要發揮直覺來觀察。 所有的規則都可以在 jam/make.c 裡頭得到示範。 它是以 C 撰寫的範例，但適用於任何高階的程式語言。</p>
+
+<h2 id="blend-in">Blend In</h2>
+
+<p><strong>程式碼的變更應該跟原本的風格相符</strong>。 當檔案與之前版本做比較的時候，不應該看不出前後修改的差異。 而任何視覺上的暗示部份不應該被風格的轉變所掩蓋。 這個部份應該盡可能套用在大部分地方：尤其是一般檔案裡面的函式。 當面對醜陋的程式碼或者沒有用心撰寫的程式碼， 而且你無法經由快速的瀏覽瞭解它所使用的結構時，你也許可以考慮大規模的將它重寫。 你越是能清楚的瞭解，對於後續需要閱讀的人就越有幫助。 make.c 目前的版本是 44，並沒有大規模的改寫。</p>
+
+<h2 id="bookish">Bookish</h2>
+
+<p><strong>保持欄位縮排</strong>。就像書跟雜誌，程式碼也應該縮排以提供視覺上的焦點。 就如同我在底下 &ldquo;Overcome Indentation&rdquo; 提到的，程式的左邊保持程式碼結構而右邊則提供程式細節， 而擁有過長程式碼並且混雜了結構跟細節的內容，則會混淆讀者。 關於過長的程式碼有許多改善方式： 使用較短的名稱 ( 參考底下的 &ldquo;Declutter&rdquo; )； 將函式參數的部份列在同一列上( 參考底下的 &ldquo;Make Alike Look Alike&rdquo; )； 以及簡化邏輯( 參考底下的 &ldquo;Overcome Indentation&rdquo; )。 根據經驗，80 行在每個地方都剛好，但不可否認的在某些程式碼上可能不適合這個限制( 像是寬表的情形 )。 make.c 同時使用簡短的變數名稱以及使用手動縮排以確保它內文縮排對齊。</p>
+
+<h2 id="disentangle-code-blocks">Disentangle Code Blocks</h2>
+
+<p><strong>拆解程式碼到函式當中，並且瞭解每一個獨立區塊的功用，以確保他們只進行一件事情或某一種事情。</strong> 如果能粗略的描述每一個區塊的功能性質，使用者就能避免必須完整的閱讀整個程式碼。 一個建議是是當某一個功能由一系列的較小的函式所組合： 每一個小的函式就是一個區塊，而且能被良好的描述其中的內容。 如果是這樣，資訊從一個區塊傳遞到另一個區塊的時候，就需要謹慎的考量。 另一建議是當功能是一個大型的操作時。 在這種情況可以根據程式的動作型態以行的方式劃分成獨立的區塊： 舉個例子，初始化變數、檢查參數、計算結果、回傳結果以及列出錯誤訊息。 這個方式適用於將大型的區塊再系分成更多小區塊， 而小區塊再細分為更小的區塊。( 就像一個大的 while 迴圈 ) make.c 混和了許多東西：它區分出除錯的區塊，而將每一個小的函式根據他的目的進行區隔。</p>
+
+<h2 id="comment-code-blocks">Comment Code Blocks</h2>
+
+<p><strong>使用空白分隔每個程式區塊，並且使用註解進行描述</strong>。 有時候大型的區塊( 包含多行的註解 )可能包含小型的區塊( 包含單行註解 )。 註解應該用比較口語的方式來描述區塊的操作情形，而不是用英文以程式本身照著寫。 透過這個方式，即使妳的程式複雜難懂而妳的註解也讓人摸不著頭緒， 閱讀的人至少可以多方面的猜測瞭解實際的功能。 特殊或者比較有問題的程式區塊需要更多的註解，不一定是大的程式才會有這種問題。 根據之前的作法，每個程式大約保持 15% 的空台跟 25% 註解。 make.c 居然為了達到識別性提供了那麼多的區塊以及子區塊。</p>
+
+<h2 id="declutter">Declutter</h2>
+
+<p><strong>減少、減少、再減少。移除任何會使閱讀的人分心的東西。</strong> 使用簡短的名稱( 像是 i ,x )作為變數，讓它應用在短暫或區域性的變數區域或者太需要特殊名稱定義的地方。 使用中等長度作為物件內部的變數成員名稱。使用較長名稱作為全域變數( like distant or OS interfaces )。 一般而言：越靠近作用域，使用越短的名稱。 長的名稱雖然可以在讀者第一次閱讀的時候協助他們，但卻會在往後重讀的時候造成阻礙。 避免多餘的語法描述( 像是 &lsquo;!= 0&rsquo; 、不需要的轉換或者插入多餘的內容 )。 對於程式的新手而言這些東西或許有幫助，但對於需要進行除錯的人員並沒有幫助， 而且會阻礙需要瞭解整個大架構( 或中等架構 )的人。 將所有 &lsquo;ifdef notdef&rsquo; 這些沒有作用的程式碼完全移除。它只會增加閱讀程式碼的難度。 用 SCM 系統去維護舊程式就好了。 make.c 幾乎全面使用了簡短的名稱，而且沒有使用任何多餘的語法描述，並且沒有那些毫無作用的程式碼。</p>
+
+<h2 id="make-alike-look-alike">Make Alike Look Alike</h2>
+
+<p><strong>兩個或多個以上的程式片段如果做的事情相同或者類似就應該讓他們完全一樣</strong>。 沒有什麼比看一個固定樣子的東西還要快讓讀者理解了。 此外，這些看起來類似的程式片段應該以連續的方式接連的出現。 像這樣群組的方式可以減少讀者得掌握的內容數量，而另一個更主要的目的是讓複雜的程式碼變得簡單。 這個方法很適合跟上面提到的 &ldquo;Disentangle Code Blocks&rdquo; 部份做結合： 一個分割過的程式區塊，包含單一目標的許多程式行，並且以特定的撰寫形式組成。 如此它就成了一個讀者容易掌握的實體。 不過，使用的話每個地方都必須採用，而這需要一點技巧。 幸好對於已經存在的程式碼它的影響很小。舉例說明修改的地方：</p>
+
+<ul>
+<li>將初始化變數部份放在一起</li>
+<li>持續的使用 &lsquo;this&rsquo; ( 或者不用 )</li>
+<li>針對有多個參數的函式呼叫時將他們寫在同一行</li>
+<li>持續的使用 {} 包覆 if/else：選擇全部都用或者都不用</li>
+<li>把 if/for/while 的 { 放在跟他們自己同一行( 因為 } 的部份也是 )</li>
+<li>在條件式 &amp;&amp; 或 || 的地方分割條件式，並且讓他們對齊</li>
+</ul>
+
+<p>make.c 的 &ldquo;4d&rdquo; 區塊是一個精心設計範例，說明如何讓程式行看起來像是單一的主體。</p>
+
+<h2 id="overcome-indentation">Overcome Indentation</h2>
+
+<p><strong>程式的左線定義他的結構，而右邊則是程式細節。你必須善用縮排來保持這個特點。</strong> 程式如果太快從左邊跑到右邊( 或者反過來 )，會因為一些較小的程式細節而模糊了整個結構。 清楚的將主要的順序對齊至左邊位置，透過一級縮排處理 if/while/for/do/switch 的描述。 使用 break、continue、return 甚至 &lsquo;goto&rsquo; 去強迫程式靠左排成一直線。 重新排列條件式的部份，讓區塊可以跟最接近 exit 排在一起， 如此 return ( 或者 break、continue ) 才可以跟其他東西保持在相同的縮排階級。 真正的程式碼當然需要大量的子區塊，而且需要縮排，如此這些子區塊才能擁有相同的縮排層級。 你必須確保縮排的部份是根據結構跟細節兩者，而不是基於程式語言的特性所做的縮排。 這也是這個方法最困難的地方，因為它需要最巧妙的技巧，並且可能影響每個功能的設計方式。 make.c 很少有超過兩層縮排的地方，而這絕對不是故意的。 一個好的程式而言，這七條建議並不是全部，甚至只是開始。 但對於好的程式來說，我相信可以從他的可讀性以及程式碼是否簡潔漂亮來區別。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">absszero</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2010-06-12
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/it-%E7%AD%86%E8%A8%98/">IT 筆記</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/web-what-every-developer-should-know-about-urls/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">[ Web ] What Every Developer Should Know About URLs</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/new-arrival/">
+            <span class="next-text nav-default">New Arrival !</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">absszero</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

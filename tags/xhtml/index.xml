@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XHTML on 黑書記事</title>
+    <link>http://localhost:1313/tags/xhtml/</link>
+    <description>Recent content in XHTML on 黑書記事</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 02 Nov 2010 13:04:41 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/xhtml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[ Web ] Entities in modular XHTML</title>
+      <link>http://localhost:1313/post/entities-in-modular-xhtml/</link>
+      <pubDate>Tue, 02 Nov 2010 13:04:41 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/entities-in-modular-xhtml/</guid>
+      <description>Entities in modular XHTML http://cweiske.de/tagebuch/xhtml-entities.htm 要在 HTML 裡頭應用某些特殊字元，可以把該字元寫成 &amp;ldquo;named entities&amp;rdquo;。 最常用的就是空白字元 但是當我們要用在未指定 DTD 的 XML 上面</description>
+    </item>
+    
+  </channel>
+</rss>

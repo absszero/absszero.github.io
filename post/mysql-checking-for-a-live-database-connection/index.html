@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[ MySQL ] Checking for a live database connection considered harmful - 黑書記事</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="absszero" /><meta name="description" content="Checking for a live database connection considered harmful http://www.mysqlperformanceblog.com/2010/05/05/checking-for-a-live-database-connection-considered-harmful/ 對我來說觀察客戶的資料庫是很稀鬆平常的事情， 而我注意到很多資源耗用，浪費在傳送查詢之前的資料庫連線狀態檢查。 底下是根據設計" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.56.3 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/mysql-checking-for-a-live-database-connection/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[ MySQL ] Checking for a live database connection considered harmful" />
+<meta property="og:description" content="Checking for a live database connection considered harmful http://www.mysqlperformanceblog.com/2010/05/05/checking-for-a-live-database-connection-considered-harmful/ 對我來說觀察客戶的資料庫是很稀鬆平常的事情， 而我注意到很多資源耗用，浪費在傳送查詢之前的資料庫連線狀態檢查。 底下是根據設計" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/mysql-checking-for-a-live-database-connection/" />
+<meta property="article:published_time" content="2010-06-19T07:39:37+00:00" />
+<meta property="article:modified_time" content="2010-06-19T07:39:37+00:00" />
+<meta itemprop="name" content="[ MySQL ] Checking for a live database connection considered harmful">
+<meta itemprop="description" content="Checking for a live database connection considered harmful http://www.mysqlperformanceblog.com/2010/05/05/checking-for-a-live-database-connection-considered-harmful/ 對我來說觀察客戶的資料庫是很稀鬆平常的事情， 而我注意到很多資源耗用，浪費在傳送查詢之前的資料庫連線狀態檢查。 底下是根據設計">
+
+
+<meta itemprop="datePublished" content="2010-06-19T07:39:37&#43;00:00" />
+<meta itemprop="dateModified" content="2010-06-19T07:39:37&#43;00:00" />
+<meta itemprop="wordCount" content="1359">
+
+
+
+<meta itemprop="keywords" content="IT 筆記,MySQL," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[ MySQL ] Checking for a live database connection considered harmful"/>
+<meta name="twitter:description" content="Checking for a live database connection considered harmful http://www.mysqlperformanceblog.com/2010/05/05/checking-for-a-live-database-connection-considered-harmful/ 對我來說觀察客戶的資料庫是很稀鬆平常的事情， 而我注意到很多資源耗用，浪費在傳送查詢之前的資料庫連線狀態檢查。 底下是根據設計"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">I&#39;m fine thank you</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">I&#39;m fine thank you</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[ MySQL ] Checking for a live database connection considered harmful</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-06-19 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#it-does-not-work">It Does Not Work</a></li>
+<li><a href="#performance-overhead">Performance Overhead</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>Checking for a live database connection considered harmful <a href="http://www.mysqlperformanceblog.com/2010/05/05/checking-for-a-live-database-connection-considered-harmful/">http://www.mysqlperformanceblog.com/2010/05/05/checking-for-a-live-database-connection-considered-harmful/</a> 對我來說觀察客戶的資料庫是很稀鬆平常的事情， 而我注意到很多資源耗用，浪費在傳送查詢之前的資料庫連線狀態檢查。 底下是根據設計模式所撰寫的虛擬碼： <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"> <span class="k">function</span> <span class="n">query_database</span><span class="p">(</span><span class="k">connection</span><span class="p">,</span> <span class="k">sql</span><span class="p">)</span> <span class="k">if</span> <span class="o">!</span><span class="k">connection</span><span class="p">.</span><span class="n">is_alive</span><span class="p">()</span> <span class="k">and</span> <span class="o">!</span><span class="k">connection</span><span class="p">.</span><span class="n">reconnect</span><span class="p">()</span> <span class="k">then</span> <span class="n">throw</span> <span class="k">exception</span> <span class="k">end</span> <span class="k">return</span> <span class="k">connection</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">)</span> <span class="k">end</span><span class="o">&lt;/</span><span class="n">pre</span><span class="o">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+ 許多熱門的開發平台都做了類似的檢查。但在程式當中有兩件事情並不正確： 1) 他的結果並不正確 2) 他會產生大量的效能耗用</p>
+
+<h2 id="it-does-not-work">It Does Not Work</h2>
+
+<p>程式無法正確運作的原因是因為競態條件( race condition )， 如果一個連線在檢查的時候是有效的，這不保證在執行 connection.execute(sql) 他仍然是有效的。 而如果他不是有效的，並且執行了重新連線。這仍舊不能保證連線有效。 檢查後才進行查詢這種方式是沒有用的。 取而代之的，程式碼應該被改寫成下列形式： <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"> <span class="k">function</span> <span class="n">query_database</span><span class="p">(</span><span class="k">connection</span><span class="p">,</span> <span class="k">sql</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="n">while</span> <span class="k">true</span> <span class="n">try</span> <span class="k">result</span><span class="o">=</span><span class="k">connection</span><span class="p">.</span><span class="k">execute</span><span class="p">(</span><span class="k">sql</span><span class="p">)</span> <span class="k">return</span> <span class="k">result</span> <span class="n">catch</span> <span class="n">InactiveConnectionException</span> <span class="n">e</span> <span class="k">if</span> <span class="n">retries</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+
+<span class="mi">0</span> <span class="k">then</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">retries</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">connection</span><span class="p">.</span><span class="n">reconnect</span><span class="p">()</span> <span class="k">else</span> <span class="n">throw</span> <span class="n">e</span> <span class="k">end</span> <span class="k">end</span> <span class="k">end</span> <span class="k">end</span></code></pre></td></tr></table>
+</div>
+</div>
+ 注意到我已經把 is_active() 的呼叫完全移除了。 如果這個連線是有效的，查詢結果成功； 如果不是，顯示失敗並且重新連線，然後再試一次。 這個程式碼提供一個良好的參數，如果有這個需求可以根據等待時間或無法連線的情況控制嘗試的次數。 不過根據我的經驗，在許多應用程式上這個功能用處可能不大。 大部分的應用程式應該能根據情形進行重新連線，但實際情況這方面並沒有處理的很好。</p>
+
+<h2 id="performance-overhead">Performance Overhead</h2>
+
+<p>檢查連線是否有效的典型作法包括透過 MyQL 協定階層呼叫 &lsquo;ping&rsquo; 或者 &lsquo;statistic&rsquo; 指令， 但這樣會在 SHOW GLOBAL STATUS 的時候增加 Com_admin_commands 的次數。 或進行一些像是 &lsquo;SELECT 1&rsquo; 這類沒有任何作用的查詢，但這些都很難獲得正確的連線狀態。 這些方式對應用程式而所需的執行成本過高。 主要的花費成本在於兩個地方：網路應用程式的往返時間增加了查詢時間，以及造成資料庫系統的額外負擔。 增加在資料庫系統的成本可能非常高。 前些日子我看到一個 Ruby on Rails 的程式，使用 &lsquo;Administrator command: statics&rsquo; 指令， 結果使用了超過 40% 的伺服器查詢時間。 避免不必要的連線查詢可以節省將近一半的資料庫系統負載。這可是一點都不誇張！ 當應用程式不斷進行查詢的時候，額外查詢所造成的損耗常常被忽略。 但是在高流量的應用程式上，卻會大大影響查詢時間， 而一些高效能的應用程式甚至會擔心他們查詢時間會長於一個毫秒或更久。 當你每秒對資料庫系統執行 2 萬個查詢，額外 2 萬個檢查連線是否有效就會造成很大的影響。 而 &lsquo;statistics&rsquo; 或者 &lsquo;ping&rsquo; 這類的查詢事實上對於應用程式查詢的代價則更高。 而這些只是資料庫系統的負載。在應用程式方面，你基本上增使用了用了兩倍查詢次數。 每次你要進行一個查詢，你的應用程式發出一個檢查連線的網路請求到資料庫並返回結果， 接著另外一個網路請求針對要執行的查詢。如此產生了更多的問題。 這個問題是根據上述不良的虛擬碼，在最常見的狀態下遭受不常見狀態的連累。 連線在大部分的時候都是有效的，你不需要透過 ping 或者重新連線確認。 一個好的方式是使用相同的程式並且修正競態條件的問題。 再來，當某一個連線失效的時候，你可以在嘗試進行查詢之後發現這個問題。 在那之前，假設每一件事情都正確無誤，所以盡管執行查詢就對了。 我希望那些提供程式庫的上游維護廠商可以發現這個問題並且修正它， 因為這對於應用程式逐漸發展起來會有很大的幫助。 這也是我們目前實驗室運作的很好的地方，而即使在這個領域， 除非效能真的出現了問題，大家才會真正的發現它的存在。 這裡是另外一個範例描述，這些可笑的查詢所造成的衝擊：</p>
+
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Rank Query ID</th>
+<th>Response time</th>
+<th>Calls</th>
+<th>R/Call</th>
+<th>Item</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>0x5E796D5A4A7D1CA9</td>
+<td>10651.0708</td>
+<td>73.1%</td>
+<td>120487</td>
+<td>0.0884</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>0x85FFF5AA78E5FF6A</td>
+<td>1090.0772</td>
+<td>7.5%</td>
+<td>23621</td>
+<td>0.0461</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>0x6E85B9A9C9FF813E</td>
+<td>868.0335</td>
+<td>6.0%</td>
+<td>6923</td>
+<td>0.1254</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>0xA3A0423749EC0E37</td>
+<td>851.0152</td>
+<td>5.8%</td>
+<td>6020</td>
+<td>0.1414</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>0x813031B8BBC3B329</td>
+<td>822.0041</td>
+<td>5.6%</td>
+<td>23299</td>
+<td>0.0353</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>0xA873BBC4583C4C85</td>
+<td>278.4533</td>
+<td>1.9%</td>
+<td>6985</td>
+<td>0.0399</td>
+</tr>
+</tbody>
+</table>
+
+<p>沒錯，伺服器 73% 的負載被消耗在檢查連線是否存在。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">absszero</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2010-06-19
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/it-%E7%AD%86%E8%A8%98/">IT 筆記</a>
+          <a href="/tags/mysql/">MySQL</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/php-unpredictable-hashes-for-humans/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">[ PHP ] Unpredictable hashes for humans</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/php-filesystem-encoding-and-php/">
+            <span class="next-text nav-default">[ PHP ] Filesystem encoding and PHP</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">absszero</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

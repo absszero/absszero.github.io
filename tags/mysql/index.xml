@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MySQL on 黑書記事</title>
+    <link>http://localhost:1313/tags/mysql/</link>
+    <description>Recent content in MySQL on 黑書記事</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 19 Jun 2010 07:39:37 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[ MySQL ] Checking for a live database connection considered harmful</title>
+      <link>http://localhost:1313/post/mysql-checking-for-a-live-database-connection/</link>
+      <pubDate>Sat, 19 Jun 2010 07:39:37 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/mysql-checking-for-a-live-database-connection/</guid>
+      <description>Checking for a live database connection considered harmful http://www.mysqlperformanceblog.com/2010/05/05/checking-for-a-live-database-connection-considered-harmful/ 對我來說觀察客戶的資料庫是很稀鬆平常的事情， 而我注意到很多資源耗用，浪費在傳送查詢之前的資料庫連線狀態檢查。 底下是根據設計</description>
+    </item>
+    
+  </channel>
+</rss>
