@@ -45,7 +45,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:1313/" />
 
-<meta property="og:updated_time" content="2016-07-25T14:34:41+00:00" />
+<meta property="og:updated_time" content="2019-08-03T16:57:39+08:00" />
 <meta itemprop="name" content="黑書記事">
 <meta itemprop="description" content="Hugo theme even example site.">
 
@@ -114,6 +114,44 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/monitoring-jboss-logfile-with-chainsaw-v2/">Monitoring JBoss logfile with Chainsaw v2</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2012-04-15 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 1 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 1 &lt;log4j:configuration xmlns:log4j=&#34;http://jakarta.apache.org/log4j/&#34; debug=&#34;false&#34;&gt; ... &lt;/log4j:configuration&gt; 之間增加一個 appender 1 &lt;appender name=&#34;SOCKET&#34; class=&#34;org.apache.log4j.net.SocketHubAppender&#34;&gt; &lt;param
+    </div>
+    <div class="read-more">
+      <a href="/post/monitoring-jboss-logfile-with-chainsaw-v2/" class="read-more-link">Read more..</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/">[ Web ] Accelerate scripts running multiple tasks in parallel using asynchronous programming: Unusual Site Speedup Techniques: Part 3 - PHP Classes blog</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2010-11-15 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      http://www.phpclasses.org/blog/post/133-Accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-Unusual-Site-Speedup-Techniques-Part-3.html Introduction 許多伺服器上執行程序會花這麼長的時間，主要在於程序花了很多時間在等待其他程式或者硬體訊息或其他遠端電腦的回應。 那能不能在回應等待的這個時
+    </div>
+    <div class="read-more">
+      <a href="/post/web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/" class="read-more-link">Read more..</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/">[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2010-11-15 </span>
@@ -165,44 +203,6 @@
     </div>
     <div class="read-more">
       <a href="/post/entities-in-modular-xhtml/" class="read-more-link">Read more..</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/php-unpredictable-hashes-for-humans/">[ PHP ] Unpredictable hashes for humans</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2010-07-11 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Unpredictable hashes for humans http://seld.be/notes/unpredictable-hashes-for-humans 對網站開發人員產生隨機的 ID 或者雜湊值是很常見的事情， 舉個例子，大型的專案或者開發框架可能需要實現自己的 PHP session 處理器，或者在 API 當中把這
-    </div>
-    <div class="read-more">
-      <a href="/post/php-unpredictable-hashes-for-humans/" class="read-more-link">Read more..</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mysql-checking-for-a-live-database-connection/">[ MySQL ] Checking for a live database connection considered harmful</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2010-06-19 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Checking for a live database connection considered harmful http://www.mysqlperformanceblog.com/2010/05/05/checking-for-a-live-database-connection-considered-harmful/ 對我來說觀察客戶的資料庫是很稀鬆平常的事情， 而我注意到很多資源耗用，浪費在傳送查詢之前的資料庫連線狀態檢查。 底下是根據設計
-    </div>
-    <div class="read-more">
-      <a href="/post/mysql-checking-for-a-live-database-connection/" class="read-more-link">Read more..</a>
     </div>
   </div>
 </article>

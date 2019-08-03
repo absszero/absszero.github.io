@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Redmine container with Docker - 黑書記事</title>
+  <title>Hugo 開始書寫 - 黑書記事</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="absszero" /><meta name="description" content="除了官方的 Docker image 之外，sameersbn/redmine 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="absszero" /><meta name="description" content="wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 https://gohugo.io/tools/migrations/ ，選用 https://github.com/palaniraja/blog2md 將匯出的文章轉換成 Hugo 格式。隨" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.56.3 with even 4.0.0" />
 
 
-<link rel="canonical" href="http://localhost:1313/post/redmine-container-with-docker/" />
+<link rel="canonical" href="http://localhost:1313/post/hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,26 +38,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Redmine container with Docker" />
-<meta property="og:description" content="除了官方的 Docker image 之外，sameersbn/redmine 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架" />
+<meta property="og:title" content="Hugo 開始書寫" />
+<meta property="og:description" content="wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 https://gohugo.io/tools/migrations/ ，選用 https://github.com/palaniraja/blog2md 將匯出的文章轉換成 Hugo 格式。隨" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/redmine-container-with-docker/" />
-<meta property="article:published_time" content="2016-07-25T14:34:41+00:00" />
-<meta property="article:modified_time" content="2016-07-25T14:34:41+00:00" />
-<meta itemprop="name" content="Redmine container with Docker">
-<meta itemprop="description" content="除了官方的 Docker image 之外，sameersbn/redmine 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架">
+<meta property="og:url" content="http://localhost:1313/post/hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/" />
+<meta property="article:published_time" content="2019-08-03T14:29:59+08:00" />
+<meta property="article:modified_time" content="2019-08-03T14:29:59+08:00" />
+<meta itemprop="name" content="Hugo 開始書寫">
+<meta itemprop="description" content="wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 https://gohugo.io/tools/migrations/ ，選用 https://github.com/palaniraja/blog2md 將匯出的文章轉換成 Hugo 格式。隨">
 
 
-<meta itemprop="datePublished" content="2016-07-25T14:34:41&#43;00:00" />
-<meta itemprop="dateModified" content="2016-07-25T14:34:41&#43;00:00" />
-<meta itemprop="wordCount" content="232">
+<meta itemprop="datePublished" content="2019-08-03T14:29:59&#43;08:00" />
+<meta itemprop="dateModified" content="2019-08-03T14:29:59&#43;08:00" />
+<meta itemprop="wordCount" content="299">
 
 
 
-<meta itemprop="keywords" content="IT 筆記," />
+<meta itemprop="keywords" content="Hugo,Github,Wordpress," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Redmine container with Docker"/>
-<meta name="twitter:description" content="除了官方的 Docker image 之外，sameersbn/redmine 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架"/>
+<meta name="twitter:title" content="Hugo 開始書寫"/>
+<meta name="twitter:description" content="wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 https://gohugo.io/tools/migrations/ ，選用 https://github.com/palaniraja/blog2md 將匯出的文章轉換成 Hugo 格式。隨"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -120,10 +120,10 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Redmine container with Docker</h1>
+      <h1 class="post-title">Hugo 開始書寫</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2016-07-25 </span>
+        <span class="post-time"> 2019-08-03 </span>
         
         
       </div>
@@ -136,28 +136,54 @@
   </div>
 </div>
     <div class="post-content">
-      <p>除了官方的 Docker image 之外，<a href="https://hub.docker.com/r/sameersbn/redmine/">sameersbn/redmine</a> 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架設在與 Docker 相同的主機上。需要注意的地方有兩點： 第一個是 MySQL 的 LISTEN IP，預設可能是 127.0.0.1，這邊將它設定成 0.0.0.0。 這部份從 /etc/mysql/my.cnf 修改 bind-address = 127.0.0.1 改為 bind-address = 0.0.0.0 第二是要考慮容器連接到外部的 MySQL 所走的路由閘道位置，預設應該是 docker0 這張虛擬網卡的 IP。假設是 172.17.42.1 最後使用底下指令啟動容器： <div class="highlight"><div class="chroma">
+      <p>wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 <a href="https://gohugo.io/tools/migrations/">https://gohugo.io/tools/migrations/</a> ，選用 <a href="https://github.com/palaniraja/blog2md">https://github.com/palaniraja/blog2md</a> 將匯出的文章轉換成 Hugo 格式。隨後參考 <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">https://gohugo.io/hosting-and-deployment/hosting-on-github/</a> 把網站發布到 Github 上面。</p>
+
+<p>按照範例說明，會在 Github 建立兩個 Reposiotry，一個儲存靜態發布前的相關檔案，也就是 Hugo 的目錄結構本身，一個放置靜態網站，也就是 Hugo 產生的靜態網站。每次更新，都需要一連串的操作跟 git 提交。因為有點囉唆所以說明有提供 <code>deploy.sh</code> 協助簡化這些動作。目前也寫了類似的發佈檔 <code>deploy.bat</code> 提供在 Windows 底下使用。附上 <code>deploy.bat</code></p>
+
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+<pre class="chroma"><code class="language-Batchfile" data-lang="Batchfile"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"> docker run <span class="se">\
-</span><span class="se"></span>--name<span class="o">=</span>redmine -d -p <span class="m">40000</span>:80 <span class="se">\
-</span><span class="se"></span>--env<span class="o">=</span><span class="s1">&#39;DB_ADAPTER=mysql2&#39;</span> <span class="se">\
-</span><span class="se"></span>--env<span class="o">=</span><span class="s1">&#39;DB_HOST=172.17.42.1&#39;</span> <span class="se">\
-</span><span class="se"></span>--env<span class="o">=</span><span class="s1">&#39;DB_USER=redmine&#39;</span> <span class="se">\
-</span><span class="se"></span>--env<span class="o">=</span><span class="s1">&#39;DB_PASS=password&#39;</span> <span class="se">\
-</span><span class="se"></span>--volume<span class="o">=</span>/volume1/redmine:/home/redmine/data <span class="se">\
-</span><span class="se"></span>sameersbn/redmine:3.3.3-1</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-Batchfile" data-lang="Batchfile"><span class="p">@</span><span class="k">ECHO</span> OFF
+
+<span class="k">ECHO</span> Deploying updates to GitHub...
+
+<span class="c1">REM Build the project.</span>
+hugo
+<span class="c1">REM Go To Public folder</span>
+<span class="k">cd</span> public
+<span class="c1">REM Add changes to git.</span>
+git add .
+<span class="c1">REM Commit changes.</span>
+<span class="k">SET</span> <span class="nv">msg</span><span class="p">=</span><span class="s2">&#34;rebuilding site </span><span class="nv">%DATE%</span><span class="s2">&#34;</span>
+<span class="k">if</span> <span class="k">NOT</span> <span class="s2">&#34;</span><span class="nv">%1</span><span class="s2">&#34;</span><span class="o">==</span><span class="s2">&#34;&#34;</span> <span class="p">(</span>
+    <span class="k">SET</span> <span class="nv">msg</span><span class="p">=</span><span class="nv">%1</span>
+<span class="p">)</span>
+git commit -m <span class="s2">&#34;$msg&#34;</span>
+<span class="c1">REM Push source and build repos.</span>
+git push origin master
+<span class="k">cd</span> ..</code></pre></td></tr></table>
 </div>
-</div></p>
+</div>
 
     </div>
 
@@ -169,7 +195,7 @@
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2016-07-25
+        2019-08-03
         
     </span>
   </p>
@@ -178,16 +204,18 @@
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/it-%E7%AD%86%E8%A8%98/">IT 筆記</a>
+          <a href="/tags/hugo/">Hugo</a>
+          <a href="/tags/github/">Github</a>
+          <a href="/tags/wordpress/">Wordpress</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/">
+        <a class="prev" href="/post/sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Hugo 開始書寫</span>
+            <span class="prev-text nav-default">SublimeLinter-phpcs 使用自訂規則檔</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/post/%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/">
-            <span class="next-text nav-default">使用 array_reduce 做 AND 邏輯運算</span>
+        <a class="next" href="/post/redmine-container-with-docker/">
+            <span class="next-text nav-default">Redmine container with Docker</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
