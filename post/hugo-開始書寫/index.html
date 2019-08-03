@@ -178,7 +178,7 @@ git add .
 <span class="k">if</span> <span class="k">NOT</span> <span class="s2">&#34;</span><span class="nv">%1</span><span class="s2">&#34;</span><span class="o">==</span><span class="s2">&#34;&#34;</span> <span class="p">(</span>
     <span class="k">SET</span> <span class="nv">msg</span><span class="p">=</span><span class="nv">%1</span>
 <span class="p">)</span>
-git commit -m <span class="s2">&#34;$msg&#34;</span>
+git commit -m <span class="nv">%msg%</span>
 <span class="c1">REM Push source and build repos.</span>
 git push origin master
 <span class="k">cd</span> ..</code></pre></td></tr></table>
