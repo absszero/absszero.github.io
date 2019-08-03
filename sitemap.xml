@@ -324,16 +324,16 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/php-%E4%B8%AD%E5%9C%8B%E5%A4%A7%E9%99%B8-%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/</loc>
-    <lastmod>2012-04-23T06:02:44+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/post/%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</loc>
     <lastmod>2012-04-23T06:02:44+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/</loc>
+    <lastmod>2012-04-23T06:02:44+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
