@@ -45,7 +45,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:1313/" />
 
-<meta property="og:updated_time" content="2019-08-03T16:57:39+08:00" />
+<meta property="og:updated_time" content="2019-08-26T20:31:24+08:00" />
 <meta itemprop="name" content="黑書記事">
 <meta itemprop="description" content="Hugo theme even example site.">
 
@@ -114,6 +114,44 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/">使用 array_reduce 做 AND 邏輯運算</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-04-12 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      在官方手冊的頁面上有提供做 AND 運算的範例 1 2 3 4 5 6 7 8 &lt;?php function andFunc($a, $b) { ​ return $a &amp;&amp; $b; } $foo = array(true, true, true); var_dump(array_reduce($foo, &#34;andFunc&#34;)); 而既然使用了 array_reduce，可以用來做更
+    </div>
+    <div class="read-more">
+      <a href="/post/%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/" class="read-more-link">Read more..</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/">日光節約時間的陷阱</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2016-04-07 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      在 PHP 上面計算當前時間之後一週的時間，以 Timestamp 來計算 1 2 3 4 &lt;?php $now = time(); $next_week = $now + 7 \* 86400; 如果今天是 2016 年 3 月 13 日的上午一點，地點是美國呢？於是一個小時之後
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/" class="read-more-link">Read more..</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/mocking-view-facade-in-laravel/">Mocking View Facade in Laravel</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2016-03-07 </span>
@@ -165,44 +203,6 @@
     </div>
     <div class="read-more">
       <a href="/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/" class="read-more-link">Read more..</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/javascript-%E9%97%9C%E9%8D%B5%E5%AD%97%E4%BD%BF%E7%94%A8-in-%E5%88%A4%E6%96%B7%E7%89%A9%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9C%89%E8%A9%B2%E5%B1%AC%E6%80%A7%E6%88%90%E5%93%A1/">Javascript 關鍵字使用 in 判斷物件是否有該屬性成員</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-07-22 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      今天在別人的 js 範例當中看到一個關鍵字 in， 1 2 3 if (&#39;items&#39; in obj) { return obj.items; } 過去用過的 in 是 for..in，做為疊代物件屬性 1 for (var prop in obj) { ... } 從 stack overflow 看到這
-    </div>
-    <div class="read-more">
-      <a href="/post/javascript-%E9%97%9C%E9%8D%B5%E5%AD%97%E4%BD%BF%E7%94%A8-in-%E5%88%A4%E6%96%B7%E7%89%A9%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9C%89%E8%A9%B2%E5%B1%AC%E6%80%A7%E6%88%90%E5%93%A1/" class="read-more-link">Read more..</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/">git 在不同操作階段的恢復方法</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-06-27 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      初學 git 透過 GUI 添加檔案跟提交都很便利，但是要如何恢復卻常常卡住。 主要是不熟悉指令端實際的運作情況，所以不確定 GUI 該如何選擇來恢復檔案。 下面把自己
-    </div>
-    <div class="read-more">
-      <a href="/post/git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/" class="read-more-link">Read more..</a>
     </div>
   </div>
 </article>

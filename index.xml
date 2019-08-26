@@ -6,10 +6,28 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 03 Aug 2019 16:57:39 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 20:31:24 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Laravel Goto for Sublime Text</title>
+      <link>http://localhost:1313/post/laravel-goto-for-sublime-text/</link>
+      <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/laravel-goto-for-sublime-text/</guid>
+      <description>https://github.com/absszero/LaravelGoto Why 去年下定決心買一套 Sublime Text 之後（USD $75 的樣子），也算是認可 ST 在工作幫我省了不少時間。不過隨著 VS Code 功能逐步豐富，一直有想轉換編輯器的念頭。上</description>
+    </item>
+    
+    <item>
+      <title>透過 PHP 解析包含 BOM 的 CSV 文件</title>
+      <link>http://localhost:1313/post/%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Mon, 26 Aug 2019 20:12:35 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</guid>
+      <description>之前拿到的 csv 檔大部分都很乾淨，使用 PHP 內建的 fgetcsv 逐行解析不會有什麼問題，但今天解開一個欄位就發現它的字串長度跟預期的不同，並且無法用 ltrim 函式移除左</description>
+    </item>
     
     <item>
       <title>SublimeLinter-phpcs 使用自訂規則檔</title>

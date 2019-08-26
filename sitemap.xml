@@ -2,9 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2019-08-03T16:57:39+08:00</lastmod>
+    <loc>http://localhost:1313/post/laravel-goto-for-sublime-text/</loc>
+    <lastmod>2019-08-26T20:31:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/plugin-development/</loc>
+    <lastmod>2019-08-26T20:31:24+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2019-08-26T20:31:24+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/sublime-text/</loc>
+    <lastmod>2019-08-26T20:31:24+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2019-08-26T20:31:24+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/laravel/</loc>
+    <lastmod>2019-08-26T20:31:24+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2019-08-26T20:31:24+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/bom/</loc>
+    <lastmod>2019-08-26T20:12:35+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/csv/</loc>
+    <lastmod>2019-08-26T20:12:35+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</loc>
+    <lastmod>2019-08-26T20:12:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -12,12 +68,6 @@
     <lastmod>2019-08-03T16:57:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2019-08-03T16:57:39+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -37,12 +87,6 @@
     <lastmod>2019-08-03T14:29:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2019-08-03T14:29:59+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -107,12 +151,6 @@
   
   <url>
     <loc>http://localhost:1313/tags/php/</loc>
-    <lastmod>2015-10-07T04:06:05+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/laravel/</loc>
     <lastmod>2015-10-07T04:06:05+00:00</lastmod>
     <priority>0</priority>
   </url>

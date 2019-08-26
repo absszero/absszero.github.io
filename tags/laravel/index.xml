@@ -6,10 +6,19 @@
     <description>Recent content in laravel on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Oct 2015 04:06:05 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 20:31:24 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Laravel Goto for Sublime Text</title>
+      <link>http://localhost:1313/post/laravel-goto-for-sublime-text/</link>
+      <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/laravel-goto-for-sublime-text/</guid>
+      <description>https://github.com/absszero/LaravelGoto Why 去年下定決心買一套 Sublime Text 之後（USD $75 的樣子），也算是認可 ST 在工作幫我省了不少時間。不過隨著 VS Code 功能逐步豐富，一直有想轉換編輯器的念頭。上</description>
+    </item>
     
     <item>
       <title>Eloquent 以 Camel-Case 定義關連函式</title>
