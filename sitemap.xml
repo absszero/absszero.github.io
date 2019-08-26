@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://localhost:1313/tags/laravel/</loc>
+    <lastmod>2019-08-26T20:31:24+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/post/laravel-goto-for-sublime-text/</loc>
     <lastmod>2019-08-26T20:31:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -28,12 +34,6 @@
   
   <url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2019-08-26T20:31:24+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/laravel/</loc>
     <lastmod>2019-08-26T20:31:24+08:00</lastmod>
     <priority>0</priority>
   </url>

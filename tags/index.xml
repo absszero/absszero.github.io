@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Laravel</title>
+      <link>http://localhost:1313/tags/laravel/</link>
+      <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/laravel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Plugin Development</title>
       <link>http://localhost:1313/tags/plugin-development/</link>
       <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
@@ -26,15 +35,6 @@
       <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
       
       <guid>http://localhost:1313/tags/sublime-text/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>laravel</title>
-      <link>http://localhost:1313/tags/laravel/</link>
-      <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
-      
-      <guid>http://localhost:1313/tags/laravel/</guid>
       <description></description>
     </item>
     
