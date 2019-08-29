@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VisSense on 黑書記事</title>
-    <link>http://localhost:1313/tags/vissense/</link>
+    <link>https://absszero.github.io/tags/vissense/</link>
     <description>Recent content in VisSense on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 28 Mar 2015 05:14:33 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/vissense/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://absszero.github.io/tags/vissense/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>VisSense.js 與延遲載入</title>
-      <link>http://localhost:1313/post/vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</link>
+      <link>https://absszero.github.io/post/vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</link>
       <pubDate>Sat, 28 Mar 2015 05:14:33 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</guid>
+      <guid>https://absszero.github.io/post/vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</guid>
       <description>VisSense.js 可以提供某個 HTML 元件目前在使用者的畫面出現的情況。例如是否完全出現(fullyvisible)、隱藏(hidden)，甚至出現出現在畫面上的</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>加密 on 黑書記事</title>
-    <link>http://localhost:1313/tags/%E5%8A%A0%E5%AF%86/</link>
+    <link>https://absszero.github.io/tags/%E5%8A%A0%E5%AF%86/</link>
     <description>Recent content in 加密 on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 11 Jul 2010 12:41:50 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/%E5%8A%A0%E5%AF%86/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://absszero.github.io/tags/%E5%8A%A0%E5%AF%86/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[ PHP ] Unpredictable hashes for humans</title>
-      <link>http://localhost:1313/post/php-unpredictable-hashes-for-humans/</link>
+      <link>https://absszero.github.io/post/php-unpredictable-hashes-for-humans/</link>
       <pubDate>Sun, 11 Jul 2010 12:41:50 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/php-unpredictable-hashes-for-humans/</guid>
+      <guid>https://absszero.github.io/post/php-unpredictable-hashes-for-humans/</guid>
       <description>Unpredictable hashes for humans http://seld.be/notes/unpredictable-hashes-for-humans 對網站開發人員產生隨機的 ID 或者雜湊值是很常見的事情， 舉個例子，大型的專案或者開發框架可能需要實現自己的 PHP session 處理器，或者在 API 當中把這</description>
     </item>
     

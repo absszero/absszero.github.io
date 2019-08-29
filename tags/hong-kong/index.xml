@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hong Kong on 黑書記事</title>
-    <link>http://localhost:1313/tags/hong-kong/</link>
+    <link>https://absszero.github.io/tags/hong-kong/</link>
     <description>Recent content in Hong Kong on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 29 Oct 2013 14:04:39 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/hong-kong/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://absszero.github.io/tags/hong-kong/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>first trip with alone</title>
-      <link>http://localhost:1313/post/first-trip-with-alone/</link>
+      <link>https://absszero.github.io/post/first-trip-with-alone/</link>
       <pubDate>Tue, 29 Oct 2013 14:04:39 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/first-trip-with-alone/</guid>
+      <guid>https://absszero.github.io/post/first-trip-with-alone/</guid>
       <description>本來，今年所預計的第一次獨自旅行應該是加拿大 溫哥華， 但等我拖著行李穿過香港國際機場的客運大樓‎，心裡面所想的卻是第一句：「本來，&amp;helli</description>
     </item>
     

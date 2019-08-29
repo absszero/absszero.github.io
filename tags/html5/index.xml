@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>html5 on 黑書記事</title>
-    <link>http://localhost:1313/tags/html5/</link>
+    <link>https://absszero.github.io/tags/html5/</link>
     <description>Recent content in html5 on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 07 Apr 2015 14:16:45 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/html5/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://absszero.github.io/tags/html5/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>瀏覽歷程 History.js</title>
-      <link>http://localhost:1313/post/%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</link>
+      <link>https://absszero.github.io/post/%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</link>
       <pubDate>Tue, 07 Apr 2015 14:16:45 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</guid>
+      <guid>https://absszero.github.io/post/%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</guid>
       <description>AJAX 載入會使得瀏覽器的瀏覽歷程沒辦法正確運作。 HTML5 的 History API 滿足了方面的需求。 而 History.js 把 HTML5 跟 HTML4 以及各個瀏覽器之間的差異統一了。 1 2 3 4 5 History.Adapter.bind(window,&amp;#39;statechange&amp;#39;,function(){ var State = History.getState(); }); History.pushState({state:1}, &amp;#34;YOUR_TITLE&amp;#34;,</description>
     </item>
     

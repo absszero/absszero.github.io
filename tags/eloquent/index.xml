@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Eloquent on 黑書記事</title>
-    <link>http://localhost:1313/tags/eloquent/</link>
+    <link>https://absszero.github.io/tags/eloquent/</link>
     <description>Recent content in Eloquent on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 07 Oct 2015 04:06:05 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/eloquent/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://absszero.github.io/tags/eloquent/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Eloquent 以 Camel-Case 定義關連函式</title>
-      <link>http://localhost:1313/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</link>
+      <link>https://absszero.github.io/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</link>
       <pubDate>Wed, 07 Oct 2015 04:06:05 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
+      <guid>https://absszero.github.io/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
       <description>假設定義了一個書籍的 Model 並且每一本書有一個書皮封面 BookCover，所以定義以下的內容： 1 2 3 4 5 6 &amp;lt;?php class Book extends Eloquent { public function book_cover() { return $this-&amp;gt;hasOne(&amp;#39;bookCover&amp;#39;); } } 現在我們查詢</description>
     </item>
     

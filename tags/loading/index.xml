@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Loading on 黑書記事</title>
-    <link>http://localhost:1313/tags/loading/</link>
+    <link>https://absszero.github.io/tags/loading/</link>
     <description>Recent content in Loading on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 15 Nov 2010 12:31:49 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/loading/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://absszero.github.io/tags/loading/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog</title>
-      <link>http://localhost:1313/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</link>
+      <link>https://absszero.github.io/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</link>
       <pubDate>Mon, 15 Nov 2010 12:31:49 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</guid>
+      <guid>https://absszero.github.io/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</guid>
       <description>http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html Introduction 通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的</description>
     </item>
     

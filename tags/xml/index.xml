@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>XML on 黑書記事</title>
-    <link>http://localhost:1313/tags/xml/</link>
+    <link>https://absszero.github.io/tags/xml/</link>
     <description>Recent content in XML on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 07 Dec 2014 03:07:32 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/xml/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://absszero.github.io/tags/xml/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>何謂PI(Processing Instruction)</title>
-      <link>http://localhost:1313/post/pi-processing-instruction/</link>
+      <link>https://absszero.github.io/post/pi-processing-instruction/</link>
       <pubDate>Sun, 07 Dec 2014 03:07:32 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/pi-processing-instruction/</guid>
+      <guid>https://absszero.github.io/post/pi-processing-instruction/</guid>
       <description>PI的英文全名是Processing Instruction，是【處理指令】的意思，在XML文件中PI是以『&amp;lt;?』為指令的開始符號，並以</description>
     </item>
     
     <item>
       <title>[ Web ] Entities in modular XHTML</title>
-      <link>http://localhost:1313/post/entities-in-modular-xhtml/</link>
+      <link>https://absszero.github.io/post/entities-in-modular-xhtml/</link>
       <pubDate>Tue, 02 Nov 2010 13:04:41 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/entities-in-modular-xhtml/</guid>
+      <guid>https://absszero.github.io/post/entities-in-modular-xhtml/</guid>
       <description>Entities in modular XHTML http://cweiske.de/tagebuch/xhtml-entities.htm 要在 HTML 裡頭應用某些特殊字元，可以把該字元寫成 &amp;ldquo;named entities&amp;rdquo;。 最常用的就是空白字元 但是當我們要用在未指定 DTD 的 XML 上面</description>
     </item>
     
