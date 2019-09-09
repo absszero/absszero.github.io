@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Laravel Goto for VS Code - 黑書記事</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="absszero" /><meta name="description" content="https://github.com/absszero/vscode-laravel-goto Why 在完成 Laravel Goto for Sublime Text 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。 由" />
+
+
+
+<meta name="google-site-verification" content="MkqNNdQyUP3vQH8HG3VvWjMfuMEzZhozFuZwEQixUCI" />
+
+
+<meta name="generator" content="Hugo 0.56.3 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://absszero.github.io/post/laravel-goto-for-vs-code/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Laravel Goto for VS Code" />
+<meta property="og:description" content="https://github.com/absszero/vscode-laravel-goto Why 在完成 Laravel Goto for Sublime Text 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。 由" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://absszero.github.io/post/laravel-goto-for-vs-code/" />
+<meta property="article:published_time" content="2019-09-09T20:16:24+08:00" />
+<meta property="article:modified_time" content="2019-09-09T20:16:24+08:00" />
+<meta itemprop="name" content="Laravel Goto for VS Code">
+<meta itemprop="description" content="https://github.com/absszero/vscode-laravel-goto Why 在完成 Laravel Goto for Sublime Text 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。 由">
+
+
+<meta itemprop="datePublished" content="2019-09-09T20:16:24&#43;08:00" />
+<meta itemprop="dateModified" content="2019-09-09T20:16:24&#43;08:00" />
+<meta itemprop="wordCount" content="1960">
+
+
+
+<meta itemprop="keywords" content="VS Code,Laravel,Plugin Development," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Laravel Goto for VS Code"/>
+<meta name="twitter:description" content="https://github.com/absszero/vscode-laravel-goto Why 在完成 Laravel Goto for Sublime Text 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。 由"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">I&#39;m fine thank you</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">I&#39;m fine thank you</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Laravel Goto for VS Code</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-09-09 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#why">Why</a></li>
+<li><a href="#功能需求">功能需求</a></li>
+<li><a href="#找出字串範圍">找出字串範圍</a></li>
+<li><a href="#範圍轉換為路徑位置">範圍轉換為路徑位置</a></li>
+<li><a href="#namespace">Namespace</a></li>
+<li><a href="#搜尋">搜尋</a></li>
+<li><a href="#總結">總結</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p><a href="https://github.com/absszero/vscode-laravel-goto">https://github.com/absszero/vscode-laravel-goto</a></p>
+
+<h2 id="why">Why</h2>
+
+<p>在完成 <a href="https://absszero.github.io/post/laravel-goto-for-sublime-text/">Laravel Goto for Sublime Text</a> 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。</p>
+
+<p>由於目前開發的專案愈趨複雜，路由的設定已經從成長快要上百條。沒有有效的透過 Namespace 區分 Controller。很容易就遇到撞名的問題。開發前先針對 VS Code Marketplace 上類似的專案搜尋一番：</p>
+
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=codingyu.laravel-goto-view">Laravel goto view</a> 視圖轉跳，能針對特定程式寫法下去搜尋，只能查找指定的視圖目錄。</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=stef-k.laravel-goto-controller">laravel-goto-controller</a> Controller 轉跳，無法處理有兩個相同檔名的 Controller ，並且開啟之後不會自動轉跳到指定的 Method</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=erlangparasu.goto-route-controller-laravel">goto-route-controller-laravel</a> Controller 轉跳或 Route 轉跳。蠻特別的一個套件，開發是使用 JS 而不是官方推薦的 TS。</li>
+</ul>
+
+<p>上述的套件都是進行所謂的「精準轉跳」。亦即找到指定的檔案位置並開啟檔案。但也因此必須將檔案放置在限定的目錄位置才能發揮作用。如果專案結構跟 Laravel 官方預設位置有落差，便無法發揮作用。為了解決這個問題，嘗試開發「模糊轉跳」的方式。使用呼叫 <code>Go to File</code> 的方式，透過編輯器內建的模糊搜尋，找到指定的檔案。</p>
+
+<p>上述的套件都是透過 HoverProvider 或者 LinkProvider 的方式，檢索出當前文件可以轉跳的位置，並且將它轉換成超連結。優點是可以看到可以點選的檔案位置，但缺點也是為了找出可點選的位置，必須逐一的爬找出文字範圍。開發人員多半了解 View 或者 Controller 所涵蓋的文字範圍，所以後續決定不透過 Provider 的方式顯示這些位置。</p>
+
+<h2 id="功能需求">功能需求</h2>
+
+<p>參照之前開發套件的需求，所需要的功能包括：</p>
+
+<ul>
+<li>開啟 Controller@Method。VS Code 可以開啟指定的 Controller，而開啟後要能夠跳到指定的 Method。</li>
+<li>開啟 View file。</li>
+</ul>
+
+<h2 id="找出字串範圍">找出字串範圍</h2>
+
+<p>有了之前的開發，查找字串變得容易許多。編輯器文字範圍的觀念大致上差不多了。都有所謂的<code>點</code>，以及<code>範圍</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">export</span> <span class="kd">function</span> <span class="nx">getSelection</span><span class="p">(</span><span class="nx">editor</span>: <span class="kt">vscode.TextEditor</span><span class="p">,</span> <span class="nx">selected</span>: <span class="kt">vscode.Selection</span><span class="p">)</span> <span class="o">:</span> <span class="nx">vscode</span><span class="p">.</span><span class="nx">Range</span> <span class="p">{</span>
+	<span class="kd">let</span> <span class="nx">start</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">.</span><span class="nx">start</span><span class="p">;</span>
+	<span class="kd">let</span> <span class="nx">end</span> <span class="o">=</span> <span class="nx">selected</span><span class="p">.</span><span class="nx">end</span><span class="p">;</span>
+
+    <span class="c1">// 如果有選擇範圍，返回選擇範圍
+</span><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">start</span><span class="p">.</span><span class="nx">isEqual</span><span class="p">(</span><span class="nx">end</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nx">vscode</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="kr">const</span> <span class="nx">line</span> <span class="o">=</span> <span class="nx">editor</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">lineAt</span><span class="p">(</span><span class="nx">start</span><span class="p">);</span>
+	<span class="kr">const</span> <span class="nx">DELIMITERS</span> <span class="o">=</span> <span class="s2">&#34;\&#34;&#39;&#34;</span>
+    <span class="c1">// 逐字查找目前游標所在的行，以雙引號或單引號當作邊際，找出文字邊際
+</span><span class="c1"></span>	<span class="k">while</span> <span class="p">(</span><span class="nx">start</span><span class="p">.</span><span class="nx">isAfter</span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nx">range</span><span class="p">.</span><span class="nx">start</span><span class="p">))</span> <span class="p">{</span>
+		<span class="kd">let</span> <span class="nx">next</span> <span class="o">=</span> <span class="nx">start</span><span class="p">.</span><span class="kd">with</span><span class="p">({</span><span class="nx">character</span>: <span class="kt">start.character</span> <span class="o">-</span> <span class="mi">1</span><span class="p">})</span>
+		<span class="kd">let</span> <span class="kr">char</span> <span class="o">=</span> <span class="nx">editor</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">getText</span><span class="p">(</span><span class="k">new</span> <span class="nx">vscode</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">next</span><span class="p">,</span> <span class="nx">start</span><span class="p">));</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">!==</span> <span class="nx">DELIMITERS</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="kr">char</span><span class="p">))</span> <span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="nx">start</span> <span class="o">=</span> <span class="nx">next</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">while</span> <span class="p">(</span><span class="nx">end</span><span class="p">.</span><span class="nx">isBefore</span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nx">range</span><span class="p">.</span><span class="nx">end</span><span class="p">))</span> <span class="p">{</span>
+		<span class="kd">let</span> <span class="nx">next</span> <span class="o">=</span> <span class="nx">end</span><span class="p">.</span><span class="kd">with</span><span class="p">({</span><span class="nx">character</span>: <span class="kt">end.character</span> <span class="o">+</span> <span class="mi">1</span><span class="p">})</span>
+		<span class="kd">let</span> <span class="kr">char</span> <span class="o">=</span> <span class="nx">editor</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">getText</span><span class="p">(</span><span class="k">new</span> <span class="nx">vscode</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">end</span><span class="p">,</span> <span class="nx">next</span><span class="p">));</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">!==</span> <span class="nx">DELIMITERS</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="kr">char</span><span class="p">))</span> <span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="nx">end</span> <span class="o">=</span> <span class="nx">next</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="k">new</span> <span class="nx">vscode</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">);</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="範圍轉換為路徑位置">範圍轉換為路徑位置</h2>
+
+<p>有了選取範圍之後先轉為文字，然後判斷文字內容來決定路徑類型。針對控制器路徑需要處理使用 Namespace 的情形。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">export</span> <span class="kd">function</span> <span class="nx">getPlace</span><span class="p">(</span><span class="nx">editor</span>: <span class="kt">vscode.TextEditor</span><span class="p">,</span> <span class="nx">selection</span>: <span class="kt">vscode.Range</span><span class="p">)</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">path</span>: <span class="kt">string</span><span class="p">;</span> <span class="nx">method</span>: <span class="kt">string</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">{</span>
+	<span class="kd">let</span> <span class="nx">method</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+	<span class="kd">let</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">editor</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">getText</span><span class="p">(</span><span class="nx">selection</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">isController</span><span class="p">(</span><span class="nx">path</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// 有包含 Method 的情況
+</span><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">!==</span> <span class="nx">path</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">))</span> <span class="p">{</span>
+			<span class="kd">let</span> <span class="nx">splited</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">);</span>
+			<span class="nx">path</span> <span class="o">=</span> <span class="nx">splited</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+			<span class="nx">method</span> <span class="o">=</span> <span class="nx">splited</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+		<span class="p">}</span>
+		<span class="c1">// 需要查找 Namspace 的情況
+</span><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="s1">&#39;\\&#39;</span> <span class="o">!==</span> <span class="nx">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+			<span class="kd">let</span> <span class="nx">namespace</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Namespace</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="nx">editor</span><span class="p">.</span><span class="nb">document</span><span class="p">,</span> <span class="nx">selection</span><span class="p">);</span>
+			<span class="k">if</span> <span class="p">(</span><span class="nx">namespace</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nx">path</span> <span class="o">=</span> <span class="nx">namespace</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">path</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+
+		<span class="nx">path</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\\/g</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.php&#39;</span><span class="p">;</span>
+
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// 其餘情況判定為 view file
+</span><span class="c1"></span>		<span class="kd">let</span> <span class="nx">splited</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">);</span>
+		<span class="nx">path</span> <span class="o">=</span> <span class="nx">splited</span><span class="p">[</span><span class="nx">splited</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+		<span class="nx">path</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\./g</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.blade.php&#39;</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="p">{</span><span class="nx">path</span>: <span class="kt">path</span><span class="p">,</span> <span class="nx">method</span>: <span class="kt">method</span><span class="p">};</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="namespace">Namespace</h2>
+
+<p>從 route 檔案當中可以找到指定 Namespace。按照 Sublime Text 的方法，可以透過 TextMate grammer 查找出包含目前選定 Controller 所包含的程式碼範圍。VS Code 雖然在主題方面會利用 TextMate grammer 進行顏色渲染，但這部份並沒有提供給開發者。所以如果要經由該功能實現有幾個方法：</p>
+
+<ul>
+<li><a href="https://github.com/microsoft/vscode-textmate">VSCode TextMate</a> 安裝這個套件進行開發，但是它相依的套件安裝有點麻煩。</li>
+<li><a href="https://www.npmjs.com/package/php-parser">php-parser</a> 解析 PHP 的套件，利用語法解析當前的檔案，找出範圍。方法可行，但有點殺雞用牛刀。</li>
+<li>VS Code Language Server，例如外部呼叫 PHP 本身解析檔案，然後得知目前的範圍所選用的 Namespace 參數。</li>
+</ul>
+
+<p>以上的方法都可行，但對於只要解析出目前的 Namespace，似乎花費太多運算成本。最後從 <a href="https://marketplace.visualstudio.com/items?itemName=linyang95.php-symbols">PHP Symbols</a> 得到了靈感，直接本文逐步搜尋。查找的步驟主要是：</p>
+
+<ol>
+<li><p>根據正規表達式找出 Namespace 設定的字串位置，以之前開發所得到的結果有兩個規則：</p>
+
+<p><code>/namespace\s*\(\s*(['&quot;])\s*([^'&quot;]+)\1/g</code></p>
+
+<p><code>/['\&quot;]namespace['&quot;]\s*=&gt;\s*(['&quot;])([^'&quot;]+)\1/g</code></p></li>
+
+<li><p>找出花括號的範圍，上一個步驟找到字串，沿著字串往下搜尋最後勢必會看到帶著成對花括號的路由範圍。目前不考量包含註解或 PHP 語法有誤的情況，試著搜尋出結尾的花括號位置。</p></li>
+
+<li><p>有了成對的花括號位置範圍後，判斷選定的 Controller 是否在範圍內，成立則將該 Namespace 返回。</p></li>
+</ol>
+
+<h2 id="搜尋">搜尋</h2>
+
+<p>VS Code 也內建了類似 Sublime Text <code>Goto anything</code>  ，名為 <code>workbench.action.quickOpen</code> 的指令可根據給定的路徑，列出最貼近的檔案位置。但 VS Code 本身並沒有內建解析 PHP Symbol 的能力。所以即便已經打開需要的檔案，也無法轉跳到選定的 Method 位置。這部份需要第三方的套件支持。不過對於 PHP 開發人員而言，應該早已安裝相關的套件支持了。</p>
+
+<p>為了在開啟檔案之後轉跳到 Symbol，這邊藉由事件的綁定來實現。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">const</span> <span class="nx">place</span> <span class="o">=</span> <span class="nx">getPlace</span><span class="p">(</span><span class="nx">editor</span><span class="p">,</span> <span class="nx">selection</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">place</span><span class="p">.</span><span class="nx">method</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 判斷切換到的編輯器視窗檔名是否是搜尋的檔名來判斷
+</span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">event</span> <span class="o">=</span> <span class="nx">vscode</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">onDidChangeActiveTextEditor</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="kc">undefined</span> <span class="o">!==</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// if opened document is selected document, go to symbol
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="nx">basename</span><span class="p">(</span><span class="nx">place</span><span class="p">.</span><span class="nx">path</span><span class="p">)</span> <span class="o">===</span> <span class="nx">basename</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">uri</span><span class="p">.</span><span class="nx">path</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nx">vscode</span><span class="p">.</span><span class="nx">commands</span><span class="p">.</span><span class="nx">executeCommand</span><span class="p">(</span><span class="s1">&#39;workbench.action.quickOpen&#39;</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span> <span class="o">+</span> <span class="nx">place</span><span class="p">.</span><span class="nx">method</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="總結">總結</h2>
+
+<p>VS Code 的開發入門比起 Sublime Text 友善許多。並且在除錯以及測試整合方面都比 ST 更為完整。不過豐富的 API 也讓開發人員得小心爬梳才能找到合適的範例。TypeScript 方面頭一次接觸，對於編輯器能夠進行型別提示跟檢查感覺是十分實用，但對於首次接觸的我來說，還是有不小的難度（主要是 TS 的語法規範）</p>
+
+<p>VS Code 發布流程也比 ST 更完整，目前沒有人工審查的要求，任何人在開發完成之後都可以藉由簡單的操作，立即將套件發布到 Marketplace，而後續的更新也有完整的指令支援。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">absszero</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-09-09
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/vs-code/">VS Code</a>
+          <a href="/tags/laravel/">Laravel</a>
+          <a href="/tags/plugin-development/">Plugin Development</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/laravel-goto-for-sublime-text/">
+            <span class="next-text nav-default">Laravel Goto for Sublime Text</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.github.com/absszero" class="iconfont icon-github" title="github"></a>
+  <a href="https://absszero.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">absszero</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-70612248-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
