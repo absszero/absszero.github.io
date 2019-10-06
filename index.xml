@@ -6,10 +6,19 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Sep 2019 20:16:24 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 06 Oct 2019 15:01:03 +0800</lastBuildDate>
     
 	<atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Guzzle service descriptions - 使用描述檔建立 API Client</title>
+      <link>https://absszero.github.io/post/guzzle-service-descriptions/</link>
+      <pubDate>Sun, 06 Oct 2019 15:01:03 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/guzzle-service-descriptions/</guid>
+      <description>何謂 Service Descriptions 最近在查找關於 Fixer.io 的用戶端套件。發現平常慣用的 Guzzle HTTP Client 還有另外一種開發方式 - service descriptions。該方式借鏡 Swagger 利用定義 API 操作的方式</description>
+    </item>
     
     <item>
       <title>Laravel Goto for VS Code</title>

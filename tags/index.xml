@@ -6,10 +6,19 @@
     <description>Recent content in Tags on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Sep 2019 20:16:24 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 06 Oct 2019 15:01:03 +0800</lastBuildDate>
     
 	<atom:link href="https://absszero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Guzzle API</title>
+      <link>https://absszero.github.io/tags/guzzle-api/</link>
+      <pubDate>Sun, 06 Oct 2019 15:01:03 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/tags/guzzle-api/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Plugin Development</title>

@@ -2,6 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://absszero.github.io/tags/guzzle-api/</loc>
+    <lastmod>2019-10-06T15:01:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/post/guzzle-service-descriptions/</loc>
+    <lastmod>2019-10-06T15:01:03+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/post/</loc>
+    <lastmod>2019-10-06T15:01:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/</loc>
+    <lastmod>2019-10-06T15:01:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/</loc>
+    <lastmod>2019-10-06T15:01:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://absszero.github.io/post/laravel-goto-for-vs-code/</loc>
     <lastmod>2019-09-09T20:16:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -15,18 +46,6 @@
   </url>
   
   <url>
-    <loc>https://absszero.github.io/post/</loc>
-    <lastmod>2019-09-09T20:16:24+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/tags/</loc>
-    <lastmod>2019-09-09T20:16:24+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://absszero.github.io/tags/vs-code/</loc>
     <lastmod>2019-09-09T20:16:24+08:00</lastmod>
     <priority>0</priority>
@@ -34,12 +53,6 @@
   
   <url>
     <loc>https://absszero.github.io/tags/laravel/</loc>
-    <lastmod>2019-09-09T20:16:24+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/</loc>
     <lastmod>2019-09-09T20:16:24+08:00</lastmod>
     <priority>0</priority>
   </url>
