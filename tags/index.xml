@@ -6,10 +6,19 @@
     <description>Recent content in Tags on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 06 Oct 2019 15:01:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 06 Feb 2020 15:01:03 +0800</lastBuildDate>
     
 	<atom:link href="https://absszero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Prism API OpenAPI Server</title>
+      <link>https://absszero.github.io/tags/prism-api-openapi-server/</link>
+      <pubDate>Thu, 06 Feb 2020 15:01:03 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/tags/prism-api-openapi-server/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Guzzle API</title>

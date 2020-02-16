@@ -6,10 +6,19 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 06 Oct 2019 15:01:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 06 Feb 2020 15:01:03 +0800</lastBuildDate>
     
 	<atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Prism 建立 API Server</title>
+      <link>https://absszero.github.io/post/prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
+      <pubDate>Thu, 06 Feb 2020 15:01:03 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
+      <description>Why Prism 撰寫一份 API 文件有許多方式，其中一種是根據 OpenAPI 規範。而在完成 API 規劃後通常搭配如 Swagger UI 將規範文件變成容易閱讀 API 文件。 但前端人員在真實 API 拿到之前，</description>
+    </item>
     
     <item>
       <title>Guzzle service descriptions - 使用描述檔建立 API Client</title>
