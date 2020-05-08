@@ -6,10 +6,19 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 06 Feb 2020 15:01:03 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2020 12:12:12 +0800</lastBuildDate>
     
 	<atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pusher and reset_curl</title>
+      <link>https://absszero.github.io/post/pusher-and-reset_curl/</link>
+      <pubDate>Fri, 08 May 2020 12:12:12 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/pusher-and-reset_curl/</guid>
+      <description>開發上偶而還是會需要使用到 SSL 的環境，所以近期透過 mkcert 將本地端的開發網址全面轉換成 SSL。 使用 PHP Curl 的部份，也在 php.ini 加上 curl.cainfo 1 curl.cainfo=&amp;#34;/Users/Username/Library/Application\ Support/mkcert/rootCA.pem&amp;#34; 但轉換到的 SSL 之後原本</description>
+    </item>
     
     <item>
       <title>Prism 建立 API Server</title>

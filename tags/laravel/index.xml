@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>laravel on 黑書記事</title>
+    <title>Laravel on 黑書記事</title>
     <link>https://absszero.github.io/tags/laravel/</link>
-    <description>Recent content in laravel on 黑書記事</description>
+    <description>Recent content in Laravel on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 09 Sep 2019 20:16:24 +0800</lastBuildDate>
