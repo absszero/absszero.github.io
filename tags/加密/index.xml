@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>加密 on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 加密 on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 11 Jul 2010 12:41:50 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/%E5%8A%A0%E5%AF%86/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 11 Jul 2010 12:41:50 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/%E5%8A%A0%E5%AF%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[ PHP ] Unpredictable hashes for humans</title>
       <link>https://absszero.github.io/post/php-unpredictable-hashes-for-humans/</link>

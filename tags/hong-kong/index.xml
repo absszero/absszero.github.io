@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hong Kong on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Hong Kong on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 29 Oct 2013 14:04:39 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/hong-kong/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 29 Oct 2013 14:04:39 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/hong-kong/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>first trip with alone</title>
       <link>https://absszero.github.io/post/first-trip-with-alone/</link>

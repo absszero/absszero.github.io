@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mac on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Mac on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 19 Jun 2010 07:26:16 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 19 Jun 2010 07:26:16 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[ PHP ] Filesystem encoding and PHP</title>
       <link>https://absszero.github.io/post/php-filesystem-encoding-and-php/</link>

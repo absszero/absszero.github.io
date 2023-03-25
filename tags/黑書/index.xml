@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>黑書 on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 黑書 on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Mar 2014 16:13:07 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/%E9%BB%91%E6%9B%B8/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 24 Mar 2014 16:13:07 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/%E9%BB%91%E6%9B%B8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>巷弄裡的人情味</title>
       <link>https://absszero.github.io/post/%E5%B7%B7%E5%BC%84%E8%A3%A1%E7%9A%84%E4%BA%BA%E6%83%85%E5%91%B3/</link>

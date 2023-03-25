@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>命令提示字元 on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 命令提示字元 on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 12 May 2012 10:56:17 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 12 May 2012 10:56:17 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在命令提示字元底下格式化顯示 JSON 內容</title>
       <link>https://absszero.github.io/post/formtting-json-from-terminal/</link>

@@ -2,15 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</loc>
+    <lastmod>2023-03-25T19:40:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/phpunit-teardown-laravel/</loc>
+    <lastmod>2023-03-25T19:40:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://absszero.github.io/post/</loc>
-    <lastmod>2020-02-06T15:01:03+08:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2023-03-25T19:40:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/</loc>
+    <lastmod>2023-03-25T19:40:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/</loc>
+    <lastmod>2023-03-25T19:40:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/prism-api-openapi-server/</loc>
     <lastmod>2020-02-06T15:01:03+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -21,21 +51,10 @@
   </url>
   
   <url>
-    <loc>https://absszero.github.io/tags/</loc>
-    <lastmod>2020-02-06T15:01:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/</loc>
-    <lastmod>2020-02-06T15:01:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://absszero.github.io/tags/guzzle-api/</loc>
     <lastmod>2019-10-06T15:01:03+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -48,7 +67,8 @@
   <url>
     <loc>https://absszero.github.io/tags/laravel/</loc>
     <lastmod>2019-09-09T20:16:24+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -61,13 +81,15 @@
   <url>
     <loc>https://absszero.github.io/tags/plugin-development/</loc>
     <lastmod>2019-09-09T20:16:24+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/vs-code/</loc>
     <lastmod>2019-09-09T20:16:24+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -80,19 +102,22 @@
   <url>
     <loc>https://absszero.github.io/tags/sublime-text/</loc>
     <lastmod>2019-08-26T20:31:24+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/bom/</loc>
     <lastmod>2019-08-26T20:12:35+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/csv/</loc>
     <lastmod>2019-08-26T20:12:35+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -112,13 +137,15 @@
   <url>
     <loc>https://absszero.github.io/tags/github/</loc>
     <lastmod>2019-08-03T14:29:59+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/hugo/</loc>
     <lastmod>2019-08-03T14:29:59+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -131,13 +158,15 @@
   <url>
     <loc>https://absszero.github.io/tags/wordpress/</loc>
     <lastmod>2019-08-03T14:29:59+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/it-%E7%AD%86%E8%A8%98/</loc>
     <lastmod>2016-07-25T14:34:41+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -178,7 +207,8 @@
   <url>
     <loc>https://absszero.github.io/tags/eloquent/</loc>
     <lastmod>2015-10-07T04:06:05+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -191,13 +221,15 @@
   <url>
     <loc>https://absszero.github.io/tags/php/</loc>
     <lastmod>2015-10-07T04:06:05+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/javascript/</loc>
     <lastmod>2015-07-22T14:15:09+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -210,7 +242,8 @@
   <url>
     <loc>https://absszero.github.io/tags/git/</loc>
     <lastmod>2015-06-27T03:28:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -223,7 +256,22 @@
   <url>
     <loc>https://absszero.github.io/tags/json/</loc>
     <lastmod>2015-04-08T15:21:40+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/object/</loc>
+    <lastmod>2015-04-08T15:21:40+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/services_json/</loc>
+    <lastmod>2015-04-08T15:21:40+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -234,39 +282,31 @@
   </url>
   
   <url>
-    <loc>https://absszero.github.io/tags/object/</loc>
-    <lastmod>2015-04-08T15:21:40+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/tags/services_json/</loc>
-    <lastmod>2015-04-08T15:21:40+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://absszero.github.io/tags/api/</loc>
     <lastmod>2015-04-07T14:16:45+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/history.js/</loc>
     <lastmod>2015-04-07T14:16:45+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/html5/</loc>
     <lastmod>2015-04-07T14:16:45+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/pushstate/</loc>
     <lastmod>2015-04-07T14:16:45+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -277,9 +317,17 @@
   </url>
   
   <url>
+    <loc>https://absszero.github.io/tags/lazyload/</loc>
+    <lastmod>2015-03-28T05:14:33+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://absszero.github.io/tags/vissense/</loc>
     <lastmod>2015-03-28T05:14:33+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -287,12 +335,6 @@
     <lastmod>2015-03-28T05:14:33+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/tags/lazyload/</loc>
-    <lastmod>2015-03-28T05:14:33+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -305,13 +347,15 @@
   <url>
     <loc>https://absszero.github.io/tags/openssl/</loc>
     <lastmod>2015-03-17T10:10:56+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/xml/</loc>
     <lastmod>2014-12-07T03:07:32+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -331,7 +375,8 @@
   <url>
     <loc>https://absszero.github.io/tags/%E9%BB%91%E6%9B%B8/</loc>
     <lastmod>2014-03-24T16:13:07+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -356,13 +401,14 @@
   </url>
   
   <url>
-    <loc>https://absszero.github.io/tags/hong-kong/</loc>
+    <loc>https://absszero.github.io/post/first-trip-with-alone/</loc>
     <lastmod>2013-10-29T14:04:39+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://absszero.github.io/post/first-trip-with-alone/</loc>
+    <loc>https://absszero.github.io/tags/hong-kong/</loc>
     <lastmod>2013-10-29T14:04:39+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -385,7 +431,8 @@
   <url>
     <loc>https://absszero.github.io/tags/font/</loc>
     <lastmod>2012-08-18T10:22:13+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -398,19 +445,22 @@
   <url>
     <loc>https://absszero.github.io/tags/cmd/</loc>
     <lastmod>2012-05-12T10:56:17+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/python/</loc>
     <lastmod>2012-05-12T10:56:17+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83/</loc>
     <lastmod>2012-05-12T10:56:17+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -423,13 +473,15 @@
   <url>
     <loc>https://absszero.github.io/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/</loc>
     <lastmod>2012-05-12T10:56:17+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/%E7%B8%AE%E6%8E%92/</loc>
     <lastmod>2012-05-12T10:56:17+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -442,12 +494,6 @@
   <url>
     <loc>https://absszero.github.io/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/</loc>
     <lastmod>2012-04-23T06:02:44+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/post/monitoring-jboss-logfile-with-chainsaw-v2/</loc>
-    <lastmod>2012-04-15T02:54:42+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -455,31 +501,15 @@
   <url>
     <loc>https://absszero.github.io/tags/apache-chainsaw-jboss-log4j/</loc>
     <lastmod>2012-04-15T02:54:42+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://absszero.github.io/tags/chrome/</loc>
-    <lastmod>2010-11-15T12:41:05+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/tags/gearman/</loc>
-    <lastmod>2010-11-15T12:41:05+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/tags/google/</loc>
-    <lastmod>2010-11-15T12:41:05+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/tags/node.js/</loc>
-    <lastmod>2010-11-15T12:41:05+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://absszero.github.io/post/monitoring-jboss-logfile-with-chainsaw-v2/</loc>
+    <lastmod>2012-04-15T02:54:42+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -492,35 +522,68 @@
   <url>
     <loc>https://absszero.github.io/tags/asynchronous-programming/</loc>
     <lastmod>2010-11-15T12:41:05+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/chrome/</loc>
+    <lastmod>2010-11-15T12:41:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/gearman/</loc>
+    <lastmod>2010-11-15T12:41:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/google/</loc>
+    <lastmod>2010-11-15T12:41:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/node.js/</loc>
+    <lastmod>2010-11-15T12:41:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/%E8%BC%AA%E8%A9%A2/</loc>
     <lastmod>2010-11-15T12:41:05+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</loc>
     <lastmod>2010-11-15T12:41:05+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</loc>
+    <lastmod>2010-11-15T12:31:49+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/cpu/</loc>
     <lastmod>2010-11-15T12:31:49+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/loading/</loc>
-    <lastmod>2010-11-15T12:31:49+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</loc>
     <lastmod>2010-11-15T12:31:49+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -534,19 +597,21 @@
   </url>
   
   <url>
+    <loc>https://absszero.github.io/post/entities-in-modular-xhtml/</loc>
+    <lastmod>2010-11-02T13:04:41+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://absszero.github.io/tags/utf-8/</loc>
     <lastmod>2010-11-02T13:04:41+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/xhtml/</loc>
-    <lastmod>2010-11-02T13:04:41+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/post/entities-in-modular-xhtml/</loc>
     <lastmod>2010-11-02T13:04:41+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -562,19 +627,15 @@
   <url>
     <loc>https://absszero.github.io/tags/hash/</loc>
     <lastmod>2010-07-11T12:41:50+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/tags/%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2010-07-11T12:41:50+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/tags/mysql/</loc>
-    <lastmod>2010-06-19T07:39:37+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -585,19 +646,28 @@
   </url>
   
   <url>
-    <loc>https://absszero.github.io/tags/linux/</loc>
-    <lastmod>2010-06-19T07:26:16+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/tags/mac/</loc>
-    <lastmod>2010-06-19T07:26:16+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://absszero.github.io/tags/mysql/</loc>
+    <lastmod>2010-06-19T07:39:37+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/post/php-filesystem-encoding-and-php/</loc>
+    <lastmod>2010-06-19T07:26:16+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/linux/</loc>
+    <lastmod>2010-06-19T07:26:16+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/tags/mac/</loc>
     <lastmod>2010-06-19T07:26:16+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -626,7 +696,8 @@
   
   <url>
     <loc>https://absszero.github.io/categories/</loc>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
 </urlset>

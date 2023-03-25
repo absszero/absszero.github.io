@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>非同步程式設計 on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 非同步程式設計 on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Nov 2010 12:41:05 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 15 Nov 2010 12:41:05 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[ Web ] Accelerate scripts running multiple tasks in parallel using asynchronous programming: Unusual Site Speedup Techniques: Part 3 - PHP Classes blog</title>
       <link>https://absszero.github.io/post/web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</link>

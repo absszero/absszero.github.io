@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sublime Text on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Sublime Text on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Aug 2019 20:31:24 +0800</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/sublime-text/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 26 Aug 2019 20:31:24 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/sublime-text/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Laravel Goto for Sublime Text</title>
       <link>https://absszero.github.io/post/laravel-goto-for-sublime-text/</link>

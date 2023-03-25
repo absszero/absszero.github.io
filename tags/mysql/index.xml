@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MySQL on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in MySQL on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 19 Jun 2010 07:39:37 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 19 Jun 2010 07:39:37 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[ MySQL ] Checking for a live database connection considered harmful</title>
       <link>https://absszero.github.io/post/mysql-checking-for-a-live-database-connection/</link>

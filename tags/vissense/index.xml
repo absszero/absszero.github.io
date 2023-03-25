@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VisSense on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in VisSense on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 28 Mar 2015 05:14:33 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/vissense/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 28 Mar 2015 05:14:33 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/vissense/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VisSense.js 與延遲載入</title>
       <link>https://absszero.github.io/post/vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</link>

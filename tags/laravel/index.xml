@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Laravel on 黑書記事</title>
+    <title>laravel on 黑書記事</title>
     <link>https://absszero.github.io/tags/laravel/</link>
-    <description>Recent content in Laravel on 黑書記事</description>
+    <description>Recent content in laravel on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Sep 2019 20:16:24 +0800</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 09 Sep 2019 20:16:24 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Laravel Goto for VS Code</title>
       <link>https://absszero.github.io/post/laravel-goto-for-vs-code/</link>
@@ -35,7 +31,7 @@
       <pubDate>Wed, 07 Oct 2015 04:06:05 +0000</pubDate>
       
       <guid>https://absszero.github.io/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
-      <description>假設定義了一個書籍的 Model 並且每一本書有一個書皮封面 BookCover，所以定義以下的內容： 1 2 3 4 5 6 &amp;lt;?php class Book extends Eloquent { public function book_cover() { return $this-&amp;gt;hasOne(&amp;#39;bookCover&amp;#39;); } } 現在我們查詢</description>
+      <description>假設定義了一個書籍的 Model 並且每一本書有一個書皮封面 BookCover，所以定義以下的內容： &amp;lt;?php class Book extends Eloquent { public function book_cover() { return $this-&amp;gt;hasOne(&amp;#39;bookCover&amp;#39;); } } 現在我們查詢書籍並且使用</description>
     </item>
     
   </channel>

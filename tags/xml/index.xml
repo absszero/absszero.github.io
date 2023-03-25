@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>XML on 黑書記事</title>
@@ -6,18 +6,14 @@
     <description>Recent content in XML on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Dec 2014 03:07:32 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/xml/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 07 Dec 2014 03:07:32 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/xml/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>何謂PI(Processing Instruction)</title>
       <link>https://absszero.github.io/post/pi-processing-instruction/</link>
       <pubDate>Sun, 07 Dec 2014 03:07:32 +0000</pubDate>
       
       <guid>https://absszero.github.io/post/pi-processing-instruction/</guid>
-      <description>PI的英文全名是Processing Instruction，是【處理指令】的意思，在XML文件中PI是以『&amp;lt;?』為指令的開始符號，並以</description>
+      <description>PI的英文全名是Processing Instruction，是【處理指令】的意思，在XML文件中PI是以『』為指令的結束符號，與一般標籤的開</description>
     </item>
     
     <item>

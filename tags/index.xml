@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 黑書記事</title>
@@ -6,10 +6,15 @@
     <description>Recent content in Tags on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 06 Feb 2020 15:01:03 +0800</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 25 Mar 2023 19:40:00 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHPUnit TearDown Laravel</title>
+      <link>https://absszero.github.io/tags/phpunit-teardown-laravel/</link>
+      <pubDate>Sat, 25 Mar 2023 19:40:00 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/tags/phpunit-teardown-laravel/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Prism API OpenAPI Server</title>
@@ -30,7 +35,7 @@
     </item>
     
     <item>
-      <title>Laravel</title>
+      <title>laravel</title>
       <link>https://absszero.github.io/tags/laravel/</link>
       <pubDate>Mon, 09 Sep 2019 20:16:24 +0800</pubDate>
       
@@ -179,312 +184,6 @@
       <pubDate>Wed, 08 Apr 2015 15:21:40 +0000</pubDate>
       
       <guid>https://absszero.github.io/tags/services_json/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>API</title>
-      <link>https://absszero.github.io/tags/api/</link>
-      <pubDate>Tue, 07 Apr 2015 14:16:45 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/api/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>history.js</title>
-      <link>https://absszero.github.io/tags/history.js/</link>
-      <pubDate>Tue, 07 Apr 2015 14:16:45 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/history.js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>html5</title>
-      <link>https://absszero.github.io/tags/html5/</link>
-      <pubDate>Tue, 07 Apr 2015 14:16:45 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/html5/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pushstate</title>
-      <link>https://absszero.github.io/tags/pushstate/</link>
-      <pubDate>Tue, 07 Apr 2015 14:16:45 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/pushstate/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>VisSense</title>
-      <link>https://absszero.github.io/tags/vissense/</link>
-      <pubDate>Sat, 28 Mar 2015 05:14:33 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/vissense/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>lazyload</title>
-      <link>https://absszero.github.io/tags/lazyload/</link>
-      <pubDate>Sat, 28 Mar 2015 05:14:33 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/lazyload/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>openssl</title>
-      <link>https://absszero.github.io/tags/openssl/</link>
-      <pubDate>Tue, 17 Mar 2015 10:10:56 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/openssl/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>XML</title>
-      <link>https://absszero.github.io/tags/xml/</link>
-      <pubDate>Sun, 07 Dec 2014 03:07:32 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/xml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>黑書</title>
-      <link>https://absszero.github.io/tags/%E9%BB%91%E6%9B%B8/</link>
-      <pubDate>Mon, 24 Mar 2014 16:13:07 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/%E9%BB%91%E6%9B%B8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hong Kong</title>
-      <link>https://absszero.github.io/tags/hong-kong/</link>
-      <pubDate>Tue, 29 Oct 2013 14:04:39 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/hong-kong/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>font</title>
-      <link>https://absszero.github.io/tags/font/</link>
-      <pubDate>Sat, 18 Aug 2012 10:22:13 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/font/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CMD</title>
-      <link>https://absszero.github.io/tags/cmd/</link>
-      <pubDate>Sat, 12 May 2012 10:56:17 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/cmd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://absszero.github.io/tags/python/</link>
-      <pubDate>Sat, 12 May 2012 10:56:17 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>命令提示字元</title>
-      <link>https://absszero.github.io/tags/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83/</link>
-      <pubDate>Sat, 12 May 2012 10:56:17 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>格式化</title>
-      <link>https://absszero.github.io/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/</link>
-      <pubDate>Sat, 12 May 2012 10:56:17 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>縮排</title>
-      <link>https://absszero.github.io/tags/%E7%B8%AE%E6%8E%92/</link>
-      <pubDate>Sat, 12 May 2012 10:56:17 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/%E7%B8%AE%E6%8E%92/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>身份證字號</title>
-      <link>https://absszero.github.io/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/</link>
-      <pubDate>Mon, 23 Apr 2012 06:02:44 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>apache chainsaw jboss log4j</title>
-      <link>https://absszero.github.io/tags/apache-chainsaw-jboss-log4j/</link>
-      <pubDate>Sun, 15 Apr 2012 02:54:42 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/apache-chainsaw-jboss-log4j/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Chrome</title>
-      <link>https://absszero.github.io/tags/chrome/</link>
-      <pubDate>Mon, 15 Nov 2010 12:41:05 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/chrome/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gearman</title>
-      <link>https://absszero.github.io/tags/gearman/</link>
-      <pubDate>Mon, 15 Nov 2010 12:41:05 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/gearman/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Google</title>
-      <link>https://absszero.github.io/tags/google/</link>
-      <pubDate>Mon, 15 Nov 2010 12:41:05 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/google/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Node.js</title>
-      <link>https://absszero.github.io/tags/node.js/</link>
-      <pubDate>Mon, 15 Nov 2010 12:41:05 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/node.js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>asynchronous programming</title>
-      <link>https://absszero.github.io/tags/asynchronous-programming/</link>
-      <pubDate>Mon, 15 Nov 2010 12:41:05 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/asynchronous-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>輪詢</title>
-      <link>https://absszero.github.io/tags/%E8%BC%AA%E8%A9%A2/</link>
-      <pubDate>Mon, 15 Nov 2010 12:41:05 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/%E8%BC%AA%E8%A9%A2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>非同步程式設計</title>
-      <link>https://absszero.github.io/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</link>
-      <pubDate>Mon, 15 Nov 2010 12:41:05 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CPU</title>
-      <link>https://absszero.github.io/tags/cpu/</link>
-      <pubDate>Mon, 15 Nov 2010 12:31:49 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/cpu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Loading</title>
-      <link>https://absszero.github.io/tags/loading/</link>
-      <pubDate>Mon, 15 Nov 2010 12:31:49 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/loading/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>UTF-8</title>
-      <link>https://absszero.github.io/tags/utf-8/</link>
-      <pubDate>Tue, 02 Nov 2010 13:04:41 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/utf-8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>XHTML</title>
-      <link>https://absszero.github.io/tags/xhtml/</link>
-      <pubDate>Tue, 02 Nov 2010 13:04:41 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/xhtml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hash</title>
-      <link>https://absszero.github.io/tags/hash/</link>
-      <pubDate>Sun, 11 Jul 2010 12:41:50 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/hash/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>加密</title>
-      <link>https://absszero.github.io/tags/%E5%8A%A0%E5%AF%86/</link>
-      <pubDate>Sun, 11 Jul 2010 12:41:50 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/%E5%8A%A0%E5%AF%86/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MySQL</title>
-      <link>https://absszero.github.io/tags/mysql/</link>
-      <pubDate>Sat, 19 Jun 2010 07:39:37 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://absszero.github.io/tags/linux/</link>
-      <pubDate>Sat, 19 Jun 2010 07:26:16 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mac</title>
-      <link>https://absszero.github.io/tags/mac/</link>
-      <pubDate>Sat, 19 Jun 2010 07:26:16 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/mac/</guid>
       <description></description>
     </item>
     

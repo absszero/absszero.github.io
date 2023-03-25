@@ -1,61 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog - 黑書記事</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html
+  lang="en"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          [ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog - 黑書記事
+        </title>
+    
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
 
 <meta name="theme-color" content="#f8f5ec" />
 <meta name="msapplication-navbutton-color" content="#f8f5ec">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
+<meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="absszero" /><meta name="description" content="http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html Introduction 通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的" />
-
-
-
-<meta name="google-site-verification" content="MkqNNdQyUP3vQH8HG3VvWjMfuMEzZhozFuZwEQixUCI" />
+<meta name="author" content="absszero" />
+  <meta name="description" content="http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html Introduction 通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的" />
 
 
-<meta name="generator" content="Hugo 0.56.3 with even 4.0.0" />
+
+
+
+
+
+<meta name="generator" content="Hugo 0.111.3" />
 
 
 <link rel="canonical" href="https://absszero.github.io/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
 
 
 <meta property="og:title" content="[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog" />
 <meta property="og:description" content="http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html Introduction 通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/" />
+<meta property="og:url" content="https://absszero.github.io/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2010-11-15T12:31:49+00:00" />
 <meta property="article:modified_time" content="2010-11-15T12:31:49+00:00" />
 <meta itemprop="name" content="[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog">
-<meta itemprop="description" content="http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html Introduction 通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的">
-
-
-<meta itemprop="datePublished" content="2010-11-15T12:31:49&#43;00:00" />
-<meta itemprop="dateModified" content="2010-11-15T12:31:49&#43;00:00" />
-<meta itemprop="wordCount" content="1826">
-
-
-
-<meta itemprop="keywords" content="CPU,IT 筆記,Loading,PHP," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html Introduction 通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的"><meta itemprop="datePublished" content="2010-11-15T12:31:49+00:00" />
+<meta itemprop="dateModified" content="2010-11-15T12:31:49+00:00" />
+<meta itemprop="wordCount" content="1800">
+<meta itemprop="keywords" content="CPU,IT 筆記,Loading,PHP," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog"/>
 <meta name="twitter:description" content="http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html Introduction 通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的"/>
 
@@ -68,11 +89,28 @@
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
 
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-70612248-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">I&#39;m fine thank you</a>
+    <a href="/" class="logo">I'm fine thank you</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -82,162 +120,262 @@
 </div>
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://absszero.github.io/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://absszero.github.io/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://absszero.github.io/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://absszero.github.io/categories/">Categories</a>
+          
+        
+      </li>
+    
+
+    
   </ul>
 </nav>
-  <div class="container" id="mobile-panel">
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
     <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">I&#39;m fine thank you</a>
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      I'm fine thank you
+    
+  </a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://absszero.github.io/">Home</a>
+          
+
+        
+
       </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://absszero.github.io/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://absszero.github.io/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://absszero.github.io/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
   </ul>
 </nav>
+
     </header>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      absszero
     
-    <header class="post-header">
-      <h1 class="post-title">[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog</h1>
+  </div>
 
-      <div class="post-meta">
-        <span class="post-time"> 2010-11-15 </span>
-        
-        
-      </div>
-    </header>
+  <div class="post-meta-time">
+    <time datetime="2010-11-15">
+      2010-11-15
+    </time>
+  </div>
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#server-side-background-processes">Server side background processes</a></li>
-<li><a href="#cpu-throttling-of-background-processes">CPU Throttling of background processes</a></li>
-<li><a href="#the-system-monitor-class">The system monitor class</a></li>
-<li><a href="#throttling-external-programs">Throttling external programs</a></li>
-</ul></li>
-</ul>
-</nav>
+  
+
+
+  <div class="post-meta__right">
+    
+
+    
+
+
+    
+    
+
+
+    
+    
   </div>
 </div>
-    <div class="post-content">
-      
 
-<p><a href="http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html">http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html</a></p>
+        </header>
 
+        
+        <div class="post-content">
+          <p><a href="http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html">http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html</a></p>
 <h2 id="introduction">Introduction</h2>
-
 <p>通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的影響，像是廣告或這其他外掛工具。 本篇會討論伺服器環境所造成的影響。</p>
-
 <h2 id="server-side-background-processes">Server side background processes</h2>
-
 <p>在一部網站伺服器並非所有的程序都是用來產生網頁內容的，先把這些非相關的稱為 <strong>background processes</strong>。 而這類的程序仍然執行與網站相關的事情，像是發送電子報、備份、爬找網站頁變並且更新內部搜尋引擎索引&hellip; 而這些眾多的其中程序，必須要確保不會因為作業上佔用系統資源而影響到網站的運作。</p>
-
 <h2 id="cpu-throttling-of-background-processes">CPU Throttling of background processes</h2>
-
 <p>要避免 background processes 所可能造成的影響，最明顯的方式就是把這些工作分散到其他的主機上。 不過該方式也增加了管理其他主機的需求，並且在這個例子當中，我們不把他當作主要的解決方法。 假設我們有一個電子報發送的工作，發送的時候會在短時間內佔用大量的系統資源。 但電子報的發送工作就算暫緩也不會造成太大的影響，所以我們可以利用放慢該作業速度的方式減緩對系統資源的快速耗用。 這個方式是在需要的時候，透過控制程式的執行速度來達成，這種方式稱為 <strong>CPU throttling</strong>。 CPU throttling in PHP 要達成該目的的其中一個方法是在程式當中加入重複的迴圈，停止程式向下執行。 在 PHP 當中我們可以使用 sleep() 指定等待的秒數之後來達到該功能。 現在另外一個重點是了解何時是使用的時機？關於這點就得了解一下作業系統的運作方式。 先進的作業系統多半是先占式多工( preemptive multi-tasking )，表示程序會排在一個佇列當中，輪流使用 CPU 資源。 為此 CPU 會分割出許多時段，讓程序輪流使用，一旦一個時段的使用時間結束，就輪流到另外一個程序使用。 當執行太多繁重的程序時，就會增加其他程序的等待時間。而目標就是降低等待中的程序數量。 在 Linux 上可以透過 /proc/loadavg 得知等待的程序數量。 並且可以透過 PHP 的 fopen() 以及 fread() 或者 file_get_contents() 取得其中的內容。</p>
-
 <h2 id="the-system-monitor-class">The system monitor class</h2>
-
 <p>調節 CPU 的過程相當簡單，我們查看 loadavg 檔案內容確定目前負載是否太高， 如果過高就呼叫 sleep() 進入等待，然後過一陣子之後在檢查負載是否依然過高， 如果是就持續等待，直到負載降到我們期望的數值。 為了簡化這個過程，原作者發展了一個名為 <a href="http://www.phpclasses.org/system-monitor">system monitor</a> 的類別，並且發布在 PHPClasses。 該類別當中有一個名為 Throttle 的方法，它會返回一個數值告知是否超過的預設的負載， 你可透過類別的 cpu_load_limit 變數控制預設負載。 所以現在的問題就是要如何來決定何時 CPU 的負載是屬於過高的，而何時 CPU 的負載已經降當可接受的程度？ 原作者根據 CPU 的數量與核心數量來計算。 假設有 1 顆含有雙核心的 CPU，則該 CPU 的負載極限為 1 x 2，然後再乘於 2，也就是 2 x 2 = 4。 也就是說當有兩個或超過兩個程序進入等待，那 background processes 就應該進入睡眠狀態。 另外一個你可能想知道的因素還有進入睡眠的時間應該多久？以及多久應該檢查目前負載的高低？ Linux 的 loadvag 提供了三個的統計數值，分別代表 最近 1 分鐘、最近 5 分鐘以及最近 15 分鐘的負載情形。 預設 system monitor 會使用最近 1 分鐘的數值，但你可以決定使用哪一個。 根據這點，你可以設定每 60 秒才進行一次負載查詢。但你可以更頻繁的查詢，好處理急促的負載變動。 另外程序的睡眠時間也可以合理的設定為 60 秒，但你仍然可以減少該時間以確保 background processes 不會延遲太多。 你的處理程式應該會看起來像下列這樣：
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$monitor = new system_monitor_class;
-$monitor-&gt;cpu_load_limit = 4;
-
-// Work loop starts here
-for($i = $start;
-
-$i Throttle($cause))
-    die(&#39;Fatal error: &#39;.$monitor-&gt;error);
-    if($cause == THROTTLE_CAUSE_NONE)
-        break;
-
-sleep(60);
-    }
-}</code></pre></td></tr></table>
-</div>
-</div></p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$monitor <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">system_monitor_class</span>;
+</span></span><span style="display:flex;"><span>$monitor<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">cpu_load_limit</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Work loop starts here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span>($i <span style="color:#f92672">=</span> $start;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$i <span style="color:#a6e22e">Throttle</span>($cause))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;Fatal error: &#39;</span><span style="color:#f92672">.</span>$monitor<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>($cause <span style="color:#f92672">==</span> <span style="color:#a6e22e">THROTTLE_CAUSE_NONE</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">60</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></p>
 <h2 id="throttling-external-programs">Throttling external programs</h2>
-
 <p>透過上述的說明要控制 PHP 程式變得非常容易。 但是對於非 PHP 程式要如何調節則是另一個問題。 PHPClasses 一開始就遇到過這個問題， 由於內部使用的搜尋引擎使用的是一個名為 HtDig 的外部程式。 他是一個古老的開放原始碼程式，經由 C++ 撰寫而成。 他主要用來爬找整個網站的索引。由於爬找的頁面超過 50,000 頁所以執行時間相當長。 也許應該重新設計一個使用 PHP 的搜尋引擎，這樣就比較容易調節使用。 不過就目前而言這並不是有能立即解決的辦法，另外也得因此而改變 HiDig 跟 PHPClasses 的整合。 幸好在 Linux 上面有一個簡單的方法可以讓目前的程序進入睡眠狀態， 只要你執行的身份跟程序相同或者以 root 執行即可。 這個方式主要的內容是根據傳遞一個 SIGSTOP 訊號給正在執行的 background process。 它會讓程序進入睡眠狀態，直到他收接到一個 SIGCONT。 在 PHP 你可以透過 proc_terminate() 傳遞一個訊號給正在執行的程序。 如果你希望程序能夠透過 PHP 開啟，並且能夠加以控制， 你可以透過 proc_open() 執行，並且讓他在背景執行。 原作者最近改良了 system monitor 類別，讓他能夠透過 ThrottleExecute() 方法執行外部程式。 程式部份看起來應該會類似於底下這樣：
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$monitor = new system_monitor_class;
-$monitor-&gt;cpu_load_limit = 4;
-$command = &#39;path_to_external_command command parameters&#39;;
-$parameters = array( &#39;Command&#39; =&gt; $command, &#39;CaptureOutput&#39; =&gt; &#39;string&#39;);
-if(!$monitor-&gt;ThrottleExecute($parameters)) {
-    die(&#39;Fatal error: &#39;.$monitor-&gt;error);
-}
-if($parameters\[&#39;Status&#39;\] != 0) {
-    die(&#39;the command failed for some reason&#39;);
-}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$monitor <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">system_monitor_class</span>;
+</span></span><span style="display:flex;"><span>$monitor<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">cpu_load_limit</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>$command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;path_to_external_command command parameters&#39;</span>;
+</span></span><span style="display:flex;"><span>$parameters <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>( <span style="color:#e6db74">&#39;Command&#39;</span> <span style="color:#f92672">=&gt;</span> $command, <span style="color:#e6db74">&#39;CaptureOutput&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;string&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>$monitor<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">ThrottleExecute</span>($parameters)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;Fatal error: &#39;</span><span style="color:#f92672">.</span>$monitor<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>($parameters\[<span style="color:#e6db74">&#39;Status&#39;</span><span style="color:#a6e22e">\</span>] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;the command failed for some reason&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">do_something_with_output</span>($parameters\[<span style="color:#e6db74">&#39;Output&#39;</span><span style="color:#a6e22e">\</span>]);</span></span></code></pre></div></p>
 
-do_something_with_output($parameters\[&#39;Output&#39;\]);</code></pre></td></tr></table>
-</div>
-</div></p>
+        </div>
 
-    </div>
-
-    <div class="post-copyright">
+        
+        
+<div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">Author</span>
     <span class="item-content">absszero</span>
@@ -245,48 +383,141 @@ do_something_with_output($parameters\[&#39;Output&#39;\]);</code></pre></td></tr
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2010-11-15
-        
+      2010-11-15
+      
     </span>
   </p>
   
-  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
 </div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/cpu/">CPU</a>
-          <a href="/tags/it-%E7%AD%86%E8%A8%98/">IT 筆記</a>
-          <a href="/tags/loading/">Loading</a>
-          <a href="/tags/php/">PHP</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">[ Web ] Accelerate scripts running multiple tasks in parallel using asynchronous programming: Unusual Site Speedup Techniques: Part 3 - PHP Classes blog</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/accelerate-page-loading-unusual-site-speedup-techniques-part-1/">
-            <span class="next-text nav-default">[ Web ] Accelerate Page Loading: Unusual Site Speedup Techniques: Part 1 - PHP Classes blog</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
+
+
+
         
+        
+
+
+        <footer class="post-footer">
+          <div class="post-tags">
+              <a href="https://absszero.github.io/tags/cpu/">CPU</a>
+                <a href="https://absszero.github.io/tags/loading/">Loading</a>
+                <a href="https://absszero.github.io/tags/php/">PHP</a>
+                
+            </div>
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">[ Web ] Accelerate scripts running multiple tasks in parallel using asynchronous programming: Unusual Site Speedup Techniques: Part 3 - PHP Classes blog</span>
+                <span class="prev-text nav-mobile">Prev</span>
+              </a>
+            
+              <a class="next" href="/post/accelerate-page-loading-unusual-site-speedup-techniques-part-1/">
+                <span class="next-text nav-default">[ Web ] Accelerate Page Loading: Unusual Site Speedup Techniques: Part 1 - PHP Classes blog</span>
+                <span class="prev-text nav-mobile">Next</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+
+
+      
+      
+
+  
+
+  
+  
+
   
   
 
   
 
-      </div>
-    </main>
+  
 
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://www.github.com/absszero" class="iconfont icon-github" title="github"></a>
-  <a href="https://absszero.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+    
+
+  
+
+  
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#server-side-background-processes">Server side background processes</a></li>
+    <li><a href="#cpu-throttling-of-background-processes">CPU Throttling of background processes</a></li>
+    <li><a href="#the-system-monitor-class">The system monitor class</a></li>
+    <li><a href="#throttling-external-programs">Throttling external programs</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+  
+    <a href="https://www.github.com/absszero" rel="me noopener" class="iconfont"
+      title="github"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+    </a>
+
+
+<a href="https://absszero.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+  
 </div>
 
 <div class="copyright">
@@ -295,45 +526,60 @@ do_something_with_output($parameters\[&#39;Output&#39;\]);</code></pre></td></tr
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
   </span>
-
-  
 
   <span class="copyright-year">
-    &copy; 
-    2017 - 
-    2020
+    &copy;
+    
+      2019 -
+    2023
     <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">absszero</span>
-  </span>
-</div>
-    </footer>
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
 
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
-  </div>
+      </i>
+    </span><span class="author">
+        absszero
+        
+      </span></span>
+
   
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
 
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-70612248-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script type="text/javascript" src="/js/main.c86a347e04bfaac78525d6a4b5bfdeb4bd27b8deb5241e4dc74f41b18c4e252b.js" integrity="sha256-yGo0fgS/qseFJdaktb/etL0nuN61JB5Nx09BsYxOJSs=" crossorigin="anonymous"></script>
 
 
 
@@ -341,5 +587,31 @@ if (!doNotTrack) {
 
 
 
-</body>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
 </html>

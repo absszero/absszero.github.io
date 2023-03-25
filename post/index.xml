@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 黑書記事</title>
@@ -6,10 +6,15 @@
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 06 Feb 2020 15:01:03 +0800</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 25 Mar 2023 19:40:00 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHPUnit TearDown &amp; register_shutdown_function</title>
+      <link>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</link>
+      <pubDate>Sat, 25 Mar 2023 19:40:00 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</guid>
+      <description>WHAT 近期在開發 Laravel Log 相關套件。於是利用 orchestra/testbench 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。 PHP Fatal error: Uncaught ReflectionException: Class config does not exist 原本這個問題以</description>
+    </item>
     
     <item>
       <title>Prism 建立 API Server</title>
@@ -62,7 +67,7 @@
       <pubDate>Sat, 03 Aug 2019 16:57:39 +0800</pubDate>
       
       <guid>https://absszero.github.io/post/sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</guid>
-      <description>為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User 1 2 3 4 5 6 7 { &amp;#34;linters&amp;#34;: { &amp;#34;phpcs&amp;#34;: { &amp;#34;args&amp;#34;: &amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34; } } } 個別專案設定，設定</description>
+      <description>為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &amp;#34;linters&amp;#34;: { &amp;#34;phpcs&amp;#34;: { &amp;#34;args&amp;#34;: &amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34; } } } 個別專案設定，設定在 *.sublime-project { &amp;#34;settings&amp;#34;: { &amp;#34;SublimeLinter.linters.phpcs.args&amp;#34;: &amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34;</description>
     </item>
     
     <item>
@@ -89,7 +94,7 @@
       <pubDate>Tue, 12 Apr 2016 02:23:18 +0000</pubDate>
       
       <guid>https://absszero.github.io/post/%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</guid>
-      <description>在官方手冊的頁面上有提供做 AND 運算的範例 1 2 3 4 5 6 7 8 &amp;lt;?php function andFunc($a, $b) { ​ return $a &amp;amp;&amp;amp; $b; } $foo = array(true, true, true); var_dump(array_reduce($foo, &amp;#34;andFunc&amp;#34;)); 而既然使用了 array_reduce，可以用來做更</description>
+      <description>在官方手冊的頁面上有提供做 AND 運算的範例 &amp;lt;?php function andFunc($a, $b) { ​ return $a &amp;amp;&amp;amp; $b; } $foo = array(true, true, true); var_dump(array_reduce($foo, &amp;#34;andFunc&amp;#34;)); 而既然使用了 array_reduce，可以用來做更複雜的 AND 運用。例</description>
     </item>
     
     <item>
@@ -98,7 +103,7 @@
       <pubDate>Thu, 07 Apr 2016 02:03:29 +0000</pubDate>
       
       <guid>https://absszero.github.io/post/%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</guid>
-      <description>在 PHP 上面計算當前時間之後一週的時間，以 Timestamp 來計算 1 2 3 4 &amp;lt;?php $now = time(); $next_week = $now + 7 \* 86400; 如果今天是 2016 年 3 月 13 日的上午一點，地點是美國呢？於是一個小時之後</description>
+      <description>在 PHP 上面計算當前時間之後一週的時間，以 Timestamp 來計算 &amp;lt;?php $now = time(); $next_week = $now + 7 \* 86400; 如果今天是 2016 年 3 月 13 日的上午一點，地點是美國呢？於是一個小時之後實施日光</description>
     </item>
     
     <item>
@@ -125,7 +130,7 @@
       <pubDate>Wed, 07 Oct 2015 04:06:05 +0000</pubDate>
       
       <guid>https://absszero.github.io/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
-      <description>假設定義了一個書籍的 Model 並且每一本書有一個書皮封面 BookCover，所以定義以下的內容： 1 2 3 4 5 6 &amp;lt;?php class Book extends Eloquent { public function book_cover() { return $this-&amp;gt;hasOne(&amp;#39;bookCover&amp;#39;); } } 現在我們查詢</description>
+      <description>假設定義了一個書籍的 Model 並且每一本書有一個書皮封面 BookCover，所以定義以下的內容： &amp;lt;?php class Book extends Eloquent { public function book_cover() { return $this-&amp;gt;hasOne(&amp;#39;bookCover&amp;#39;); } } 現在我們查詢書籍並且使用</description>
     </item>
     
     <item>
@@ -134,7 +139,7 @@
       <pubDate>Wed, 22 Jul 2015 14:15:09 +0000</pubDate>
       
       <guid>https://absszero.github.io/post/javascript-%E9%97%9C%E9%8D%B5%E5%AD%97%E4%BD%BF%E7%94%A8-in-%E5%88%A4%E6%96%B7%E7%89%A9%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9C%89%E8%A9%B2%E5%B1%AC%E6%80%A7%E6%88%90%E5%93%A1/</guid>
-      <description>今天在別人的 js 範例當中看到一個關鍵字 in， 1 2 3 if (&amp;#39;items&amp;#39; in obj) { return obj.items; } 過去用過的 in 是 for..in，做為疊代物件屬性 1 for (var prop in obj) { ... } 從 stack overflow 看到這</description>
+      <description>今天在別人的 js 範例當中看到一個關鍵字 in， if (&amp;#39;items&amp;#39; in obj) { return obj.items; } 過去用過的 in 是 for..in，做為疊代物件屬性 for (var prop in obj) { ... } 從 stack overflow 看到這篇說明 JavaScript</description>
     </item>
     
     <item>
@@ -161,7 +166,7 @@
       <pubDate>Tue, 07 Apr 2015 14:16:45 +0000</pubDate>
       
       <guid>https://absszero.github.io/post/%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</guid>
-      <description>AJAX 載入會使得瀏覽器的瀏覽歷程沒辦法正確運作。 HTML5 的 History API 滿足了方面的需求。 而 History.js 把 HTML5 跟 HTML4 以及各個瀏覽器之間的差異統一了。 1 2 3 4 5 History.Adapter.bind(window,&amp;#39;statechange&amp;#39;,function(){ var State = History.getState(); }); History.pushState({state:1}, &amp;#34;YOUR_TITLE&amp;#34;,</description>
+      <description>AJAX 載入會使得瀏覽器的瀏覽歷程沒辦法正確運作。 HTML5 的 History API 滿足了方面的需求。 而 History.js 把 HTML5 跟 HTML4 以及各個瀏覽器之間的差異統一了。 History.Adapter.bind(window,&amp;#39;statechange&amp;#39;,function(){ var State = History.getState(); }); History.pushState({state:1}, &amp;#34;YOUR_TITLE&amp;#34;, &amp;#34;?URL_PARAMETER=1&amp;#34;); 目前在 AJAX</description>
     </item>
     
     <item>
@@ -179,205 +184,7 @@
       <pubDate>Tue, 17 Mar 2015 10:10:56 +0000</pubDate>
       
       <guid>https://absszero.github.io/post/ftp_login-ssltls-handshake-failed/</guid>
-      <description>目前猜測是 openssl 的問題，從原本的 1 $ openssl version -a OpenSSL 0.9.8e-fips-rhel5 01 Jul 2008 安裝最新版 1 $ /usr/local/ssl/bin/openssl version -a OpenSSL 1.0.2 22 Jan 2015 然後重新編譯 php 指定新的預設 openssl 位置 1 ./configure --with-openssl=/usr/local/ssl 打完收工&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>何謂PI(Processing Instruction)</title>
-      <link>https://absszero.github.io/post/pi-processing-instruction/</link>
-      <pubDate>Sun, 07 Dec 2014 03:07:32 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/pi-processing-instruction/</guid>
-      <description>PI的英文全名是Processing Instruction，是【處理指令】的意思，在XML文件中PI是以『&amp;lt;?』為指令的開始符號，並以</description>
-    </item>
-    
-    <item>
-      <title>巷弄裡的人情味</title>
-      <link>https://absszero.github.io/post/%E5%B7%B7%E5%BC%84%E8%A3%A1%E7%9A%84%E4%BA%BA%E6%83%85%E5%91%B3/</link>
-      <pubDate>Mon, 24 Mar 2014 16:13:07 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/%E5%B7%B7%E5%BC%84%E8%A3%A1%E7%9A%84%E4%BA%BA%E6%83%85%E5%91%B3/</guid>
-      <description>那天下了班，準備吃晚餐。 但晃了好幾間店，不想吃的太油膩、不想吃的不健康。 我遲遲無法下決定&amp;hellip;. 後來轉進巷弄裡，看到轉角處一家超商</description>
-    </item>
-    
-    <item>
-      <title>墨沒</title>
-      <link>https://absszero.github.io/post/%E5%A2%A8%E6%B2%92/</link>
-      <pubDate>Sat, 15 Mar 2014 14:11:46 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/%E5%A2%A8%E6%B2%92/</guid>
-      <description>桌上有一杯烏溜溜的墨水，如何讓它清如露水？ 也許不需要什麼複雜的化學公式幫忙，只要不停的往裡頭注入活水即可。 原來總有無數的煩事掛心頭，但你的那</description>
-    </item>
-    
-    <item>
-      <title>境轉</title>
-      <link>https://absszero.github.io/post/%E5%A2%83%E8%BD%89/</link>
-      <pubDate>Fri, 14 Mar 2014 16:36:39 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/%E5%A2%83%E8%BD%89/</guid>
-      <description>過去曾經有過一個念頭，既然週末是那麼令人開心。 為何不能每天都有一部分的時間是屬於週末的， 那樣便每天都覺得開心，可以開心的做自己想做的事情。 把</description>
-    </item>
-    
-    <item>
-      <title>One benefit of being mature</title>
-      <link>https://absszero.github.io/post/one-benefit-of-being-mature/</link>
-      <pubDate>Sat, 09 Nov 2013 13:06:10 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/one-benefit-of-being-mature/</guid>
-      <description>One benefit of being mature is no longer wanting what you couldn&#39;t have before. - Stardust 古怪是&amp;hellip;.我找遍了字幕找不到這句話！</description>
-    </item>
-    
-    <item>
-      <title>first trip with alone</title>
-      <link>https://absszero.github.io/post/first-trip-with-alone/</link>
-      <pubDate>Tue, 29 Oct 2013 14:04:39 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/first-trip-with-alone/</guid>
-      <description>本來，今年所預計的第一次獨自旅行應該是加拿大 溫哥華， 但等我拖著行李穿過香港國際機場的客運大樓‎，心裡面所想的卻是第一句：「本來，&amp;helli</description>
-    </item>
-    
-    <item>
-      <title>夏雨過後</title>
-      <link>https://absszero.github.io/post/%E5%A4%8F%E9%9B%A8%E9%81%8E%E5%BE%8C/</link>
-      <pubDate>Sun, 23 Jun 2013 15:01:40 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/%E5%A4%8F%E9%9B%A8%E9%81%8E%E5%BE%8C/</guid>
-      <description>連續幾天高溫，在開了關、關了又開的空調之間打轉。 而今天傍晚一陣陣地大雨，像是灑在鐵板上的水霧化成了潮氣。 才開窗便一股煙的湧進房裡，我又忍不住</description>
-    </item>
-    
-    <item>
-      <title>Sublime 2 Plgugins</title>
-      <link>https://absszero.github.io/post/sublime-2-plgugins/</link>
-      <pubDate>Sun, 30 Sep 2012 08:29:40 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/sublime-2-plgugins/</guid>
-      <description>1 2 3 4 5 6 7 8 9 10 11 12 //Settings - User { &amp;#34;font_size&amp;#34;: 13, &amp;#34;translate_tabs_to_spaces&amp;#34;: truem &amp;#34;trim_trailing_white_space_on_save&amp;#34;: true } //Key Bindings - User [ { &amp;#34;keys&amp;#34;: [&amp;#34;ctrl+shift+c&amp;#34;], &amp;#34;command&amp;#34;: &amp;#34;open_terminal&amp;#34; } { &amp;#34;keys&amp;#34;: [&amp;#34;alt+/&amp;#34;] &amp;#34;command&amp;#34;: &amp;#34;auto_complete&amp;#34; } ] Package control Ctrl + ` 1 2 3 4 5 6 7 import urllib2,os; pf=&amp;#39;Package Control.sublime-package&amp;#39;; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),&amp;#39;wb&amp;#39;).write(urllib2.urlopen(&amp;#39;http://sublime.wbond.net/&amp;#39;+pf.replace(&amp;#39; &amp;#39;,&amp;#39;%20&amp;#39;)).read()); print &amp;#39;Please restart</description>
-    </item>
-    
-    <item>
-      <title>字體的念法</title>
-      <link>https://absszero.github.io/post/%E5%AD%97%E9%AB%94%E7%9A%84%E5%BF%B5%E6%B3%95/</link>
-      <pubDate>Sat, 18 Aug 2012 10:22:13 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/%E5%AD%97%E9%AB%94%E7%9A%84%E5%BF%B5%E6%B3%95/</guid>
-      <description>Verdana http://www.howjsay.com/index.php?word=verdana Arial http://www.howjsay.com/index.php?word=arial Helvetica http://www.howjsay.com/index.php?word=helvetica</description>
-    </item>
-    
-    <item>
-      <title>在命令提示字元底下格式化顯示 JSON 內容</title>
-      <link>https://absszero.github.io/post/formtting-json-from-terminal/</link>
-      <pubDate>Sat, 12 May 2012 10:56:17 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/formtting-json-from-terminal/</guid>
-      <description>當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝</description>
-    </item>
-    
-    <item>
-      <title>檢測大陸身份證字號 for PHP</title>
-      <link>https://absszero.github.io/post/%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</link>
-      <pubDate>Mon, 23 Apr 2012 06:02:44 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</guid>
-      <description>PHP 版本的檢測大陸身份證字號 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 &amp;lt;?php $id = trim($id); //長度檢查 $string_length = strlen($id); if ( $string_length != 18) { return false; } /</description>
-    </item>
-    
-    <item>
-      <title>Monitoring JBoss logfile with Chainsaw v2</title>
-      <link>https://absszero.github.io/post/monitoring-jboss-logfile-with-chainsaw-v2/</link>
-      <pubDate>Sun, 15 Apr 2012 02:54:42 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/monitoring-jboss-logfile-with-chainsaw-v2/</guid>
-      <description>Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 1 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 1 &amp;lt;log4j:configuration xmlns:log4j=&amp;#34;http://jakarta.apache.org/log4j/&amp;#34; debug=&amp;#34;false&amp;#34;&amp;gt; ... &amp;lt;/log4j:configuration&amp;gt; 之間增加一個 appender 1 &amp;lt;appender name=&amp;#34;SOCKET&amp;#34; class=&amp;#34;org.apache.log4j.net.SocketHubAppender&amp;#34;&amp;gt; &amp;lt;param</description>
-    </item>
-    
-    <item>
-      <title>[ Web ] Accelerate scripts running multiple tasks in parallel using asynchronous programming: Unusual Site Speedup Techniques: Part 3 - PHP Classes blog</title>
-      <link>https://absszero.github.io/post/web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</link>
-      <pubDate>Mon, 15 Nov 2010 12:41:05 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</guid>
-      <description>http://www.phpclasses.org/blog/post/133-Accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-Unusual-Site-Speedup-Techniques-Part-3.html Introduction 許多伺服器上執行程序會花這麼長的時間，主要在於程序花了很多時間在等待其他程式或者硬體訊息或其他遠端電腦的回應。 那能不能在回應等待的這個時</description>
-    </item>
-    
-    <item>
-      <title>[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog</title>
-      <link>https://absszero.github.io/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</link>
-      <pubDate>Mon, 15 Nov 2010 12:31:49 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</guid>
-      <description>http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html Introduction 通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的</description>
-    </item>
-    
-    <item>
-      <title>[ Web ] Accelerate Page Loading: Unusual Site Speedup Techniques: Part 1 - PHP Classes blog</title>
-      <link>https://absszero.github.io/post/accelerate-page-loading-unusual-site-speedup-techniques-part-1/</link>
-      <pubDate>Mon, 15 Nov 2010 12:20:21 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/accelerate-page-loading-unusual-site-speedup-techniques-part-1/</guid>
-      <description>http://www.phpclasses.org/blog/post/131-Accelerate-Page-Loading-Unusual-Site-Speedup-Techniques-Part-1.html Introduction 頁面上某些由其他網站提供的資訊，像是廣告、串連內容，可能會拖慢自身網站的速度。 本篇主要說明如何改善該問題。 Why remote content slows the load of Web pages? 載入外部內容</description>
-    </item>
-    
-    <item>
-      <title>[ Web ] Entities in modular XHTML</title>
-      <link>https://absszero.github.io/post/entities-in-modular-xhtml/</link>
-      <pubDate>Tue, 02 Nov 2010 13:04:41 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/entities-in-modular-xhtml/</guid>
-      <description>Entities in modular XHTML http://cweiske.de/tagebuch/xhtml-entities.htm 要在 HTML 裡頭應用某些特殊字元，可以把該字元寫成 &amp;ldquo;named entities&amp;rdquo;。 最常用的就是空白字元 但是當我們要用在未指定 DTD 的 XML 上面</description>
-    </item>
-    
-    <item>
-      <title>[ PHP ] Unpredictable hashes for humans</title>
-      <link>https://absszero.github.io/post/php-unpredictable-hashes-for-humans/</link>
-      <pubDate>Sun, 11 Jul 2010 12:41:50 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/php-unpredictable-hashes-for-humans/</guid>
-      <description>Unpredictable hashes for humans http://seld.be/notes/unpredictable-hashes-for-humans 對網站開發人員產生隨機的 ID 或者雜湊值是很常見的事情， 舉個例子，大型的專案或者開發框架可能需要實現自己的 PHP session 處理器，或者在 API 當中把這</description>
-    </item>
-    
-    <item>
-      <title>[ MySQL ] Checking for a live database connection considered harmful</title>
-      <link>https://absszero.github.io/post/mysql-checking-for-a-live-database-connection/</link>
-      <pubDate>Sat, 19 Jun 2010 07:39:37 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/mysql-checking-for-a-live-database-connection/</guid>
-      <description>Checking for a live database connection considered harmful http://www.mysqlperformanceblog.com/2010/05/05/checking-for-a-live-database-connection-considered-harmful/ 對我來說觀察客戶的資料庫是很稀鬆平常的事情， 而我注意到很多資源耗用，浪費在傳送查詢之前的資料庫連線狀態檢查。 底下是根據設計</description>
-    </item>
-    
-    <item>
-      <title>[ PHP ] Filesystem encoding and PHP</title>
-      <link>https://absszero.github.io/post/php-filesystem-encoding-and-php/</link>
-      <pubDate>Sat, 19 Jun 2010 07:26:16 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/php-filesystem-encoding-and-php/</guid>
-      <description>許多 PHP 應用程式會將檔案儲存本地端的檔案系統當中。 對於大部分讀者而言在多數的情況下，妳很可能只使用 US-ASCII 編碼的方式儲存檔案， 可能是因為妳的檔名是基</description>
-    </item>
-    
-    <item>
-      <title>[ Web ] What Every Developer Should Know About URLs</title>
-      <link>https://absszero.github.io/post/web-what-every-developer-should-know-about-urls/</link>
-      <pubDate>Sun, 13 Jun 2010 09:48:42 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/web-what-every-developer-should-know-about-urls/</guid>
-      <description>What Every Developer Should Know About URLs http://www.skorks.com/2010/05/what-every-developer-should-know-about-urls/ 我最近寫了一篇關於軟體開發基礎的價值。 而且我相信妳也需要穩固妳的基礎，如果妳想成為一個好的開發人員的話。 許多人針對該篇文章發</description>
-    </item>
-    
-    <item>
-      <title>[ Program ] Seven Pillars of Pretty Code</title>
-      <link>https://absszero.github.io/post/program-seven-pillars-of-pretty-code/</link>
-      <pubDate>Sat, 12 Jun 2010 12:26:46 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/program-seven-pillars-of-pretty-code/</guid>
-      <description>Seven Pillars of Pretty Code http://www.perforce.com/perforce/papers/prettycode.html 漂亮的程式碼本身應該是要讓人稍微瀏覽一下就能瞭解程式結構，而不需要完整的閱讀。 我稱呼這個為 &amp;ldquo;視覺解析&amp;rdquo;：</description>
-    </item>
-    
-    <item>
-      <title>New Arrival !</title>
-      <link>https://absszero.github.io/post/new-arrival/</link>
-      <pubDate>Sat, 12 Jun 2010 04:56:25 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/new-arrival/</guid>
-      <description>原本在無名的網誌其實還是存在的，雖然沒有很努力的經營，不過畢竟已經在上面寫了需多東西。 多半是技術性文章( 但最多文章的類別，卻是心情抒發的黑書</description>
+      <description>目前猜測是 openssl 的問題，從原本的 $ openssl version -a OpenSSL 0.9.8e-fips-rhel5 01 Jul 2008 安裝最新版 $ /usr/local/ssl/bin/openssl version -a OpenSSL 1.0.2 22 Jan 2015 然後重新編譯 php 指定新的預設 openssl 位置 ./configure --with-openssl=/usr/local/ssl 打完收工&amp;hellip;</description>
     </item>
     
   </channel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>git on 黑書記事</title>
@@ -6,11 +6,7 @@
     <description>Recent content in git on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 27 Jun 2015 03:28:21 +0000</lastBuildDate>
-    
-	<atom:link href="https://absszero.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 27 Jun 2015 03:28:21 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git 在不同操作階段的恢復方法</title>
       <link>https://absszero.github.io/post/git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/</link>
