@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          PHPUnit TearDown &amp; register_shutdown_function - 黑書記事
+          開發踩坑, Laravel Goto for Sublime Text, Goto Middleware - 黑書記事
         </title>
     
 
@@ -29,7 +29,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="absszero" />
-  <meta name="description" content="WHAT 近期在開發 Laravel Log 相關套件。於是利用 orchestra/testbench 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。 PHP Fatal error: Uncaught ReflectionException: Class config does not exist 原本這個問題以" />
+  <meta name="description" content="Laravel Goto for VSCode 的 Middleware 轉跳功能完成後。隨後也逐步在 Laravel Goto for Sublime Text 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用" />
+<meta name="keywords" content="middleware, Laravel, mock, unit test" />
 
 
 
@@ -40,7 +41,7 @@
 <meta name="generator" content="Hugo 0.118.2" />
 
 
-<link rel="canonical" href="https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/" />
+<link rel="canonical" href="https://absszero.github.io/post/sublime-laravel-goto-middleware-development/" />
 
 
 
@@ -66,19 +67,19 @@
 
 
 
-<meta property="og:title" content="PHPUnit TearDown &amp; register_shutdown_function" />
-<meta property="og:description" content="WHAT 近期在開發 Laravel Log 相關套件。於是利用 orchestra/testbench 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。 PHP Fatal error: Uncaught ReflectionException: Class config does not exist 原本這個問題以" />
+<meta property="og:title" content="開發踩坑, Laravel Goto for Sublime Text, Goto Middleware" />
+<meta property="og:description" content="Laravel Goto for VSCode 的 Middleware 轉跳功能完成後。隨後也逐步在 Laravel Goto for Sublime Text 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-03-25T19:40:00+08:00" />
-<meta property="article:modified_time" content="2023-03-25T19:40:00+08:00" />
-<meta itemprop="name" content="PHPUnit TearDown &amp; register_shutdown_function">
-<meta itemprop="description" content="WHAT 近期在開發 Laravel Log 相關套件。於是利用 orchestra/testbench 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。 PHP Fatal error: Uncaught ReflectionException: Class config does not exist 原本這個問題以"><meta itemprop="datePublished" content="2023-03-25T19:40:00+08:00" />
-<meta itemprop="dateModified" content="2023-03-25T19:40:00+08:00" />
-<meta itemprop="wordCount" content="784">
-<meta itemprop="keywords" content="PHPUnit TearDown Laravel," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PHPUnit TearDown &amp; register_shutdown_function"/>
-<meta name="twitter:description" content="WHAT 近期在開發 Laravel Log 相關套件。於是利用 orchestra/testbench 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。 PHP Fatal error: Uncaught ReflectionException: Class config does not exist 原本這個問題以"/>
+<meta property="og:url" content="https://absszero.github.io/post/sublime-laravel-goto-middleware-development/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-09-19T10:27:48+08:00" />
+<meta property="article:modified_time" content="2023-09-19T10:27:48+08:00" />
+<meta itemprop="name" content="開發踩坑, Laravel Goto for Sublime Text, Goto Middleware">
+<meta itemprop="description" content="Laravel Goto for VSCode 的 Middleware 轉跳功能完成後。隨後也逐步在 Laravel Goto for Sublime Text 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用"><meta itemprop="datePublished" content="2023-09-19T10:27:48+08:00" />
+<meta itemprop="dateModified" content="2023-09-19T10:27:48+08:00" />
+<meta itemprop="wordCount" content="1226">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="開發踩坑, Laravel Goto for Sublime Text, Goto Middleware"/>
+<meta name="twitter:description" content="Laravel Goto for VSCode 的 Middleware 轉跳功能完成後。隨後也逐步在 Laravel Goto for Sublime Text 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -295,7 +296,7 @@ if (!doNotTrack) {
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">PHPUnit TearDown &amp; register_shutdown_function</h1>
+          <h1 class="post-title">開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</h1>
           
 
           <div class="post-meta">
@@ -306,8 +307,8 @@ if (!doNotTrack) {
   </div>
 
   <div class="post-meta-time">
-    <time datetime="2023-03-25">
-      2023-03-25
+    <time datetime="2023-09-19">
+      2023-09-19
     </time>
   </div>
 
@@ -333,37 +334,50 @@ if (!doNotTrack) {
 
         
         <div class="post-content">
-          <h2 id="what">WHAT</h2>
-<p>近期在開發 Laravel Log 相關套件。於是利用 <code>orchestra/testbench</code> 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">PHP</span> <span style="color:#a6e22e">Fatal</span> <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span>  <span style="color:#a6e22e">Uncaught</span> <span style="color:#a6e22e">ReflectionException</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">Class</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">does</span> <span style="color:#66d9ef">not</span> <span style="color:#a6e22e">exist</span>
-</span></span></code></pre></div><p>原本這個問題以為只在 Linux 環境發生(由於代碼提交上去 CI/CD 主機才發現)。所以反覆地在 CI/CD 主機進行代碼的測試。</p>
-<p>但隔天才意識到 Mac 端雖然正常執行，但終端機的 return code 卻是 <code>255</code>
-這表示 Mac 也一樣報錯，只是沒有顯示出來！後續修改 <code>php.ini</code> 的 <code>error_log</code> 將錯誤 log 搜集起來顯示。果然看到一樣的問題。</p>
-<h2 id="why">WHY</h2>
-<p>功能需求安裝 <a href="https://packagist.org/packages/illuminated/console-logger">illuminated/console-logger</a> 。這是一個 Command Log 套件，能夠紀錄 Command 執行的開始、結束時間，以及獨立出 Log 檔案。開發時引用了這個套件。並且發現只有在使用這個套件的測試結束時會報錯。</p>
-<p>於是追蹤到他自定義的 <a href="https://github.com/dmitry-ivanov/laravel-console-logger/blob/master/src/Exceptions/ExceptionHandler.php">ExceptionHandler</a> 發現他註冊了 <code>register_shutdown_function</code>。該方法會在 Command 結束的時候自動調用。作者是為了自動記錄下指令的結束執行時間，預期會產生如下內容到 Log。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">Execution time: {$executionTime} sec.</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Memory peak usage: {$memoryPeak}.</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">%separator%</span>
-</span></span></code></pre></div><p>套件原本是透過 <a href="https://github.com/Seldaek/monolog">Monolog</a> 的 Handler 將記錄寫入到檔案。於是我自定義了 <code>Laravel Eloquent</code> 的 Handler 要將記錄寫入到資料庫。於是錯誤就這樣產生了&hellip;</p>
-<p>細細爬梳之後發現， <code>PHPUnit</code> 結束時會調用 <code>TearDown</code> 方法，<code>orchestra/testbench</code> 的 <code>TearDown</code> 方法在結束時會將 <code>Laravel Container</code> 清空。</p>
-<p>而 <code>register_shutdown_function</code> 在測試結束的時候，自動被調用。此時 <code>Laravel Container</code> 被清空，所以 <code>Laravel Eloquent</code> 也就無法透過 <code>config</code> 這個 Container 裡頭的 alias 完成工作。於是就報錯了。</p>
-<p>簡單整理一下流程：</p>
-<ol>
-<li>測試某個指令執行</li>
-<li>指令呼叫 illuminated/console-logger 提供的方法，註冊了 register_shutdown_function。</li>
-<li>測試結束，orchestra/testbench 呼叫了 TearDown 清空 Laravel Container。</li>
-<li>由於執行結束 register_shutdown_function 所註冊的方法被呼叫。</li>
-<li>呼叫的內容試圖透過 Laravel Container 裡頭的方法執行，結果因為 Container 是空的，所以就報錯了。</li>
-</ol>
-<h2 id="how">HOW</h2>
-<p>為了改善這個只在測試才發生的問題（套件安裝起來使用沒有問題，主要大部分時候 Laravel Container 不會隨意被清空）。目前是覆寫套件自帶 ExceptionHandler 。主要是在執行 shutdown 相關的方法之前，先檢查一次 Container 是否有所需的服務。</p>
-<pre tabindex="0"><code class="language-php!" data-lang="php!">public function onShutdown(): void
-    if (app()-&gt;bound(&#39;config&#39;)) {
-        parent::onShutdown();
-    }
-}
-</code></pre>
+          <p><a href="https://marketplace.visualstudio.com/items?itemName=absszero.vscode-laravel-goto">Laravel Goto for VSCode</a> 的 Middleware 轉跳功能完成後。隨後也逐步在 <a href="https://packagecontrol.io/packages/Laravel%20Goto">Laravel Goto for Sublime Text</a> 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用 Python 做同步執行，相較於 VSCode Extension 使用 JS 做非同步執行，開發單純的多。開發時間 VSCode 版本花了一週，這個版本則在一週內完成。但沒想到最困難的部分是單元測試，為此踩了三個坑。分別是：</p>
+<ul>
+<li>Mock not working</li>
+<li>sublime.active_window().folders() is empty</li>
+<li>Unit test panel has no stdout and stderr</li>
+</ul>
+<h2 id="mock-not-working">Mock not working</h2>
+<p>新增了 <code>workspace.py</code> 處理從當前專案目錄查找取得特定檔案內容。並且透過底下方式引入：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># finder.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .workspace <span style="color:#f92672">import</span> get_file_content
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_place</span>:
+</span></span><span style="display:flex;"><span>    kernel_content <span style="color:#f92672">=</span> get_file_content(fxolder, <span style="color:#e6db74">&#39;app/Http/Kernel.php&#39;</span>)
+</span></span></code></pre></div><p>接著設計如下測試，並且嘗試 mock <code>get_file_content</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># finder_test.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> . <span style="color:#f92672">import</span> unittest
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> unittest.mock <span style="color:#f92672">import</span> patch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestFinder</span>(unittest<span style="color:#f92672">.</span>ViewTestCase):
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@patch</span>(<span style="color:#e6db74">&#39;LaravelGoto.lib.workspace.get_file_content&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_middleware</span>(self, mock_get_file_content):
+</span></span><span style="display:flex;"><span>        mock_get_file_content<span style="color:#f92672">.</span>return_value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Lorem ipsum dolor sit amet&#39;</span>
+</span></span><span style="display:flex;"><span>        place <span style="color:#f92672">=</span> get_place()
+</span></span></code></pre></div><p>mock 所產生的物件是正確，但是測試的結果 finder.py 還是呼叫了原本的 <code>get_file_content</code> ，為什麼？</p>
+<p>Python 在載入每個模組後會快取到 <code>sys.modules</code> 。 <code>@patch</code> 的原理是用一個 mock 的模組替換載入的模組。而當透過 <code>from ... import</code> 方式引入 <code>get_file_content</code> ，會將該方法從 <code>原本模組</code> 建立一個區域參照。所以即便已經 mock 了。實際上沒有透過 <code>sys.modules</code> 取得該模組。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 建立一個區域參照</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .workspace <span style="color:#f92672">import</span> get_file_content
+</span></span></code></pre></div><p>一個解決辦法是不要建立區域參照，直接存取模組。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># finder.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> . <span style="color:#f92672">import</span> workspace
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_place</span>:
+</span></span><span style="display:flex;"><span>    kernel_content <span style="color:#f92672">=</span> workspace<span style="color:#f92672">.</span>get_file_content(fxolder, <span style="color:#e6db74">&#39;app/Http/Kernel.php&#39;</span>)
+</span></span></code></pre></div><h2 id="sublimeactive_windowfolders-is-empty">sublime.active_window().folders() is empty</h2>
+<p>Package 開發時，我會將 Package 的目錄開啟在 Sublime Text。由於這次開發需藉由解析 Laravel 專案的 <code>app/Http/Kernel.php</code> 取得已設置的 Middlewares。為了方便測試，刻意設計一個假的 Kernel 放在開發套件中。測試的時候 <code>sublime.active_window().folders()</code> 會返回當前的套件目錄，並且能順利找到 Kernel.php。</p>
+<p>一切都很順利，直到發布上 Github 並且執行 Action。才發現 middleware 的測試無法通過。由於 Action logs 只顯示 unit test 執行過程的錯誤，透過 print 等方式無法顯示到 log (這又是另一個坑，後續說明)。所以問題排查遇到瓶頸。而 Action 需要提交才會觸發，每次除錯都要重新提交很沒效率。後續嘗試使用 <a href="https://github.com/nektos/act">nektos/act</a> ，希望能在本地端除錯。但不知為何在本地端的 docker container 卻沒能順利執行（卡住了&hellip;）。後續終於找到方法將 print 的訊息顯示在 Action logs 之後，才意識到由於在 unit test 時，Sublime Text 運行測試過程中不會包含任何已開啟的目錄（本地測試的時候，因開發緣故會開啟套件的目錄），所以 <code>sublime.active_window().folders()</code> 始終回傳空值。最後將該方法 mock 之後，回傳當前的套件目錄位置解決。</p>
+<h2 id="unit-test-panel-has-no-stdout-and-stderr">Unit test panel has no stdout and stderr</h2>
+<p>Sublime Text 官方提供了測試用的套件 <a href="https://github.com/SublimeText/UnitTesting">UnitTesting</a> 。方便在本地端執行 Sublime Text 套件的相關測試。測試執行結束後，測試結果會顯示在 unit test panel 上。但測試過程中任何對 stdout 或 stder 的輸出都 <code>不會</code> 顯示在該 panel。而是反映在 <code>Consolep panel</code> 裡頭。本地開發的時候，可以任意地切換 panel 來查看所以沒什麼問題。但是上了 Github Action 執行的過程，卻只能查看留在 Action log 的 unit test panel 訊息。這對於要進一步除錯十分困難。</p>
+<p>原本打算透過 <code> assertEqual(first, second, msg=None)</code> 方法的第三個參數 <code>msg</code> 將額外訊息顯示在 log。但某些內容只在方法裡頭產生，不會傳遞到方法外面。如果要查看這些內容，必須設計新的測試滿足這方面。在腸枯思竭之際，想到先看一下測試套件的 Github issue 也許有相關的提問。果然在 <a href="https://github.com/SublimeText/UnitTesting/issues/135">[Feature] have log on test report</a> 找到相關答案。方法也很簡單，只要在套件根目錄新增 <code>unittesting.json</code> 並且添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;capture_console&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>另外在查看 issue 的同時，也發現另外一個 issue。 <a href="https://github.com/SublimeText/UnitTesting/issues/220">GitHub Actions macOS timeout installing Package Control</a>，剛好是困擾許久的問題。暫時先關閉 macos 的環境的測試。</p>
+
         </div>
 
         
@@ -376,7 +390,7 @@ if (!doNotTrack) {
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2023-03-25
+      2023-09-19
       
     </span>
   </p>
@@ -394,31 +408,15 @@ if (!doNotTrack) {
 
 
         <footer class="post-footer">
-          <div class="post-tags">
-              <a href="https://absszero.github.io/tags/phpunit-teardown-laravel/">PHPUnit TearDown Laravel</a>
-                
-            </div>
+          
 
 
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/sublime-laravel-goto-middleware-development/">
-                
-                <i class="iconfont">
-                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-                </i>
-                <span class="prev-text nav-default">開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</span>
-                <span class="prev-text nav-mobile">Prev</span>
-              </a>
             
-              <a class="next" href="/post/prism-%E5%BB%BA%E7%AB%8B-api-server/">
-                <span class="next-text nav-default">Prism 建立 API Server</span>
+              <a class="next" href="/post/phpunit-teardown-register_shutdown_function/">
+                <span class="next-text nav-default">PHPUnit TearDown &amp; register_shutdown_function</span>
                 <span class="prev-text nav-mobile">Next</span>
                 
                 <i class="iconfont">
@@ -468,9 +466,9 @@ if (!doNotTrack) {
     <div class="toc-content custom-scrollbar">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#what">WHAT</a></li>
-    <li><a href="#why">WHY</a></li>
-    <li><a href="#how">HOW</a></li>
+    <li><a href="#mock-not-working">Mock not working</a></li>
+    <li><a href="#sublimeactive_windowfolders-is-empty">sublime.active_window().folders() is empty</a></li>
+    <li><a href="#unit-test-panel-has-no-stdout-and-stderr">Unit test panel has no stdout and stderr</a></li>
   </ul>
 </nav>
     </div>

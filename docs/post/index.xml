@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Mar 2023 19:40:00 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Sep 2023 10:27:48 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</title>
+      <link>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</link>
+      <pubDate>Tue, 19 Sep 2023 10:27:48 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</guid>
+      <description>Laravel Goto for VSCode 的 Middleware 轉跳功能完成後。隨後也逐步在 Laravel Goto for Sublime Text 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用</description>
+    </item>
+    
     <item>
       <title>PHPUnit TearDown &amp; register_shutdown_function</title>
       <link>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</link>
@@ -176,15 +185,6 @@
       
       <guid>https://absszero.github.io/post/vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</guid>
       <description>VisSense.js 可以提供某個 HTML 元件目前在使用者的畫面出現的情況。例如是否完全出現(fullyvisible)、隱藏(hidden)，甚至出現出現在畫面上的</description>
-    </item>
-    
-    <item>
-      <title>ftp_login() : SSL/TLS handshake failed</title>
-      <link>https://absszero.github.io/post/ftp_login-ssltls-handshake-failed/</link>
-      <pubDate>Tue, 17 Mar 2015 10:10:56 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/ftp_login-ssltls-handshake-failed/</guid>
-      <description>目前猜測是 openssl 的問題，從原本的 $ openssl version -a OpenSSL 0.9.8e-fips-rhel5 01 Jul 2008 安裝最新版 $ /usr/local/ssl/bin/openssl version -a OpenSSL 1.0.2 22 Jan 2015 然後重新編譯 php 指定新的預設 openssl 位置 ./configure --with-openssl=/usr/local/ssl 打完收工&amp;hellip;</description>
     </item>
     
   </channel>

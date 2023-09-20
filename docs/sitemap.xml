@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://absszero.github.io/post/</loc>
+    <lastmod>2023-09-19T10:27:48+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</loc>
+    <lastmod>2023-09-19T10:27:48+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/</loc>
+    <lastmod>2023-09-19T10:27:48+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</loc>
     <lastmod>2023-03-25T19:40:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -16,21 +37,7 @@
   </url>
   
   <url>
-    <loc>https://absszero.github.io/post/</loc>
-    <lastmod>2023-03-25T19:40:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://absszero.github.io/tags/</loc>
-    <lastmod>2023-03-25T19:40:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://absszero.github.io/</loc>
     <lastmod>2023-03-25T19:40:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

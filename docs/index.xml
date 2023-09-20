@@ -6,10 +6,64 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Mar 2023 19:40:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Sep 2023 10:27:48 +0800</lastBuildDate>
     
         <atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</title>
+      <link>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</link>
+      <pubDate>Tue, 19 Sep 2023 10:27:48 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=absszero.vscode-laravel-goto&#34;&gt;Laravel Goto for VSCode&lt;/a&gt; 的 Middleware 轉跳功能完成後。隨後也逐步在 &lt;a href=&#34;https://packagecontrol.io/packages/Laravel%20Goto&#34;&gt;Laravel Goto for Sublime Text&lt;/a&gt; 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用 Python 做同步執行，相較於 VSCode Extension 使用 JS 做非同步執行，開發單純的多。開發時間 VSCode 版本花了一週，這個版本則在一週內完成。但沒想到最困難的部分是單元測試，為此踩了三個坑。分別是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mock not working&lt;/li&gt;
+&lt;li&gt;sublime.active_window().folders() is empty&lt;/li&gt;
+&lt;li&gt;Unit test panel has no stdout and stderr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mock-not-working&#34;&gt;Mock not working&lt;/h2&gt;
+&lt;p&gt;新增了 &lt;code&gt;workspace.py&lt;/code&gt; 處理從當前專案目錄查找取得特定檔案內容。並且透過底下方式引入：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# finder.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; .workspace &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; get_file_content
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_place&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    kernel_content &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; get_file_content(fxolder, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;app/Http/Kernel.php&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接著設計如下測試，並且嘗試 mock &lt;code&gt;get_file_content&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# finder_test.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; . &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; unittest
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; unittest.mock &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; patch
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;TestFinder&lt;/span&gt;(unittest&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ViewTestCase):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@patch&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;LaravelGoto.lib.workspace.get_file_content&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;test_middleware&lt;/span&gt;(self, mock_get_file_content):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        mock_get_file_content&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;return_value &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Lorem ipsum dolor sit amet&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        place &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; get_place()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;mock 所產生的物件是正確，但是測試的結果 finder.py 還是呼叫了原本的 &lt;code&gt;get_file_content&lt;/code&gt; ，為什麼？&lt;/p&gt;
+&lt;p&gt;Python 在載入每個模組後會快取到 &lt;code&gt;sys.modules&lt;/code&gt; 。 &lt;code&gt;@patch&lt;/code&gt; 的原理是用一個 mock 的模組替換載入的模組。而當透過 &lt;code&gt;from ... import&lt;/code&gt; 方式引入 &lt;code&gt;get_file_content&lt;/code&gt; ，會將該方法從 &lt;code&gt;原本模組&lt;/code&gt; 建立一個區域參照。所以即便已經 mock 了。實際上沒有透過 &lt;code&gt;sys.modules&lt;/code&gt; 取得該模組。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 建立一個區域參照&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; .workspace &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; get_file_content
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;一個解決辦法是不要建立區域參照，直接存取模組。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# finder.py&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; . &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; workspace
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_place&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    kernel_content &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; workspace&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_file_content(fxolder, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;app/Http/Kernel.php&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;sublimeactive_windowfolders-is-empty&#34;&gt;sublime.active_window().folders() is empty&lt;/h2&gt;
+&lt;p&gt;Package 開發時，我會將 Package 的目錄開啟在 Sublime Text。由於這次開發需藉由解析 Laravel 專案的 &lt;code&gt;app/Http/Kernel.php&lt;/code&gt; 取得已設置的 Middlewares。為了方便測試，刻意設計一個假的 Kernel 放在開發套件中。測試的時候 &lt;code&gt;sublime.active_window().folders()&lt;/code&gt; 會返回當前的套件目錄，並且能順利找到 Kernel.php。&lt;/p&gt;
+&lt;p&gt;一切都很順利，直到發布上 Github 並且執行 Action。才發現 middleware 的測試無法通過。由於 Action logs 只顯示 unit test 執行過程的錯誤，透過 print 等方式無法顯示到 log (這又是另一個坑，後續說明)。所以問題排查遇到瓶頸。而 Action 需要提交才會觸發，每次除錯都要重新提交很沒效率。後續嘗試使用 &lt;a href=&#34;https://github.com/nektos/act&#34;&gt;nektos/act&lt;/a&gt; ，希望能在本地端除錯。但不知為何在本地端的 docker container 卻沒能順利執行（卡住了&amp;hellip;）。後續終於找到方法將 print 的訊息顯示在 Action logs 之後，才意識到由於在 unit test 時，Sublime Text 運行測試過程中不會包含任何已開啟的目錄（本地測試的時候，因開發緣故會開啟套件的目錄），所以 &lt;code&gt;sublime.active_window().folders()&lt;/code&gt; 始終回傳空值。最後將該方法 mock 之後，回傳當前的套件目錄位置解決。&lt;/p&gt;
+&lt;h2 id=&#34;unit-test-panel-has-no-stdout-and-stderr&#34;&gt;Unit test panel has no stdout and stderr&lt;/h2&gt;
+&lt;p&gt;Sublime Text 官方提供了測試用的套件 &lt;a href=&#34;https://github.com/SublimeText/UnitTesting&#34;&gt;UnitTesting&lt;/a&gt; 。方便在本地端執行 Sublime Text 套件的相關測試。測試執行結束後，測試結果會顯示在 unit test panel 上。但測試過程中任何對 stdout 或 stder 的輸出都 &lt;code&gt;不會&lt;/code&gt; 顯示在該 panel。而是反映在 &lt;code&gt;Consolep panel&lt;/code&gt; 裡頭。本地開發的時候，可以任意地切換 panel 來查看所以沒什麼問題。但是上了 Github Action 執行的過程，卻只能查看留在 Action log 的 unit test panel 訊息。這對於要進一步除錯十分困難。&lt;/p&gt;
+&lt;p&gt;原本打算透過 &lt;code&gt; assertEqual(first, second, msg=None)&lt;/code&gt; 方法的第三個參數 &lt;code&gt;msg&lt;/code&gt; 將額外訊息顯示在 log。但某些內容只在方法裡頭產生，不會傳遞到方法外面。如果要查看這些內容，必須設計新的測試滿足這方面。在腸枯思竭之際，想到先看一下測試套件的 Github issue 也許有相關的提問。果然在 &lt;a href=&#34;https://github.com/SublimeText/UnitTesting/issues/135&#34;&gt;[Feature] have log on test report&lt;/a&gt; 找到相關答案。方法也很簡單，只要在套件根目錄新增 &lt;code&gt;unittesting.json&lt;/code&gt; 並且添加：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;capture_console&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;另外在查看 issue 的同時，也發現另外一個 issue。 &lt;a href=&#34;https://github.com/SublimeText/UnitTesting/issues/220&#34;&gt;GitHub Actions macOS timeout installing Package Control&lt;/a&gt;，剛好是困擾許久的問題。暫時先關閉 macos 的環境的測試。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>PHPUnit TearDown &amp; register_shutdown_function</title>
@@ -902,21 +956,6 @@ Facebook Like button
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;});
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>ftp_login() : SSL/TLS handshake failed</title>
-      <link>https://absszero.github.io/post/ftp_login-ssltls-handshake-failed/</link>
-      <pubDate>Tue, 17 Mar 2015 10:10:56 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/ftp_login-ssltls-handshake-failed/</guid>
-      
-        <description>&lt;p&gt;目前猜測是 openssl 的問題，從原本的 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; $ openssl version -a OpenSSL 0.9.8e-fips-rhel5 &lt;span style=&#34;color:#ae81ff&#34;&gt;01&lt;/span&gt; Jul &lt;span style=&#34;color:#ae81ff&#34;&gt;2008&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-安裝最新版 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; $ /usr/local/ssl/bin/openssl version -a OpenSSL 1.0.2 &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; Jan &lt;span style=&#34;color:#ae81ff&#34;&gt;2015&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-然後重新編譯 php 指定新的預設 openssl 位置 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ./configure --with-openssl&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/usr/local/ssl&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-打完收工&amp;hellip;&lt;/p&gt;
 </description>
       
     </item>
