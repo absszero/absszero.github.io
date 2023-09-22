@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Sep 2023 10:27:48 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Sep 2023 10:17:33 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCode Extension Development, Run Single Test</title>
+      <link>https://absszero.github.io/post/vsce-extension-dev-add-test-single-test/</link>
+      <pubDate>Fri, 22 Sep 2023 10:17:33 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/vsce-extension-dev-add-test-single-test/</guid>
+      <description>隨著 VSCode 開發 Extension 愈趨複雜，相關的單元測試也越來越多。每次增加一個方法以及相對測試，整個套件的測試都得重新執行一遍。為了更有效率的進行開發，目前要</description>
+    </item>
+    
     <item>
       <title>開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</title>
       <link>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</link>
@@ -176,15 +185,6 @@
       
       <guid>https://absszero.github.io/post/%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</guid>
       <description>AJAX 載入會使得瀏覽器的瀏覽歷程沒辦法正確運作。 HTML5 的 History API 滿足了方面的需求。 而 History.js 把 HTML5 跟 HTML4 以及各個瀏覽器之間的差異統一了。 History.Adapter.bind(window,&amp;#39;statechange&amp;#39;,function(){ var State = History.getState(); }); History.pushState({state:1}, &amp;#34;YOUR_TITLE&amp;#34;, &amp;#34;?URL_PARAMETER=1&amp;#34;); 目前在 AJAX</description>
-    </item>
-    
-    <item>
-      <title>VisSense.js 與延遲載入</title>
-      <link>https://absszero.github.io/post/vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</link>
-      <pubDate>Sat, 28 Mar 2015 05:14:33 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</guid>
-      <description>VisSense.js 可以提供某個 HTML 元件目前在使用者的畫面出現的情況。例如是否完全出現(fullyvisible)、隱藏(hidden)，甚至出現出現在畫面上的</description>
     </item>
     
   </channel>
