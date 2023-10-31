@@ -6,7 +6,34 @@
     <description>Recent content in Tags on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Mar 2023 19:40:00 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Oct 2023 11:31:24 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Class name</title>
+      <link>https://absszero.github.io/tags/class-name/</link>
+      <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/tags/class-name/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>laravel</title>
+      <link>https://absszero.github.io/tags/laravel/</link>
+      <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/tags/laravel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Plugin Development</title>
+      <link>https://absszero.github.io/tags/plugin-development/</link>
+      <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/tags/plugin-development/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>PHPUnit TearDown Laravel</title>
       <link>https://absszero.github.io/tags/phpunit-teardown-laravel/</link>
@@ -31,24 +58,6 @@
       <pubDate>Sun, 06 Oct 2019 15:01:03 +0800</pubDate>
       
       <guid>https://absszero.github.io/tags/guzzle-api/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>laravel</title>
-      <link>https://absszero.github.io/tags/laravel/</link>
-      <pubDate>Mon, 09 Sep 2019 20:16:24 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/tags/laravel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Plugin Development</title>
-      <link>https://absszero.github.io/tags/plugin-development/</link>
-      <pubDate>Mon, 09 Sep 2019 20:16:24 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/tags/plugin-development/</guid>
       <description></description>
     </item>
     
@@ -175,15 +184,6 @@
       <pubDate>Wed, 08 Apr 2015 15:21:40 +0000</pubDate>
       
       <guid>https://absszero.github.io/tags/object/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>services_json</title>
-      <link>https://absszero.github.io/tags/services_json/</link>
-      <pubDate>Wed, 08 Apr 2015 15:21:40 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/tags/services_json/</guid>
       <description></description>
     </item>
     

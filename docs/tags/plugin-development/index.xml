@@ -6,7 +6,16 @@
     <description>Recent content in Plugin Development on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Sep 2019 20:16:24 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/plugin-development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Oct 2023 11:31:24 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/plugin-development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Laravel Command Class Name</title>
+      <link>https://absszero.github.io/post/laravel-command-classname/</link>
+      <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/laravel-command-classname/</guid>
+      <description>Why 隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 artisn list 只顯示每個指令所設定的 signature 屬性，但不曉得對應的檔案名稱。只期</description>
+    </item>
+    
     <item>
       <title>Laravel Goto for VS Code</title>
       <link>https://absszero.github.io/post/laravel-goto-for-vs-code/</link>

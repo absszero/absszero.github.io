@@ -6,10 +6,46 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Sep 2023 10:17:33 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 31 Oct 2023 11:31:24 +0800</lastBuildDate>
     
         <atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Laravel Command Class Name</title>
+      <link>https://absszero.github.io/post/laravel-command-classname/</link>
+      <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/laravel-command-classname/</guid>
+      
+        <description>&lt;h2 id=&#34;why&#34;&gt;Why&lt;/h2&gt;
+&lt;p&gt;隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 &lt;code&gt;artisn list&lt;/code&gt; 只顯示每個指令所設定的 &lt;code&gt;signature&lt;/code&gt; 屬性，但不曉得對應的檔案名稱。只期望 signature 跟檔案名稱具有相似性，可以順藤摸瓜。也因此才有了開發相關套件的念頭。&lt;/p&gt;
+&lt;h2 id=&#34;how&#34;&gt;How&lt;/h2&gt;
+&lt;p&gt;之前在 &lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=absszero.vscode-laravel-goto&#34;&gt;Laravel Goto&lt;/a&gt; 的 VSCode 套件開發上，是透過檢索每一個指令的 &lt;code&gt;signature&lt;/code&gt; 屬性，建構出每一個指令與相對應檔案的關聯。這次希望透過 &lt;code&gt;artisan&lt;/code&gt; 指令的執行，能夠將指令的類別名稱與路徑名稱顯示出來。&lt;/p&gt;
+&lt;p&gt;最初的構想是透過添加一個全域型的 &lt;code&gt;--classname&lt;/code&gt; 參數顯示指令列表的類別名稱，類似如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$php ./artisan --classname
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Available commands:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  clear-compiled        Illuminate&lt;span style=&#34;color:#ae81ff&#34;&gt;\F&lt;/span&gt;oundation&lt;span style=&#34;color:#ae81ff&#34;&gt;\C&lt;/span&gt;onsole&lt;span style=&#34;color:#ae81ff&#34;&gt;\C&lt;/span&gt;learCompiledCommand
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  completion            Symfony&lt;span style=&#34;color:#ae81ff&#34;&gt;\C&lt;/span&gt;omponent&lt;span style=&#34;color:#ae81ff&#34;&gt;\C&lt;/span&gt;onsole&lt;span style=&#34;color:#ae81ff&#34;&gt;\C&lt;/span&gt;ommand&lt;span style=&#34;color:#ae81ff&#34;&gt;\D&lt;/span&gt;umpCompletionCommand
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不過翻開原始碼，&lt;code&gt;artisn list&lt;/code&gt; 指令藉由 &lt;code&gt;Symfony\Component\Console\Command\ListCommand&lt;/code&gt; 顯示其內容。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ListCommand&lt;/code&gt; 藉由 &lt;code&gt;Symfony\Component\Console\Helper\DescriptorHelper&lt;/code&gt; 挑選出合適的 Descriptor 類別。預設會使用 &lt;code&gt;Symfony\Component\Console\Descriptor\TextDescriptor&lt;/code&gt;，其中 &lt;code&gt;describeApplication&lt;/code&gt; 方法描述如何渲染 &lt;code&gt;artisn list&lt;/code&gt; 指令的顯示內容。&lt;/p&gt;
+&lt;p&gt;如果要達到上述的功能，勢必須要修改 TextDescriptor 類別。要動到 &lt;code&gt;Symfony&lt;/code&gt; 的套件難度太大。後續決定以獨立指令的方式來實現。&lt;/p&gt;
+&lt;h2 id=&#34;now&#34;&gt;Now&lt;/h2&gt;
+&lt;p&gt;後續建立了一個全新的 Laravel Package，設計一個名為 &lt;code&gt;classname&lt;/code&gt; 的指令。並且藉由繼承 &lt;code&gt;TextDescriptor&lt;/code&gt; 並覆寫 &lt;code&gt;describeApplication&lt;/code&gt; 來實現。由於原本的實作只需少許修改就能滿足需求，也因此幾乎照搬 describeApplication 的程式碼。由於希望該套件能能支援 Laravel 5.6 ~ 10.x 之間的版本，相依的 &lt;code&gt;symfony/console&lt;/code&gt; 套件也橫跨了 4.x ~ 6.x 之間的版本。其中差異的部分是對於字元寬度的計算邏輯，透過簡單的邏輯判斷解決了該問題。&lt;/p&gt;
+&lt;p&gt;另外為了能夠顯示指令的路徑，增加 &lt;code&gt;--path&lt;/code&gt; 選項，並利用 &lt;code&gt;ReflectionClass&lt;/code&gt; 反射取得檔案位置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$reflector &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ReflectionClass&lt;/span&gt;($command);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$commandDescription &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; $reflector&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getFileName&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最後增加 &lt;code&gt;command-name&lt;/code&gt; 參數，可以針對特定的指令顯示其指令類別&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# classname [options] [--] [&amp;lt;command-name&amp;gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$php ./artisan classname clear-compiled
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; Available commands:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  clear-compiled        Illuminate&lt;span style=&#34;color:#ae81ff&#34;&gt;\F&lt;/span&gt;oundation&lt;span style=&#34;color:#ae81ff&#34;&gt;\C&lt;/span&gt;onsole&lt;span style=&#34;color:#ae81ff&#34;&gt;\C&lt;/span&gt;learCompiledCommand
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;完整的專案位置：&lt;a href=&#34;https://github.com/absszero/laravel-command-classname&#34;&gt;Laravel Command Classname&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>VSCode Extension Development, Run Single Test</title>
@@ -1085,23 +1121,6 @@ Over~&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$data &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; $json&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;decode&lt;/span&gt;($json_text);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/*array(1) { &amp;#39;abc&amp;#39; =&amp;gt; int(123) }*/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>瀏覽歷程 History.js</title>
-      <link>https://absszero.github.io/post/%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</link>
-      <pubDate>Tue, 07 Apr 2015 14:16:45 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</guid>
-      
-        <description>&lt;p&gt;AJAX 載入會使得瀏覽器的瀏覽歷程沒辦法正確運作。 HTML5 的 History API 滿足了方面的需求。 而 History.js 把 HTML5 跟 HTML4 以及各個瀏覽器之間的差異統一了。 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;History&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Adapter&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bind&lt;/span&gt;(window,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;statechange&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(){
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;State&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;History&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getState&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;});
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;History&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;pushState&lt;/span&gt;({&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;}, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;YOUR_TITLE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;?URL_PARAMETER=1&amp;#34;&lt;/span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-目前在 AJAX 載入分頁上面使用，可以回到上一頁而不是每次都返會第一頁。 透過 pushState 的操作同時還可以變更頁面的標題，告知使用者之前頁面位置。 而 url 參數的部份也可以跟著變動，方便在伺服器端根據不同的參數，載入不同的分頁位置。&lt;/p&gt;
 </description>
       
     </item>

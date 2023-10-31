@@ -7,7 +7,9 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Archive - 黑書記事</title>
+    <title>
+          Laravel Command Class Name - 黑書記事
+        </title>
     
 
 <meta name="renderer" content="webkit" />
@@ -27,6 +29,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="absszero" />
+  <meta name="description" content="Why 隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 artisn list 只顯示每個指令所設定的 signature 屬性，但不曉得對應的檔案名稱。只期" />
+
 
 
 
@@ -36,8 +40,8 @@
 <meta name="generator" content="Hugo 0.118.2" />
 
 
-<link rel="canonical" href="https://absszero.github.io/post/" />
-<link href="/post/index.xml" rel="alternate" type="application/rss+xml" title="黑書記事" />
+<link rel="canonical" href="https://absszero.github.io/post/laravel-command-classname/" />
+
 
 
 
@@ -62,14 +66,19 @@
 
 
 
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://absszero.github.io/post/" />
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
+<meta property="og:title" content="Laravel Command Class Name" />
+<meta property="og:description" content="Why 隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 artisn list 只顯示每個指令所設定的 signature 屬性，但不曉得對應的檔案名稱。只期" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://absszero.github.io/post/laravel-command-classname/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-10-31T11:31:24+08:00" />
+<meta property="article:modified_time" content="2023-10-31T11:31:24+08:00" />
+<meta itemprop="name" content="Laravel Command Class Name">
+<meta itemprop="description" content="Why 隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 artisn list 只顯示每個指令所設定的 signature 屬性，但不曉得對應的檔案名稱。只期"><meta itemprop="datePublished" content="2023-10-31T11:31:24+08:00" />
+<meta itemprop="dateModified" content="2023-10-31T11:31:24+08:00" />
+<meta itemprop="wordCount" content="648">
+<meta itemprop="keywords" content="Laravel,Plugin Development,Class name," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Laravel Command Class Name"/>
+<meta name="twitter:description" content="Why 隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 artisn list 只顯示每個指令所設定的 signature 屬性，但不曉得對應的檔案名稱。只期"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -235,7 +244,7 @@ if (!doNotTrack) {
 
       </li>
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -280,125 +289,178 @@ if (!doNotTrack) {
 
     <div id="mobile-panel">
       <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
         
-<section id="archive" class="archive">
-    
-      <div class="collection-title">
-        <h2 class="archive-year">2010</h2>
-      </div>
+        <header class="post-header">
+          <h1 class="post-title">Laravel Command Class Name</h1>
+          
 
-    <div class="archive-post">
-      <time datetime="2010-06-19" class="archive-post-time">
-        2010-06-19
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/mysql-checking-for-a-live-database-connection/" class="archive-post-link">
-          [ MySQL ] Checking for a live database connection considered harmful
-        </a>
-      </span>
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      absszero
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2023-10-31">
+      2023-10-31
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    
+
+    
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <h2 id="why">Why</h2>
+<p>隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 <code>artisn list</code> 只顯示每個指令所設定的 <code>signature</code> 屬性，但不曉得對應的檔案名稱。只期望 signature 跟檔案名稱具有相似性，可以順藤摸瓜。也因此才有了開發相關套件的念頭。</p>
+<h2 id="how">How</h2>
+<p>之前在 <a href="https://marketplace.visualstudio.com/items?itemName=absszero.vscode-laravel-goto">Laravel Goto</a> 的 VSCode 套件開發上，是透過檢索每一個指令的 <code>signature</code> 屬性，建構出每一個指令與相對應檔案的關聯。這次希望透過 <code>artisan</code> 指令的執行，能夠將指令的類別名稱與路徑名稱顯示出來。</p>
+<p>最初的構想是透過添加一個全域型的 <code>--classname</code> 參數顯示指令列表的類別名稱，類似如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$php ./artisan --classname
+</span></span><span style="display:flex;"><span>Available commands:
+</span></span><span style="display:flex;"><span>  clear-compiled        Illuminate<span style="color:#ae81ff">\F</span>oundation<span style="color:#ae81ff">\C</span>onsole<span style="color:#ae81ff">\C</span>learCompiledCommand
+</span></span><span style="display:flex;"><span>  completion            Symfony<span style="color:#ae81ff">\C</span>omponent<span style="color:#ae81ff">\C</span>onsole<span style="color:#ae81ff">\C</span>ommand<span style="color:#ae81ff">\D</span>umpCompletionCommand
+</span></span><span style="display:flex;"><span>  ...
+</span></span></code></pre></div><p>不過翻開原始碼，<code>artisn list</code> 指令藉由 <code>Symfony\Component\Console\Command\ListCommand</code> 顯示其內容。</p>
+<p><code>ListCommand</code> 藉由 <code>Symfony\Component\Console\Helper\DescriptorHelper</code> 挑選出合適的 Descriptor 類別。預設會使用 <code>Symfony\Component\Console\Descriptor\TextDescriptor</code>，其中 <code>describeApplication</code> 方法描述如何渲染 <code>artisn list</code> 指令的顯示內容。</p>
+<p>如果要達到上述的功能，勢必須要修改 TextDescriptor 類別。要動到 <code>Symfony</code> 的套件難度太大。後續決定以獨立指令的方式來實現。</p>
+<h2 id="now">Now</h2>
+<p>後續建立了一個全新的 Laravel Package，設計一個名為 <code>classname</code> 的指令。並且藉由繼承 <code>TextDescriptor</code> 並覆寫 <code>describeApplication</code> 來實現。由於原本的實作只需少許修改就能滿足需求，也因此幾乎照搬 describeApplication 的程式碼。由於希望該套件能能支援 Laravel 5.6 ~ 10.x 之間的版本，相依的 <code>symfony/console</code> 套件也橫跨了 4.x ~ 6.x 之間的版本。其中差異的部分是對於字元寬度的計算邏輯，透過簡單的邏輯判斷解決了該問題。</p>
+<p>另外為了能夠顯示指令的路徑，增加 <code>--path</code> 選項，並利用 <code>ReflectionClass</code> 反射取得檔案位置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$reflector <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ReflectionClass</span>($command);
+</span></span><span style="display:flex;"><span>$commandDescription <span style="color:#f92672">=</span> $reflector<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getFileName</span>();
+</span></span></code></pre></div><p>最後增加 <code>command-name</code> 參數，可以針對特定的指令顯示其指令類別</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># classname [options] [--] [&lt;command-name&gt;]</span>
+</span></span><span style="display:flex;"><span>$php ./artisan classname clear-compiled
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Available commands:
+</span></span><span style="display:flex;"><span>  clear-compiled        Illuminate<span style="color:#ae81ff">\F</span>oundation<span style="color:#ae81ff">\C</span>onsole<span style="color:#ae81ff">\C</span>learCompiledCommand
+</span></span></code></pre></div><p>完整的專案位置：<a href="https://github.com/absszero/laravel-command-classname">Laravel Command Classname</a></p>
+
+        </div>
+
+        
+        
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">absszero</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      2023-10-31
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          <div class="post-tags">
+              <a href="https://absszero.github.io/tags/laravel/">Laravel</a>
+                <a href="https://absszero.github.io/tags/plugin-development/">Plugin Development</a>
+                <a href="https://absszero.github.io/tags/class-name/">Class name</a>
+                
+            </div>
+
+
+          
+          <nav class="post-nav">
+            
+            
+              <a class="next" href="/post/vsce-extension-dev-add-test-single-test/">
+                <span class="next-text nav-default">VSCode Extension Development, Run Single Test</span>
+                <span class="prev-text nav-mobile">Next</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+
+
+      
+      
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+    
+
+  
+
+  
+
+
     </div>
-    
 
-    <div class="archive-post">
-      <time datetime="2010-06-19" class="archive-post-time">
-        2010-06-19
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/php-filesystem-encoding-and-php/" class="archive-post-link">
-          [ PHP ] Filesystem encoding and PHP
-        </a>
-      </span>
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why">Why</a></li>
+    <li><a href="#how">How</a></li>
+    <li><a href="#now">Now</a></li>
+  </ul>
+</nav>
     </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2010-06-13" class="archive-post-time">
-        2010-06-13
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/web-what-every-developer-should-know-about-urls/" class="archive-post-link">
-          [ Web ] What Every Developer Should Know About URLs
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2010-06-12" class="archive-post-time">
-        2010-06-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/program-seven-pillars-of-pretty-code/" class="archive-post-link">
-          [ Program ] Seven Pillars of Pretty Code
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2010-06-12" class="archive-post-time">
-        2010-06-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/new-arrival/" class="archive-post-link">
-          New Arrival !
-        </a>
-      </span>
-    </div></section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/post/">1</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/2/">2</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/4/">4</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/post/page/5/">5</a>
-      </li>
-      
-    </ul>
   </nav>
 
-  
-  
 
-
-
-
-
+  </div>
 
       </main>
 
