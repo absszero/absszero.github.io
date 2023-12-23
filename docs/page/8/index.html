@@ -294,6 +294,62 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/monitoring-jboss-logfile-with-chainsaw-v2/">Monitoring JBoss logfile with Chainsaw v2</a>
+    </h1>
+    
+
+    <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      absszero
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2012-04-15">
+      2012-04-15
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    
+
+    
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+  </header>
+  
+  <div class="post-content">
+    
+      <div class="post-summary">
+        Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 &lt;log4j:configuration xmlns:log4j=&#34;http://jakarta.apache.org/log4j/&#34; debug=&#34;false&#34;&gt; ... &lt;/log4j:configuration&gt; 之間增加一個 appender &lt;appender name=&#34;SOCKET&#34; class=&#34;org.apache.log4j.net.SocketHubAppender&#34;&gt; &lt;param name=&#34;Port&#34; value=&#34;8888&#34;/&gt; &lt;/appender&gt;
+      </div>
+      <div class="read-more">
+        <a href="/post/monitoring-jboss-logfile-with-chainsaw-v2/" class="read-more-link"
+          >Read more</a
+        >
+      </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/">[ Web ] Accelerate scripts running multiple tasks in parallel using asynchronous programming: Unusual Site Speedup Techniques: Part 3 - PHP Classes blog</a>
     </h1>
     
@@ -514,62 +570,6 @@ if (!doNotTrack) {
 </article>
 
   
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/php-unpredictable-hashes-for-humans/">[ PHP ] Unpredictable hashes for humans</a>
-    </h1>
-    
-
-    <div class="post-meta">
-  <div class="post-meta-author">
-    by
-      absszero
-    
-  </div>
-
-  <div class="post-meta-time">
-    <time datetime="2010-07-11">
-      2010-07-11
-    </time>
-  </div>
-
-  
-
-
-  <div class="post-meta__right">
-    
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
-</div>
-
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        Unpredictable hashes for humans http://seld.be/notes/unpredictable-hashes-for-humans 對網站開發人員產生隨機的 ID 或者雜湊值是很常見的事情， 舉個例子，大型的專案或者開發框架可能需要實現自己的 PHP session 處理器，或者在 API 當中把這
-      </div>
-      <div class="read-more">
-        <a href="/post/php-unpredictable-hashes-for-humans/" class="read-more-link"
-          >Read more</a
-        >
-      </div>
-    
-  </div>
-</article>
-
-  
 </section>
 
 
@@ -629,6 +629,10 @@ if (!doNotTrack) {
       
       <li >
         <a href="/page/9/">9</a>
+      </li>
+      
+      <li >
+        <a href="/page/10/">10</a>
       </li>
       
     </ul>
