@@ -1,7 +1,7 @@
 ---
 title: "Laravl Goto 在新視窗開啟所有語系檔"
 date: 2023-12-22T10:17:33+08:00
-lastmod: 2023-12-23T09:14:33+08:00
+lastmod: 2023-12-23 20:23:37+08:00
 draft: false
 keywords: ["Laravel","Language"]
 description: ""
@@ -15,7 +15,7 @@ author: ""
 
 接著我希望把相同功能實作在 VSCode 上面。前面查找語系目錄的實現同樣不是太困難。但是 VSCode 在開啟新視窗以及操作新視窗的方式跟 Sublime Text 是完全不一樣的。底下是 Sublime Text 開啟新視窗、設定佈局，以及開啟檔案的方式。使用 `run_command('new_window')` 開啟新視窗之後，透過 `active_window()` 能夠拿到這個新視窗，並且進行操作。
 
-```pyhton
+```python
 active_window = sublime.active_window()
 active_window.run_command('new_window')
 new_window = sublime.active_window()
@@ -24,6 +24,7 @@ new_window.set_layout({
     "rows": [0.0, 1.0],
     "cells": cells
 })
+
 for (idx, file) in enumerate(files):
     new_window.open_file(file)
     new_window.set_view_index(new_window.active_view(), idx, 0)
