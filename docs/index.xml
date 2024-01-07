@@ -6,17 +6,426 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 10:17:33 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jan 2024 11:08:07 +0800</lastBuildDate>
     
         <atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Phead, A PHP code generator</title>
+      <link>https://absszero.github.io/post/2024-01-06_phead/</link>
+      <pubDate>Sat, 06 Jan 2024 11:08:07 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2024-01-06_phead/</guid>
+      
+        <description>&lt;p&gt;結果在此： &lt;a href=&#34;https://github.com/absszero/phead/&#34;&gt;https://github.com/absszero/phead/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;開發 API 的節奏大致底定。開立路由、建立控制器、建立 Model、表現層以及撰寫相關測試。由於過程諸多類似，想必一定有可以簡化的方法。目前覺得最煩心的部分是開立檔案的同時也要開立相對的空目錄。雖然可以透過 &lt;code&gt;./arstian make:model MyDir/MyModel&lt;/code&gt; 的方式產生相對應的目錄跟檔案，但檔案一多這個操作就不是那麼俐落。於是就有了代碼產生器的概念。&lt;/p&gt;
+&lt;p&gt;初期訂定的目標希望能達到幾個功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以從一個 yaml 設定檔設定需要多個檔案。&lt;/li&gt;
+&lt;li&gt;可以添加新的方法到既有的類別。&lt;/li&gt;
+&lt;li&gt;可以沿用原本的 stub file。&lt;/li&gt;
+&lt;li&gt;可以在程式裡頭參照其他這次產生的檔案。&lt;/li&gt;
+&lt;li&gt;可以帶入變數。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;既然要建立一個 PHP 指令列工具， 首選當然是 &lt;a href=&#34;https://symfony.com/doc/current/components/console.html&#34;&gt;Symfony Console&lt;/a&gt;，然後搭配 &lt;a href=&#34;https://symfony.com/components/Yaml&#34;&gt;Symfony Yaml &lt;/a&gt; 作為 Yaml 解析。 接下來我找到 &lt;a href=&#34;https://docs.laminas.dev/laminas-code/generator/intro/&#34;&gt;Laminas\Code\Generator&lt;/a&gt; 用於程式碼產生。會選擇該套件的主要原因是因為它支援添加新方法到既有類別。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// https://docs.laminas.dev/laminas-code/generator/examples/#add-code-to-existing-php-files-and-classes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;$generator &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ClassGenerator&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;fromReflection&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ClassReflection&lt;/span&gt;($class)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$generator&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;addMethod&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;setBaz&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;baz&amp;#39;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;MethodGenerator&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;FLAG_PUBLIC&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;$this-&amp;gt;baz = $baz;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;return $this;&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    (&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;DocBlockGenerator&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setShortDescription&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Set the baz property&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setTags&lt;/span&gt;([
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Tag\ParamTag&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;baz&amp;#39;&lt;/span&gt;, [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;string&amp;#39;&lt;/span&gt;]),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Tag\ReturnTag&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;string&amp;#39;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;use-的引用問題&#34;&gt;Use 的引用問題&lt;/h2&gt;
+&lt;p&gt;一開始認為這個方案很完美，有一個現成產生器作為基礎，但後續應用上遇到兩個問題不得不棄坑。首先所謂添加新方法需要先解析當前的類別。背後當然是透過 &lt;a href=&#34;https://www.php.net/manual/en/book.reflection.php&#34;&gt;Reflection&lt;/a&gt; 實現。然而在開發指令的同時，用來參考的類別檔案多半是假的，或者從原本程式裡頭拔出來使用的類別檔案。裡面諸多類別引用並不存在我當前開發專案。最簡單控制器的例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;namespace&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App\Http\Controllers&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Illuminate\View\View&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;UserController&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Controller&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;show&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;string&lt;/span&gt; $id)&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;View&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;view&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;user.profile&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Reflection 需要載入這個類別才能進行解析。 &lt;code&gt;Illuminate\View\View&lt;/code&gt; 不存在於當前專案會報錯。雖然真實專案上這些類別會存在，解析不會有問題。但目前即便只是最小幅度開發，為了引入這些類別可能需要添加整個 Laravel 類別也說不定。&lt;/p&gt;
+&lt;p&gt;接著另外一個問題是對於 &lt;code&gt;use&lt;/code&gt; 關鍵字的引用。 Laminas\Code\Generator 無法正確產生使用 use 關鍵字的類別檔案。它的方式是載入該類別，而輸出的時候則是 &lt;code&gt;重新產生整個檔案內容&lt;/code&gt;。原本 use 的部分會被移除變成絕對參照。假設上面的例子會變成底下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;namespace&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App\Http\Controllers&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;UserController&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Controller&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;show&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;string&lt;/span&gt; $id)&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;\Illuminate\View\View&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;view&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;user.profile&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;應該說這是 Reflection 的緣故，似乎在 use 方面沒有完整的支援。我嘗試另外找了一個對於 Reflection 的強化套件 &lt;a href=&#34;https://github.com/Roave/BetterReflection&#34;&gt;roave/better-reflection&lt;/a&gt;。它標榜提供 Reflection 更多功能與改進。其中提到的 &lt;a href=&#34;https://github.com/Roave/BetterReflection/blob/6.22.x/docs/usage.md#Loading-a-class-from-a-string&#34;&gt;Loading a class from a string&lt;/a&gt; 很符合我的期待。但對於 use 的使用是否如我預期，後續沒有繼續嘗試下去。畢竟初期目標是一個簡單的產生器，不希望有太多其他套件的引用。&lt;/p&gt;
+&lt;p&gt;既然無法精準頗析並添加新的方法，後續先用暴力添加的方式，直接把新的方法加到類別的底部。&lt;/p&gt;
+&lt;h2 id=&#34;layout-結構&#34;&gt;Layout 結構&lt;/h2&gt;
+&lt;p&gt;關於這個 Yaml 格式的設定檔我將它稱呼為 &lt;code&gt;Layout&lt;/code&gt;。主要的結構包含 &lt;code&gt;$globals&lt;/code&gt; 跟 &lt;code&gt;$files&lt;/code&gt;。 $globals 定義整個過程中會用到的變數；$files 則是要產生的檔案來源(from) 跟目的地(to)，以及它所屬的變數(vars)。簡單的結構如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;$globals&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;dir&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Hello&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;$files&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;my_model&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;vars&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;foo&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;bar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt;: |&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      &amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      namespace {{ namespace }};
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      class {{ class }}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          public $foo = &amp;#39;{{ foo }}&amp;#39;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      }&lt;/span&gt;      
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;to&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{{ $globals.dir }}/MyModel.php&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;methods&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - |&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        public function getAll()
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            return self::all();
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        }&lt;/span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;首先解析的時候會經過幾個流程，主要是將變數替換掉內容的佔位符：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;載入檔案，將沒有正確設定 &lt;code&gt;from&lt;/code&gt;, &lt;code&gt;to&lt;/code&gt; 的檔案過濾掉。&lt;/li&gt;
+&lt;li&gt;取代環境變數。環境變數可以用 &lt;code&gt;user: &#39;{{ $env.USER }}&#39;&lt;/code&gt; 的方式定義。&lt;/li&gt;
+&lt;li&gt;取代 $globals 變數。&lt;/li&gt;
+&lt;li&gt;收集檔案變數 vars 並且取代。&lt;/li&gt;
+&lt;li&gt;添加方法到類別。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;上述的 yaml 內容最後變成如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;$globals&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;dir&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Hello&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;$files&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;model&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;vars&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;foo&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;bar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;namespace&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Hello&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;class&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;MyHotel&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt;: |&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      &amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      namespace Hello;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      class MyModel
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          public $foo = &amp;#39;bar&amp;#39;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      }&lt;/span&gt;      
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;to&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello/MyModel.php&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;methods&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - |&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        public function getAll()
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            return self::all();
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        }&lt;/span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;檔案的 vars 會自動添加兩個變數 &lt;code&gt;namespace&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt; 根據檔案的 &lt;code&gt;to&lt;/code&gt; 設定來推導。當然可以自己設定進去取代它。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;from&lt;/code&gt; 除了可以是字串也可以是一個路徑，指定一個 stub 檔案。所以可以搭配 Laravel 所提供的指令 &lt;code&gt;php artisan stub:publish&lt;/code&gt; 匯出 stub 檔案來使用。佔位符的格式跟 Laravel 一致，使用 &lt;code&gt;{{ YOUR_VAR }}&lt;/code&gt;。不過這個工具不限於使用在 Laravel，所有 PHP 開發都是適用的。&lt;/p&gt;
+&lt;h2 id=&#34;關於命名&#34;&gt;關於命名&lt;/h2&gt;
+&lt;p&gt;產生器的任務是為開發工作起個頭，在英文裡頭可能會用 &lt;code&gt;beginning&lt;/code&gt;, &lt;code&gt;start&lt;/code&gt;。為了跟中文 &lt;code&gt;起頭&lt;/code&gt; 更為接近，我查了一下 &lt;code&gt;head&lt;/code&gt; 的確也有類似的意思。所以一開始真的就決定以 &lt;code&gt;head&lt;/code&gt; 作為指令名稱。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;head&lt;/code&gt; the top part or beginning of something.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;但開發到了中期，發現 Unix 已經有相同名稱的指令。隨後想到這是一個 PHP 的工具。就把 &lt;code&gt;P&lt;/code&gt; 加到命名裡頭，於是有了 &lt;code&gt;phead&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;從 Google 翻譯了解到這個字是愛爾蘭蓋爾語，起源追朔到愛爾蘭姓氏 &lt;a href=&#34;https://www.igenea.com/en/surnames/m/mcphadden&#34;&gt;McPhadden&lt;/a&gt;。裡頭說明了這個字的意思。（突然高大上起來了 😮&amp;hellip;..）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The name is derived from the Gaelic word phead, which translates as &amp;ldquo;lord&amp;rdquo; or &amp;ldquo;master&amp;rdquo;.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Develop in Docker</title>
+      <link>https://absszero.github.io/post/2023-12-26_develop-in-docker/</link>
+      <pubDate>Tue, 26 Dec 2023 20:45:34 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2023-12-26_develop-in-docker/</guid>
+      
+        <description>&lt;h2 id=&#34;sdart&#34;&gt;sDart&lt;/h2&gt;
+&lt;p&gt;Docker 在產品容器化使用確實方便，但在思索怎麼用在開發環境遇到的第一個難題是太慢。Docker Desktop 啟動速度慢，每次開啟心裡就開始計時到底要多久。看著右上角的鯨魚 icon 不停的堆貨櫃、卸貨櫃、堆貨櫃&amp;hellip;。不過這個問題在接觸到 &lt;a href=&#34;https://orbstack.dev/&#34;&gt;OrbStack&lt;/a&gt; 之後有很大的改善。一個可以替代 Docker Desktop 的輕量化容器執行工具。&lt;/p&gt;
+&lt;p&gt;有了最基本的工具之後，接下來就是選擇適當的 Laravel image。所幸 Laravel 官方在這一塊深耕許久， &lt;a href=&#34;https://laravel.com/docs/10.x/sail&#34;&gt;Laravel Sail&lt;/a&gt; 一個可以輕易選擇希望的 PHP 版本、Nodejs 版本，只需要修改 docker-compose.yaml 檔案即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 設定 PHP 版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;context&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;./vendor/laravel/sail/runtimes/8.3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 設定 nodejs 版本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;build&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;args&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;NODE_VERSION&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;18&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;並且提供一個用 Shell Script 撰寫的 sail 指令腳本，可以簡化呼叫容器裡頭的 artisan、npm 等工具，讓你不用透過長長的 docker exec 指令。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 執行 PHP 指令&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sail php script.php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# composer 安裝套件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sail composer require laravel/sanctum
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 執行 artisan 指令&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sail artisan queue:work
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 執行 npm 指令&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sail npm run dev
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;php74&#34;&gt;PHP7.4&lt;/h2&gt;
+&lt;p&gt;由於 Laravel Sail 只支援 PHP 8.x，為了讓手邊的專案能夠順利進行。先在一個全新的 Laravel 專案上安裝 Sail 並執行 &lt;code&gt;sail artisan sail:publish&lt;/code&gt; 取得 docker 目錄。該目錄包含了許多版本的 PHP 目錄： &lt;code&gt;8.0&lt;/code&gt;, &lt;code&gt;8.1&lt;/code&gt;, &lt;code&gt;8.2&lt;/code&gt;, &lt;code&gt;8.3&lt;/code&gt;。挑選最早期的 &lt;code&gt;8.0&lt;/code&gt; 作為樣板開始打造 7.4 版的 PHP image。&lt;/p&gt;
+&lt;p&gt;主要是修改 &lt;code&gt;Dockerfile&lt;/code&gt;，將 &lt;code&gt;8.0&lt;/code&gt; 的字樣取代成 &lt;code&gt;7.4&lt;/code&gt;，然後設定舊版本編號 &lt;code&gt;NODE_VERSION=16&lt;/code&gt;，以支援當前專案的 Node 版本。接著需要回頭編輯 &lt;code&gt;docker-compose.yaml&lt;/code&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;services&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;laravel.test&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;build&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# context: ./vendor/laravel/sail/runtimes/8.3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;context&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;./docker/7.4&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 使用自己打造的 7.4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;dockerfile&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Dockerfile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;args&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#f92672&#34;&gt;WWWGROUP&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;${WWWGROUP}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;#image: sail-8.2/app&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;sail-7.4/app&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下來需要建立 image 透過 &lt;code&gt;sail build --no-cache&lt;/code&gt;。 成功建立之後，可以透過 &lt;code&gt;sail composer install&lt;/code&gt; 安裝相依套件。不過由於大部分的套件都相依 Github，需要本地端的個人權杖 &lt;code&gt;~/.composer/auth.json&lt;/code&gt; 設定檔傳入：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.:/var/www/html&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;~/.composer/auth.json:/home/sail/.composer/auth.json:delegated&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;操作到這邊， 7.4 版的運行環境算是解決了。&lt;/p&gt;
+&lt;h2 id=&#34;多專案架構&#34;&gt;多專案架構&lt;/h2&gt;
+&lt;p&gt;由於預計會有多個專案使用容器執行，Laravel Sail 的設計思維需要在每一個專案安裝 Laravel Sail，但最新版只支持 PHP 8.0 的專案，而且每個專案底下需要放置一個 docker-compose.yaml。並且每個 docker-compose.yaml 都長得十分相似。目前期望像是修改 apache 的 vhost 設定檔，可以統一在單個檔案裡頭完成所有專案的容器化設定。&lt;/p&gt;
+&lt;p&gt;思索過後，決定將 Sail 產生的 docker 目錄移動到跟專案同一個層的目錄底下，裡頭只放置一支 docker-compose.yaml。優點是易於管理，缺點就是專案越多，每一個都會啟動自己的 artisan serve，會佔用一些資源，後需可能需要透過 docker-compose 的 profiles 進行管理分類，只啟用特定的專案。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;| - docker&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;|   |-- 7.4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;|   |-- 8.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;|   |-- 8.1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;|   |-- 8.2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;|   |-- 8.3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;|   |-- docker-compose.yaml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;| - project_a&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;| - project_b&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接著嘗試多專案的 docker-compose 設定。首先以原本的 laravel.test 為基底，建立一個 PHP74 的服務。然後利用 &lt;code&gt;extends&lt;/code&gt; 指令繼承這個服務並增加相關的專案路徑 volume 掛載。需要特別注意的是 ports 的對應方面需要個別獨立不能重複。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;services&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;PHP74&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;build&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;context&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;../docker/7.4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;dockerfile&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Dockerfile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;args&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;WWWGROUP&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;${WWWGROUP}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;sail-7.4/app&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;environment&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;WWWUSER&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;${WWWUSER}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;~/.composer/auth.json:/home/sail/.composer/auth.json:delegated&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;entrypoint&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/bin/true&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 由於是一個樣板，覆寫掉 Dockfile 的 ENTRYPOINT [&amp;#34;start-container&amp;#34;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;project_a&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;container_name&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;project_a&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;extends&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;PHP74&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;entrypoint&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;start-container&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;8001&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/Volumes/data/www/project_a:/var/www/html&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;project_b&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;container_name&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;project_b&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;extends&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;PHP74&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;entrypoint&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;start-container&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;8002&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/Volumes/data/www/project_b:/var/www/html&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;由於安裝完 Sail 之後，&lt;code&gt;./vendor/bin/sail&lt;/code&gt; 指令也一並被安裝。為了方便其他沒有使用 Sail 的專案可以使用，將它移動到 &lt;code&gt;/usr/local/bin/sail&lt;/code&gt; 。而該指令調用容器裡頭的程式時，需要提供 &lt;code&gt;APP_SERVICE&lt;/code&gt; 作為識別目前專案所運行的容器名稱，所以每一個 service 都需要加上 &lt;code&gt;container_name=YOUR_SERVICE&lt;/code&gt;，並且在專案的 &lt;code&gt;.env&lt;/code&gt; 檔案需要添加 &lt;code&gt;APP_SERVICE=YOUR_SERVICE&lt;/code&gt;。如此一來 Sail 才能調用相關的容器。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# .env&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;APP_SERVICE&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;project_a&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;....&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;....&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;完成之後可以在任意專案目錄底下執行 &lt;code&gt;sail up&lt;/code&gt; 啟動容器。然後透過 http://localhost:8002 之類的 port 執行專案。&lt;/p&gt;
+&lt;h2 id=&#34;網域名稱&#34;&gt;網域名稱&lt;/h2&gt;
+&lt;p&gt;由於容器化的緣故，每一個專案都有自己的 Port 對應到 http://localhost。但事實上許多專案需要多個網域名稱，所以不能只透過 http://localhost 來連線。為了解決這個問題需要一個反向代理伺服器，將眾多網域跟每一個容器對應起來。&lt;/p&gt;
+
+
+
+&lt;div class=&#34;goat svg-container &#34;&gt;
+  
+    &lt;svg
+      xmlns=&#34;http://www.w3.org/2000/svg&#34;
+      font-family=&#34;Menlo,Lucida Console,monospace&#34;
+      
+        viewBox=&#34;0 0 496 89&#34;
+      &gt;
+      &lt;g transform=&#39;translate(8,16)&#39;&gt;
+&lt;path d=&#39;M 72,0 L 88,0&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 280,16 L 304,16&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 72,32 L 88,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 88,32 L 120,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 248,32 L 280,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 280,48 L 304,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 72,64 L 88,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 88,0 L 88,16&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 88,16 L 88,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 88,32 L 88,64&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 280,16 L 280,32&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;path d=&#39;M 280,32 L 280,48&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39;&gt;&lt;/path&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;0&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;D&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;0&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;D&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;0&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;D&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;8&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;o&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;8&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;o&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;8&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;o&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;16&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;m&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;16&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;m&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;16&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;m&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;24&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;a&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;24&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;a&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;24&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;a&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;32&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;i&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;32&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;i&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;32&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;i&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;40&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;n&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;40&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;n&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;40&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;n&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;56&#39; y=&#39;4&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;1&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;56&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;2&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;56&#39; y=&#39;68&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;3&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;136&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;R&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;144&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;e&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;152&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;v&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;160&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;e&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;168&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;r&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;176&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;s&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;184&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;e&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;200&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;P&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;208&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;r&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;216&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;o&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;224&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;x&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;232&#39; y=&#39;36&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;y&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;320&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;h&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;320&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;h&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;328&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;t&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;328&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;t&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;336&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;t&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;336&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;t&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;344&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;p&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;344&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;p&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;352&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;:&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;352&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;:&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;360&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;/&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;360&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;/&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;368&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;/&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;368&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;/&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;376&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;l&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;376&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;l&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;384&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;o&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;384&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;o&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;392&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;c&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;392&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;c&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;400&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;a&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;400&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;a&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;408&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;l&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;408&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;l&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;416&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;h&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;416&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;h&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;424&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;o&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;424&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;o&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;432&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;s&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;432&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;s&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;440&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;t&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;440&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;t&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;448&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;:&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;448&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;:&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;456&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;8&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;456&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;8&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;464&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;0&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;464&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;0&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;472&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;0&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;472&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;0&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;480&#39; y=&#39;20&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;1&lt;/text&gt;
+&lt;text text-anchor=&#39;middle&#39; x=&#39;480&#39; y=&#39;52&#39; fill=&#39;currentColor&#39; style=&#39;font-size:1em&#39;&gt;2&lt;/text&gt;
+&lt;/g&gt;
+
+    &lt;/svg&gt;
+  
+&lt;/div&gt;
+&lt;p&gt;為了把整個開發環境容器化，所以這邊也使用跟容器整合良好的 &lt;a href=&#34;https://traefik.io/&#34;&gt;traefik&lt;/a&gt; 作為反向代理伺服器使用。直接在 docker-compose.yaml 添加該服務。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;services&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;TRAEFIK&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;traefik:v2.10&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;command&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--api.insecure=true&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--providers.docker=true&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--entrypoints.web.address=:80&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;80:80&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;8080:8080&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/var/run/docker.sock:/var/run/docker.sock:ro&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接著在專案服務上加上相對應的 &lt;code&gt;labels&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;project_a&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;container_name&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;project_a&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;extends&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;PHP74&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;entrypoint&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;start-container&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#ae81ff&#34;&gt;8001&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/Volumes/data/www/project_a:/var/www/html&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;labels&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;traefik.http.routers.project_a.rule=Host(`www.local`, `api.local`)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;project_b&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;container_name&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;project_b&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;extends&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;PHP74&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;entrypoint&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;start-container&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#ae81ff&#34;&gt;8002&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/Volumes/data/www/project_b:/var/www/html&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;labels&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;traefik.http.routers.project_b.rule=Host(`demo.local`)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;當然，也別忘了更新本機 hosts 檔案：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;127.0.0.1          www.local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;127.0.0.1          api.local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;127.0.0.1          demo.local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;內部呼叫&#34;&gt;內部呼叫&lt;/h2&gt;
+&lt;p&gt;雖然透過 traefik 反向代理之後，可以正常從網址指向到專案。但如果要從 project b 的程式呼叫 &lt;a href=&#34;http://api.local&#34;&gt;http://api.local&lt;/a&gt;，會遇到無法正確解析 DNS 的問題。由於 hosts 檔案是設定在本機上，只對本機使用有效。容器與容器之間的呼叫無法正確辨識網域名稱。目前的解決辦法是將 traefik 服務加上 aliases，包含所有透過它反向代理的網域名稱。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;TRAEFIK&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;traefik:v2.10&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;command&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--api.insecure=true&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--providers.docker=true&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--entrypoints.web.address=:80&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;80:80&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;8080:8080&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/var/run/docker.sock:/var/run/docker.sock:ro&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;networks&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;default&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;aliases&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;www.local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;api.local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#ae81ff&#34;&gt;demo.local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;其他問題&#34;&gt;其他問題&lt;/h3&gt;
+&lt;h4 id=&#34;hot-module-replacement&#34;&gt;Hot Module Replacement&lt;/h4&gt;
+&lt;p&gt;使用 vite 支援 HMR 的同時，它會啟動一個 server 端有自己的 port。大部分 port 使用 vite 預設的 &lt;code&gt;5173&lt;/code&gt;。但在設定 docker compose  的時候，必經預先把 vite port 露出，這樣使用 HMR 的時候才能從本機連線到該 port。所以 port 不能重複的情況下，每一個專案要有自己的獨立 vite port。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;8001&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;5174&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;5173&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;monorepo&#34;&gt;Monorepo&lt;/h4&gt;
+&lt;p&gt;Sail 預設專案根目錄可以找到 node_modules 目錄，也以此為結構進行設計。所以套件指令都放在 node_modules/.bin 裡頭。但如果是 Monorepo 的專案結構，子專案可能不包含 node_modules，以某些原本好好的 node command 突然就無效了。&lt;/p&gt;
+&lt;h4 id=&#34;vscode-extensions&#34;&gt;VSCode Extensions&lt;/h4&gt;
+&lt;p&gt;某些套件可能會調用 node_modules 目錄裡頭的的指令，由於子專案可能不包含 node_modules，也就無法正常使用。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Laravl Goto 在新視窗開啟所有語系檔</title>
-      <link>https://absszero.github.io/post/laravel-goto-open-all-lanaguage-files/</link>
+      <link>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</link>
       <pubDate>Fri, 22 Dec 2023 10:17:33 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-goto-open-all-lanaguage-files/</guid>
+      <guid>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</guid>
       
         <description>&lt;p&gt;十月的時候我從 Github 收到一個功能請求，希望能夠在 Laravel Goto for Sublime Text 實現選取語系的 key ，然後開啟所有對應語系檔在新視窗上面。實作過程並不特別困難。原理是檢索語系目錄把其他語系目錄找出來。接著另開新視窗，將每一個語系檔打開。後續比較陌生的功能是檔案佈局。由於開啟多個檔案需要均勻編排每一個檔案頁籤的寬度。Sublime Text 的 &lt;code&gt;set_layout&lt;/code&gt; API 提供這個功能。不過 &lt;code&gt;照舊&lt;/code&gt; 官網文章寫得不夠詳細，看了&lt;a href=&#34;https://forum.sublimetext.com/t/set-layout-reference/5713&#34;&gt;論壇上有的描述&lt;/a&gt;才大概曉得怎麼邊排。後續選擇使用水平佈局的方式，畢竟用戶寬螢幕的可能性比較高。&lt;/p&gt;
 &lt;p&gt;接著我希望把相同功能實作在 VSCode 上面。前面查找語系目錄的實現同樣不是太困難。但是 VSCode 在開啟新視窗以及操作新視窗的方式跟 Sublime Text 是完全不一樣的。底下是 Sublime Text 開啟新視窗、設定佈局，以及開啟檔案的方式。使用 &lt;code&gt;run_command(&#39;new_window&#39;)&lt;/code&gt; 開啟新視窗之後，透過 &lt;code&gt;active_window()&lt;/code&gt; 能夠拿到這個新視窗，並且進行操作。&lt;/p&gt;
@@ -66,18 +475,20 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;寫到這邊主要功能已經完成，但由於開發使用 Extension Host 執行開發中的套件，所以當新視窗被開啟的時候，開發中的套件已經不在其掌控。所以必須不斷的打包 Extension，並且透過安裝/反安裝的方式載入開發中的套件，讓它可以在開新視窗的時候發揮作用，也是其中開發上比較麻煩的地方。&lt;/p&gt;
 &lt;p&gt;再來由於是藉由 macOS 開發，測試也是針對 macOS 磁碟環境設計。當我提交到 Github 進行 Windows 測試時遇到磁碟路徑問題。其中一個原因是透過 &lt;code&gt;Uri.parse&lt;/code&gt; 處理路徑。但合理應該使用 &lt;code&gt;Uri.file&lt;/code&gt;。&lt;a href=&#34;https://code.visualstudio.com/api/references/vscode-api#Uri&#34;&gt;官方文件有明確的說明&lt;/a&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;The difference between Uri.parse and Uri.file is that the latter treats the argument as path, not as stringified-uri. E.g. Uri.file(path) is not the same as Uri.parse(&amp;#39;file://&amp;#39; + path) because the path might contain characters that are interpreted (# and ?).
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;後續遇到相關測試環境配置問題，包括我的 @vscode/test-electron 套件太老舊，無法正確下載 Windows 版本的 VSCode。以及我參考新版的套件範例修改測試使用 @vscode/test 遇到問題。（後來還是回頭用原本的方法）。終於&amp;hellip; 延遲已久的開啟多語系檔功能總算可以釋出一版。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The difference between Uri.parse and Uri.file is that the latter treats the argument as path, not as stringified-uri. E.g. Uri.file(path) is not the same as Uri.parse(&amp;lsquo;file://&amp;rsquo; + path) because the path might contain characters that are interpreted (# and ?).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;後續遇到相關測試環境配置問題，包括我的 @vscode/test-electron 套件太老舊，無法正確下載 Windows 版本的 VSCode。以及我參考新版的套件範例修改測試使用 @vscode/test 遇到問題。（後來還是回頭用原本的方法）。終於&amp;hellip; 延遲已久的開啟多語系檔功能總算可以釋出一版。&lt;/p&gt;
 </description>
       
     </item>
     
     <item>
       <title>Laravel Command Class Name</title>
-      <link>https://absszero.github.io/post/laravel-command-classname/</link>
+      <link>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</link>
       <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-command-classname/</guid>
+      <guid>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</guid>
       
         <description>&lt;h2 id=&#34;why&#34;&gt;Why&lt;/h2&gt;
 &lt;p&gt;隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 &lt;code&gt;artisn list&lt;/code&gt; 只顯示每個指令所設定的 &lt;code&gt;signature&lt;/code&gt; 屬性，但不曉得對應的檔案名稱。只期望 signature 跟檔案名稱具有相似性，可以順藤摸瓜。也因此才有了開發相關套件的念頭。&lt;/p&gt;
@@ -110,10 +521,10 @@
     
     <item>
       <title>VSCode Extension Development, Run Single Test</title>
-      <link>https://absszero.github.io/post/vsce-extension-dev-add-test-single-test/</link>
+      <link>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</link>
       <pubDate>Fri, 22 Sep 2023 10:17:33 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/vsce-extension-dev-add-test-single-test/</guid>
+      <guid>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</guid>
       
         <description>&lt;p&gt;隨著 VSCode 開發 Extension 愈趨複雜，相關的單元測試也越來越多。每次增加一個方法以及相對測試，整個套件的測試都得重新執行一遍。為了更有效率的進行開發，目前要解決幾個痛點：&lt;/p&gt;
 &lt;ul&gt;
@@ -293,10 +704,10 @@
     
     <item>
       <title>開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</title>
-      <link>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</link>
+      <link>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</link>
       <pubDate>Tue, 19 Sep 2023 10:27:48 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</guid>
+      <guid>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=absszero.vscode-laravel-goto&#34;&gt;Laravel Goto for VSCode&lt;/a&gt; 的 Middleware 轉跳功能完成後。隨後也逐步在 &lt;a href=&#34;https://packagecontrol.io/packages/Laravel%20Goto&#34;&gt;Laravel Goto for Sublime Text&lt;/a&gt; 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用 Python 做同步執行，相較於 VSCode Extension 使用 JS 做非同步執行，開發單純的多。開發時間 VSCode 版本花了一週，這個版本則在一週內完成。但沒想到最困難的部分是單元測試，為此踩了三個坑。分別是：&lt;/p&gt;
 &lt;ul&gt;
@@ -347,10 +758,10 @@
     
     <item>
       <title>PHPUnit TearDown &amp; register_shutdown_function</title>
-      <link>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</link>
+      <link>https://absszero.github.io/post/2023-03-25_phpunit-teardown-register_shutdown_function/</link>
       <pubDate>Sat, 25 Mar 2023 19:40:00 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</guid>
+      <guid>https://absszero.github.io/post/2023-03-25_phpunit-teardown-register_shutdown_function/</guid>
       
         <description>&lt;h2 id=&#34;what&#34;&gt;WHAT&lt;/h2&gt;
 &lt;p&gt;近期在開發 Laravel Log 相關套件。於是利用 &lt;code&gt;orchestra/testbench&lt;/code&gt; 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。&lt;/p&gt;
@@ -388,10 +799,10 @@
     
     <item>
       <title>Prism 建立 API Server</title>
-      <link>https://absszero.github.io/post/prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
+      <link>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
       <pubDate>Thu, 06 Feb 2020 15:01:03 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
+      <guid>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
       
         <description>&lt;h2 id=&#34;why-prism&#34;&gt;Why Prism&lt;/h2&gt;
 &lt;p&gt;撰寫一份 API 文件有許多方式，其中一種是根據 &lt;code&gt;OpenAPI&lt;/code&gt; 規範。而在完成 API 規劃後通常搭配如 &lt;code&gt;Swagger UI&lt;/code&gt; 將規範文件變成容易閱讀 API 文件。&lt;/p&gt;
@@ -469,10 +880,10 @@
     
     <item>
       <title>Guzzle service descriptions - 使用描述檔建立 API Client</title>
-      <link>https://absszero.github.io/post/guzzle-service-descriptions/</link>
+      <link>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</link>
       <pubDate>Sun, 06 Oct 2019 15:01:03 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/guzzle-service-descriptions/</guid>
+      <guid>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</guid>
       
         <description>&lt;h2 id=&#34;何謂-service-descriptions&#34;&gt;何謂 Service Descriptions&lt;/h2&gt;
 &lt;p&gt;最近在查找關於 Fixer.io 的用戶端套件。發現平常慣用的 Guzzle  HTTP Client 還有另外一種開發方式 - &lt;code&gt;service descriptions&lt;/code&gt;。該方式借鏡 Swagger 利用定義 API 操作的方式，藉由特定描述的 PHP Array 建立 API Client 操作。簡單的說，只要產生一個 PHP Array 裡面描述每一種 API 的格式說明，就可以呼叫 API 囉！&lt;/p&gt;
@@ -558,14 +969,14 @@
     
     <item>
       <title>Laravel Goto for VS Code</title>
-      <link>https://absszero.github.io/post/laravel-goto-for-vs-code/</link>
+      <link>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</link>
       <pubDate>Mon, 09 Sep 2019 20:16:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-goto-for-vs-code/</guid>
+      <guid>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/absszero/vscode-laravel-goto&#34;&gt;https://github.com/absszero/vscode-laravel-goto&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why&#34;&gt;Why&lt;/h2&gt;
-&lt;p&gt;在完成 &lt;a href=&#34;https://absszero.github.io/post/laravel-goto-for-sublime-text/&#34;&gt;Laravel Goto for Sublime Text&lt;/a&gt; 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。&lt;/p&gt;
+&lt;p&gt;在完成 &lt;a href=&#34;https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/&#34;&gt;Laravel Goto for Sublime Text&lt;/a&gt; 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。&lt;/p&gt;
 &lt;p&gt;由於目前開發的專案愈趨複雜，路由的設定已經從成長快要上百條。沒有有效的透過 Namespace 區分 Controller。很容易就遇到撞名的問題。開發前先針對 VS Code Marketplace 上類似的專案搜尋一番：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=codingyu.laravel-goto-view&#34;&gt;Laravel goto view&lt;/a&gt; 視圖轉跳，能針對特定程式寫法下去搜尋，只能查找指定的視圖目錄。&lt;/li&gt;
@@ -690,10 +1101,10 @@
     
     <item>
       <title>Laravel Goto for Sublime Text</title>
-      <link>https://absszero.github.io/post/laravel-goto-for-sublime-text/</link>
+      <link>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</link>
       <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-goto-for-sublime-text/</guid>
+      <guid>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/absszero/LaravelGoto&#34;&gt;https://github.com/absszero/LaravelGoto&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why&#34;&gt;Why&lt;/h2&gt;
@@ -817,10 +1228,10 @@
     
     <item>
       <title>透過 PHP 解析包含 BOM 的 CSV 文件</title>
-      <link>https://absszero.github.io/post/%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</link>
+      <link>https://absszero.github.io/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Mon, 26 Aug 2019 20:12:35 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</guid>
+      <guid>https://absszero.github.io/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</guid>
       
         <description>&lt;p&gt;之前拿到的 csv 檔大部分都很乾淨，使用 PHP 內建的 &lt;code&gt;fgetcsv&lt;/code&gt; 逐行解析不會有什麼問題，但今天解開一個欄位就發現它的字串長度跟預期的不同，並且無法用 &lt;code&gt;ltrim&lt;/code&gt; 函式移除左側不要的字元，印出來看起來又正常。於是透過 &lt;code&gt;ord&lt;/code&gt; 函式把前幾個字元印出來瞧瞧。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;
@@ -841,10 +1252,10 @@
     
     <item>
       <title>SublimeLinter-phpcs 使用自訂規則檔</title>
-      <link>https://absszero.github.io/post/sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</link>
+      <link>https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</link>
       <pubDate>Sat, 03 Aug 2019 16:57:39 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</guid>
+      <guid>https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</guid>
       
         <description>&lt;p&gt;為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。&lt;/p&gt;
 &lt;p&gt;全編輯器設定 SublimeLinter Settings - User
@@ -883,10 +1294,10 @@
     
     <item>
       <title>Hugo 開始書寫</title>
-      <link>https://absszero.github.io/post/hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</link>
+      <link>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</link>
       <pubDate>Sat, 03 Aug 2019 14:29:59 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</guid>
+      <guid>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</guid>
       
         <description>&lt;p&gt;wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 &lt;a href=&#34;https://gohugo.io/tools/migrations/&#34;&gt;https://gohugo.io/tools/migrations/&lt;/a&gt; ，選用 &lt;a href=&#34;https://github.com/palaniraja/blog2md&#34;&gt;https://github.com/palaniraja/blog2md&lt;/a&gt; 將匯出的文章轉換成 Hugo 格式。隨後參考 &lt;a href=&#34;https://gohugo.io/hosting-and-deployment/hosting-on-github/&#34;&gt;https://gohugo.io/hosting-and-deployment/hosting-on-github/&lt;/a&gt; 把網站發布到 Github 上面。&lt;/p&gt;
 &lt;p&gt;按照範例說明，會在 Github 建立兩個 Reposiotry，一個儲存靜態發布前的相關檔案，也就是 Hugo 的目錄結構本身，一個放置靜態網站，也就是 Hugo 產生的靜態網站。每次更新，都需要一連串的操作跟 git 提交。因為有點囉唆所以說明有提供 &lt;code&gt;deploy.sh&lt;/code&gt; 協助簡化這些動作。目前也寫了類似的發佈檔 &lt;code&gt;deploy.bat&lt;/code&gt; 提供在 Windows 底下使用。附上 &lt;code&gt;deploy.bat&lt;/code&gt;&lt;/p&gt;
@@ -914,10 +1325,10 @@ cd ..&lt;/p&gt;
     
     <item>
       <title>Redmine container with Docker</title>
-      <link>https://absszero.github.io/post/redmine-container-with-docker/</link>
-      <pubDate>Mon, 25 Jul 2016 14:34:41 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</link>
+      <pubDate>Mon, 25 Jul 2016 14:34:41 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/redmine-container-with-docker/</guid>
+      <guid>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</guid>
       
         <description>&lt;p&gt;除了官方的 Docker image 之外，&lt;a href=&#34;https://hub.docker.com/r/sameersbn/redmine/&#34;&gt;sameersbn/redmine&lt;/a&gt; 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架設在與 Docker 相同的主機上。需要注意的地方有兩點： 第一個是 MySQL 的 LISTEN IP，預設可能是 127.0.0.1，這邊將它設定成 0.0.0.0。 這部份從 /etc/mysql/my.cnf 修改 bind-address = 127.0.0.1 改為 bind-address = 0.0.0.0 第二是要考慮容器連接到外部的 MySQL 所走的路由閘道位置，預設應該是 docker0 這張虛擬網卡的 IP。假設是 172.17.42.1 最後使用底下指令啟動容器： &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; docker run &lt;span style=&#34;color:#ae81ff&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;redmine -d -p 40000:80 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
@@ -933,10 +1344,10 @@ cd ..&lt;/p&gt;
     
     <item>
       <title>使用 array_reduce 做 AND 邏輯運算</title>
-      <link>https://absszero.github.io/post/%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</link>
-      <pubDate>Tue, 12 Apr 2016 02:23:18 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-04-11_%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</link>
+      <pubDate>Tue, 12 Apr 2016 02:23:18 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</guid>
+      <guid>https://absszero.github.io/post/2016-04-11_%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</guid>
       
         <description>&lt;p&gt;在官方手冊的頁面上有提供做 AND 運算的範例
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;
@@ -968,10 +1379,10 @@ cd ..&lt;/p&gt;
     
     <item>
       <title>日光節約時間的陷阱</title>
-      <link>https://absszero.github.io/post/%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</link>
-      <pubDate>Thu, 07 Apr 2016 02:03:29 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-04-06_%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</link>
+      <pubDate>Thu, 07 Apr 2016 02:03:29 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</guid>
+      <guid>https://absszero.github.io/post/2016-04-06_%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</guid>
       
         <description>&lt;p&gt;在 PHP 上面計算當前時間之後一週的時間，以 Timestamp 來計算
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;
@@ -994,10 +1405,10 @@ cd ..&lt;/p&gt;
     
     <item>
       <title>Mocking View Facade in Laravel</title>
-      <link>https://absszero.github.io/post/mocking-view-facade-in-laravel/</link>
-      <pubDate>Mon, 07 Mar 2016 04:06:15 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-03-06_mocking-view-facade-in-laravel/</link>
+      <pubDate>Mon, 07 Mar 2016 04:06:15 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/mocking-view-facade-in-laravel/</guid>
+      <guid>https://absszero.github.io/post/2016-03-06_mocking-view-facade-in-laravel/</guid>
       
         <description>&lt;p&gt;在單元測試時，常會有需要 mock 元件的需求。按照 Laravel 4.2 官方文檔的說明，可以如下 mock 一個 Facade，https://laravel.com/docs/4.2/testing#mocking-facades
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;
@@ -1045,10 +1456,10 @@ cd ..&lt;/p&gt;
     
     <item>
       <title>Baum, 在 Laravel 存取  Nested Set Model</title>
-      <link>https://absszero.github.io/post/baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96-nested-set-model/</link>
-      <pubDate>Thu, 25 Feb 2016 07:21:04 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-02-24_baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96-nested-set-model/</link>
+      <pubDate>Thu, 25 Feb 2016 07:21:04 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96-nested-set-model/</guid>
+      <guid>https://absszero.github.io/post/2016-02-24_baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96-nested-set-model/</guid>
       
         <description>&lt;p&gt;過去曾經在 Laravel 上面實作 Nested Set Model 的應用，除了基本的建立、刪除、搜尋以及搬移節點，再來就是要驗證節點跟確保巢狀結構正確，必要時還要能夠重建整個結構。而上述這些功能， Baum（https://github.com/etrepat/baum）都具備了！底下記錄一下覺得蠻實用的功能：&lt;/p&gt;
 &lt;h3 id=&#34;建立節點&#34;&gt;建立節點&lt;/h3&gt;
@@ -1087,10 +1498,10 @@ cd ..&lt;/p&gt;
     
     <item>
       <title>Eloquent 以 Camel-Case 定義關連函式</title>
-      <link>https://absszero.github.io/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</link>
-      <pubDate>Wed, 07 Oct 2015 04:06:05 +0000</pubDate>
+      <link>https://absszero.github.io/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</link>
+      <pubDate>Wed, 07 Oct 2015 04:06:05 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
+      <guid>https://absszero.github.io/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
       
         <description>&lt;p&gt;假設定義了一個書籍的 Model 並且每一本書有一個書皮封面 BookCover，所以定義以下的內容：
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;
@@ -1119,49 +1530,6 @@ cd ..&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;bookCover&lt;/span&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 Over~&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Javascript 關鍵字使用 in 判斷物件是否有該屬性成員</title>
-      <link>https://absszero.github.io/post/javascript-%E9%97%9C%E9%8D%B5%E5%AD%97%E4%BD%BF%E7%94%A8-in-%E5%88%A4%E6%96%B7%E7%89%A9%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9C%89%E8%A9%B2%E5%B1%AC%E6%80%A7%E6%88%90%E5%93%A1/</link>
-      <pubDate>Wed, 22 Jul 2015 14:15:09 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/javascript-%E9%97%9C%E9%8D%B5%E5%AD%97%E4%BD%BF%E7%94%A8-in-%E5%88%A4%E6%96%B7%E7%89%A9%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9C%89%E8%A9%B2%E5%B1%AC%E6%80%A7%E6%88%90%E5%93%A1/</guid>
-      
-        <description>&lt;p&gt;今天在別人的 js 範例當中看到一個關鍵字 in，
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;items&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;items&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-過去用過的 in 是 for..in，做為疊代物件屬性
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;prop&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj&lt;/span&gt;) { ... }&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-從 stack overflow 看到這篇說明 &lt;a href=&#34;http://stackoverflow.com/questions/7174748/javascript-object-detection-dot-syntax-versus-in-keyword&#34;&gt;JavaScript object detection: dot syntax versus &amp;lsquo;in&amp;rsquo; keyword&lt;/a&gt; 裡面的範例解釋很貼切，這表示這是用來判斷屬性是否存在，而不是屬性的內容。
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;object&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;property&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;};
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;object&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;property&lt;/span&gt;) { ... } &lt;span style=&#34;color:#75715e&#34;&gt;// will not run if(&amp;#39;property&amp;#39; in object) { ... } // will run
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-如果考量到物件原型(prototype)有一樣名稱的情況，更精確的使用如下， 如此可以限制屬性只限定在目前物件當中。
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;object&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;hasOwnProperty&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;property&amp;#39;&lt;/span&gt;)) {...}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>git 在不同操作階段的恢復方法</title>
-      <link>https://absszero.github.io/post/git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/</link>
-      <pubDate>Sat, 27 Jun 2015 03:28:21 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/</guid>
-      
-        <description>&lt;p&gt;初學 git 透過 GUI 添加檔案跟提交都很便利，但是要如何恢復卻常常卡住。 主要是不熟悉指令端實際的運作情況，所以不確定 GUI 該如何選擇來恢復檔案。 下面把自己常常遇到要恢復的情況做個紀錄。 &lt;strong&gt;未加到 stage(index)&lt;/strong&gt; 表示還沒透過 git add 指令把修改過的檔案加到 stage，可以這樣恢復：
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git chekcout your_file&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;strong&gt;已經加到 stage(index)&lt;/strong&gt; 表示還已經利用 git add 指令把修改過的檔案加到 stage，可以這樣恢復到未加到 stage(index)：
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git reset HEAD your_file&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-結束之後，當然也可以再用 **未加到 stage(index)**的方式還原檔案。 &lt;strong&gt;已經提交(commit)&lt;/strong&gt; 表示已經利用 git commit 指令把 stage 的檔案提交了，此時有兩種恢復方式， 一種是再做一次提交，但是提交的內容是把它改回原本的模樣。這個時候使用 &lt;strong&gt;revert&lt;/strong&gt; 指令。
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git revert HEAD&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-另外一種方式是回到某個提交狀態(例如上一個提交狀態，還沒錯誤提交的狀態)
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git reset --hard HEAD~1&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;strong&gt;HEAD~1&lt;/strong&gt; 表示當前(HEAD)提交狀態的上一個狀態 &lt;strong&gt;&amp;ndash;hard&lt;/strong&gt; 參數表示目前的目錄狀態，也強制回到某個提交的狀態。 也就是如果錯誤提交之後，又修改了某些檔案，該參數也強制把修改的檔案也改回來。 至於何時適合做 revert，而何時又適合做 reset 呢？ 我猜想可以用是否已經做 push 做為考量。 如果已經 push 了，使用 revert 產生一個新的提交，說明上一個提交是錯誤的，藉此恢復。 如果還未 push，可以考慮使用 reset，直接減少一個提交紀錄。&lt;/p&gt;
 </description>
       
     </item>

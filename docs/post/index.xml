@@ -6,185 +6,185 @@
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Dec 2023 10:17:33 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Jan 2024 11:08:07 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phead, A PHP code generator</title>
+      <link>https://absszero.github.io/post/2024-01-06_phead/</link>
+      <pubDate>Sat, 06 Jan 2024 11:08:07 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2024-01-06_phead/</guid>
+      <description>結果在此： https://github.com/absszero/phead/ 開發 API 的節奏大致底定。開立路由、建立控制器、建立 Model、表現層以及撰寫相關測試。由於過程諸多類似，想必一定有可以簡化的方法。</description>
+    </item>
+    
+    <item>
+      <title>Develop in Docker</title>
+      <link>https://absszero.github.io/post/2023-12-26_develop-in-docker/</link>
+      <pubDate>Tue, 26 Dec 2023 20:45:34 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2023-12-26_develop-in-docker/</guid>
+      <description>sDart Docker 在產品容器化使用確實方便，但在思索怎麼用在開發環境遇到的第一個難題是太慢。Docker Desktop 啟動速度慢，每次開啟心裡就開始計時到底要多久。看</description>
+    </item>
+    
     <item>
       <title>Laravl Goto 在新視窗開啟所有語系檔</title>
-      <link>https://absszero.github.io/post/laravel-goto-open-all-lanaguage-files/</link>
+      <link>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</link>
       <pubDate>Fri, 22 Dec 2023 10:17:33 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-goto-open-all-lanaguage-files/</guid>
+      <guid>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</guid>
       <description>十月的時候我從 Github 收到一個功能請求，希望能夠在 Laravel Goto for Sublime Text 實現選取語系的 key ，然後開啟所有對應語系檔在新視窗上面。實作過程並不特別困難。原理是檢索</description>
     </item>
     
     <item>
       <title>Laravel Command Class Name</title>
-      <link>https://absszero.github.io/post/laravel-command-classname/</link>
+      <link>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</link>
       <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-command-classname/</guid>
+      <guid>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</guid>
       <description>Why 隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 artisn list 只顯示每個指令所設定的 signature 屬性，但不曉得對應的檔案名稱。只期</description>
     </item>
     
     <item>
       <title>VSCode Extension Development, Run Single Test</title>
-      <link>https://absszero.github.io/post/vsce-extension-dev-add-test-single-test/</link>
+      <link>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</link>
       <pubDate>Fri, 22 Sep 2023 10:17:33 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/vsce-extension-dev-add-test-single-test/</guid>
+      <guid>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</guid>
       <description>隨著 VSCode 開發 Extension 愈趨複雜，相關的單元測試也越來越多。每次增加一個方法以及相對測試，整個套件的測試都得重新執行一遍。為了更有效率的進行開發，目前要</description>
     </item>
     
     <item>
       <title>開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</title>
-      <link>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</link>
+      <link>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</link>
       <pubDate>Tue, 19 Sep 2023 10:27:48 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/sublime-laravel-goto-middleware-development/</guid>
+      <guid>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</guid>
       <description>Laravel Goto for VSCode 的 Middleware 轉跳功能完成後。隨後也逐步在 Laravel Goto for Sublime Text 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用</description>
     </item>
     
     <item>
       <title>PHPUnit TearDown &amp; register_shutdown_function</title>
-      <link>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</link>
+      <link>https://absszero.github.io/post/2023-03-25_phpunit-teardown-register_shutdown_function/</link>
       <pubDate>Sat, 25 Mar 2023 19:40:00 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</guid>
+      <guid>https://absszero.github.io/post/2023-03-25_phpunit-teardown-register_shutdown_function/</guid>
       <description>WHAT 近期在開發 Laravel Log 相關套件。於是利用 orchestra/testbench 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。 PHP Fatal error: Uncaught ReflectionException: Class config does not exist 原本這個問題以</description>
     </item>
     
     <item>
       <title>Prism 建立 API Server</title>
-      <link>https://absszero.github.io/post/prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
+      <link>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
       <pubDate>Thu, 06 Feb 2020 15:01:03 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
+      <guid>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
       <description>Why Prism 撰寫一份 API 文件有許多方式，其中一種是根據 OpenAPI 規範。而在完成 API 規劃後通常搭配如 Swagger UI 將規範文件變成容易閱讀 API 文件。 但前端人員在真實 API 拿到之前，</description>
     </item>
     
     <item>
       <title>Guzzle service descriptions - 使用描述檔建立 API Client</title>
-      <link>https://absszero.github.io/post/guzzle-service-descriptions/</link>
+      <link>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</link>
       <pubDate>Sun, 06 Oct 2019 15:01:03 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/guzzle-service-descriptions/</guid>
+      <guid>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</guid>
       <description>何謂 Service Descriptions 最近在查找關於 Fixer.io 的用戶端套件。發現平常慣用的 Guzzle HTTP Client 還有另外一種開發方式 - service descriptions。該方式借鏡 Swagger 利用定義 API 操作的方式</description>
     </item>
     
     <item>
       <title>Laravel Goto for VS Code</title>
-      <link>https://absszero.github.io/post/laravel-goto-for-vs-code/</link>
+      <link>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</link>
       <pubDate>Mon, 09 Sep 2019 20:16:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-goto-for-vs-code/</guid>
+      <guid>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</guid>
       <description>https://github.com/absszero/vscode-laravel-goto Why 在完成 Laravel Goto for Sublime Text 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。 由</description>
     </item>
     
     <item>
       <title>Laravel Goto for Sublime Text</title>
-      <link>https://absszero.github.io/post/laravel-goto-for-sublime-text/</link>
+      <link>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</link>
       <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-goto-for-sublime-text/</guid>
+      <guid>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</guid>
       <description>https://github.com/absszero/LaravelGoto Why 去年下定決心買一套 Sublime Text 之後（USD $75 的樣子），也算是認可 ST 在工作幫我省了不少時間。不過隨著 VS Code 功能逐步豐富，一直有想轉換編輯器的念頭。上</description>
     </item>
     
     <item>
       <title>透過 PHP 解析包含 BOM 的 CSV 文件</title>
-      <link>https://absszero.github.io/post/%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</link>
+      <link>https://absszero.github.io/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</link>
       <pubDate>Mon, 26 Aug 2019 20:12:35 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</guid>
+      <guid>https://absszero.github.io/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</guid>
       <description>之前拿到的 csv 檔大部分都很乾淨，使用 PHP 內建的 fgetcsv 逐行解析不會有什麼問題，但今天解開一個欄位就發現它的字串長度跟預期的不同，並且無法用 ltrim 函式移除左</description>
     </item>
     
     <item>
       <title>SublimeLinter-phpcs 使用自訂規則檔</title>
-      <link>https://absszero.github.io/post/sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</link>
+      <link>https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</link>
       <pubDate>Sat, 03 Aug 2019 16:57:39 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</guid>
+      <guid>https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</guid>
       <description>為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &amp;#34;linters&amp;#34;: { &amp;#34;phpcs&amp;#34;: { &amp;#34;args&amp;#34;: &amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34; } } } 個別專案設定，設定在 *.sublime-project { &amp;#34;settings&amp;#34;: { &amp;#34;SublimeLinter.linters.phpcs.args&amp;#34;: &amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34;</description>
     </item>
     
     <item>
       <title>Hugo 開始書寫</title>
-      <link>https://absszero.github.io/post/hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</link>
+      <link>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</link>
       <pubDate>Sat, 03 Aug 2019 14:29:59 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</guid>
+      <guid>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</guid>
       <description>wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 https://gohugo.io/tools/migrations/ ，選用 https://github.com/palaniraja/blog2md 將匯出的文章轉換成 Hugo 格式。隨</description>
     </item>
     
     <item>
       <title>Redmine container with Docker</title>
-      <link>https://absszero.github.io/post/redmine-container-with-docker/</link>
-      <pubDate>Mon, 25 Jul 2016 14:34:41 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</link>
+      <pubDate>Mon, 25 Jul 2016 14:34:41 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/redmine-container-with-docker/</guid>
+      <guid>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</guid>
       <description>除了官方的 Docker image 之外，sameersbn/redmine 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架</description>
     </item>
     
     <item>
       <title>使用 array_reduce 做 AND 邏輯運算</title>
-      <link>https://absszero.github.io/post/%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</link>
-      <pubDate>Tue, 12 Apr 2016 02:23:18 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-04-11_%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</link>
+      <pubDate>Tue, 12 Apr 2016 02:23:18 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</guid>
+      <guid>https://absszero.github.io/post/2016-04-11_%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</guid>
       <description>在官方手冊的頁面上有提供做 AND 運算的範例 &amp;lt;?php function andFunc($a, $b) { ​ return $a &amp;amp;&amp;amp; $b; } $foo = array(true, true, true); var_dump(array_reduce($foo, &amp;#34;andFunc&amp;#34;)); 而既然使用了 array_reduce，可以用來做更複雜的 AND 運用。例</description>
     </item>
     
     <item>
       <title>日光節約時間的陷阱</title>
-      <link>https://absszero.github.io/post/%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</link>
-      <pubDate>Thu, 07 Apr 2016 02:03:29 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-04-06_%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</link>
+      <pubDate>Thu, 07 Apr 2016 02:03:29 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</guid>
+      <guid>https://absszero.github.io/post/2016-04-06_%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</guid>
       <description>在 PHP 上面計算當前時間之後一週的時間，以 Timestamp 來計算 &amp;lt;?php $now = time(); $next_week = $now + 7 \* 86400; 如果今天是 2016 年 3 月 13 日的上午一點，地點是美國呢？於是一個小時之後實施日光</description>
     </item>
     
     <item>
       <title>Mocking View Facade in Laravel</title>
-      <link>https://absszero.github.io/post/mocking-view-facade-in-laravel/</link>
-      <pubDate>Mon, 07 Mar 2016 04:06:15 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-03-06_mocking-view-facade-in-laravel/</link>
+      <pubDate>Mon, 07 Mar 2016 04:06:15 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/mocking-view-facade-in-laravel/</guid>
+      <guid>https://absszero.github.io/post/2016-03-06_mocking-view-facade-in-laravel/</guid>
       <description>在單元測試時，常會有需要 mock 元件的需求。按照 Laravel 4.2 官方文檔的說明，可以如下 mock 一個 Facade，https://laravel.com/docs/</description>
     </item>
     
     <item>
       <title>Baum, 在 Laravel 存取  Nested Set Model</title>
-      <link>https://absszero.github.io/post/baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96-nested-set-model/</link>
-      <pubDate>Thu, 25 Feb 2016 07:21:04 +0000</pubDate>
+      <link>https://absszero.github.io/post/2016-02-24_baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96-nested-set-model/</link>
+      <pubDate>Thu, 25 Feb 2016 07:21:04 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96-nested-set-model/</guid>
+      <guid>https://absszero.github.io/post/2016-02-24_baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96-nested-set-model/</guid>
       <description>過去曾經在 Laravel 上面實作 Nested Set Model 的應用，除了基本的建立、刪除、搜尋以及搬移節點，再來就是要驗證節點跟確保巢狀結構正確，必要時還要能夠重建整個結構。</description>
     </item>
     
     <item>
       <title>Eloquent 以 Camel-Case 定義關連函式</title>
-      <link>https://absszero.github.io/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</link>
-      <pubDate>Wed, 07 Oct 2015 04:06:05 +0000</pubDate>
+      <link>https://absszero.github.io/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</link>
+      <pubDate>Wed, 07 Oct 2015 04:06:05 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
+      <guid>https://absszero.github.io/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
       <description>假設定義了一個書籍的 Model 並且每一本書有一個書皮封面 BookCover，所以定義以下的內容： &amp;lt;?php class Book extends Eloquent { public function book_cover() { return $this-&amp;gt;hasOne(&amp;#39;bookCover&amp;#39;); } } 現在我們查詢書籍並且使用</description>
-    </item>
-    
-    <item>
-      <title>Javascript 關鍵字使用 in 判斷物件是否有該屬性成員</title>
-      <link>https://absszero.github.io/post/javascript-%E9%97%9C%E9%8D%B5%E5%AD%97%E4%BD%BF%E7%94%A8-in-%E5%88%A4%E6%96%B7%E7%89%A9%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9C%89%E8%A9%B2%E5%B1%AC%E6%80%A7%E6%88%90%E5%93%A1/</link>
-      <pubDate>Wed, 22 Jul 2015 14:15:09 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/javascript-%E9%97%9C%E9%8D%B5%E5%AD%97%E4%BD%BF%E7%94%A8-in-%E5%88%A4%E6%96%B7%E7%89%A9%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9C%89%E8%A9%B2%E5%B1%AC%E6%80%A7%E6%88%90%E5%93%A1/</guid>
-      <description>今天在別人的 js 範例當中看到一個關鍵字 in， if (&amp;#39;items&amp;#39; in obj) { return obj.items; } 過去用過的 in 是 for..in，做為疊代物件屬性 for (var prop in obj) { ... } 從 stack overflow 看到這篇說明 JavaScript</description>
-    </item>
-    
-    <item>
-      <title>git 在不同操作階段的恢復方法</title>
-      <link>https://absszero.github.io/post/git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/</link>
-      <pubDate>Sat, 27 Jun 2015 03:28:21 +0000</pubDate>
-      
-      <guid>https://absszero.github.io/post/git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/</guid>
-      <description>初學 git 透過 GUI 添加檔案跟提交都很便利，但是要如何恢復卻常常卡住。 主要是不熟悉指令端實際的運作情況，所以不確定 GUI 該如何選擇來恢復檔案。 下面把自己</description>
     </item>
     
   </channel>

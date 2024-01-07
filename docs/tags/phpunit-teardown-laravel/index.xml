@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 25 Mar 2023 19:40:00 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/phpunit-teardown-laravel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PHPUnit TearDown &amp; register_shutdown_function</title>
-      <link>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</link>
+      <link>https://absszero.github.io/post/2023-03-25_phpunit-teardown-register_shutdown_function/</link>
       <pubDate>Sat, 25 Mar 2023 19:40:00 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/phpunit-teardown-register_shutdown_function/</guid>
+      <guid>https://absszero.github.io/post/2023-03-25_phpunit-teardown-register_shutdown_function/</guid>
       <description>WHAT 近期在開發 Laravel Log 相關套件。於是利用 orchestra/testbench 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。 PHP Fatal error: Uncaught ReflectionException: Class config does not exist 原本這個問題以</description>
     </item>
     

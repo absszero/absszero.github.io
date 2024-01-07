@@ -6,13 +6,13 @@
     <description>Recent content in apache chainsaw jboss log4j on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 15 Apr 2012 02:54:42 +0000</lastBuildDate><atom:link href="https://absszero.github.io/tags/apache-chainsaw-jboss-log4j/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Apr 2012 02:54:42 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/apache-chainsaw-jboss-log4j/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitoring JBoss logfile with Chainsaw v2</title>
-      <link>https://absszero.github.io/post/monitoring-jboss-logfile-with-chainsaw-v2/</link>
-      <pubDate>Sun, 15 Apr 2012 02:54:42 +0000</pubDate>
+      <link>https://absszero.github.io/post/2012-04-14_monitoring-jboss-logfile-with-chainsaw-v2/</link>
+      <pubDate>Sun, 15 Apr 2012 02:54:42 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/monitoring-jboss-logfile-with-chainsaw-v2/</guid>
+      <guid>https://absszero.github.io/post/2012-04-14_monitoring-jboss-logfile-with-chainsaw-v2/</guid>
       <description>Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 &amp;lt;log4j:configuration xmlns:log4j=&amp;#34;http://jakarta.apache.org/log4j/&amp;#34; debug=&amp;#34;false&amp;#34;&amp;gt; ... &amp;lt;/log4j:configuration&amp;gt; 之間增加一個 appender &amp;lt;appender name=&amp;#34;SOCKET&amp;#34; class=&amp;#34;org.apache.log4j.net.SocketHubAppender&amp;#34;&amp;gt; &amp;lt;param name=&amp;#34;Port&amp;#34; value=&amp;#34;8888&amp;#34;/&amp;gt; &amp;lt;/appender&amp;gt;</description>
     </item>
     

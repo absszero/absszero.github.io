@@ -9,28 +9,28 @@
     <lastBuildDate>Tue, 31 Oct 2023 11:31:24 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/plugin-development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Laravel Command Class Name</title>
-      <link>https://absszero.github.io/post/laravel-command-classname/</link>
+      <link>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</link>
       <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-command-classname/</guid>
+      <guid>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</guid>
       <description>Why 隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 artisn list 只顯示每個指令所設定的 signature 屬性，但不曉得對應的檔案名稱。只期</description>
     </item>
     
     <item>
       <title>Laravel Goto for VS Code</title>
-      <link>https://absszero.github.io/post/laravel-goto-for-vs-code/</link>
+      <link>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</link>
       <pubDate>Mon, 09 Sep 2019 20:16:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-goto-for-vs-code/</guid>
+      <guid>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</guid>
       <description>https://github.com/absszero/vscode-laravel-goto Why 在完成 Laravel Goto for Sublime Text 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。 由</description>
     </item>
     
     <item>
       <title>Laravel Goto for Sublime Text</title>
-      <link>https://absszero.github.io/post/laravel-goto-for-sublime-text/</link>
+      <link>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</link>
       <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/laravel-goto-for-sublime-text/</guid>
+      <guid>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</guid>
       <description>https://github.com/absszero/LaravelGoto Why 去年下定決心買一套 Sublime Text 之後（USD $75 的樣子），也算是認可 ST 在工作幫我省了不少時間。不過隨著 VS Code 功能逐步豐富，一直有想轉換編輯器的念頭。上</description>
     </item>
     
