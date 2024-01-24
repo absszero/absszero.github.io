@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          黑書記事
+          Laravel x Load Balancer x HTTPS - 黑書記事
         </title>
     
 
@@ -29,6 +29,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="absszero" />
+  <meta name="description" content="由於 Laravel 生成網址的功能是根據一些特定的 Headers，特別是生成 https 開頭網址。當產品環境單純直接使用 Web Server 掛載 SSL 憑證不會有類似問題。但如果搭配 Load Balancer" />
+<meta name="keywords" content="Laravel, HTTPS, X-Forwarded" />
+
 
 
 
@@ -38,8 +41,8 @@
 <meta name="generator" content="Hugo 0.118.2" />
 
 
-<link rel="canonical" href="https://absszero.github.io/" />
-<link href="/index.xml" rel="alternate" type="application/rss+xml" title="黑書記事" />
+<link rel="canonical" href="https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/" />
+
 
 
 
@@ -64,14 +67,19 @@
 
 
 
-<meta property="og:title" content="黑書記事" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://absszero.github.io/" />
-<meta itemprop="name" content="黑書記事">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="黑書記事"/>
-<meta name="twitter:description" content=""/>
+<meta property="og:title" content="Laravel x Load Balancer x HTTPS" />
+<meta property="og:description" content="由於 Laravel 生成網址的功能是根據一些特定的 Headers，特別是生成 https 開頭網址。當產品環境單純直接使用 Web Server 掛載 SSL 憑證不會有類似問題。但如果搭配 Load Balancer" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-01-24T12:35:27+08:00" />
+<meta property="article:modified_time" content="2024-01-24T12:35:27+08:00" />
+<meta itemprop="name" content="Laravel x Load Balancer x HTTPS">
+<meta itemprop="description" content="由於 Laravel 生成網址的功能是根據一些特定的 Headers，特別是生成 https 開頭網址。當產品環境單純直接使用 Web Server 掛載 SSL 憑證不會有類似問題。但如果搭配 Load Balancer"><meta itemprop="datePublished" content="2024-01-24T12:35:27+08:00" />
+<meta itemprop="dateModified" content="2024-01-24T12:35:27+08:00" />
+<meta itemprop="wordCount" content="404">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Laravel x Load Balancer x HTTPS"/>
+<meta name="twitter:description" content="由於 Laravel 生成網址的功能是根據一些特定的 Headers，特別是生成 https 開頭網址。當產品環境單純直接使用 Web Server 掛載 SSL 憑證不會有類似問題。但如果搭配 Load Balancer"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -226,7 +234,7 @@ if (!doNotTrack) {
   <ul id="menu" class="menu">
     
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -282,23 +290,15 @@ if (!doNotTrack) {
 
     <div id="mobile-panel">
       <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
         
-<section id="posts" class="posts">
-  
-  
-    
-  
-  
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/2019-09-09_laravel-goto-for-vs-code/">Laravel Goto for VS Code</a>
-    </h1>
-    
+        <header class="post-header">
+          <h1 class="post-title">Laravel x Load Balancer x HTTPS</h1>
+          
 
-    <div class="post-meta">
+          <div class="post-meta">
   <div class="post-meta-author">
     by
       absszero
@@ -306,8 +306,8 @@ if (!doNotTrack) {
   </div>
 
   <div class="post-meta-time">
-    <time datetime="2019-09-09">
-      2019-09-09
+    <time datetime="2024-01-24">
+      2024-01-24
     </time>
   </div>
 
@@ -329,322 +329,146 @@ if (!doNotTrack) {
   </div>
 </div>
 
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        https://github.com/absszero/vscode-laravel-goto Why 在完成 Laravel Goto for Sublime Text 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。 由
-      </div>
-      <div class="read-more">
-        <a href="/post/2019-09-09_laravel-goto-for-vs-code/" class="read-more-link"
-          >Read more</a
-        >
-      </div>
-    
-  </div>
-</article>
+        </header>
 
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
+        
+        <div class="post-content">
+          <p>由於 Laravel 生成網址的功能是根據一些特定的 Headers，特別是生成 https 開頭網址。當產品環境單純直接使用 Web Server 掛載 SSL 憑證不會有類似問題。但如果搭配 Load Balancer 而相關的 Headers 沒有正確的透過 X-Forwarded Headers 轉送過來，結果就是沒能正確產生 HTTPS 連結。</p>
+<h2 id="判斷依據">判斷依據</h2>
+<p>精華是 <code>symfony/http-foundation/Request.php</code> 的 <code>isSecure</code> 方法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isSecure</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">isFromTrustedProxy</span>() <span style="color:#f92672">&amp;&amp;</span> $proto <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getTrustedValues</span>(<span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">HEADER_X_FORWARDED_PROTO</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">\in_array</span>(<span style="color:#a6e22e">strtolower</span>($proto[<span style="color:#ae81ff">0</span>]), [<span style="color:#e6db74">&#39;https&#39;</span>, <span style="color:#e6db74">&#39;on&#39;</span>, <span style="color:#e6db74">&#39;ssl&#39;</span>, <span style="color:#e6db74">&#39;1&#39;</span>], <span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    $https <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">server</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;HTTPS&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">empty</span>($https) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#39;off&#39;</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">strtolower</span>($https);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p>如果是信任的 Proxy ，根據 <code>X-Forwarded-Proto</code> 的值是否是 <code>'https', 'on', 'ssl', '1'</code> 其中一個來決定是否使用 HTTPS。</p>
+</li>
+<li>
+<p>如果不是信任的 Proxy，根據伺服器變數的 <code>HTTPS</code> 只要不是 <code>off</code> 就視為使用 HTTPS。</p>
+</li>
+</ul>
+<h2 id="設定信任的-proxies">設定信任的 Proxies</h2>
+<p>Laravel 官網在 <a href="https://laravel.com/docs/10.x/requests#configuring-trusted-proxies">Configuring Trusted Proxies</a> 說明的很清楚。只要在 <code>App\Http\Middleware\TrustProxies</code> 把 Load Balancer 的 IP 填入到 <code>protected $proxies</code> 即可。 但如果你不確定 IP 來源，也可以帶入一個 <code>protected $proxies = '*';</code>。系統會根據伺服器變數 <code>REMOTE_ADDR</code> 自動填入。</p>
+<h2 id="如果都不行">如果都不行</h2>
+<p>如果上述設定 Proxy 的方式還是不行。還有兩個方法：</p>
+<ul>
+<li>
+<p>設定伺服器變數的 <code>HTTPS</code> 為 <code>on</code></p>
+</li>
+<li>
+<p>在 <code>AppServiceProvider</code> 的 <code>boot()</code> 方法中設置，強制 HTTPS（寫死）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">app</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">environment</span>(<span style="color:#e6db74">&#39;production&#39;</span>)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">\URL</span><span style="color:#f92672">::</span><span style="color:#a6e22e">forceScheme</span>(<span style="color:#e6db74">&#39;https&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<p>目前隨著部署環境多元，開始遇到 <code>X-Forwarded-Proto</code> 轉送過來卻是 <code>http</code> 的問題，只能先請 SRE 工程師代為協助了。</p>
+
+        </div>
+
+        
+        
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">absszero</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      2024-01-24
       
-      <a class="post-link" href="/post/2019-08-26_laravel-goto-for-sublime-text/">Laravel Goto for Sublime Text</a>
-    </h1>
-    
-
-    <div class="post-meta">
-  <div class="post-meta-author">
-    by
-      absszero
-    
-  </div>
-
-  <div class="post-meta-time">
-    <time datetime="2019-08-26">
-      2019-08-26
-    </time>
-  </div>
-
+    </span>
+  </p>
   
-
-
-  <div class="post-meta__right">
-    
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
 </div>
 
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        https://github.com/absszero/LaravelGoto Why 去年下定決心買一套 Sublime Text 之後（USD $75 的樣子），也算是認可 ST 在工作幫我省了不少時間。不過隨著 VS Code 功能逐步豐富，一直有想轉換編輯器的念頭。上
-      </div>
-      <div class="read-more">
-        <a href="/post/2019-08-26_laravel-goto-for-sublime-text/" class="read-more-link"
-          >Read more</a
-        >
-      </div>
-    
-  </div>
-</article>
 
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+            
+              <a class="next" href="/post/2024-01-06_phead/">
+                <span class="next-text nav-default">Phead, A PHP code generator</span>
+                <span class="prev-text nav-mobile">Next</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
       
-      <a class="post-link" href="/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/">透過 PHP 解析包含 BOM 的 CSV 文件</a>
-    </h1>
-    
-
-    <div class="post-meta">
-  <div class="post-meta-author">
-    by
-      absszero
-    
-  </div>
-
-  <div class="post-meta-time">
-    <time datetime="2019-08-26">
-      2019-08-26
-    </time>
-  </div>
-
-  
-
-
-  <div class="post-meta__right">
-    
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
-</div>
-
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        之前拿到的 csv 檔大部分都很乾淨，使用 PHP 內建的 fgetcsv 逐行解析不會有什麼問題，但今天解開一個欄位就發現它的字串長度跟預期的不同，並且無法用 ltrim 函式移除左
-      </div>
-      <div class="read-more">
-        <a href="/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/" class="read-more-link"
-          >Read more</a
-        >
-      </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
       
-      <a class="post-link" href="/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/">SublimeLinter-phpcs 使用自訂規則檔</a>
-    </h1>
-    
-
-    <div class="post-meta">
-  <div class="post-meta-author">
-    by
-      absszero
-    
-  </div>
-
-  <div class="post-meta-time">
-    <time datetime="2019-08-03">
-      2019-08-03
-    </time>
-  </div>
-
-  
 
 
-  <div class="post-meta__right">
-    
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
-</div>
-
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;
-      </div>
-      <div class="read-more">
-        <a href="/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/" class="read-more-link"
-          >Read more</a
-        >
-      </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
       
-      <a class="post-link" href="/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/">Hugo 開始書寫</a>
-    </h1>
-    
-
-    <div class="post-meta">
-  <div class="post-meta-author">
-    by
-      absszero
-    
-  </div>
-
-  <div class="post-meta-time">
-    <time datetime="2019-08-03">
-      2019-08-03
-    </time>
-  </div>
+      
 
   
 
+  
+  
 
-  <div class="post-meta__right">
-    
+  
+  
+
+  
+
+  
 
     
 
+  
+
+  
+
+
+    </div>
 
     
-    
-
-
-    
-    
-  </div>
-</div>
-
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 https://gohugo.io/tools/migrations/ ，選用 https://github.com/palaniraja/blog2md 將匯出的文章轉換成 Hugo 格式。隨
-      </div>
-      <div class="read-more">
-        <a href="/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/" class="read-more-link"
-          >Read more</a
-        >
-      </div>
-    
-  </div>
-</article>
-
-  
-</section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/">1</a>
-      </li>
-      
-      <li >
-        <a href="/page/2/">2</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/page/4/">4</a>
-      </li>
-      
-      <li >
-        <a href="/page/5/">5</a>
-      </li>
-      
-      <li >
-        <a href="/page/6/">6</a>
-      </li>
-      
-      <li >
-        <a href="/page/7/">7</a>
-      </li>
-      
-      <li >
-        <a href="/page/8/">8</a>
-      </li>
-      
-      <li >
-        <a href="/page/9/">9</a>
-      </li>
-      
-      <li >
-        <a href="/page/10/">10</a>
-      </li>
-      
-    </ul>
+    <nav class="toc" id="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#判斷依據">判斷依據</a></li>
+    <li><a href="#設定信任的-proxies">設定信任的 Proxies</a></li>
+    <li><a href="#如果都不行">如果都不行</a></li>
+  </ul>
+</nav>
+    </div>
   </nav>
 
-  
-  
 
-
-
-
-
+  </div>
 
       </main>
 
