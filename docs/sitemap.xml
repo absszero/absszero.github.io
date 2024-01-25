@@ -2,21 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/</loc>
-    <lastmod>2024-01-24T12:35:27+08:00</lastmod>
+    <loc>https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</loc>
+    <lastmod>2024-01-25T12:41:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/post/</loc>
-    <lastmod>2024-01-24T12:35:27+08:00</lastmod>
+    <lastmod>2024-01-25T12:41:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/</loc>
+    <lastmod>2024-01-25T12:41:15+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/</loc>
     <lastmod>2024-01-24T12:35:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
