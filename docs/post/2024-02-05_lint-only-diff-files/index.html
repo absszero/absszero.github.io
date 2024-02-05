@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          Mock multi openAPI documents with Prism via Traefik - 黑書記事
+          Lint only diff files - 黑書記事
         </title>
     
 
@@ -29,8 +29,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="absszero" />
-  <meta name="description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代" />
-<meta name="keywords" content="openAPI, Prism, Traefik" />
+  <meta name="description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做" />
+<meta name="keywords" content="lint, phpcs, github action" />
 
 
 
@@ -41,7 +41,7 @@
 <meta name="generator" content="Hugo 0.118.2" />
 
 
-<link rel="canonical" href="https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/" />
+<link rel="canonical" href="https://absszero.github.io/post/2024-02-05_lint-only-diff-files/" />
 
 
 
@@ -67,19 +67,19 @@
 
 
 
-<meta property="og:title" content="Mock multi openAPI documents with Prism via Traefik" />
-<meta property="og:description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代" />
+<meta property="og:title" content="Lint only diff files" />
+<meta property="og:description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2024-01-25T12:41:15+08:00" />
-<meta property="article:modified_time" content="2024-01-25T12:41:15+08:00" />
-<meta itemprop="name" content="Mock multi openAPI documents with Prism via Traefik">
-<meta itemprop="description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代"><meta itemprop="datePublished" content="2024-01-25T12:41:15+08:00" />
-<meta itemprop="dateModified" content="2024-01-25T12:41:15+08:00" />
-<meta itemprop="wordCount" content="554">
+<meta property="og:url" content="https://absszero.github.io/post/2024-02-05_lint-only-diff-files/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-02-05T13:51:30+08:00" />
+<meta property="article:modified_time" content="2024-02-05T13:51:30+08:00" />
+<meta itemprop="name" content="Lint only diff files">
+<meta itemprop="description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做"><meta itemprop="datePublished" content="2024-02-05T13:51:30+08:00" />
+<meta itemprop="dateModified" content="2024-02-05T13:51:30+08:00" />
+<meta itemprop="wordCount" content="757">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Mock multi openAPI documents with Prism via Traefik"/>
-<meta name="twitter:description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代"/>
+<meta name="twitter:title" content="Lint only diff files"/>
+<meta name="twitter:description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -295,7 +295,7 @@ if (!doNotTrack) {
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">Mock multi openAPI documents with Prism via Traefik</h1>
+          <h1 class="post-title">Lint only diff files</h1>
           
 
           <div class="post-meta">
@@ -306,8 +306,8 @@ if (!doNotTrack) {
   </div>
 
   <div class="post-meta-time">
-    <time datetime="2024-01-25">
-      2024-01-25
+    <time datetime="2024-02-05">
+      2024-02-05
     </time>
   </div>
 
@@ -333,70 +333,84 @@ if (!doNotTrack) {
 
         
         <div class="post-content">
-          <p>Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： <a href="https://docs.stoplight.io/docs/prism/4bf78efbf9dd2-serving-multiple-open-api-documents">Serving Multiple OpenAPI Documents</a>。該文章說明主要是透過 <a href="https://caddyserver.com/">Caddy</a> 作為反向代理伺服器，透過編修 <code>Caddyfile</code> 設定反向代理伺服器。</p>
-<p>而在近期接觸到 docker-compose 友好的  <code>Traefik</code> 之後，便心想透過 Traefik 作為代理伺服器。</p>
-<h2 id="目錄結構">目錄結構</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">| - specs</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">|   |-- petstore.yaml</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">|-- demo.yaml</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">|</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">|-- docker-compose.yaml</span>
-</span></span></code></pre></div><h2 id="docker-composeyaml">docker-compose.yaml</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">traefik</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#e6db74">&#39;traefik:v2.10&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;--api.insecure=true&#39;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;--providers.docker=true&#39;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;--entrypoints.web.address=:80&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;80:80&#39;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;8080:8080&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;/var/run/docker.sock:/var/run/docker.sock:ro&#39;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">petstore</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#e6db74">&#39;stoplight/prism:5&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;./specs:/tmp&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">mock -p 4010 --host 0.0.0.0 /tmp/petstore.yaml</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.services.petstore.loadbalancer.server.port=4010</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.routers.petstore.rule=PathPrefix(`/petstore`)</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.routers.petstore.middlewares=strip-petstore</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.middlewares.strip-petstore.stripprefix.prefixes=/petstore</span>
+          <p>過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做檢查即可。目前透過 Github action 嘗試進行設定，建立 Pull Request 的時候執行。</p>
+<h2 id="php">PHP</h2>
+<p>首先根目錄有 <code>phpcs.xml</code> 的 PHP CodeSniffer 設定檔，並且只在 php 檔案有變更或者設定檔變更的情況下觸發。先透過 curl 下載 PHP CodeSniffer，然後利用 <code>git diff</code> 跟目標分支比對出此次修改的檔案名稱跟路徑，並且利用 <code>--diff-filter=dr</code> 過濾掉刪除的檔案跟只是更名的檔案，最後透過 <code>egrep</code> 過濾出 php 結尾的檔案。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git diff --name-only --diff-filter<span style="color:#f92672">=</span>dr <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">${</span>{ github.event.pull_request.base.sha <span style="color:#e6db74">}</span><span style="color:#f92672">}</span> |egrep <span style="color:#e6db74">&#39;\.php$&#39;</span>
+</span></span></code></pre></div><p><code>github.event.pull_request.base.sha</code> 這個變數是目標分支的 SHA 值，通常是 master 分支的 SHA。但因為使用官方的 <code>actions/checkout</code> checkout 分支，預設只會包含目前 Pull Request 這支分支，所以要加上 <code>fetch-depth: 0</code> 這個參數，才能夠取得其他分支，這樣一來才能取得 master 的 SHA。</p>
+<p>綜合上述的說明，設計下方的 workflow：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Run lint</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">demo</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#e6db74">&#39;stoplight/prism:5&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;./specs:/tmp&#39;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">mock -p 4010 --host 0.0.0.0 /tmp/demo.yaml</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.services.demo.loadbalancer.server.port=4010</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.routers.demo.rule=PathPrefix(`/demo`)</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.routers.demo.middlewares=strip-demo</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">traefik.http.middlewares.strip-demo.stripprefix.prefixes=/demo</span>
-</span></span></code></pre></div><p>traefik 跟 prism 使用可參照官方說明，沒遇到什麼問題。當時實作遇到的癥結點是 labels 的設定。</p>
-<ul>
-<li>
-<p>prism 指定了 4010 port 作為服務 port。</p>
-<p><code>- traefik.http.services.petstore.loadbalancer.server.port=4010</code></p>
-</li>
-<li>
-<p>為了區別不同的 API 文件，使用路由下掛的方式處理。 <code>PathPrefix</code> 會匹配所有符合的路由到指定的 prism 容器。</p>
-<p><code>- traefik.http.routers.petstore.rule=PathPrefix(`/petstore`)</code></p>
-</li>
-<li>
-<p>由於 traefik 預設會將整個匹配路徑帶給 prism 容器。所以 <code>/petstore/pet</code>， prism 容器也會收到 <code>/petstore/pet</code>。需要將他去掉變成 <code>/pet</code>。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># 指定 petstore router 的 middlewares 名稱為 petstore</span>
-</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">traefik.http.routers.petstore.middlewares=strip-petstore</span>
-</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">traefik.http.middlewares.strip-petstore.stripprefix.prefixes=/petstore</span>
-</span></span></code></pre></div></li>
-</ul>
-<p>掛多個 API 文件的技巧類似，只是需要特別注意 <code>labels</code> 裡頭的命名。</p>
-<h2 id="自動生成-prism-容器">自動生成 prism 容器？</h2>
-<p>由於 specs 目錄下後續會放置多個 API 文件，原本希望在每次提交新的文件之後，透過 CI/CD 部署自動生成 prism。但由於 yaml 不支持 foreach 的功能。多半需要第三方的樣版引擎更新該文件。但也考量到文件越多 prism 使用越肥，而某些文件可能根本不需要 mock server。最後覺得有需要再添加到 docker-compose.yaml 可能是更理想的做法。</p>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pull_request</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 只在底下檔案有變動的情況觸發</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;**.php&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;phpcs.xml&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;.github/workflows/php-lint.yaml&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">lint</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v4</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar</span>          
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          php phpcs.phar --standard=./phpcs.xml $(git diff --diff-filter=dr --name-only ${{ github.event.pull_request.base.sha }} |egrep &#39;\.php$&#39;)</span>          
+</span></span></code></pre></div><p>網路上透過 <code>github action phpcs</code> 可以找到許多現成的 github action，功能更完善，包括整合機器人帳號可以自動提示等等。目前的訴求還很簡單，先簡單進行。</p>
+<h2 id="javascript">JavaScript</h2>
+<p>有 PHP 的例子之後，JS、TS 的部分就簡單多了。 <code>.eslintrc.js</code> 設定檔放置在根目錄，利用 npx 的方式執行 eslint，只檢查 ts, js 檔案的變更。 <code>package.json</code> 要先包含 <code>eslint</code> 的安裝。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Run lint</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pull_request</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;**.ts&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;**.js&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;.eslintrc.js&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;.github/workflows/js-lint.yaml&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">lint</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v4</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          npm install
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          npx eslint -c .eslintrc.js $(git diff --diff-filter=dr --name-only ${{ github.event.pull_request.base.sha }} |egrep &#39;\.[tj]s$&#39;)</span>          
+</span></span></code></pre></div><h2 id="css">CSS</h2>
+<p>CSS 的部分使用 <code>stylelint</code> 依法泡製，只檢查 css 檔案的變更。<code>package.json</code> 要先包含 <code>stylelint</code> 的安裝。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Run lint</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pull_request</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;**.css&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;.stylelintrc.json&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;.github/workflows/css-lint.yaml&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">lint</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v4</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          npm install
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          npx stylelint  -c .stylelintrc.json $(git diff --diff-filter=dr --name-only ${{ github.event.pull_request.base.sha }} |egrep &#39;\.css$&#39;)</span>          
+</span></span></code></pre></div><h2 id="話說">話說</h2>
+<p>話說上面的這三個工具其實都支援 cache 的使用，所以本地端檢查即是檢查全部，只要啟用快取速度上都挺快的。主要是 CI/CD 的環境沒有特別去維護快取內容所以預設都是重新檢查。因此這樣的改動才發揮它的價值。</p>
 
         </div>
 
@@ -410,7 +424,7 @@ if (!doNotTrack) {
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2024-01-25
+      2024-02-05
       
     </span>
   </p>
@@ -434,22 +448,9 @@ if (!doNotTrack) {
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/2024-02-05_lint-only-diff-files/">
-                
-                <i class="iconfont">
-                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-                </i>
-                <span class="prev-text nav-default">Lint only diff files</span>
-                <span class="prev-text nav-mobile">Prev</span>
-              </a>
             
-              <a class="next" href="/post/2024-01-24-laravel-load-balancer-https/">
-                <span class="next-text nav-default">Laravel x Load Balancer x HTTPS</span>
+              <a class="next" href="/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/">
+                <span class="next-text nav-default">Mock multi openAPI documents with Prism via Traefik</span>
                 <span class="prev-text nav-mobile">Next</span>
                 
                 <i class="iconfont">
@@ -499,9 +500,10 @@ if (!doNotTrack) {
     <div class="toc-content custom-scrollbar">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#目錄結構">目錄結構</a></li>
-    <li><a href="#docker-composeyaml">docker-compose.yaml</a></li>
-    <li><a href="#自動生成-prism-容器">自動生成 prism 容器？</a></li>
+    <li><a href="#php">PHP</a></li>
+    <li><a href="#javascript">JavaScript</a></li>
+    <li><a href="#css">CSS</a></li>
+    <li><a href="#話說">話說</a></li>
   </ul>
 </nav>
     </div>
