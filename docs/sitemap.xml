@@ -2,21 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</loc>
-    <lastmod>2024-02-05T13:51:30+08:00</lastmod>
+    <loc>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</loc>
+    <lastmod>2024-02-09T09:57:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/post/</loc>
-    <lastmod>2024-02-05T13:51:30+08:00</lastmod>
+    <lastmod>2024-02-09T09:57:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/</loc>
+    <lastmod>2024-02-09T09:57:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</loc>
     <lastmod>2024-02-05T13:51:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

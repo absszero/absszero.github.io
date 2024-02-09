@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Feb 2024 13:51:30 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Feb 2024 09:57:24 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>After extends the eslint rules</title>
+      <link>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</link>
+      <pubDate>Fri, 09 Feb 2024 09:57:24 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</guid>
+      <description>最早接觸到 TypeScript 開發是透過 VSCode 的 Your First Extension 範例。教學透過 Yeoman 使用 VS Code Extension Generator 產生。預設已經自帶 ESlint 檢查。所以也沒特別在意就直接開發。在近期我回頭檢視相關的規則</description>
+    </item>
+    
     <item>
       <title>Lint only diff files</title>
       <link>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</link>
@@ -176,15 +185,6 @@
       
       <guid>https://absszero.github.io/post/2016-04-11_%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</guid>
       <description>在官方手冊的頁面上有提供做 AND 運算的範例 &amp;lt;?php function andFunc($a, $b) { ​ return $a &amp;amp;&amp;amp; $b; } $foo = array(true, true, true); var_dump(array_reduce($foo, &amp;#34;andFunc&amp;#34;)); 而既然使用了 array_reduce，可以用來做更複雜的 AND 運用。例</description>
-    </item>
-    
-    <item>
-      <title>日光節約時間的陷阱</title>
-      <link>https://absszero.github.io/post/2016-04-06_%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</link>
-      <pubDate>Thu, 07 Apr 2016 02:03:29 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/post/2016-04-06_%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</guid>
-      <description>在 PHP 上面計算當前時間之後一週的時間，以 Timestamp 來計算 &amp;lt;?php $now = time(); $next_week = $now + 7 \* 86400; 如果今天是 2016 年 3 月 13 日的上午一點，地點是美國呢？於是一個小時之後實施日光</description>
     </item>
     
   </channel>
