@@ -7,7 +7,9 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Archive - 黑書記事</title>
+    <title>
+          Laravel dynamic facade - 黑書記事
+        </title>
     
 
 <meta name="renderer" content="webkit" />
@@ -27,6 +29,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="absszero" />
+  <meta name="description" content="Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用" />
+<meta name="keywords" content="Laravel, Facade" />
+
 
 
 
@@ -36,8 +41,8 @@
 <meta name="generator" content="Hugo 0.118.2" />
 
 
-<link rel="canonical" href="https://absszero.github.io/post/" />
-<link href="/post/index.xml" rel="alternate" type="application/rss+xml" title="黑書記事" />
+<link rel="canonical" href="https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/" />
+
 
 
 
@@ -62,14 +67,19 @@
 
 
 
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://absszero.github.io/post/" />
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
+<meta property="og:title" content="Laravel dynamic facade" />
+<meta property="og:description" content="Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-04-11T18:42:53+08:00" />
+<meta property="article:modified_time" content="2024-04-11T18:42:53+08:00" />
+<meta itemprop="name" content="Laravel dynamic facade">
+<meta itemprop="description" content="Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用"><meta itemprop="datePublished" content="2024-04-11T18:42:53+08:00" />
+<meta itemprop="dateModified" content="2024-04-11T18:42:53+08:00" />
+<meta itemprop="wordCount" content="353">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Laravel dynamic facade"/>
+<meta name="twitter:description" content="Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -235,7 +245,7 @@ if (!doNotTrack) {
 
       </li>
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -280,105 +290,169 @@ if (!doNotTrack) {
 
     <div id="mobile-panel">
       <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
         
-<section id="archive" class="archive">
-    
-      <div class="collection-title">
-        <h2 class="archive-year">2010</h2>
-      </div>
+        <header class="post-header">
+          <h1 class="post-title">Laravel dynamic facade</h1>
+          
 
-    <div class="archive-post">
-      <time datetime="2010-06-13" class="archive-post-time">
-        2010-06-13
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/2010-06-13_web-what-every-developer-should-know-about-urls/" class="archive-post-link">
-          [ Web ] What Every Developer Should Know About URLs
-        </a>
-      </span>
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      absszero
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2024-04-11">
+      2024-04-11
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    
+
+    
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <p>Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 <code>Illuminate\Support\Facades\Facade</code> 建立自己的 Facade。唯獨 <code>Dynamic Facade</code> 我今天才發現它的好用！</p>
+<h1 id="使用-app-容器的缺點">使用 app 容器的缺點</h1>
+<p>首先在過往還未使用 Dynamic Facade 的情境，最常使用的方法是 app 容器的方式來實現測試的 Mock。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// Test.php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 在測試中先使用 Mockery::mock
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$mock <span style="color:#f92672">=</span> <span style="color:#a6e22e">Mockery</span><span style="color:#f92672">::</span><span style="color:#a6e22e">mock</span>(<span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>$mock<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">shouldReceive</span>(<span style="color:#e6db74">&#39;someMethod&#39;</span>)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">andReturn</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// app 容器中綁定這個 mock 物件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">app</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">instance</span>(<span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>, $mock);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Source.php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 透過容器取得 MyClass，實現物件 mock
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>(<span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">someMethod</span>();
+</span></span></code></pre></div><p>上面的方法在過去的實現中有幾個明顯的缺點：</p>
+<ul>
+<li>Mock 物件需要綁定到 app 容器。</li>
+<li>需要透過 app 容器才能取得物件。</li>
+<li>IDE 工具上，原生無法透過點擊 <code>someMethod</code> 轉跳到該方法的定義。(至少 VScode 不行，但在 Sublime Text 上可以。)</li>
+</ul>
+<h1 id="改用-dynamic-facade-解決依賴注入缺點">改用 Dynamic Facade 解決依賴注入缺點</h1>
+<p>上面的問題在使用 Dynamic Facade 改寫之後：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// Test.php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Facades\MyClass</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">shouldReceive</span>(<span style="color:#e6db74">&#39;someMethod&#39;</span>)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">andReturn</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Source.php
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Facades\MyClass</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">someMethod</span>();
+</span></span></code></pre></div><p>已經沒有上述的問題，而且在類別方法的呼叫方面更貼近原生 PHP 的寫法。當然相信 Dynamic Facade 也不是完全沒有缺點，等後續的使用中慢慢體會囉～</p>
+
+        </div>
+
+        
+        
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">absszero</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      2024-04-11
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+            
+              <a class="next" href="/post/2024-02-09_after-extends-the-eslint-rules/">
+                <span class="next-text nav-default">After extends the eslint rules</span>
+                <span class="prev-text nav-mobile">Next</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+
+
+      
+      
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+    
+
+  
+
+  
+
+
     </div>
+
+    
     
 
-    <div class="archive-post">
-      <time datetime="2010-06-12" class="archive-post-time">
-        2010-06-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/2010-06-12_program-seven-pillars-of-pretty-code/" class="archive-post-link">
-          [ Program ] Seven Pillars of Pretty Code
-        </a>
-      </span>
-    </div>
-    
 
-    <div class="archive-post">
-      <time datetime="2010-06-12" class="archive-post-time">
-        2010-06-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/2010-06-11_new-arrival/" class="archive-post-link">
-          New Arrival !
-        </a>
-      </span>
-    </div></section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/post/">1</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/2/">2</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/4/">4</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/5/">5</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/post/page/6/">6</a>
-      </li>
-      
-    </ul>
-  </nav>
-
-  
-  
-
-
-
-
-
+  </div>
 
       </main>
 

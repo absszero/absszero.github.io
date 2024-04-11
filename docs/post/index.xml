@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 09 Feb 2024 09:57:24 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Apr 2024 18:42:53 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Laravel dynamic facade</title>
+      <link>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</link>
+      <pubDate>Thu, 11 Apr 2024 18:42:53 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</guid>
+      <description>Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用</description>
+    </item>
+    
     <item>
       <title>After extends the eslint rules</title>
       <link>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</link>
@@ -176,15 +185,6 @@
       
       <guid>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</guid>
       <description>除了官方的 Docker image 之外，sameersbn/redmine 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架</description>
-    </item>
-    
-    <item>
-      <title>使用 array_reduce 做 AND 邏輯運算</title>
-      <link>https://absszero.github.io/post/2016-04-11_%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</link>
-      <pubDate>Tue, 12 Apr 2016 02:23:18 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/post/2016-04-11_%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</guid>
-      <description>在官方手冊的頁面上有提供做 AND 運算的範例 &amp;lt;?php function andFunc($a, $b) { ​ return $a &amp;amp;&amp;amp; $b; } $foo = array(true, true, true); var_dump(array_reduce($foo, &amp;#34;andFunc&amp;#34;)); 而既然使用了 array_reduce，可以用來做更複雜的 AND 運用。例</description>
     </item>
     
   </channel>
