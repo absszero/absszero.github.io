@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          Laravel dynamic facade - 黑書記事
+          Test non-existent SQL functions - 黑書記事
         </title>
     
 
@@ -29,8 +29,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="absszero" />
-  <meta name="description" content="Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用" />
-<meta name="keywords" content="Laravel, Facade" />
+  <meta name="description" content="Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資" />
+<meta name="keywords" content="SQLite, Laravel, Test, PostgreSQL" />
 
 
 
@@ -41,7 +41,7 @@
 <meta name="generator" content="Hugo 0.118.2" />
 
 
-<link rel="canonical" href="https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/" />
+<link rel="canonical" href="https://absszero.github.io/post/2024-04-20_test-and-sql-functions/" />
 
 
 
@@ -67,19 +67,19 @@
 
 
 
-<meta property="og:title" content="Laravel dynamic facade" />
-<meta property="og:description" content="Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用" />
+<meta property="og:title" content="Test non-existent SQL functions" />
+<meta property="og:description" content="Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2024-04-11T18:42:53+08:00" />
-<meta property="article:modified_time" content="2024-04-11T18:42:53+08:00" />
-<meta itemprop="name" content="Laravel dynamic facade">
-<meta itemprop="description" content="Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用"><meta itemprop="datePublished" content="2024-04-11T18:42:53+08:00" />
-<meta itemprop="dateModified" content="2024-04-11T18:42:53+08:00" />
-<meta itemprop="wordCount" content="353">
+<meta property="og:url" content="https://absszero.github.io/post/2024-04-20_test-and-sql-functions/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-04-20T16:19:18+08:00" />
+<meta property="article:modified_time" content="2024-04-20T16:19:18+08:00" />
+<meta itemprop="name" content="Test non-existent SQL functions">
+<meta itemprop="description" content="Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資"><meta itemprop="datePublished" content="2024-04-20T16:19:18+08:00" />
+<meta itemprop="dateModified" content="2024-04-20T16:19:18+08:00" />
+<meta itemprop="wordCount" content="599">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Laravel dynamic facade"/>
-<meta name="twitter:description" content="Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用"/>
+<meta name="twitter:title" content="Test non-existent SQL functions"/>
+<meta name="twitter:description" content="Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -295,7 +295,7 @@ if (!doNotTrack) {
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">Laravel dynamic facade</h1>
+          <h1 class="post-title">Test non-existent SQL functions</h1>
           
 
           <div class="post-meta">
@@ -306,8 +306,8 @@ if (!doNotTrack) {
   </div>
 
   <div class="post-meta-time">
-    <time datetime="2024-04-11">
-      2024-04-11
+    <time datetime="2024-04-20">
+      2024-04-20
     </time>
   </div>
 
@@ -333,38 +333,31 @@ if (!doNotTrack) {
 
         
         <div class="post-content">
-          <p>Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 <code>Illuminate\Support\Facades\Facade</code> 建立自己的 Facade。唯獨 <code>Dynamic Facade</code> 我今天才發現它的好用！</p>
-<h1 id="使用-app-容器的缺點">使用 app 容器的缺點</h1>
-<p>首先在過往還未使用 Dynamic Facade 的情境，最常使用的方法是 app 容器的方式來實現測試的 Mock。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// Test.php
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 在測試中先使用 Mockery::mock
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$mock <span style="color:#f92672">=</span> <span style="color:#a6e22e">Mockery</span><span style="color:#f92672">::</span><span style="color:#a6e22e">mock</span>(<span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>);
-</span></span><span style="display:flex;"><span>$mock<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">shouldReceive</span>(<span style="color:#e6db74">&#39;someMethod&#39;</span>)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">andReturn</span>();
+          <p>Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資料庫的 SQL Function 問題。目前在 PostgreSQL 上使用 <code>TO_CHAR</code> 進行日期格式化。但 SQLite 並沒有相同的函式，但有相似的函式 <code>strftime</code>。</p>
+<h2 id="mock-dbraw">Mock DB:raw()</h2>
+<p>第一個想到做法是模擬對象 <code>DB:raw</code>，當查詢不複雜，這個方式方便有效。但如果整個查詢會用到很多 DB Facade 的時候，每一個用到的地方都需要適當的模擬。也因此。 <code>DB::connection()-&gt;enableQueryLog()</code> 跟 <code>DB::connection()-&gt;getQueryLog()</code> 也無法使用，如此一來就失去查看 DB Query 的作用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// Mock DB::raw
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">DB</span><span style="color:#f92672">::</span><span style="color:#a6e22e">shouldReceive</span>(<span style="color:#e6db74">&#39;raw&#39;</span>)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">andReturn</span>(<span style="color:#e6db74">&#34;strftime(&#39;%Y-%m-%d&#39;, created_at)&#34;</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// app 容器中綁定這個 mock 物件
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">app</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">instance</span>(<span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>, $mock);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Post</span><span style="color:#f92672">::</span><span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">DB</span><span style="color:#f92672">::</span><span style="color:#a6e22e">raw</span>(<span style="color:#e6db74">&#34;TO_CHAR(created_at, &#39;YYYY-MM-DD&#39;)&#34;</span>));
+</span></span></code></pre></div><h2 id="pdosqlitecreatefunction">PDO::sqliteCreateFunction()</h2>
+<p>再來是透過 <code>PDO::sqliteCreateFunction()</code> 可以在查詢使用到特定的 SQL Function 的時候，利用 PHP 的回調函式作為 SQLite 的 User Defined Function。<a href="https://www.php.net/manual/zh/pdo.sqlitecreatefunction.php">官方的手冊顯示這個方法還在實驗性階段</a>，得斟酌使用。
+第一次學到這個方法是在 <a href="https://medium.com/@reccatsai/laravel-%E7%82%BAsqlite-%E5%A2%9E%E5%8A%A0%E8%87%AA%E5%AE%9A-function-5ca116423f32">Laravel 為SQLite 增加自定 Function</a> 這邊文章提到。但實際使用過中主要問題是參數的不對稱。TO_CAHR 使用 YYYY-MM-DD 作為 20XX-XX-XX 顯示，但在 PHP 方面卻是 Y-m-d。為此會需要花額外功夫對應參數。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$connection <span style="color:#f92672">=</span> <span style="color:#a6e22e">\DB</span><span style="color:#f92672">::</span><span style="color:#a6e22e">connection</span>();
+</span></span><span style="display:flex;"><span>$connection<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getPdo</span>()<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">sqliteCreateFunction</span>(<span style="color:#e6db74">&#39;TO_CHAR&#39;</span>, <span style="color:#a6e22e">fn</span>($field, $format) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">date</span>(<span style="color:#e6db74">&#39;Y-m-d&#39;</span>, <span style="color:#a6e22e">strtotime</span>($field)));
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Source.php
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 透過容器取得 MyClass，實現物件 mock
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>(<span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">someMethod</span>();
-</span></span></code></pre></div><p>上面的方法在過去的實現中有幾個明顯的缺點：</p>
-<ul>
-<li>Mock 物件需要綁定到 app 容器。</li>
-<li>需要透過 app 容器才能取得物件。</li>
-<li>IDE 工具上，原生無法透過點擊 <code>someMethod</code> 轉跳到該方法的定義。(至少 VScode 不行，但在 Sublime Text 上可以。)</li>
-</ul>
-<h1 id="改用-dynamic-facade-解決依賴注入缺點">改用 Dynamic Facade 解決依賴注入缺點</h1>
-<p>上面的問題在使用 Dynamic Facade 改寫之後：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// Test.php
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Facades\MyClass</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Post</span><span style="color:#f92672">::</span><span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">DB</span><span style="color:#f92672">::</span><span style="color:#a6e22e">raw</span>(<span style="color:#e6db74">&#34;TO_CHAR(created_at, &#39;YYYY-MM-DD&#39;)&#34;</span>));
+</span></span></code></pre></div><h2 id="if-database-connection-is-sqlite">if database connection is sqlite</h2>
+<p>最後一個方式在程式碼裡頭做判斷，可以說是為了測試而寫程式。缺點就是得在程式碼中埋入相對應的測試用程式碼。但同時也避免的上述方法的缺點。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$dateFormat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;TO_CHAR(created_at, &#39;YYYY-MM-DD&#39;)&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#39;sqlite&#39;</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">config</span>(<span style="color:#e6db74">&#39;database.default&#39;</span>)) {
+</span></span><span style="display:flex;"><span>    $dateFormat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;strftime(&#39;%Y-%m-%d&#39;, created_at)&#34;</span>;
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">shouldReceive</span>(<span style="color:#e6db74">&#39;someMethod&#39;</span>)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">andReturn</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Source.php
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Facades\MyClass</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">MyClass</span><span style="color:#f92672">::</span><span style="color:#a6e22e">someMethod</span>();
-</span></span></code></pre></div><p>已經沒有上述的問題，而且在類別方法的呼叫方面更貼近原生 PHP 的寫法。當然相信 Dynamic Facade 也不是完全沒有缺點，等後續的使用中慢慢體會囉～</p>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Post</span><span style="color:#f92672">::</span><span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">DB</span><span style="color:#f92672">::</span><span style="color:#a6e22e">raw</span>($dateFormat));
+</span></span></code></pre></div><h2 id="總結">總結</h2>
+<p>以使用順序而言， <code>PDO::sqliteCreateFunction()</code> 可以優先考量，如果沒有對稱性問題的方法，可以統一在 TestCase 定義。滿足後續測試使用到相同 SQL Function 的問題。
+再者是 <code>Mock DB:raw</code>，在不複雜的情境可以模式對象解決。最後不行再進到程式碼編寫相對應的測試用程式碼。</p>
 
         </div>
 
@@ -378,7 +371,7 @@ if (!doNotTrack) {
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2024-04-11
+      2024-04-20
       
     </span>
   </p>
@@ -402,22 +395,9 @@ if (!doNotTrack) {
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/2024-04-20_test-and-sql-functions/">
-                
-                <i class="iconfont">
-                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-                </i>
-                <span class="prev-text nav-default">Test non-existent SQL functions</span>
-                <span class="prev-text nav-mobile">Prev</span>
-              </a>
             
-              <a class="next" href="/post/2024-02-09_after-extends-the-eslint-rules/">
-                <span class="next-text nav-default">After extends the eslint rules</span>
+              <a class="next" href="/post/2024-04-11_laravel-dynamic-facade/">
+                <span class="next-text nav-default">Laravel dynamic facade</span>
                 <span class="prev-text nav-mobile">Next</span>
                 
                 <i class="iconfont">
@@ -462,7 +442,19 @@ if (!doNotTrack) {
     </div>
 
     
-    
+    <nav class="toc" id="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mock-dbraw">Mock DB:raw()</a></li>
+    <li><a href="#pdosqlitecreatefunction">PDO::sqliteCreateFunction()</a></li>
+    <li><a href="#if-database-connection-is-sqlite">if database connection is sqlite</a></li>
+    <li><a href="#總結">總結</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
 
 
   </div>

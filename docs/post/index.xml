@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Apr 2024 18:42:53 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Apr 2024 16:19:18 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test non-existent SQL functions</title>
+      <link>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</link>
+      <pubDate>Sat, 20 Apr 2024 16:19:18 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</guid>
+      <description>Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資</description>
+    </item>
+    
     <item>
       <title>Laravel dynamic facade</title>
       <link>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</link>
@@ -176,15 +185,6 @@
       
       <guid>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</guid>
       <description>wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 https://gohugo.io/tools/migrations/ ，選用 https://github.com/palaniraja/blog2md 將匯出的文章轉換成 Hugo 格式。隨</description>
-    </item>
-    
-    <item>
-      <title>Redmine container with Docker</title>
-      <link>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</link>
-      <pubDate>Mon, 25 Jul 2016 14:34:41 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</guid>
-      <description>除了官方的 Docker image 之外，sameersbn/redmine 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架</description>
     </item>
     
   </channel>

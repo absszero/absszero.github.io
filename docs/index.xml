@@ -6,10 +6,46 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Apr 2024 18:42:53 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 20 Apr 2024 16:19:18 +0800</lastBuildDate>
     
         <atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Test non-existent SQL functions</title>
+      <link>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</link>
+      <pubDate>Sat, 20 Apr 2024 16:19:18 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</guid>
+      
+        <description>&lt;p&gt;Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資料庫的 SQL Function 問題。目前在 PostgreSQL 上使用 &lt;code&gt;TO_CHAR&lt;/code&gt; 進行日期格式化。但 SQLite 並沒有相同的函式，但有相似的函式 &lt;code&gt;strftime&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;mock-dbraw&#34;&gt;Mock DB:raw()&lt;/h2&gt;
+&lt;p&gt;第一個想到做法是模擬對象 &lt;code&gt;DB:raw&lt;/code&gt;，當查詢不複雜，這個方式方便有效。但如果整個查詢會用到很多 DB Facade 的時候，每一個用到的地方都需要適當的模擬。也因此。 &lt;code&gt;DB::connection()-&amp;gt;enableQueryLog()&lt;/code&gt; 跟 &lt;code&gt;DB::connection()-&amp;gt;getQueryLog()&lt;/code&gt; 也無法使用，如此一來就失去查看 DB Query 的作用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Mock DB::raw
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;DB&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;shouldReceive&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;raw&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;andReturn&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;strftime(&amp;#39;%Y-%m-%d&amp;#39;, created_at)&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Post&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;DB&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;raw&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TO_CHAR(created_at, &amp;#39;YYYY-MM-DD&amp;#39;)&amp;#34;&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;pdosqlitecreatefunction&#34;&gt;PDO::sqliteCreateFunction()&lt;/h2&gt;
+&lt;p&gt;再來是透過 &lt;code&gt;PDO::sqliteCreateFunction()&lt;/code&gt; 可以在查詢使用到特定的 SQL Function 的時候，利用 PHP 的回調函式作為 SQLite 的 User Defined Function。&lt;a href=&#34;https://www.php.net/manual/zh/pdo.sqlitecreatefunction.php&#34;&gt;官方的手冊顯示這個方法還在實驗性階段&lt;/a&gt;，得斟酌使用。
+第一次學到這個方法是在 &lt;a href=&#34;https://medium.com/@reccatsai/laravel-%E7%82%BAsqlite-%E5%A2%9E%E5%8A%A0%E8%87%AA%E5%AE%9A-function-5ca116423f32&#34;&gt;Laravel 為SQLite 增加自定 Function&lt;/a&gt; 這邊文章提到。但實際使用過中主要問題是參數的不對稱。TO_CAHR 使用 YYYY-MM-DD 作為 20XX-XX-XX 顯示，但在 PHP 方面卻是 Y-m-d。為此會需要花額外功夫對應參數。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$connection &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;\DB&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;connection&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$connection&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getPdo&lt;/span&gt;()&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sqliteCreateFunction&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;TO_CHAR&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;fn&lt;/span&gt;($field, $format) &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Y-m-d&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;strtotime&lt;/span&gt;($field)));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Post&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;DB&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;raw&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TO_CHAR(created_at, &amp;#39;YYYY-MM-DD&amp;#39;)&amp;#34;&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;if-database-connection-is-sqlite&#34;&gt;if database connection is sqlite&lt;/h2&gt;
+&lt;p&gt;最後一個方式在程式碼裡頭做判斷，可以說是為了測試而寫程式。缺點就是得在程式碼中埋入相對應的測試用程式碼。但同時也避免的上述方法的缺點。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$dateFormat &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TO_CHAR(created_at, &amp;#39;YYYY-MM-DD&amp;#39;)&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sqlite&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;===&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;database.default&amp;#39;&lt;/span&gt;)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    $dateFormat &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;strftime(&amp;#39;%Y-%m-%d&amp;#39;, created_at)&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Post&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;DB&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;raw&lt;/span&gt;($dateFormat));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;總結&#34;&gt;總結&lt;/h2&gt;
+&lt;p&gt;以使用順序而言， &lt;code&gt;PDO::sqliteCreateFunction()&lt;/code&gt; 可以優先考量，如果沒有對稱性問題的方法，可以統一在 TestCase 定義。滿足後續測試使用到相同 SQL Function 的問題。
+再者是 &lt;code&gt;Mock DB:raw&lt;/code&gt;，在不複雜的情境可以模式對象解決。最後不行再進到程式碼編寫相對應的測試用程式碼。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Laravel dynamic facade</title>
@@ -1775,25 +1811,6 @@ git commit -m %msg%
 REM Push source and build repos.
 git push origin master
 cd ..&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Redmine container with Docker</title>
-      <link>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</link>
-      <pubDate>Mon, 25 Jul 2016 14:34:41 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</guid>
-      
-        <description>&lt;p&gt;除了官方的 Docker image 之外，&lt;a href=&#34;https://hub.docker.com/r/sameersbn/redmine/&#34;&gt;sameersbn/redmine&lt;/a&gt; 算是最火紅的 image。安裝說明也十分詳細，不過目前搭配外部的 MySQL Sever，並且該 Server 架設在與 Docker 相同的主機上。需要注意的地方有兩點： 第一個是 MySQL 的 LISTEN IP，預設可能是 127.0.0.1，這邊將它設定成 0.0.0.0。 這部份從 /etc/mysql/my.cnf 修改 bind-address = 127.0.0.1 改為 bind-address = 0.0.0.0 第二是要考慮容器連接到外部的 MySQL 所走的路由閘道位置，預設應該是 docker0 這張虛擬網卡的 IP。假設是 172.17.42.1 最後使用底下指令啟動容器： &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; docker run &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;redmine -d -p 40000:80 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--env&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DB_ADAPTER=mysql2&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--env&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DB_HOST=172.17.42.1&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--env&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DB_USER=redmine&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--env&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DB_PASS=password&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--volume&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/volume1/redmine:/home/redmine/data &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;sameersbn/redmine:3.3.3-1&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 </description>
       
     </item>
