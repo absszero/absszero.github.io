@@ -3,20 +3,27 @@
   
   <url>
     <loc>https://absszero.github.io/post/</loc>
-    <lastmod>2024-04-20T16:19:18+08:00</lastmod>
+    <lastmod>2024-06-11T21:19:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</loc>
-    <lastmod>2024-04-20T16:19:18+08:00</lastmod>
+    <loc>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</loc>
+    <lastmod>2024-06-11T21:19:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://absszero.github.io/</loc>
+    <lastmod>2024-06-11T21:19:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</loc>
     <lastmod>2024-04-20T16:19:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

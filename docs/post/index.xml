@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Apr 2024 16:19:18 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Jun 2024 21:19:58 +0800</lastBuildDate><atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Speed up Laravel test</title>
+      <link>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</link>
+      <pubDate>Tue, 11 Jun 2024 21:19:58 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</guid>
+      <description>In Memory 最近在進行一個既有專案的開發，為了能夠在上面做單元測試，著手進行準備工作。首先嘗試用 SQlite InMemory 的方式。然後在 TestCase 繼承了 RefreshDatabase 處理資料庫的初始化。 namespace Tests;</description>
+    </item>
+    
     <item>
       <title>Test non-existent SQL functions</title>
       <link>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</link>
@@ -176,15 +185,6 @@
       
       <guid>https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</guid>
       <description>為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &amp;#34;linters&amp;#34;: { &amp;#34;phpcs&amp;#34;: { &amp;#34;args&amp;#34;: &amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34; } } } 個別專案設定，設定在 *.sublime-project { &amp;#34;settings&amp;#34;: { &amp;#34;SublimeLinter.linters.phpcs.args&amp;#34;: &amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34;</description>
-    </item>
-    
-    <item>
-      <title>Hugo 開始書寫</title>
-      <link>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</link>
-      <pubDate>Sat, 03 Aug 2019 14:29:59 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</guid>
-      <description>wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 https://gohugo.io/tools/migrations/ ，選用 https://github.com/palaniraja/blog2md 將匯出的文章轉換成 Hugo 格式。隨</description>
     </item>
     
   </channel>

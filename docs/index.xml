@@ -6,10 +6,89 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Apr 2024 16:19:18 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 11 Jun 2024 21:19:58 +0800</lastBuildDate>
     
         <atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Speed up Laravel test</title>
+      <link>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</link>
+      <pubDate>Tue, 11 Jun 2024 21:19:58 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</guid>
+      
+        <description>&lt;h2 id=&#34;in-memory&#34;&gt;In Memory&lt;/h2&gt;
+&lt;p&gt;最近在進行一個既有專案的開發，為了能夠在上面做單元測試，著手進行準備工作。首先嘗試用 SQlite InMemory 的方式。然後在 TestCase 繼承了 &lt;code&gt;RefreshDatabase&lt;/code&gt; 處理資料庫的初始化。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;namespace&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Tests&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Illuminate\Foundation\Testing\RefreshDatabase&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Illuminate\Foundation\Testing\TestCase&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;BaseTestCase&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;abstract&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;TestCase&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;BaseTestCase&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CreatesApplication&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;RefreshDatabase&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;由於當前的專案超過 120 個表，並且包含 260 以上的 migration 需要執行，任何一個測試初始化大約都需要十秒以上的時間。仔細查看 &lt;code&gt;RefreshDatabase&lt;/code&gt; 的原始碼，會發現其實在 InMemory 的實作，每一次都是重新執行一次 migration。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;     * Refresh the in-memory database.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;     *
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;     * @return void
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;     */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;refreshInMemoryDatabase&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        $this&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;artisan&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;migrate&amp;#39;&lt;/span&gt;, $this&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;migrateUsing&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        $this&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;Kernel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setArtisan&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;real-server&#34;&gt;Real Server&lt;/h2&gt;
+&lt;p&gt;畢竟這是記憶體的特性，不會保留上一次測試的執行的資料庫環境。但為了盡可能加速資料庫，開始考慮使用真實資料庫的情況。有幾個好處跟壞處：&lt;/p&gt;
+&lt;p&gt;好處：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SQL 語法跟產品環境完全相容。不需要針對 SQL 語法不同的地方改寫測試。&lt;/li&gt;
+&lt;li&gt;上一次測試的 schema 會持續保留到後續的測試。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;壞處：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;磁碟的速度遠慢於記憶體，擔心換到真實資料庫測試，也許速度不會有太大改善。&lt;/li&gt;
+&lt;li&gt;實際上到 CI/CD 的主機執行測試，也得準備測試用的資料庫。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;由於現行也想不到其他更好的辦法，直接開了一個新的 DB Server 作為測試資料庫用。最後測試結果很理想，實際上單一測試的初始化時間，縮短了 &lt;code&gt;10&lt;/code&gt; 秒左右。&lt;/p&gt;
+&lt;h2 id=&#34;dumped-schema&#34;&gt;Dumped Schema&lt;/h2&gt;
+&lt;p&gt;為了讓測試速度更近一步地縮短，接著打算利用 Laravel 8 &lt;code&gt;schema:dump&lt;/code&gt; 指令，先將當前的測試資料庫包含相關已執行的 migration 建立一個 SQL 備份。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./artisan schema:dump --database&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;testing_pgsql
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;執行之後多一份 &lt;code&gt;database/schema/testing_pgsql-schema.dump&lt;/code&gt; 檔案，由於&lt;a href=&#34;https://github.com/laravel/framework/blob/1ca3acff94e4ff409451370fd03638670d30b5cb/src/Illuminate/Database/Schema/PostgresSchemaState.php#L61&#34;&gt;官方採用的備份指令&lt;/a&gt;沒有包含備份的格式，預設會使用 &lt;code&gt;pg_dump&lt;/code&gt; 預設的格式匯出資料庫。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pg_dump --no-owner --no-acl --host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;:LARAVEL_LOAD_HOST&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--port&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;:LARAVEL_LOAD_PORT&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--username&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;:LARAVEL_LOAD_USER&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--dbname&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;:LARAVEL_LOAD_DATABASE&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我則是另外用指令加上 &lt;code&gt;Fp&lt;/code&gt; 匯出純文字的 SQL 檔案，方便後續可以直接編輯。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pg_dump --no-owner --no-comments --no-acl -Fp &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;:LARAVEL_LOAD_HOST&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--port&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;:LARAVEL_LOAD_PORT&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--username&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;:LARAVEL_LOAD_USER&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;--dbname&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;:LARAVEL_LOAD_DATABASE&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;實際測試的結果，大約縮短 &lt;code&gt;1.5&lt;/code&gt; 秒左右。&lt;/p&gt;
+&lt;h2 id=&#34;ram-disk&#34;&gt;Ram Disk&lt;/h2&gt;
+&lt;p&gt;然後在翻找資料的過程，有人提到他利用 Ram Disk 將容器掛載到該磁碟。於是我也找來 &lt;a href=&#34;https://github.com/imothee/tmpdisk&#34;&gt;TmpDisk&lt;/a&gt; 建立一個記憶體磁碟，大約配置 256 MB 的記憶體就足夠了。接著把資料庫初始化在該磁碟上。然後手動建立一個空的資料庫。&lt;/p&gt;
+&lt;p&gt;實測的結果速度又縮短了 &lt;code&gt;0.5&lt;/code&gt; 秒左右。但有一個明顯的缺點是，每一次重新開機，就得重新再做一次資料庫初始化，頗為麻煩，最後還是直接使用真實磁碟作為測試資料庫。&lt;/p&gt;
+&lt;h2 id=&#34;cicd&#34;&gt;CI/CD&lt;/h2&gt;
+&lt;p&gt;最終就是整合到 CI/CD 的環境，幸好 GitHub Action 已經有可利用的 &lt;a href=&#34;https://github.com/marketplace/actions/setup-postgresql-with-postgresql-extensions-and-unprivileged-user&#34;&gt;Action&lt;/a&gt;。輕鬆透過容器化建立一個測試資料庫，用於自動化單元測試。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Setup Postgres database&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Daniel-Marynicz/postgresql-action@master&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;postgres_user&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;postgres&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;postgres_password&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;postgres&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;postgres_db&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;my_database&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;exposed_postgres_port&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;5432&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;結論&#34;&gt;結論&lt;/h2&gt;
+&lt;p&gt;過往總是使用 SQLite In Memory 的特性建立測試，所以很自然的選擇用此當做測試的資料庫。但也由於不同資料庫之間的語法各異，許多資料庫原生的方法調用就會有所顧忌。現在有真實資料庫的加持，總算能夠在更貼近產品環境的範圍下，進行測試的建構與驗證。也從當中發現許多只有在用真實資料庫才會遇到的問題。&lt;/p&gt;
+&lt;p&gt;像是使用 Factory 建構測試資料的時候，就遇到許多隨機產生的內容，由於超出欄位長度而產生錯誤，但在 SQLite 由於使用動態欄位長度的緣故，沒有產生錯誤。另外在確認 SQL
+語法的時候，所產生的語法也會貼近真實資料的內容，而非 SQLite 的內容。這樣更容易複製再透過資料庫查詢工具，檢查實際的情況。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Test non-existent SQL functions</title>
@@ -1780,37 +1859,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Time: 1.32 secs; Memory: 8Mb&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;確定找得到問題之後，回到編輯器，看到底下畫面表示設定正確了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://absszero.github.io/SublimeLinter-phpcs.jpg&#34; alt=&#34;editor&#34;&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Hugo 開始書寫</title>
-      <link>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</link>
-      <pubDate>Sat, 03 Aug 2019 14:29:59 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</guid>
-      
-        <description>&lt;p&gt;wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 &lt;a href=&#34;https://gohugo.io/tools/migrations/&#34;&gt;https://gohugo.io/tools/migrations/&lt;/a&gt; ，選用 &lt;a href=&#34;https://github.com/palaniraja/blog2md&#34;&gt;https://github.com/palaniraja/blog2md&lt;/a&gt; 將匯出的文章轉換成 Hugo 格式。隨後參考 &lt;a href=&#34;https://gohugo.io/hosting-and-deployment/hosting-on-github/&#34;&gt;https://gohugo.io/hosting-and-deployment/hosting-on-github/&lt;/a&gt; 把網站發布到 Github 上面。&lt;/p&gt;
-&lt;p&gt;按照範例說明，會在 Github 建立兩個 Reposiotry，一個儲存靜態發布前的相關檔案，也就是 Hugo 的目錄結構本身，一個放置靜態網站，也就是 Hugo 產生的靜態網站。每次更新，都需要一連串的操作跟 git 提交。因為有點囉唆所以說明有提供 &lt;code&gt;deploy.sh&lt;/code&gt; 協助簡化這些動作。目前也寫了類似的發佈檔 &lt;code&gt;deploy.bat&lt;/code&gt; 提供在 Windows 底下使用。附上 &lt;code&gt;deploy.bat&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-Batchfile&#34; data-lang=&#34;Batchfile&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;@ECHO OFF&lt;/p&gt;
-&lt;p&gt;ECHO Deploying updates to GitHub&amp;hellip;&lt;/p&gt;
-&lt;p&gt;REM Build the project.
-hugo
-REM Go To Public folder
-cd public
-REM Add changes to git.
-git add .
-REM Commit changes.
-SET msg=&amp;ldquo;rebuilding site %DATE%&amp;rdquo;
-if NOT &amp;ldquo;%1&amp;rdquo;==&amp;quot;&amp;quot; (
-SET msg=%1
-)
-git commit -m %msg%
-REM Push source and build repos.
-git push origin master
-cd ..&lt;/p&gt;
 </description>
       
     </item>
