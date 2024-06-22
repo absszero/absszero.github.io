@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hash on 黑書記事</title>
+    <title>Hash on 黑書記事</title>
     <link>https://absszero.github.io/tags/hash/</link>
-    <description>Recent content in hash on 黑書記事</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Hash on 黑書記事</description>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 11 Jul 2010 12:41:50 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/hash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jul 2010 12:41:50 +0800</lastBuildDate>
+    <atom:link href="https://absszero.github.io/tags/hash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[ PHP ] Unpredictable hashes for humans</title>
       <link>https://absszero.github.io/post/2010-07-11_php-unpredictable-hashes-for-humans/</link>
       <pubDate>Sun, 11 Jul 2010 12:41:50 +0800</pubDate>
-      
       <guid>https://absszero.github.io/post/2010-07-11_php-unpredictable-hashes-for-humans/</guid>
       <description>Unpredictable hashes for humans http://seld.be/notes/unpredictable-hashes-for-humans 對網站開發人員產生隨機的 ID 或者雜湊值是很常見的事情， 舉個例子，大型的專案或者開發框架可能需要實現自己的 PHP session 處理器，或者在 API 當中把這</description>
     </item>
-    
   </channel>
 </rss>

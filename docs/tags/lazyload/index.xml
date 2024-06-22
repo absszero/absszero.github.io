@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>lazyload on 黑書記事</title>
+    <title>Lazyload on 黑書記事</title>
     <link>https://absszero.github.io/tags/lazyload/</link>
-    <description>Recent content in lazyload on 黑書記事</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Lazyload on 黑書記事</description>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 28 Mar 2015 05:14:33 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/lazyload/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Mar 2015 05:14:33 +0800</lastBuildDate>
+    <atom:link href="https://absszero.github.io/tags/lazyload/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VisSense.js 與延遲載入</title>
       <link>https://absszero.github.io/post/2015-03-27_vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</link>
       <pubDate>Sat, 28 Mar 2015 05:14:33 +0800</pubDate>
-      
       <guid>https://absszero.github.io/post/2015-03-27_vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</guid>
       <description>VisSense.js 可以提供某個 HTML 元件目前在使用者的畫面出現的情況。例如是否完全出現(fullyvisible)、隱藏(hidden)，甚至出現出現在畫面上的</description>
     </item>
-    
   </channel>
 </rss>

@@ -35,7 +35,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.118.2" />
+<meta name="generator" content="Hugo 0.127.0" />
 
 
 <link rel="canonical" href="https://absszero.github.io/" />
@@ -64,14 +64,16 @@
 
 
 
-<meta property="og:title" content="黑書記事" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://absszero.github.io/" />
-<meta itemprop="name" content="黑書記事">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="黑書記事"/>
-<meta name="twitter:description" content=""/>
+<meta property="og:url" content="https://absszero.github.io/">
+  <meta property="og:site_name" content="黑書記事">
+  <meta property="og:title" content="黑書記事">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="黑書記事">
+  <meta itemprop="dateModified" content="2024-06-22T08:11:35+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="黑書記事">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -83,16 +85,25 @@
 <![endif]-->
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-2Z1H3QRTPM', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2Z1H3QRTPM');
+        }
+      </script>
+    
+  
+
 
 
 
@@ -289,6 +300,62 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/">Prism 建立 API Server</a>
+    </h1>
+    
+
+    <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      absszero
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2020-02-06">
+      2020-02-06
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    
+
+    
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+  </header>
+  
+  <div class="post-content">
+    
+      <div class="post-summary">
+        Why Prism 撰寫一份 API 文件有許多方式，其中一種是根據 OpenAPI 規範。而在完成 API 規劃後通常搭配如 Swagger UI 將規範文件變成容易閱讀 API 文件。 但前端人員在真實 API 拿到之前，
+      </div>
+      <div class="read-more">
+        <a href="/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/" class="read-more-link"
+          >Read more</a
+        >
+      </div>
+    
+  </div>
+</article>
+
   
     <article class="post">
   <header class="post-header">
@@ -514,62 +581,6 @@ if (!doNotTrack) {
 </article>
 
   
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/">SublimeLinter-phpcs 使用自訂規則檔</a>
-    </h1>
-    
-
-    <div class="post-meta">
-  <div class="post-meta-author">
-    by
-      absszero
-    
-  </div>
-
-  <div class="post-meta-time">
-    <time datetime="2019-08-03">
-      2019-08-03
-    </time>
-  </div>
-
-  
-
-
-  <div class="post-meta__right">
-    
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
-</div>
-
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;
-      </div>
-      <div class="read-more">
-        <a href="/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/" class="read-more-link"
-          >Read more</a
-        >
-      </div>
-    
-  </div>
-</article>
-
-  
 </section>
 
 
@@ -637,6 +648,10 @@ if (!doNotTrack) {
       
       <li >
         <a href="/page/11/">11</a>
+      </li>
+      
+      <li >
+        <a href="/page/12/">12</a>
       </li>
       
     </ul>
@@ -739,7 +754,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.c052847d751d53ca83f01f249a0bd75167b2d2e1489b84229df027aa77da6dda.js" integrity="sha256-wFKEfXUdU8qD8B8kmgvXUWey0uFIm4QinfAnqnfabdo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.371305d7f17a1558f54cbbe1ae38cfe1becdedc44ef0b2e9af834df8410a86ab.js" integrity="sha256-NxMF1/F6FVj1TLvhrjjP4b7N7cRO8LLpr4NN&#43;EEKhqs=" crossorigin="anonymous"></script>
 
 
 

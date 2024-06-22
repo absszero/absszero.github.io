@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>font on 黑書記事</title>
+    <title>Font on 黑書記事</title>
     <link>https://absszero.github.io/tags/font/</link>
-    <description>Recent content in font on 黑書記事</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Font on 黑書記事</description>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Aug 2012 10:22:13 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/font/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Aug 2012 10:22:13 +0800</lastBuildDate>
+    <atom:link href="https://absszero.github.io/tags/font/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>字體的念法</title>
       <link>https://absszero.github.io/post/2012-08-18_%E5%AD%97%E9%AB%94%E7%9A%84%E5%BF%B5%E6%B3%95/</link>
       <pubDate>Sat, 18 Aug 2012 10:22:13 +0800</pubDate>
-      
       <guid>https://absszero.github.io/post/2012-08-18_%E5%AD%97%E9%AB%94%E7%9A%84%E5%BF%B5%E6%B3%95/</guid>
       <description>Verdana http://www.howjsay.com/index.php?word=verdana Arial http://www.howjsay.com/index.php?word=arial Helvetica http://www.howjsay.com/index.php?word=helvetica</description>
     </item>
-    
   </channel>
 </rss>

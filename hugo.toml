@@ -76,6 +76,9 @@ defaultContentLanguage = "en"           # Default language to use
   customCSS = []            # if ['custom.css'], load '/static/css/custom.css' file
   customJS = []             # if ['custom.js'], load '/static/js/custom.js' file
 
+  [params.author]
+    name = "absszero"        # essential                     # 必需
+
   [params.social]                                         # 社交链接
     # a-email = "mailto:your@email.com"
     # b-stack-overflow = "http://localhost:1313"

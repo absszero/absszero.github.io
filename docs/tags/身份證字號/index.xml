@@ -4,17 +4,16 @@
     <title>身份證字號 on 黑書記事</title>
     <link>https://absszero.github.io/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/</link>
     <description>Recent content in 身份證字號 on 黑書記事</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Apr 2012 06:02:44 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Apr 2012 06:02:44 +0800</lastBuildDate>
+    <atom:link href="https://absszero.github.io/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>檢測大陸身份證字號 for PHP</title>
       <link>https://absszero.github.io/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</link>
       <pubDate>Mon, 23 Apr 2012 06:02:44 +0800</pubDate>
-      
       <guid>https://absszero.github.io/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</guid>
       <description>PHP 版本的檢測大陸身份證字號 &amp;lt;?php $id = trim($id); //長度檢查 $string_length = strlen($id); if ( $string_length != 18) { return false; } //數字檢查 //前17碼必須為數字 for ($i = 0; $i &amp;amp;lt; $string_length - 1; $i++) { if ( ! is_numeric($id[$i]) ) { return</description>
     </item>
-    
   </channel>
 </rss>

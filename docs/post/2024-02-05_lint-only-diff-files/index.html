@@ -38,7 +38,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.118.2" />
+<meta name="generator" content="Hugo 0.127.0" />
 
 
 <link rel="canonical" href="https://absszero.github.io/post/2024-02-05_lint-only-diff-files/" />
@@ -67,19 +67,25 @@
 
 
 
-<meta property="og:title" content="Lint only diff files" />
-<meta property="og:description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/2024-02-05_lint-only-diff-files/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2024-02-05T13:51:30+08:00" />
-<meta property="article:modified_time" content="2024-02-05T13:51:30+08:00" />
-<meta itemprop="name" content="Lint only diff files">
-<meta itemprop="description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做"><meta itemprop="datePublished" content="2024-02-05T13:51:30+08:00" />
-<meta itemprop="dateModified" content="2024-02-05T13:51:30+08:00" />
-<meta itemprop="wordCount" content="757">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Lint only diff files"/>
-<meta name="twitter:description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做"/>
+<meta property="og:url" content="https://absszero.github.io/post/2024-02-05_lint-only-diff-files/">
+  <meta property="og:site_name" content="黑書記事">
+  <meta property="og:title" content="Lint only diff files">
+  <meta property="og:description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-02-05T13:51:30+08:00">
+    <meta property="article:modified_time" content="2024-02-05T13:51:30+08:00">
+
+  <meta itemprop="name" content="Lint only diff files">
+  <meta itemprop="description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做">
+  <meta itemprop="datePublished" content="2024-02-05T13:51:30+08:00">
+  <meta itemprop="dateModified" content="2024-02-05T13:51:30+08:00">
+  <meta itemprop="wordCount" content="757">
+  <meta itemprop="keywords" content="lint,phpcs,github action">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Lint only diff files">
+  <meta name="twitter:description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,16 +97,25 @@
 <![endif]-->
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-2Z1H3QRTPM', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2Z1H3QRTPM');
+        }
+      </script>
+    
+  
+
 
 
 
@@ -614,7 +629,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.c052847d751d53ca83f01f249a0bd75167b2d2e1489b84229df027aa77da6dda.js" integrity="sha256-wFKEfXUdU8qD8B8kmgvXUWey0uFIm4QinfAnqnfabdo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.371305d7f17a1558f54cbbe1ae38cfe1becdedc44ef0b2e9af834df8410a86ab.js" integrity="sha256-NxMF1/F6FVj1TLvhrjjP4b7N7cRO8LLpr4NN&#43;EEKhqs=" crossorigin="anonymous"></script>
 
 
 

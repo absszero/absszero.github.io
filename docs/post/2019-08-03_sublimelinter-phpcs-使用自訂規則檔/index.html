@@ -37,7 +37,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.118.2" />
+<meta name="generator" content="Hugo 0.127.0" />
 
 
 <link rel="canonical" href="https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/" />
@@ -66,19 +66,24 @@
 
 
 
-<meta property="og:title" content="SublimeLinter-phpcs 使用自訂規則檔" />
-<meta property="og:description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-08-03T16:57:39+08:00" />
-<meta property="article:modified_time" content="2019-08-03T16:57:39+08:00" />
-<meta itemprop="name" content="SublimeLinter-phpcs 使用自訂規則檔">
-<meta itemprop="description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;"><meta itemprop="datePublished" content="2019-08-03T16:57:39+08:00" />
-<meta itemprop="dateModified" content="2019-08-03T16:57:39+08:00" />
-<meta itemprop="wordCount" content="235">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SublimeLinter-phpcs 使用自訂規則檔"/>
-<meta name="twitter:description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;"/>
+<meta property="og:url" content="https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/">
+  <meta property="og:site_name" content="黑書記事">
+  <meta property="og:title" content="SublimeLinter-phpcs 使用自訂規則檔">
+  <meta property="og:description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-08-03T16:57:39+08:00">
+    <meta property="article:modified_time" content="2019-08-03T16:57:39+08:00">
+
+  <meta itemprop="name" content="SublimeLinter-phpcs 使用自訂規則檔">
+  <meta itemprop="description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;">
+  <meta itemprop="datePublished" content="2019-08-03T16:57:39+08:00">
+  <meta itemprop="dateModified" content="2019-08-03T16:57:39+08:00">
+  <meta itemprop="wordCount" content="235">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SublimeLinter-phpcs 使用自訂規則檔">
+  <meta name="twitter:description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -90,16 +95,25 @@
 <![endif]-->
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-2Z1H3QRTPM', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2Z1H3QRTPM');
+        }
+      </script>
+    
+  
+
 
 
 
@@ -362,7 +376,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Time: 1.32 secs; Memory: 8Mb</span></span></code></pre></div>
 <p>確定找得到問題之後，回到編輯器，看到底下畫面表示設定正確了。</p>
-<p><img src="/SublimeLinter-phpcs.jpg" alt="editor"></p>
+<p><img alt="editor" src="/SublimeLinter-phpcs.jpg"></p>
 
         </div>
 
@@ -554,7 +568,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.c052847d751d53ca83f01f249a0bd75167b2d2e1489b84229df027aa77da6dda.js" integrity="sha256-wFKEfXUdU8qD8B8kmgvXUWey0uFIm4QinfAnqnfabdo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.371305d7f17a1558f54cbbe1ae38cfe1becdedc44ef0b2e9af834df8410a86ab.js" integrity="sha256-NxMF1/F6FVj1TLvhrjjP4b7N7cRO8LLpr4NN&#43;EEKhqs=" crossorigin="anonymous"></script>
 
 
 

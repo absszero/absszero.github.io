@@ -37,7 +37,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.118.2" />
+<meta name="generator" content="Hugo 0.127.0" />
 
 
 <link rel="canonical" href="https://absszero.github.io/post/2012-04-14_monitoring-jboss-logfile-with-chainsaw-v2/" />
@@ -66,19 +66,27 @@
 
 
 
-<meta property="og:title" content="Monitoring JBoss logfile with Chainsaw v2" />
-<meta property="og:description" content="Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 &lt;log4j:configuration xmlns:log4j=&#34;http://jakarta.apache.org/log4j/&#34; debug=&#34;false&#34;&gt; ... &lt;/log4j:configuration&gt; 之間增加一個 appender &lt;appender name=&#34;SOCKET&#34; class=&#34;org.apache.log4j.net.SocketHubAppender&#34;&gt; &lt;param name=&#34;Port&#34; value=&#34;8888&#34;/&gt; &lt;/appender&gt;" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/2012-04-14_monitoring-jboss-logfile-with-chainsaw-v2/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2012-04-15T02:54:42+08:00" />
-<meta property="article:modified_time" content="2012-04-15T02:54:42+08:00" />
-<meta itemprop="name" content="Monitoring JBoss logfile with Chainsaw v2">
-<meta itemprop="description" content="Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 &lt;log4j:configuration xmlns:log4j=&#34;http://jakarta.apache.org/log4j/&#34; debug=&#34;false&#34;&gt; ... &lt;/log4j:configuration&gt; 之間增加一個 appender &lt;appender name=&#34;SOCKET&#34; class=&#34;org.apache.log4j.net.SocketHubAppender&#34;&gt; &lt;param name=&#34;Port&#34; value=&#34;8888&#34;/&gt; &lt;/appender&gt;"><meta itemprop="datePublished" content="2012-04-15T02:54:42+08:00" />
-<meta itemprop="dateModified" content="2012-04-15T02:54:42+08:00" />
-<meta itemprop="wordCount" content="306">
-<meta itemprop="keywords" content="apache chainsaw jboss log4j,IT 筆記," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Monitoring JBoss logfile with Chainsaw v2"/>
-<meta name="twitter:description" content="Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 &lt;log4j:configuration xmlns:log4j=&#34;http://jakarta.apache.org/log4j/&#34; debug=&#34;false&#34;&gt; ... &lt;/log4j:configuration&gt; 之間增加一個 appender &lt;appender name=&#34;SOCKET&#34; class=&#34;org.apache.log4j.net.SocketHubAppender&#34;&gt; &lt;param name=&#34;Port&#34; value=&#34;8888&#34;/&gt; &lt;/appender&gt;"/>
+<meta property="og:url" content="https://absszero.github.io/post/2012-04-14_monitoring-jboss-logfile-with-chainsaw-v2/">
+  <meta property="og:site_name" content="黑書記事">
+  <meta property="og:title" content="Monitoring JBoss logfile with Chainsaw v2">
+  <meta property="og:description" content="Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 &lt;log4j:configuration xmlns:log4j=&#34;http://jakarta.apache.org/log4j/&#34; debug=&#34;false&#34;&gt; ... &lt;/log4j:configuration&gt; 之間增加一個 appender &lt;appender name=&#34;SOCKET&#34; class=&#34;org.apache.log4j.net.SocketHubAppender&#34;&gt; &lt;param name=&#34;Port&#34; value=&#34;8888&#34;/&gt; &lt;/appender&gt;">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2012-04-15T02:54:42+08:00">
+    <meta property="article:modified_time" content="2012-04-15T02:54:42+08:00">
+    <meta property="article:tag" content="Apache Chainsaw Jboss Log4j">
+    <meta property="article:tag" content="IT 筆記">
+
+  <meta itemprop="name" content="Monitoring JBoss logfile with Chainsaw v2">
+  <meta itemprop="description" content="Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 &lt;log4j:configuration xmlns:log4j=&#34;http://jakarta.apache.org/log4j/&#34; debug=&#34;false&#34;&gt; ... &lt;/log4j:configuration&gt; 之間增加一個 appender &lt;appender name=&#34;SOCKET&#34; class=&#34;org.apache.log4j.net.SocketHubAppender&#34;&gt; &lt;param name=&#34;Port&#34; value=&#34;8888&#34;/&gt; &lt;/appender&gt;">
+  <meta itemprop="datePublished" content="2012-04-15T02:54:42+08:00">
+  <meta itemprop="dateModified" content="2012-04-15T02:54:42+08:00">
+  <meta itemprop="wordCount" content="306">
+  <meta itemprop="keywords" content="Apache Chainsaw Jboss Log4j,IT 筆記">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Monitoring JBoss logfile with Chainsaw v2">
+  <meta name="twitter:description" content="Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 &lt;log4j:configuration xmlns:log4j=&#34;http://jakarta.apache.org/log4j/&#34; debug=&#34;false&#34;&gt; ... &lt;/log4j:configuration&gt; 之間增加一個 appender &lt;appender name=&#34;SOCKET&#34; class=&#34;org.apache.log4j.net.SocketHubAppender&#34;&gt; &lt;param name=&#34;Port&#34; value=&#34;8888&#34;/&gt; &lt;/appender&gt;">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -90,16 +98,25 @@
 <![endif]-->
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-2Z1H3QRTPM', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2Z1H3QRTPM');
+        }
+      </script>
+    
+  
+
 
 
 
@@ -342,9 +359,9 @@ if (!doNotTrack) {
 儲存之後重新啟動 JBoss。 接著透過 netstat -na ，你可以觀察到 TCP 0.0.0.0:8888 已經處於 LISTENING 的狀態。</p>
 <h2 id="設定-chainsaw-v2">設定 Chainsaw v2</h2>
 <p>假設 Chainsaw 目錄位置是 D:Downloadschainsaw-bundle，在所在目錄新增一個檔案 chainsaw-receiver.xml。 內容如下： <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span> <span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span> <span style="color:#75715e">&lt;!DOCTYPE log4j:configuration &gt;</span> <span style="color:#f92672">&lt;log4j:configuration</span> <span style="color:#a6e22e">xmlns:log4j=</span><span style="color:#e6db74">&#34;http://jakarta.apache.org/log4j/&#34;</span> <span style="color:#a6e22e">debug=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;plugin</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;JBoss&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;org.apache.log4j.net.SocketHubReceiver&#34;</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;param</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;Port&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;8888&#34;</span><span style="color:#f92672">/&gt;</span> <span style="color:#f92672">&lt;param</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;Host&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span><span style="color:#f92672">/&gt;</span> <span style="color:#f92672">&lt;/plugin&gt;</span> <span style="color:#f92672">&lt;/log4j:configuration&gt;</span></span></span></code></pre></div>
-然後執行 Chainsaw，透過選單 <strong>View</strong> -&gt; <strong>Show Application-wide Preferences</strong> <a href="https://absszero.files.wordpress.com/2012/04/2012-04-15_103116.png"><img src="https://absszero.files.wordpress.com/2012/04/2012-04-15_103116.png" alt="" title="Chainsaw View-show application wide preferences menu"></a></p>
+然後執行 Chainsaw，透過選單 <strong>View</strong> -&gt; <strong>Show Application-wide Preferences</strong> <a href="https://absszero.files.wordpress.com/2012/04/2012-04-15_103116.png"><img src="https://absszero.files.wordpress.com/2012/04/2012-04-15_103116.png" title="Chainsaw View-show application wide preferences menu"></a></p>
 <p>接著在 <strong>Automatic Configuration URL</strong> 的部份輸入： <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> file:///d:/Downloads/chainsaw-bundle/chainsaw-receiver.xml</span></span></code></pre></div>
-按下 OK 之後重新啟動 Chainsaw，視窗右列的部份就會自動使用設定的 Receiver 監聽 JBoss 的 log4j <a href="https://absszero.files.wordpress.com/2012/04/2012-04-15_104455.png"><img src="https://absszero.files.wordpress.com/2012/04/2012-04-15_104455.png" alt="" title="Chainsaw receiver list"></a></p>
+按下 OK 之後重新啟動 Chainsaw，視窗右列的部份就會自動使用設定的 Receiver 監聽 JBoss 的 log4j <a href="https://absszero.files.wordpress.com/2012/04/2012-04-15_104455.png"><img src="https://absszero.files.wordpress.com/2012/04/2012-04-15_104455.png" title="Chainsaw receiver list"></a></p>
 <h2 id="參考">參考</h2>
 <p><a href="http://wiki.apache.org/logging-log4j/ChainsawAndSocketHubWalkthrough">ChainsawAndSocketHubWalkthrough</a></p>
 
@@ -380,6 +397,7 @@ if (!doNotTrack) {
         <footer class="post-footer">
           <div class="post-tags">
               <a href="https://absszero.github.io/tags/apache-chainsaw-jboss-log4j/">apache chainsaw jboss log4j</a>
+                <a href="https://absszero.github.io/tags/it-%E7%AD%86%E8%A8%98/">IT 筆記</a>
                 
             </div>
 
@@ -552,7 +570,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.c052847d751d53ca83f01f249a0bd75167b2d2e1489b84229df027aa77da6dda.js" integrity="sha256-wFKEfXUdU8qD8B8kmgvXUWey0uFIm4QinfAnqnfabdo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.371305d7f17a1558f54cbbe1ae38cfe1becdedc44ef0b2e9af834df8410a86ab.js" integrity="sha256-NxMF1/F6FVj1TLvhrjjP4b7N7cRO8LLpr4NN&#43;EEKhqs=" crossorigin="anonymous"></script>
 
 
 

@@ -35,7 +35,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.118.2" />
+<meta name="generator" content="Hugo 0.127.0" />
 
 
 <link rel="canonical" href="https://absszero.github.io/" />
@@ -64,14 +64,16 @@
 
 
 
-<meta property="og:title" content="黑書記事" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://absszero.github.io/" />
-<meta itemprop="name" content="黑書記事">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="黑書記事"/>
-<meta name="twitter:description" content=""/>
+<meta property="og:url" content="https://absszero.github.io/">
+  <meta property="og:site_name" content="黑書記事">
+  <meta property="og:title" content="黑書記事">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="黑書記事">
+  <meta itemprop="dateModified" content="2024-06-22T08:11:35+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="黑書記事">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -83,16 +85,25 @@
 <![endif]-->
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-2Z1H3QRTPM', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2Z1H3QRTPM');
+        }
+      </script>
+    
+  
+
 
 
 
@@ -289,6 +300,62 @@ if (!doNotTrack) {
     
   
   
+  
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/2013-06-23_%E5%A4%8F%E9%9B%A8%E9%81%8E%E5%BE%8C/">夏雨過後</a>
+    </h1>
+    
+
+    <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      absszero
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2013-06-23">
+      2013-06-23
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    
+
+    
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+  </header>
+  
+  <div class="post-content">
+    
+      <div class="post-summary">
+        連續幾天高溫，在開了關、關了又開的空調之間打轉。 而今天傍晚一陣陣地大雨，像是灑在鐵板上的水霧化成了潮氣。 才開窗便一股煙的湧進房裡，我又忍不住
+      </div>
+      <div class="read-more">
+        <a href="/post/2013-06-23_%E5%A4%8F%E9%9B%A8%E9%81%8E%E5%BE%8C/" class="read-more-link"
+          >Read more</a
+        >
+      </div>
+    
+  </div>
+</article>
+
   
     <article class="post">
   <header class="post-header">
@@ -514,62 +581,6 @@ if (!doNotTrack) {
 </article>
 
   
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/2012-04-14_monitoring-jboss-logfile-with-chainsaw-v2/">Monitoring JBoss logfile with Chainsaw v2</a>
-    </h1>
-    
-
-    <div class="post-meta">
-  <div class="post-meta-author">
-    by
-      absszero
-    
-  </div>
-
-  <div class="post-meta-time">
-    <time datetime="2012-04-15">
-      2012-04-15
-    </time>
-  </div>
-
-  
-
-
-  <div class="post-meta__right">
-    
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
-</div>
-
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        Chainsaw 可以用來監控 JBoss 所使用的 Log4j，透過以下的設定，讓開啟 Chainsaw 的時候自動監聽。 設定 JBoss 首先找到 {JBOSS_HOME}server{YOUR_SERVER_FOLDER}confjboss-log4j.xml 開啟之後在 &lt;log4j:configuration xmlns:log4j=&#34;http://jakarta.apache.org/log4j/&#34; debug=&#34;false&#34;&gt; ... &lt;/log4j:configuration&gt; 之間增加一個 appender &lt;appender name=&#34;SOCKET&#34; class=&#34;org.apache.log4j.net.SocketHubAppender&#34;&gt; &lt;param name=&#34;Port&#34; value=&#34;8888&#34;/&gt; &lt;/appender&gt;
-      </div>
-      <div class="read-more">
-        <a href="/post/2012-04-14_monitoring-jboss-logfile-with-chainsaw-v2/" class="read-more-link"
-          >Read more</a
-        >
-      </div>
-    
-  </div>
-</article>
-
-  
 </section>
 
 
@@ -637,6 +648,10 @@ if (!doNotTrack) {
       
       <li >
         <a href="/page/11/">11</a>
+      </li>
+      
+      <li >
+        <a href="/page/12/">12</a>
       </li>
       
     </ul>
@@ -739,7 +754,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.c052847d751d53ca83f01f249a0bd75167b2d2e1489b84229df027aa77da6dda.js" integrity="sha256-wFKEfXUdU8qD8B8kmgvXUWey0uFIm4QinfAnqnfabdo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.371305d7f17a1558f54cbbe1ae38cfe1becdedc44ef0b2e9af834df8410a86ab.js" integrity="sha256-NxMF1/F6FVj1TLvhrjjP4b7N7cRO8LLpr4NN&#43;EEKhqs=" crossorigin="anonymous"></script>
 
 
 

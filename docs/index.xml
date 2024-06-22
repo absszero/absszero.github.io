@@ -6,10 +6,92 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 11 Jun 2024 21:19:58 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 22 Jun 2024 08:11:35 +0800</lastBuildDate>
     
         <atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bootstrap and its breakpoint generation</title>
+      <link>https://absszero.github.io/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</link>
+      <pubDate>Sat, 22 Jun 2024 08:11:35 +0800</pubDate>
+      
+      <guid>https://absszero.github.io/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</guid>
+      
+        <description>&lt;h2 id=&#34;自定義斷點&#34;&gt;自定義斷點&lt;/h2&gt;
+&lt;p&gt;Bootstrap 在&lt;a href=&#34;https://getbootstrap.com/docs/5.1/layout/breakpoints/&#34;&gt;官方文件&lt;/a&gt;關於斷點(Breakpoint) 一開始就提到可以透過自訂變數設定斷點。最近在處理前端項目的時候，也注意到了前人已經設定該變數。支持開發上的斷點使用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$grid-breakpoints&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;xs&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;sm&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;576&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;md&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;768&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;lg&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;xl&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1200&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;xxl&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1400&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;另外文件也提到可以利用它所提供的 mixin 快速進行斷點利用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@include&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt; media-breakpoint-up&lt;/span&gt;(sm) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;.custom-class&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;display&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; block;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;undefined-mixin&#34;&gt;Undefined mixin&lt;/h2&gt;
+&lt;p&gt;而當我開始在專案中使用斷點套用的 mixin 卻遇到 &lt;code&gt;Undefined mixin&lt;/code&gt; 的問題。&lt;a href=&#34;https://stackoverflow.com/questions/71720120/scss-include-media-breakpoint-down-undefined-mixin-but-i-import-bootstrap-cla&#34;&gt;搜索一番&lt;/a&gt;原來需要在當前位置載入斷點相關的 scss。這是 Sass 的運作方式，採用模組化的方式執行。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;node_modules/bootstrap/scss/functions&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;node_modules/bootstrap/scss/variables&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;node_modules/bootstrap/scss/mixins&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;確實 &lt;code&gt;media-breakpoint-up&lt;/code&gt; 可以正確的使用了，但我發現斷點的位置判斷卻不如預期。預設的斷點 &lt;code&gt;lg: 992px&lt;/code&gt; 被我修改成 &lt;code&gt;lg: 1024px&lt;/code&gt;。但最終生成出來的斷點仍然是 &lt;code&gt;lg: 992px&lt;/code&gt;。為什麼呢？於是我又回頭查看文件，並且查看 BS(Bootstrap) 的原始碼。根據&lt;a href=&#34;https://getbootstrap.com/docs/5.1/customize/sass/&#34;&gt;官網的建議&lt;/a&gt;，客製化的變數放置的情況如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// custom.scss
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Option A: Include all of Bootstrap
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Include any default variable overrides here (though functions won&amp;#39;t be available)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;$grid-breakpoints&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;xs&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;sm&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;576&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;md&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;768&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;lg&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;xl&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1200&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;xxl&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1400&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;node_modules/bootstrap/scss/bootstrap&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我也在 &lt;code&gt;custom.scss&lt;/code&gt; 文件裡頭透過 &lt;code&gt;@debug $grid-breakpoints&lt;/code&gt; 看到斷點確實被設定正確了。然而我回到獨立的 Vue SFC 檔案，透過 import 相關的 BS mixins 之後，利用 &lt;code&gt;@debug $grid-breakpoints&lt;/code&gt; 卻看到斷點又會重新設置成預設。幾番思考之後，意識到 Sass 作為一個 CSS 的預編輯器。所有的變數、mixin 只作用在引入它的文件中。所以正確的做法，是在每一個文件中載入 &lt;code&gt;custom.scss&lt;/code&gt; 。&lt;/p&gt;
+&lt;h2 id=&#34;編譯緩慢&#34;&gt;編譯緩慢&lt;/h2&gt;
+&lt;p&gt;到此，確實自定義的斷點被正確的解釋，相關的 mixin 也可以使用。但有一個新的問題。 &lt;code&gt;custom.scss&lt;/code&gt; 最後 import &lt;code&gt;node_modules/bootstrap/scss/bootstrap&lt;/code&gt; 會開始將前面所定義的變數，編譯成相對應的 css。原本放置於 main.js 引入的 custom.scss，只在開頭的編譯一次 css。現在每一個文件都需要編譯一次，所以產生額外的編譯時間。&lt;/p&gt;
+&lt;p&gt;為了解決的這個問題而更進一步的拆分 custom.scss，將它分成兩個部分。只包含斷點相關的 &lt;code&gt;breakpoint.scss&lt;/code&gt; 跟剩餘的 &lt;code&gt;custom.scss&lt;/code&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* breakpoint.scss */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$grid-breakpoints&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;xs&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;sm&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;576&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;md&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;768&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;lg&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;xl&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1200&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;xxl&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1400&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;node_modules/bootstrap/scss/functions&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;node_modules/bootstrap/scss/variables&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;node_modules/bootstrap/scss/mixins&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scss&#34; data-lang=&#34;scss&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* custom.scss */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;./breakpoint.scss&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;@import&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;node_modules/bootstrap/scss/bootstrap&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接著 main.js 依舊引入 custom.css，但在每一個會使用到斷點 mixin 的文件，獨立引入 &lt;code&gt;breakpoint.scss&lt;/code&gt;。透過這方式達到單獨使用斷點相關的 mixin。最小程度減輕編譯 css 的問題。&lt;/p&gt;
+&lt;h2 id=&#34;後話&#34;&gt;後話&lt;/h2&gt;
+&lt;p&gt;在解決的過程中，也有看到&lt;a href=&#34;https://stackoverflow.com/questions/71600556/how-to-prepend-scss-files-in-vue3-dart-sass&#34;&gt;有人建議透過 &lt;code&gt;vue.config.js&lt;/code&gt; 全面載入 custom.scss 的做法&lt;/a&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;module&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;exports&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;css&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;loaderOptions&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#a6e22e&#34;&gt;scss&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;additionalData&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`@import &amp;#34;./src/scss/custom.scss&amp;#34;;`&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但實際測試之後，發現大大的增加編譯的時間。（也許在小型專案不覺得就是&amp;hellip;）最後個別的針對需求載入相關的 scss 似乎是當前是最理想的方式。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Speed up Laravel test</title>
@@ -1168,7 +1250,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;到這邊算是解決了。小遺憾是 &lt;code&gt;/.vscode-test/.previous&lt;/code&gt; 這個臨時檔案，原本是希望 VSCode 關閉之後能自動刪除掉。但目前沒有具體做法，幸好影響也不大。&lt;/p&gt;
 &lt;h2 id=&#34;無法執行單一測試案例的測試&#34;&gt;無法執行單一測試案例的測試&lt;/h2&gt;
 &lt;p&gt;有了執行單一檔案測試的功能之後，接下來更近一步，希望能只執行單一測試案例。Mocha 本身支持使用 &lt;code&gt;grep&lt;/code&gt; 參數進行過濾。所以接下來的問題是，找出該測試案例的名稱。&lt;/p&gt;
-&lt;p&gt;原本的想法是編輯器傳入行號，然後從行號上下檢索檔案所包含的測試案例區塊。但要識別區塊不容易。可能需要用到類似 AST(abstract syntax tree)。後來參考之前常用的套件  &lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=calebporzio.better-phpunit&amp;amp;ssr=false#review-details&#34;&gt;Better PHPUnit&lt;/a&gt; ，他也提供了類似的功能。他的解決思路很簡單，從目前的行號取得這一行的文字，然後用正規表達式檢查，符合的話回傳該方法名稱，否則往上一行查找，直到第一行。&lt;/p&gt;
+&lt;p&gt;原本的想法是編輯器傳入行號，然後從行號上下檢索檔案所包含的測試案例區塊。但要識別區塊不容易。可能需要用到類似 AST(abstract syntax tree)。後來參考之前常用的套件  &lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=calebporzio.better-phpunit&amp;ssr=false#review-details&#34;&gt;Better PHPUnit&lt;/a&gt; ，他也提供了類似的功能。他的解決思路很簡單，從目前的行號取得這一行的文字，然後用正規表達式檢查，符合的話回傳該方法名稱，否則往上一行查找，直到第一行。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// https://github.com/calebporzio/better-phpunit/blob/81447bd3c0478d6577d697b398578068f53c31d7/src/phpunit-command.js#L88
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;get&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;method() {&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;line&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;vscode&lt;/span&gt;.window.&lt;span style=&#34;color:#a6e22e&#34;&gt;activeTextEditor&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selection&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;active&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;line&lt;/span&gt;;
@@ -1329,10 +1411,10 @@
     
     <item>
       <title>PHPUnit TearDown &amp; register_shutdown_function</title>
-      <link>https://absszero.github.io/post/2023-03-25_phpunit-teardown-register_shutdown_function/</link>
+      <link>https://absszero.github.io/post/2023-03-25_phpunit-teardown--register_shutdown_function/</link>
       <pubDate>Sat, 25 Mar 2023 19:40:00 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-03-25_phpunit-teardown-register_shutdown_function/</guid>
+      <guid>https://absszero.github.io/post/2023-03-25_phpunit-teardown--register_shutdown_function/</guid>
       
         <description>&lt;h2 id=&#34;what&#34;&gt;WHAT&lt;/h2&gt;
 &lt;p&gt;近期在開發 Laravel Log 相關套件。於是利用 &lt;code&gt;orchestra/testbench&lt;/code&gt; 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。&lt;/p&gt;
@@ -1817,48 +1899,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 191
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ord&lt;/span&gt;($data[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;]);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按照過去的經驗， 開頭的不可見字元應該是 BOM，查了 Wiki 也確定這三個數字是 UTF-8 的 BOM 沒錯。由於第一行是欄位說明，所以直接略過取第二行。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>SublimeLinter-phpcs 使用自訂規則檔</title>
-      <link>https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</link>
-      <pubDate>Sat, 03 Aug 2019 16:57:39 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</guid>
-      
-        <description>&lt;p&gt;為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。&lt;/p&gt;
-&lt;p&gt;全編輯器設定 SublimeLinter Settings - User
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;linters&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;phpcs&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;args&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;個別專案設定，設定在 *.sublime-project
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;settings&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SublimeLinter.linters.phpcs.args&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;由於設定路徑成功或失敗，都&lt;strong&gt;不會產生錯誤&lt;/strong&gt;。另外即便規則檔有誤也&lt;strong&gt;不會有錯誤說明&lt;/strong&gt;。所以檢查的方式是透過終端機執行 &lt;code&gt;phpcs&lt;/code&gt; 先確定規則檔是否可以正確套用。&lt;/p&gt;
-&lt;p&gt;先故意製造一個錯誤，例如以 PSR-2 規則而言，類別名稱必須以大寫開頭。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ phpcs --standard&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;D:/Develop/www/project-template/phpcs.xml
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;............................................E..
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;FILE: ...&lt;span style=&#34;color:#ae81ff&#34;&gt;\D&lt;/span&gt;evelop&lt;span style=&#34;color:#ae81ff&#34;&gt;\w&lt;/span&gt;ww&lt;span style=&#34;color:#ae81ff&#34;&gt;\p&lt;/span&gt;roject-template&lt;span style=&#34;color:#ae81ff&#34;&gt;\s&lt;/span&gt;ite&lt;span style=&#34;color:#ae81ff&#34;&gt;\t&lt;/span&gt;ests&lt;span style=&#34;color:#ae81ff&#34;&gt;\F&lt;/span&gt;eature&lt;span style=&#34;color:#ae81ff&#34;&gt;\E&lt;/span&gt;xampleTest.php
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;----------------------------------------------------------------------
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;FOUND &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; ERROR AFFECTING &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; LINE
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;----------------------------------------------------------------------
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt; | ERROR | Class name &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;axampleTest&amp;#34;&lt;/span&gt; is not in camel caps format
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;----------------------------------------------------------------------
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Time: 1.32 secs; Memory: 8Mb&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;確定找得到問題之後，回到編輯器，看到底下畫面表示設定正確了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://absszero.github.io/SublimeLinter-phpcs.jpg&#34; alt=&#34;editor&#34;&gt;&lt;/p&gt;
 </description>
       
     </item>

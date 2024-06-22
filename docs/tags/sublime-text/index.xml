@@ -4,17 +4,16 @@
     <title>Sublime Text on 黑書記事</title>
     <link>https://absszero.github.io/tags/sublime-text/</link>
     <description>Recent content in Sublime Text on 黑書記事</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Aug 2019 20:31:24 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/sublime-text/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Aug 2019 20:31:24 +0800</lastBuildDate>
+    <atom:link href="https://absszero.github.io/tags/sublime-text/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Laravel Goto for Sublime Text</title>
       <link>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</link>
       <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
-      
       <guid>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</guid>
       <description>https://github.com/absszero/LaravelGoto Why 去年下定決心買一套 Sublime Text 之後（USD $75 的樣子），也算是認可 ST 在工作幫我省了不少時間。不過隨著 VS Code 功能逐步豐富，一直有想轉換編輯器的念頭。上</description>
     </item>
-    
   </channel>
 </rss>

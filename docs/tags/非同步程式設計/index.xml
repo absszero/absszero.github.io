@@ -4,17 +4,16 @@
     <title>非同步程式設計 on 黑書記事</title>
     <link>https://absszero.github.io/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</link>
     <description>Recent content in 非同步程式設計 on 黑書記事</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Nov 2010 12:41:05 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Nov 2010 12:41:05 +0800</lastBuildDate>
+    <atom:link href="https://absszero.github.io/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[ Web ] Accelerate scripts running multiple tasks in parallel using asynchronous programming: Unusual Site Speedup Techniques: Part 3 - PHP Classes blog</title>
       <link>https://absszero.github.io/post/2010-11-15_web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</link>
       <pubDate>Mon, 15 Nov 2010 12:41:05 +0800</pubDate>
-      
       <guid>https://absszero.github.io/post/2010-11-15_web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</guid>
       <description>http://www.phpclasses.org/blog/post/133-Accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-Unusual-Site-Speedup-Techniques-Part-3.html Introduction 許多伺服器上執行程序會花這麼長的時間，主要在於程序花了很多時間在等待其他程式或者硬體訊息或其他遠端電腦的回應。 那能不能在回應等待的這個時</description>
     </item>
-    
   </channel>
 </rss>

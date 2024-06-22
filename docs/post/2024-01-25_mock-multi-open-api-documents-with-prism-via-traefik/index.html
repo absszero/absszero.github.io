@@ -38,7 +38,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.118.2" />
+<meta name="generator" content="Hugo 0.127.0" />
 
 
 <link rel="canonical" href="https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/" />
@@ -67,19 +67,25 @@
 
 
 
-<meta property="og:title" content="Mock multi openAPI documents with Prism via Traefik" />
-<meta property="og:description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2024-01-25T12:41:15+08:00" />
-<meta property="article:modified_time" content="2024-01-25T12:41:15+08:00" />
-<meta itemprop="name" content="Mock multi openAPI documents with Prism via Traefik">
-<meta itemprop="description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代"><meta itemprop="datePublished" content="2024-01-25T12:41:15+08:00" />
-<meta itemprop="dateModified" content="2024-01-25T12:41:15+08:00" />
-<meta itemprop="wordCount" content="554">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Mock multi openAPI documents with Prism via Traefik"/>
-<meta name="twitter:description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代"/>
+<meta property="og:url" content="https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/">
+  <meta property="og:site_name" content="黑書記事">
+  <meta property="og:title" content="Mock multi openAPI documents with Prism via Traefik">
+  <meta property="og:description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-01-25T12:41:15+08:00">
+    <meta property="article:modified_time" content="2024-01-25T12:41:15+08:00">
+
+  <meta itemprop="name" content="Mock multi openAPI documents with Prism via Traefik">
+  <meta itemprop="description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代">
+  <meta itemprop="datePublished" content="2024-01-25T12:41:15+08:00">
+  <meta itemprop="dateModified" content="2024-01-25T12:41:15+08:00">
+  <meta itemprop="wordCount" content="554">
+  <meta itemprop="keywords" content="openAPI,Prism,Traefik">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mock multi openAPI documents with Prism via Traefik">
+  <meta name="twitter:description" content="Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,16 +97,25 @@
 <![endif]-->
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-2Z1H3QRTPM', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2Z1H3QRTPM');
+        }
+      </script>
+    
+  
+
 
 
 
@@ -599,7 +614,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.c052847d751d53ca83f01f249a0bd75167b2d2e1489b84229df027aa77da6dda.js" integrity="sha256-wFKEfXUdU8qD8B8kmgvXUWey0uFIm4QinfAnqnfabdo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.371305d7f17a1558f54cbbe1ae38cfe1becdedc44ef0b2e9af834df8410a86ab.js" integrity="sha256-NxMF1/F6FVj1TLvhrjjP4b7N7cRO8LLpr4NN&#43;EEKhqs=" crossorigin="anonymous"></script>
 
 
 

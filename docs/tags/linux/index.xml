@@ -4,17 +4,16 @@
     <title>Linux on 黑書記事</title>
     <link>https://absszero.github.io/tags/linux/</link>
     <description>Recent content in Linux on 黑書記事</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 19 Jun 2010 07:26:16 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Jun 2010 07:26:16 +0800</lastBuildDate>
+    <atom:link href="https://absszero.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[ PHP ] Filesystem encoding and PHP</title>
       <link>https://absszero.github.io/post/2010-06-18_php-filesystem-encoding-and-php/</link>
       <pubDate>Sat, 19 Jun 2010 07:26:16 +0800</pubDate>
-      
       <guid>https://absszero.github.io/post/2010-06-18_php-filesystem-encoding-and-php/</guid>
       <description>許多 PHP 應用程式會將檔案儲存本地端的檔案系統當中。 對於大部分讀者而言在多數的情況下，妳很可能只使用 US-ASCII 編碼的方式儲存檔案， 可能是因為妳的檔名是基</description>
     </item>
-    
   </channel>
 </rss>

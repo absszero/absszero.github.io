@@ -37,7 +37,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.118.2" />
+<meta name="generator" content="Hugo 0.127.0" />
 
 
 <link rel="canonical" href="https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/" />
@@ -66,19 +66,31 @@
 
 
 
-<meta property="og:title" content="在命令提示字元底下格式化顯示 JSON 內容" />
-<meta property="og:description" content="當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2012-05-12T10:56:17+08:00" />
-<meta property="article:modified_time" content="2012-05-12T10:56:17+08:00" />
-<meta itemprop="name" content="在命令提示字元底下格式化顯示 JSON 內容">
-<meta itemprop="description" content="當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝"><meta itemprop="datePublished" content="2012-05-12T10:56:17+08:00" />
-<meta itemprop="dateModified" content="2012-05-12T10:56:17+08:00" />
-<meta itemprop="wordCount" content="215">
-<meta itemprop="keywords" content="CMD,縮排,IT 筆記,JSON,python,命令提示字元,格式化," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="在命令提示字元底下格式化顯示 JSON 內容"/>
-<meta name="twitter:description" content="當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝"/>
+<meta property="og:url" content="https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/">
+  <meta property="og:site_name" content="黑書記事">
+  <meta property="og:title" content="在命令提示字元底下格式化顯示 JSON 內容">
+  <meta property="og:description" content="當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2012-05-12T10:56:17+08:00">
+    <meta property="article:modified_time" content="2012-05-12T10:56:17+08:00">
+    <meta property="article:tag" content="CMD">
+    <meta property="article:tag" content="縮排">
+    <meta property="article:tag" content="IT 筆記">
+    <meta property="article:tag" content="JSON">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="命令提示字元">
+
+  <meta itemprop="name" content="在命令提示字元底下格式化顯示 JSON 內容">
+  <meta itemprop="description" content="當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝">
+  <meta itemprop="datePublished" content="2012-05-12T10:56:17+08:00">
+  <meta itemprop="dateModified" content="2012-05-12T10:56:17+08:00">
+  <meta itemprop="wordCount" content="215">
+  <meta itemprop="keywords" content="CMD,縮排,IT 筆記,JSON,Python,命令提示字元,格式化">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="在命令提示字元底下格式化顯示 JSON 內容">
+  <meta name="twitter:description" content="當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -90,16 +102,25 @@
 <![endif]-->
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-2Z1H3QRTPM', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2Z1H3QRTPM');
+        }
+      </script>
+    
+  
+
 
 
 
@@ -376,6 +397,7 @@ if (!doNotTrack) {
           <div class="post-tags">
               <a href="https://absszero.github.io/tags/cmd/">CMD</a>
                 <a href="https://absszero.github.io/tags/%E7%B8%AE%E6%8E%92/">縮排</a>
+                <a href="https://absszero.github.io/tags/it-%E7%AD%86%E8%A8%98/">IT 筆記</a>
                 <a href="https://absszero.github.io/tags/json/">JSON</a>
                 <a href="https://absszero.github.io/tags/python/">python</a>
                 <a href="https://absszero.github.io/tags/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83/">命令提示字元</a>
@@ -556,7 +578,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.c052847d751d53ca83f01f249a0bd75167b2d2e1489b84229df027aa77da6dda.js" integrity="sha256-wFKEfXUdU8qD8B8kmgvXUWey0uFIm4QinfAnqnfabdo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.371305d7f17a1558f54cbbe1ae38cfe1becdedc44ef0b2e9af834df8410a86ab.js" integrity="sha256-NxMF1/F6FVj1TLvhrjjP4b7N7cRO8LLpr4NN&#43;EEKhqs=" crossorigin="anonymous"></script>
 
 
 

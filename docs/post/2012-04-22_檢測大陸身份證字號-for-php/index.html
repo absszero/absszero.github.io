@@ -37,7 +37,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.118.2" />
+<meta name="generator" content="Hugo 0.127.0" />
 
 
 <link rel="canonical" href="https://absszero.github.io/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/" />
@@ -66,19 +66,28 @@
 
 
 
-<meta property="og:title" content="檢測大陸身份證字號 for PHP" />
-<meta property="og:description" content="PHP 版本的檢測大陸身份證字號 &lt;?php $id = trim($id); //長度檢查 $string_length = strlen($id); if ( $string_length != 18) { return false; } //數字檢查 //前17碼必須為數字 for ($i = 0; $i &amp;lt; $string_length - 1; $i&#43;&#43;) { if ( ! is_numeric($id[$i]) ) { return" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://absszero.github.io/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2012-04-23T06:02:44+08:00" />
-<meta property="article:modified_time" content="2012-04-23T06:02:44+08:00" />
-<meta itemprop="name" content="檢測大陸身份證字號 for PHP">
-<meta itemprop="description" content="PHP 版本的檢測大陸身份證字號 &lt;?php $id = trim($id); //長度檢查 $string_length = strlen($id); if ( $string_length != 18) { return false; } //數字檢查 //前17碼必須為數字 for ($i = 0; $i &amp;lt; $string_length - 1; $i&#43;&#43;) { if ( ! is_numeric($id[$i]) ) { return"><meta itemprop="datePublished" content="2012-04-23T06:02:44+08:00" />
-<meta itemprop="dateModified" content="2012-04-23T06:02:44+08:00" />
-<meta itemprop="wordCount" content="205">
-<meta itemprop="keywords" content="IT 筆記,php,身份證字號," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="檢測大陸身份證字號 for PHP"/>
-<meta name="twitter:description" content="PHP 版本的檢測大陸身份證字號 &lt;?php $id = trim($id); //長度檢查 $string_length = strlen($id); if ( $string_length != 18) { return false; } //數字檢查 //前17碼必須為數字 for ($i = 0; $i &amp;lt; $string_length - 1; $i&#43;&#43;) { if ( ! is_numeric($id[$i]) ) { return"/>
+<meta property="og:url" content="https://absszero.github.io/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/">
+  <meta property="og:site_name" content="黑書記事">
+  <meta property="og:title" content="檢測大陸身份證字號 for PHP">
+  <meta property="og:description" content="PHP 版本的檢測大陸身份證字號 &lt;?php $id = trim($id); //長度檢查 $string_length = strlen($id); if ( $string_length != 18) { return false; } //數字檢查 //前17碼必須為數字 for ($i = 0; $i &amp;lt; $string_length - 1; $i&#43;&#43;) { if ( ! is_numeric($id[$i]) ) { return">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2012-04-23T06:02:44+08:00">
+    <meta property="article:modified_time" content="2012-04-23T06:02:44+08:00">
+    <meta property="article:tag" content="IT 筆記">
+    <meta property="article:tag" content="PHP">
+    <meta property="article:tag" content="身份證字號">
+
+  <meta itemprop="name" content="檢測大陸身份證字號 for PHP">
+  <meta itemprop="description" content="PHP 版本的檢測大陸身份證字號 &lt;?php $id = trim($id); //長度檢查 $string_length = strlen($id); if ( $string_length != 18) { return false; } //數字檢查 //前17碼必須為數字 for ($i = 0; $i &amp;lt; $string_length - 1; $i&#43;&#43;) { if ( ! is_numeric($id[$i]) ) { return">
+  <meta itemprop="datePublished" content="2012-04-23T06:02:44+08:00">
+  <meta itemprop="dateModified" content="2012-04-23T06:02:44+08:00">
+  <meta itemprop="wordCount" content="205">
+  <meta itemprop="keywords" content="IT 筆記,PHP,身份證字號">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="檢測大陸身份證字號 for PHP">
+  <meta name="twitter:description" content="PHP 版本的檢測大陸身份證字號 &lt;?php $id = trim($id); //長度檢查 $string_length = strlen($id); if ( $string_length != 18) { return false; } //數字檢查 //前17碼必須為數字 for ($i = 0; $i &amp;lt; $string_length - 1; $i&#43;&#43;) { if ( ! is_numeric($id[$i]) ) { return">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -90,16 +99,25 @@
 <![endif]-->
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-2Z1H3QRTPM', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z1H3QRTPM"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2Z1H3QRTPM');
+        }
+      </script>
+    
+  
+
 
 
 
@@ -403,7 +421,8 @@ if (!doNotTrack) {
 
         <footer class="post-footer">
           <div class="post-tags">
-              <a href="https://absszero.github.io/tags/php/">php</a>
+              <a href="https://absszero.github.io/tags/it-%E7%AD%86%E8%A8%98/">IT 筆記</a>
+                <a href="https://absszero.github.io/tags/php/">php</a>
                 <a href="https://absszero.github.io/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/">身份證字號</a>
                 
             </div>
@@ -566,7 +585,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.c052847d751d53ca83f01f249a0bd75167b2d2e1489b84229df027aa77da6dda.js" integrity="sha256-wFKEfXUdU8qD8B8kmgvXUWey0uFIm4QinfAnqnfabdo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.371305d7f17a1558f54cbbe1ae38cfe1becdedc44ef0b2e9af834df8410a86ab.js" integrity="sha256-NxMF1/F6FVj1TLvhrjjP4b7N7cRO8LLpr4NN&#43;EEKhqs=" crossorigin="anonymous"></script>
 
 
 

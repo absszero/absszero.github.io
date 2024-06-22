@@ -4,17 +4,16 @@
     <title>格式化 on 黑書記事</title>
     <link>https://absszero.github.io/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/</link>
     <description>Recent content in 格式化 on 黑書記事</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 12 May 2012 10:56:17 +0800</lastBuildDate><atom:link href="https://absszero.github.io/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 May 2012 10:56:17 +0800</lastBuildDate>
+    <atom:link href="https://absszero.github.io/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在命令提示字元底下格式化顯示 JSON 內容</title>
       <link>https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/</link>
       <pubDate>Sat, 12 May 2012 10:56:17 +0800</pubDate>
-      
       <guid>https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/</guid>
       <description>當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝</description>
     </item>
-    
   </channel>
 </rss>
