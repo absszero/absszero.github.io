@@ -104,6 +104,17 @@ jobs:
           npx stylelint  -c .stylelintrc.json $(git diff --diff-filter=dr --name-only ${{ github.event.pull_request.base.sha }} |egrep '\.css$')
 ```
 
+## 無差異情況的修正
+
+由於 `egrep` 在沒有檔案差異的情況下，會回傳非零的代碼，這會導致執行中斷。所以需要在後面加上 `|| true`，並且判斷只有在檔案內容有的時候才進行檢查。
+
+```shell
+git diff --name-only ${{ github.event.pull_request.base.sha }} |egrep '\.php$' > .list.txt || true
+
+# 有檔案內容才進行檢查
+[ -s ./.list.txt ] && phpcs --standard=./phpcs.xml --file-list=./.list.txt
+```
+
 
 ## 話說
 

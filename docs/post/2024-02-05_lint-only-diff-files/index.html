@@ -81,7 +81,7 @@
   <meta itemprop="description" content="過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做">
   <meta itemprop="datePublished" content="2024-02-05T13:51:30+08:00">
   <meta itemprop="dateModified" content="2024-02-05T13:51:30+08:00">
-  <meta itemprop="wordCount" content="757">
+  <meta itemprop="wordCount" content="865">
   <meta itemprop="keywords" content="lint,phpcs,github action">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Lint only diff files">
@@ -424,6 +424,12 @@
 </span></span><span style="display:flex;"><span>      - <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          npm install
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          npx stylelint  -c .stylelintrc.json $(git diff --diff-filter=dr --name-only ${{ github.event.pull_request.base.sha }} |egrep &#39;\.css$&#39;)</span>          
+</span></span></code></pre></div><h2 id="無差異情況的修正">無差異情況的修正</h2>
+<p>由於 <code>egrep</code> 在沒有檔案差異的情況下，會回傳非零的代碼，這會導致執行中斷。所以需要在後面加上 <code>|| true</code>，並且判斷只有在檔案內容有的時候才進行檢查。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git diff --name-only <span style="color:#e6db74">${</span>{ github.event.pull_request.base.sha <span style="color:#e6db74">}</span><span style="color:#f92672">}</span> |egrep <span style="color:#e6db74">&#39;\.php$&#39;</span> &gt; .list.txt <span style="color:#f92672">||</span> true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 有檔案內容才進行檢查</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span> -s ./.list.txt <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> phpcs --standard<span style="color:#f92672">=</span>./phpcs.xml --file-list<span style="color:#f92672">=</span>./.list.txt
 </span></span></code></pre></div><h2 id="話說">話說</h2>
 <p>話說上面的這三個工具其實都支援 cache 的使用，所以本地端檢查即是檢查全部，只要啟用快取速度上都挺快的。主要是 CI/CD 的環境沒有特別去維護快取內容所以預設都是重新檢查。因此這樣的改動才發揮它的價值。</p>
 
@@ -531,6 +537,7 @@
     <li><a href="#php">PHP</a></li>
     <li><a href="#javascript">JavaScript</a></li>
     <li><a href="#css">CSS</a></li>
+    <li><a href="#無差異情況的修正">無差異情況的修正</a></li>
     <li><a href="#話說">話說</a></li>
   </ul>
 </nav>

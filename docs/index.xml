@@ -535,6 +535,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: |&lt;span style=&#34;color:#e6db74&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          npm install
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          npx stylelint  -c .stylelintrc.json $(git diff --diff-filter=dr --name-only ${{ github.event.pull_request.base.sha }} |egrep &amp;#39;\.css$&amp;#39;)&lt;/span&gt;          
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;無差異情況的修正&#34;&gt;無差異情況的修正&lt;/h2&gt;
+&lt;p&gt;由於 &lt;code&gt;egrep&lt;/code&gt; 在沒有檔案差異的情況下，會回傳非零的代碼，這會導致執行中斷。所以需要在後面加上 &lt;code&gt;|| true&lt;/code&gt;，並且判斷只有在檔案內容有的時候才進行檢查。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git diff --name-only &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;{ github.event.pull_request.base.sha &lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; |egrep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\.php$&amp;#39;&lt;/span&gt; &amp;gt; .list.txt &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; true
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 有檔案內容才進行檢查&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; -s ./.list.txt &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; phpcs --standard&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;./phpcs.xml --file-list&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;./.list.txt
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;話說&#34;&gt;話說&lt;/h2&gt;
 &lt;p&gt;話說上面的這三個工具其實都支援 cache 的使用，所以本地端檢查即是檢查全部，只要啟用快取速度上都挺快的。主要是 CI/CD 的環境沒有特別去維護快取內容所以預設都是重新檢查。因此這樣的改動才發揮它的價值。&lt;/p&gt;
 </description>
