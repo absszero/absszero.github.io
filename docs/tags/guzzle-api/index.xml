@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Guzzle API on 黑書記事</title>
-    <link>https://absszero.github.io/tags/guzzle-api/</link>
+    <link>http://localhost:1313/tags/guzzle-api/</link>
     <description>Recent content in Guzzle API on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 06 Oct 2019 15:01:03 +0800</lastBuildDate>
-    <atom:link href="https://absszero.github.io/tags/guzzle-api/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/guzzle-api/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Guzzle service descriptions - 使用描述檔建立 API Client</title>
-      <link>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</link>
+      <link>http://localhost:1313/post/2019-10-06_guzzle-service-descriptions/</link>
       <pubDate>Sun, 06 Oct 2019 15:01:03 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</guid>
+      <guid>http://localhost:1313/post/2019-10-06_guzzle-service-descriptions/</guid>
       <description>何謂 Service Descriptions 最近在查找關於 Fixer.io 的用戶端套件。發現平常慣用的 Guzzle HTTP Client 還有另外一種開發方式 - service descriptions。該方式借鏡 Swagger 利用定義 API 操作的方式</description>
     </item>
   </channel>

@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>UTF-8 on 黑書記事</title>
-    <link>https://absszero.github.io/tags/utf-8/</link>
+    <link>http://localhost:1313/tags/utf-8/</link>
     <description>Recent content in UTF-8 on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 02 Nov 2010 13:04:41 +0800</lastBuildDate>
-    <atom:link href="https://absszero.github.io/tags/utf-8/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/utf-8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[ Web ] Entities in modular XHTML</title>
-      <link>https://absszero.github.io/post/2010-11-02_entities-in-modular-xhtml/</link>
+      <link>http://localhost:1313/post/2010-11-02_entities-in-modular-xhtml/</link>
       <pubDate>Tue, 02 Nov 2010 13:04:41 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2010-11-02_entities-in-modular-xhtml/</guid>
+      <guid>http://localhost:1313/post/2010-11-02_entities-in-modular-xhtml/</guid>
       <description>Entities in modular XHTML http://cweiske.de/tagebuch/xhtml-entities.htm 要在 HTML 裡頭應用某些特殊字元，可以把該字元寫成 &amp;ldquo;named entities&amp;rdquo;。 最常用的就是空白字元 但是當我們要用在未指定 DTD 的 XML 上面</description>
     </item>
     <item>
       <title>[ PHP ] Filesystem encoding and PHP</title>
-      <link>https://absszero.github.io/post/2010-06-18_php-filesystem-encoding-and-php/</link>
+      <link>http://localhost:1313/post/2010-06-18_php-filesystem-encoding-and-php/</link>
       <pubDate>Sat, 19 Jun 2010 07:26:16 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2010-06-18_php-filesystem-encoding-and-php/</guid>
+      <guid>http://localhost:1313/post/2010-06-18_php-filesystem-encoding-and-php/</guid>
       <description>許多 PHP 應用程式會將檔案儲存本地端的檔案系統當中。 對於大部分讀者而言在多數的情況下，妳很可能只使用 US-ASCII 編碼的方式儲存檔案， 可能是因為妳的檔名是基</description>
     </item>
   </channel>

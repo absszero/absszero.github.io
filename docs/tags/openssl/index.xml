@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Openssl on 黑書記事</title>
-    <link>https://absszero.github.io/tags/openssl/</link>
+    <link>http://localhost:1313/tags/openssl/</link>
     <description>Recent content in Openssl on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 17 Mar 2015 10:10:56 +0800</lastBuildDate>
-    <atom:link href="https://absszero.github.io/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ftp_login() : SSL/TLS handshake failed</title>
-      <link>https://absszero.github.io/post/2015-03-17_ftp_login-ssltls-handshake-failed/</link>
+      <link>http://localhost:1313/post/2015-03-17_ftp_login-ssltls-handshake-failed/</link>
       <pubDate>Tue, 17 Mar 2015 10:10:56 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2015-03-17_ftp_login-ssltls-handshake-failed/</guid>
+      <guid>http://localhost:1313/post/2015-03-17_ftp_login-ssltls-handshake-failed/</guid>
       <description>目前猜測是 openssl 的問題，從原本的 $ openssl version -a OpenSSL 0.9.8e-fips-rhel5 01 Jul 2008 安裝最新版 $ /usr/local/ssl/bin/openssl version -a OpenSSL 1.0.2 22 Jan 2015 然後重新編譯 php 指定新的預設 openssl 位置 ./configure --with-openssl=/usr/local/ssl 打完收工&amp;hellip;</description>
     </item>
   </channel>

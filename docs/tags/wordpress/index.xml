@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wordpress on 黑書記事</title>
-    <link>https://absszero.github.io/tags/wordpress/</link>
+    <link>http://localhost:1313/tags/wordpress/</link>
     <description>Recent content in Wordpress on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 03 Aug 2019 14:29:59 +0800</lastBuildDate>
-    <atom:link href="https://absszero.github.io/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo 開始書寫</title>
-      <link>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</link>
+      <link>http://localhost:1313/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</link>
       <pubDate>Sat, 03 Aug 2019 14:29:59 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</guid>
+      <guid>http://localhost:1313/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</guid>
       <description>wordpress.com 由於限制頗多，而且對於撰寫程式碼不是那麼友善（許多特殊符號需要自行轉譯處理）。參考官網提供的工具參考 https://gohugo.io/tools/migrations/ ，選用 https://github.com/palaniraja/blog2md 將匯出的文章轉換成 Hugo 格式。隨</description>
     </item>
   </channel>

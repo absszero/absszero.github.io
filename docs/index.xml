@@ -2,21 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>黑書記事</title>
-    <link>https://absszero.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 22 Jun 2024 08:11:35 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2024 20:23:43 +0800</lastBuildDate>
     
-        <atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Google spreadsheet updates by developer metadata</title>
+      <link>http://localhost:1313/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</link>
+      <pubDate>Mon, 14 Oct 2024 20:23:43 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</guid>
+      
+        <description>&lt;p&gt;透過 Google Sheets API 可以很方便的寫入資料到 Google 試算表。而我最近的一個挑戰是要更新後續新增的的資料。主要的難處是檢索，由於 API 不支援資料搜尋，所以無法透過查找特定內容取得資料位置。這個問題也同樣困擾其他使用者。&lt;/p&gt;
+&lt;p&gt;我在 &lt;a href=&#34;https://stackoverflow.com/questions/49161249/google-sheets-api-how-to-find-a-row-by-value-and-update-its-content&#34;&gt;Google Sheets API: How to find a row by value and update it&amp;rsquo;s content&lt;/a&gt; 找到想要的答案。方法是透過將特定的資料打上 &lt;code&gt;developer metadata&lt;/code&gt; ，後續就可以針對打上的 metadata 進行檢索。&lt;/p&gt;
+&lt;p&gt;然而我能找到的範例有點零碎，甚至是用 JavaScript 寫的簡單範例，很難完整的套用到 PHP 上面。為此折騰一番之後，總算裡出自己的心得，在此做一個紀錄，給未來的自己。&lt;/p&gt;
+&lt;h2 id=&#34;初始化-google-sheet-service&#34;&gt;初始化 Google Sheet Service&lt;/h2&gt;
+&lt;p&gt;初始化之前，當然你需要安裝 &lt;a href=&#34;https://github.com/googleapis/google-api-php-client&#34;&gt;google-api-php-client&lt;/a&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$client &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Google\Client&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$client&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setApplicationName&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Google Sheets&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 設定權限
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;$client&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setScopes&lt;/span&gt;([&lt;span style=&#34;color:#a6e22e&#34;&gt;Google\Service\Sheets&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;SPREADSHEETS&lt;/span&gt;]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$client&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setAccessType&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;offline&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 引入金鑰
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;$client&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setAuthConfig&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;__GOOGLE_SHEET_KEY_FILE&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$sheets &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Google\Service\Sheets&lt;/span&gt;($client);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;設定-metadata&#34;&gt;設定 Metadata&lt;/h2&gt;
+&lt;p&gt;google-api-php-client 有獨立的類別可以設定底下的 payload，但對我而最簡便是直接用 array 設定。所以底下直接使用 array 設定請求內容。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;createDeveloperMetadata&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;developerMetadata&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;location&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dimensionRange&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sheetId&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 通常可以在網址列的 gid=xxxxx 找到
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dimension&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ROWS&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// metadata 會套用在整個 row 上
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;startIndex&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 第一列索引值是 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;endIndex&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// 結束列，但不包含該列
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;visibility&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;DOCUMENT&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;metadataKey&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;MY_KEY&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;metadataValue&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;MY_VALUE&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Google\Service\Sheets\BatchGetValuesByDataFilterRequest&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$request&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setRequests&lt;/span&gt;($payload);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 成功之後，內容會包含 metadataId
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;$result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; $sheets&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;spreadsheets&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;batchUpdate&lt;/span&gt;($spreadsheetId, $request);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;根據-metadata-查找&#34;&gt;根據 Metadata 查找&lt;/h2&gt;
+&lt;p&gt;查找透過 &lt;code&gt;metadataKey&lt;/code&gt; 與 &lt;code&gt;metadataValue&lt;/code&gt;，也可以透過 &lt;code&gt;metadataId&lt;/code&gt; 查找。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;developerMetadataLookup&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;metadataKey&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;MY_KEY&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;metadataValue&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;MY_VALUE&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Google\Service\Sheets\BatchGetValuesByDataFilterRequest&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$request&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setMajorDimension&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ROWS&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$request&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;setDataFilters&lt;/span&gt;([$payload]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; $sheets&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;spreadsheets_values&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;batchGetByDataFilter&lt;/span&gt;($spreadsheetId, $request);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;結語&#34;&gt;結語&lt;/h2&gt;
+&lt;p&gt;透過 metadata 的好處是當標記的資料移動位置之後，你仍然能正確的存取到該資料，而不會因為使用者異動試算表而失效。麻煩的點是每次新增資料都要打上 metadata。&lt;/p&gt;
+&lt;p&gt;所以如果需要完整的 CRUD，還是使用資料庫會容易一些。只是這次的實作，主要是為了方便使用者使用試算表檢索資料及操作，所以將結果統整在上面。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Bootstrap and its breakpoint generation</title>
-      <link>https://absszero.github.io/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</link>
+      <link>http://localhost:1313/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</link>
       <pubDate>Sat, 22 Jun 2024 08:11:35 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</guid>
+      <guid>http://localhost:1313/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</guid>
       
         <description>&lt;h2 id=&#34;自定義斷點&#34;&gt;自定義斷點&lt;/h2&gt;
 &lt;p&gt;Bootstrap 在&lt;a href=&#34;https://getbootstrap.com/docs/5.1/layout/breakpoints/&#34;&gt;官方文件&lt;/a&gt;關於斷點(Breakpoint) 一開始就提到可以透過自訂變數設定斷點。最近在處理前端項目的時候，也注意到了前人已經設定該變數。支持開發上的斷點使用。&lt;/p&gt;
@@ -95,10 +161,10 @@
     
     <item>
       <title>Speed up Laravel test</title>
-      <link>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</link>
+      <link>http://localhost:1313/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</link>
       <pubDate>Tue, 11 Jun 2024 21:19:58 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</guid>
+      <guid>http://localhost:1313/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</guid>
       
         <description>&lt;h2 id=&#34;in-memory&#34;&gt;In Memory&lt;/h2&gt;
 &lt;p&gt;最近在進行一個既有專案的開發，為了能夠在上面做單元測試，著手進行準備工作。首先嘗試用 SQlite InMemory 的方式。然後在 TestCase 繼承了 &lt;code&gt;RefreshDatabase&lt;/code&gt; 處理資料庫的初始化。&lt;/p&gt;
@@ -174,10 +240,10 @@
     
     <item>
       <title>Test non-existent SQL functions</title>
-      <link>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</link>
+      <link>http://localhost:1313/post/2024-04-20_test-and-sql-functions/</link>
       <pubDate>Sat, 20 Apr 2024 16:19:18 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</guid>
+      <guid>http://localhost:1313/post/2024-04-20_test-and-sql-functions/</guid>
       
         <description>&lt;p&gt;Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資料庫的 SQL Function 問題。目前在 PostgreSQL 上使用 &lt;code&gt;TO_CHAR&lt;/code&gt; 進行日期格式化。但 SQLite 並沒有相同的函式，但有相似的函式 &lt;code&gt;strftime&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;mock-dbraw&#34;&gt;Mock DB:raw()&lt;/h2&gt;
@@ -210,10 +276,10 @@
     
     <item>
       <title>Laravel dynamic facade</title>
-      <link>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</link>
+      <link>http://localhost:1313/post/2024-04-11_laravel-dynamic-facade/</link>
       <pubDate>Thu, 11 Apr 2024 18:42:53 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</guid>
+      <guid>http://localhost:1313/post/2024-04-11_laravel-dynamic-facade/</guid>
       
         <description>&lt;p&gt;Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 &lt;code&gt;Illuminate\Support\Facades\Facade&lt;/code&gt; 建立自己的 Facade。唯獨 &lt;code&gt;Dynamic Facade&lt;/code&gt; 我今天才發現它的好用！&lt;/p&gt;
 &lt;h1 id=&#34;使用-app-容器的缺點&#34;&gt;使用 app 容器的缺點&lt;/h1&gt;
@@ -253,10 +319,10 @@
     
     <item>
       <title>After extends the eslint rules</title>
-      <link>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</link>
+      <link>http://localhost:1313/post/2024-02-09_after-extends-the-eslint-rules/</link>
       <pubDate>Fri, 09 Feb 2024 09:57:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</guid>
+      <guid>http://localhost:1313/post/2024-02-09_after-extends-the-eslint-rules/</guid>
       
         <description>&lt;p&gt;最早接觸到 TypeScript 開發是透過 VSCode 的 &lt;a href=&#34;https://code.visualstudio.com/api/get-started/your-first-extension&#34;&gt;Your First Extension &lt;/a&gt; 範例。教學透過 Yeoman 使用 VS Code Extension Generator 產生。預設已經自帶 ESlint 檢查。所以也沒特別在意就直接開發。在近期我回頭檢視相關的規則檔，才發現預設的規則其實非常寬鬆。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
@@ -454,10 +520,10 @@
     
     <item>
       <title>Lint only diff files</title>
-      <link>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</link>
+      <link>http://localhost:1313/post/2024-02-05_lint-only-diff-files/</link>
       <pubDate>Mon, 05 Feb 2024 13:51:30 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</guid>
+      <guid>http://localhost:1313/post/2024-02-05_lint-only-diff-files/</guid>
       
         <description>&lt;p&gt;過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做檢查即可。目前透過 Github action 嘗試進行設定，建立 Pull Request 的時候執行。&lt;/p&gt;
 &lt;h2 id=&#34;php&#34;&gt;PHP&lt;/h2&gt;
@@ -549,10 +615,10 @@
     
     <item>
       <title>Mock multi openAPI documents with Prism via Traefik</title>
-      <link>https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</link>
+      <link>http://localhost:1313/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</link>
       <pubDate>Thu, 25 Jan 2024 12:41:15 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</guid>
+      <guid>http://localhost:1313/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</guid>
       
         <description>&lt;p&gt;Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： &lt;a href=&#34;https://docs.stoplight.io/docs/prism/4bf78efbf9dd2-serving-multiple-open-api-documents&#34;&gt;Serving Multiple OpenAPI Documents&lt;/a&gt;。該文章說明主要是透過 &lt;a href=&#34;https://caddyserver.com/&#34;&gt;Caddy&lt;/a&gt; 作為反向代理伺服器，透過編修 &lt;code&gt;Caddyfile&lt;/code&gt; 設定反向代理伺服器。&lt;/p&gt;
 &lt;p&gt;而在近期接觸到 docker-compose 友好的  &lt;code&gt;Traefik&lt;/code&gt; 之後，便心想透過 Traefik 作為代理伺服器。&lt;/p&gt;
@@ -624,10 +690,10 @@
     
     <item>
       <title>Laravel x Load Balancer x HTTPS</title>
-      <link>https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/</link>
+      <link>http://localhost:1313/post/2024-01-24-laravel-load-balancer-https/</link>
       <pubDate>Wed, 24 Jan 2024 12:35:27 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/</guid>
+      <guid>http://localhost:1313/post/2024-01-24-laravel-load-balancer-https/</guid>
       
         <description>&lt;p&gt;由於 Laravel 生成網址的功能是根據一些特定的 Headers，特別是生成 https 開頭網址。當產品環境單純直接使用 Web Server 掛載 SSL 憑證不會有類似問題。但如果搭配 Load Balancer 而相關的 Headers 沒有正確的透過 X-Forwarded Headers 轉送過來，結果就是沒能正確產生 HTTPS 連結。&lt;/p&gt;
 &lt;h2 id=&#34;判斷依據&#34;&gt;判斷依據&lt;/h2&gt;
@@ -672,10 +738,10 @@
     
     <item>
       <title>Phead, A PHP code generator</title>
-      <link>https://absszero.github.io/post/2024-01-06_phead/</link>
+      <link>http://localhost:1313/post/2024-01-06_phead/</link>
       <pubDate>Sat, 06 Jan 2024 11:08:07 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-01-06_phead/</guid>
+      <guid>http://localhost:1313/post/2024-01-06_phead/</guid>
       
         <description>&lt;p&gt;結果在此： &lt;a href=&#34;https://github.com/absszero/phead/&#34;&gt;https://github.com/absszero/phead/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;開發 API 的節奏大致底定。開立路由、建立控制器、建立 Model、表現層以及撰寫相關測試。由於過程諸多類似，想必一定有可以簡化的方法。目前覺得最煩心的部分是開立檔案的同時也要開立相對的空目錄。雖然可以透過 &lt;code&gt;./arstian make:model MyDir/MyModel&lt;/code&gt; 的方式產生相對應的目錄跟檔案，但檔案一多這個操作就不是那麼俐落。於是就有了代碼產生器的概念。&lt;/p&gt;
@@ -805,10 +871,10 @@
     
     <item>
       <title>Develop in Docker</title>
-      <link>https://absszero.github.io/post/2023-12-26_develop-in-docker/</link>
+      <link>http://localhost:1313/post/2023-12-26_develop-in-docker/</link>
       <pubDate>Tue, 26 Dec 2023 20:45:34 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-12-26_develop-in-docker/</guid>
+      <guid>http://localhost:1313/post/2023-12-26_develop-in-docker/</guid>
       
         <description>&lt;h2 id=&#34;sdart&#34;&gt;sDart&lt;/h2&gt;
 &lt;p&gt;Docker 在產品容器化使用確實方便，但在思索怎麼用在開發環境遇到的第一個難題是太慢。Docker Desktop 啟動速度慢，每次開啟心裡就開始計時到底要多久。看著右上角的鯨魚 icon 不停的堆貨櫃、卸貨櫃、堆貨櫃&amp;hellip;。不過這個問題在接觸到 &lt;a href=&#34;https://orbstack.dev/&#34;&gt;OrbStack&lt;/a&gt; 之後有很大的改善。一個可以替代 Docker Desktop 的輕量化容器執行工具。&lt;/p&gt;
@@ -1081,10 +1147,10 @@
     
     <item>
       <title>Laravl Goto 在新視窗開啟所有語系檔</title>
-      <link>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</link>
+      <link>http://localhost:1313/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</link>
       <pubDate>Fri, 22 Dec 2023 10:17:33 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</guid>
+      <guid>http://localhost:1313/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</guid>
       
         <description>&lt;p&gt;十月的時候我從 Github 收到一個功能請求，希望能夠在 Laravel Goto for Sublime Text 實現選取語系的 key ，然後開啟所有對應語系檔在新視窗上面。實作過程並不特別困難。原理是檢索語系目錄把其他語系目錄找出來。接著另開新視窗，將每一個語系檔打開。後續比較陌生的功能是檔案佈局。由於開啟多個檔案需要均勻編排每一個檔案頁籤的寬度。Sublime Text 的 &lt;code&gt;set_layout&lt;/code&gt; API 提供這個功能。不過 &lt;code&gt;照舊&lt;/code&gt; 官網文章寫得不夠詳細，看了&lt;a href=&#34;https://forum.sublimetext.com/t/set-layout-reference/5713&#34;&gt;論壇上有的描述&lt;/a&gt;才大概曉得怎麼邊排。後續選擇使用水平佈局的方式，畢竟用戶寬螢幕的可能性比較高。&lt;/p&gt;
 &lt;p&gt;接著我希望把相同功能實作在 VSCode 上面。前面查找語系目錄的實現同樣不是太困難。但是 VSCode 在開啟新視窗以及操作新視窗的方式跟 Sublime Text 是完全不一樣的。底下是 Sublime Text 開啟新視窗、設定佈局，以及開啟檔案的方式。使用 &lt;code&gt;run_command(&#39;new_window&#39;)&lt;/code&gt; 開啟新視窗之後，透過 &lt;code&gt;active_window()&lt;/code&gt; 能夠拿到這個新視窗，並且進行操作。&lt;/p&gt;
@@ -1144,10 +1210,10 @@
     
     <item>
       <title>Laravel Command Class Name</title>
-      <link>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</link>
+      <link>http://localhost:1313/post/2023-10-31_laravel-command-classname/</link>
       <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</guid>
+      <guid>http://localhost:1313/post/2023-10-31_laravel-command-classname/</guid>
       
         <description>&lt;h2 id=&#34;why&#34;&gt;Why&lt;/h2&gt;
 &lt;p&gt;隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 &lt;code&gt;artisn list&lt;/code&gt; 只顯示每個指令所設定的 &lt;code&gt;signature&lt;/code&gt; 屬性，但不曉得對應的檔案名稱。只期望 signature 跟檔案名稱具有相似性，可以順藤摸瓜。也因此才有了開發相關套件的念頭。&lt;/p&gt;
@@ -1180,10 +1246,10 @@
     
     <item>
       <title>VSCode Extension Development, Run Single Test</title>
-      <link>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</link>
+      <link>http://localhost:1313/post/2023-09-22_vsce-extension-dev-add-test-single-test/</link>
       <pubDate>Fri, 22 Sep 2023 10:17:33 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</guid>
+      <guid>http://localhost:1313/post/2023-09-22_vsce-extension-dev-add-test-single-test/</guid>
       
         <description>&lt;p&gt;隨著 VSCode 開發 Extension 愈趨複雜，相關的單元測試也越來越多。每次增加一個方法以及相對測試，整個套件的測試都得重新執行一遍。為了更有效率的進行開發，目前要解決幾個痛點：&lt;/p&gt;
 &lt;ul&gt;
@@ -1363,10 +1429,10 @@
     
     <item>
       <title>開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</title>
-      <link>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</link>
+      <link>http://localhost:1313/post/2023-09-19_sublime-laravel-goto-middleware-development/</link>
       <pubDate>Tue, 19 Sep 2023 10:27:48 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</guid>
+      <guid>http://localhost:1313/post/2023-09-19_sublime-laravel-goto-middleware-development/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=absszero.vscode-laravel-goto&#34;&gt;Laravel Goto for VSCode&lt;/a&gt; 的 Middleware 轉跳功能完成後。隨後也逐步在 &lt;a href=&#34;https://packagecontrol.io/packages/Laravel%20Goto&#34;&gt;Laravel Goto for Sublime Text&lt;/a&gt; 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用 Python 做同步執行，相較於 VSCode Extension 使用 JS 做非同步執行，開發單純的多。開發時間 VSCode 版本花了一週，這個版本則在一週內完成。但沒想到最困難的部分是單元測試，為此踩了三個坑。分別是：&lt;/p&gt;
 &lt;ul&gt;
@@ -1417,10 +1483,10 @@
     
     <item>
       <title>PHPUnit TearDown &amp; register_shutdown_function</title>
-      <link>https://absszero.github.io/post/2023-03-25_phpunit-teardown--register_shutdown_function/</link>
+      <link>http://localhost:1313/post/2023-03-25_phpunit-teardown--register_shutdown_function/</link>
       <pubDate>Sat, 25 Mar 2023 19:40:00 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-03-25_phpunit-teardown--register_shutdown_function/</guid>
+      <guid>http://localhost:1313/post/2023-03-25_phpunit-teardown--register_shutdown_function/</guid>
       
         <description>&lt;h2 id=&#34;what&#34;&gt;WHAT&lt;/h2&gt;
 &lt;p&gt;近期在開發 Laravel Log 相關套件。於是利用 &lt;code&gt;orchestra/testbench&lt;/code&gt; 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。&lt;/p&gt;
@@ -1458,10 +1524,10 @@
     
     <item>
       <title>Prism 建立 API Server</title>
-      <link>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
+      <link>http://localhost:1313/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
       <pubDate>Thu, 06 Feb 2020 15:01:03 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
+      <guid>http://localhost:1313/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
       
         <description>&lt;h2 id=&#34;why-prism&#34;&gt;Why Prism&lt;/h2&gt;
 &lt;p&gt;撰寫一份 API 文件有許多方式，其中一種是根據 &lt;code&gt;OpenAPI&lt;/code&gt; 規範。而在完成 API 規劃後通常搭配如 &lt;code&gt;Swagger UI&lt;/code&gt; 將規範文件變成容易閱讀 API 文件。&lt;/p&gt;
@@ -1539,10 +1605,10 @@
     
     <item>
       <title>Guzzle service descriptions - 使用描述檔建立 API Client</title>
-      <link>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</link>
+      <link>http://localhost:1313/post/2019-10-06_guzzle-service-descriptions/</link>
       <pubDate>Sun, 06 Oct 2019 15:01:03 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</guid>
+      <guid>http://localhost:1313/post/2019-10-06_guzzle-service-descriptions/</guid>
       
         <description>&lt;h2 id=&#34;何謂-service-descriptions&#34;&gt;何謂 Service Descriptions&lt;/h2&gt;
 &lt;p&gt;最近在查找關於 Fixer.io 的用戶端套件。發現平常慣用的 Guzzle  HTTP Client 還有另外一種開發方式 - &lt;code&gt;service descriptions&lt;/code&gt;。該方式借鏡 Swagger 利用定義 API 操作的方式，藉由特定描述的 PHP Array 建立 API Client 操作。簡單的說，只要產生一個 PHP Array 裡面描述每一種 API 的格式說明，就可以呼叫 API 囉！&lt;/p&gt;
@@ -1628,14 +1694,14 @@
     
     <item>
       <title>Laravel Goto for VS Code</title>
-      <link>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</link>
+      <link>http://localhost:1313/post/2019-09-09_laravel-goto-for-vs-code/</link>
       <pubDate>Mon, 09 Sep 2019 20:16:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</guid>
+      <guid>http://localhost:1313/post/2019-09-09_laravel-goto-for-vs-code/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/absszero/vscode-laravel-goto&#34;&gt;https://github.com/absszero/vscode-laravel-goto&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why&#34;&gt;Why&lt;/h2&gt;
-&lt;p&gt;在完成 &lt;a href=&#34;https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/&#34;&gt;Laravel Goto for Sublime Text&lt;/a&gt; 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。&lt;/p&gt;
+&lt;p&gt;在完成 &lt;a href=&#34;http://localhost:1313/post/2019-08-26_laravel-goto-for-sublime-text/&#34;&gt;Laravel Goto for Sublime Text&lt;/a&gt; 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。&lt;/p&gt;
 &lt;p&gt;由於目前開發的專案愈趨複雜，路由的設定已經從成長快要上百條。沒有有效的透過 Namespace 區分 Controller。很容易就遇到撞名的問題。開發前先針對 VS Code Marketplace 上類似的專案搜尋一番：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=codingyu.laravel-goto-view&#34;&gt;Laravel goto view&lt;/a&gt; 視圖轉跳，能針對特定程式寫法下去搜尋，只能查找指定的視圖目錄。&lt;/li&gt;
@@ -1760,10 +1826,10 @@
     
     <item>
       <title>Laravel Goto for Sublime Text</title>
-      <link>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</link>
+      <link>http://localhost:1313/post/2019-08-26_laravel-goto-for-sublime-text/</link>
       <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</guid>
+      <guid>http://localhost:1313/post/2019-08-26_laravel-goto-for-sublime-text/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/absszero/LaravelGoto&#34;&gt;https://github.com/absszero/LaravelGoto&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why&#34;&gt;Why&lt;/h2&gt;
@@ -1881,30 +1947,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;總結&#34;&gt;總結&lt;/h2&gt;
 &lt;p&gt;由於 Python 是執行在 Sublime Text 的內部，所有也得透過內部的 Console 查看程式編寫的情況。另外這年頭寫程式一定要來點單元測試，這部份也在後來添加了上去。完成作品已經提交 Package Control，不過要排到審查上線，大概還有許多時間。&lt;/p&gt;
 &lt;p&gt;後續開發套件的經驗也拿來修改 SublimeLinter-contrib-php-cs-fixer 套件，以符合新版 SublimeLinter 的改版需求。基本上還是解決工作的需求，不過 ST 仍然有些功能即使已經使用多年仍然一知半解。希望找個時間細部摸索一下，期望開發的時間能做更有效的應用。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>透過 PHP 解析包含 BOM 的 CSV 文件</title>
-      <link>https://absszero.github.io/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</link>
-      <pubDate>Mon, 26 Aug 2019 20:12:35 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</guid>
-      
-        <description>&lt;p&gt;之前拿到的 csv 檔大部分都很乾淨，使用 PHP 內建的 &lt;code&gt;fgetcsv&lt;/code&gt; 逐行解析不會有什麼問題，但今天解開一個欄位就發現它的字串長度跟預期的不同，並且無法用 &lt;code&gt;ltrim&lt;/code&gt; 函式移除左側不要的字元，印出來看起來又正常。於是透過 &lt;code&gt;ord&lt;/code&gt; 函式把前幾個字元印出來瞧瞧。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$handle &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fopen&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test.csv&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;r&amp;#34;&lt;/span&gt;));
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$data &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fgetcsv&lt;/span&gt;($handle));
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 239
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ord&lt;/span&gt;($data[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 187 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ord&lt;/span&gt;($data[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 191
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ord&lt;/span&gt;($data[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;]);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按照過去的經驗， 開頭的不可見字元應該是 BOM，查了 Wiki 也確定這三個數字是 UTF-8 的 BOM 沒錯。由於第一行是欄位說明，所以直接略過取第二行。&lt;/p&gt;
 </description>
       
     </item>
