@@ -6,8 +6,15 @@
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 14 Oct 2024 20:23:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 18 Oct 2024 22:22:08 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Set Bing Wallpaper After Login on Macos</title>
+      <link>http://localhost:1313/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</link>
+      <pubDate>Fri, 18 Oct 2024 22:22:08 +0800</pubDate>
+      <guid>http://localhost:1313/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</guid>
+      <description>每天上班都會看到同事的桌布更換，這也是 Windows 內建的功能。我很好奇那樣的景致是哪裡拍攝的，期望有一天排進我的旅遊清單。所以決定找一下有沒有類似的應</description>
+    </item>
     <item>
       <title>Google spreadsheet updates by developer metadata</title>
       <link>http://localhost:1313/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</link>
@@ -140,13 +147,6 @@
       <pubDate>Mon, 09 Sep 2019 20:16:24 +0800</pubDate>
       <guid>http://localhost:1313/post/2019-09-09_laravel-goto-for-vs-code/</guid>
       <description>https://github.com/absszero/vscode-laravel-goto Why 在完成 Laravel Goto for Sublime Text 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。 由</description>
-    </item>
-    <item>
-      <title>Laravel Goto for Sublime Text</title>
-      <link>http://localhost:1313/post/2019-08-26_laravel-goto-for-sublime-text/</link>
-      <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
-      <guid>http://localhost:1313/post/2019-08-26_laravel-goto-for-sublime-text/</guid>
-      <description>https://github.com/absszero/LaravelGoto Why 去年下定決心買一套 Sublime Text 之後（USD $75 的樣子），也算是認可 ST 在工作幫我省了不少時間。不過隨著 VS Code 功能逐步豐富，一直有想轉換編輯器的念頭。上</description>
     </item>
   </channel>
 </rss>

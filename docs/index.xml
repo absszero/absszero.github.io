@@ -6,10 +6,69 @@
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 14 Oct 2024 20:23:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 18 Oct 2024 22:22:08 +0800</lastBuildDate>
     
         <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Set Bing Wallpaper After Login on Macos</title>
+      <link>http://localhost:1313/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</link>
+      <pubDate>Fri, 18 Oct 2024 22:22:08 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</guid>
+      
+        <description>&lt;p&gt;每天上班都會看到同事的桌布更換，這也是 Windows 內建的功能。我很好奇那樣的景致是哪裡拍攝的，期望有一天排進我的旅遊清單。所以決定找一下有沒有類似的應用，可以幫我每日更換桌面。&lt;/p&gt;
+&lt;p&gt;看似簡單的需求相信已經有一堆應用可以實現。後來我確實找到 &lt;a href=&#34;https://apps.apple.com/us/app/daily-wallpaper-hd/id1507778016?mt=12&#34;&gt;Daily Wallpaper HD&lt;/a&gt; 能滿足我的需求。它會自動下載 Bing wallpaper 然後設置成桌布。但很快的我發現有兩個問題&amp;hellip; 首先是解析度， Bing Wallpaper 預設的解析度偏低，放在 2K 螢幕有明顯的顆粒感。再來是這個應用需要登入的時候常駐，但對於每天只需要用一次的應用，常駐似乎有點多餘。&lt;/p&gt;
+&lt;p&gt;既然它是下載 Bing Wallpaper 也許我可以找到相對應的腳本，在登入的時候執行一次。後續我找了幾個開源的方案，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/thejandroman/bing-wallpaper&#34;&gt;https://github.com/thejandroman/bing-wallpaper&lt;/a&gt; 已經太久沒有更新，無法更新桌布。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/scriptingosx/desktoppr&#34;&gt;https://github.com/scriptingosx/desktoppr&lt;/a&gt; 可以更新桌布，但載入需要透過 LaunchAgent，然後要自己提供 Bing 圖片連結。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/xiqishow/bing_wallpaper&#34;&gt;https://github.com/xiqishow/bing_wallpaper&lt;/a&gt; 腳本有說明如何下載 Bing 圖片，但設置桌布無效。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最終我採取 &lt;a href=&#34;https://github.com/xiqishow/bing_wallpaper&#34;&gt;https://github.com/xiqishow/bing_wallpaper&lt;/a&gt; 配合 &lt;a href=&#34;https://discussions.apple.com/thread/254859103?sortBy=rank&#34;&gt;Set Wallpaper with commands in Terminal possible? &lt;/a&gt; 這篇提到透過 Automator 生成一個 application。&lt;/p&gt;
+&lt;p&gt;步驟如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;透過 Automator 建立一個新的 application。&lt;/li&gt;
+&lt;li&gt;新增 &lt;code&gt;Run Shell Script&lt;/code&gt; action，Shell 選擇 /bin/bash，然後填入底下的腳本內容。&lt;/li&gt;
+&lt;li&gt;新增 &lt;code&gt;Set the Desktop Picture&lt;/code&gt; action 到 &lt;code&gt;Run Shell Script&lt;/code&gt; 下方。&lt;/li&gt;
+&lt;li&gt;最後回到 Macos 的 &lt;code&gt;System Settings&lt;/code&gt; 搜尋 &lt;code&gt;Open at Login&lt;/code&gt;，把剛才新增的 application 加進去。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下方的腳本主要進行的動作包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下載每日的 bing 桌布描述內容的 json。&lt;/li&gt;
+&lt;li&gt;從描述取得圖片網址，並替換成高解析度的網址，隨後檢查該圖片是否已經下載過了，有則結束執行。&lt;/li&gt;
+&lt;li&gt;刪除原本的舊圖檔，下載新圖檔。&lt;/li&gt;
+&lt;li&gt;輸出新圖檔的檔名位置，輸出內容會作為 &lt;code&gt;Set the Desktop Picture&lt;/code&gt; 的輸入而設定該桌布。&lt;/li&gt;
+&lt;li&gt;最後描述內容通常會說明該圖片的拍攝地點，把它當作系統訊息提示輸出。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/env bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 建立目錄&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir -p ~/bing-wallpapers/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd ~/bing-wallpapers/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 下載 images.json&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl --no-progress-meter --location --request GET &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://bing.com/HPImageArchive.aspx?idx=0&amp;amp;n=1&amp;amp;format=js&amp;#39;&lt;/span&gt; --header &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36&amp;#39;&lt;/span&gt; -o images.json &amp;gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 取得 wallpaper url, 確認是否已經下載過&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;url&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;cat images.json | grep -o &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;url&amp;#34;:&amp;#34;[^&amp;#34;]*&amp;#34;&amp;#39;&lt;/span&gt;  | sed -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/&amp;#34;url&amp;#34;:&amp;#34;/https:\/\/www.bing.com/&amp;#39;&lt;/span&gt; | sed -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/&amp;#34;//&amp;#39;&lt;/span&gt; | sed -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/1920x1080/UHD/g&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;filename&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;echo -n &lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;$url&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt; | md5&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;.jpg&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; test -f $filename; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  exit &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 下載桌布&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -f *.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl --no-progress-meter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$url&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; -o $filename &amp;gt;&amp;gt; /dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; test -f $filename; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  realpath $filename
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  location&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;cat images.json | grep -o &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;copyright&amp;#34;:&amp;#34;[^&amp;#34;]*&amp;#39;&lt;/span&gt; | sed -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s/&amp;#34;copyright&amp;#34;:&amp;#34;//&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  osascript -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;display notification \&amp;#34;&lt;/span&gt;$location&lt;span style=&#34;color:#e6db74&#34;&gt;\&amp;#34; with title \&amp;#34;Wallpaper Location\&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
     
     <item>
       <title>Google spreadsheet updates by developer metadata</title>
@@ -1820,133 +1879,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;總結&#34;&gt;總結&lt;/h2&gt;
 &lt;p&gt;VS Code 的開發入門比起 Sublime Text 友善許多。並且在除錯以及測試整合方面都比 ST 更為完整。不過豐富的 API 也讓開發人員得小心爬梳才能找到合適的範例。TypeScript 方面頭一次接觸，對於編輯器能夠進行型別提示跟檢查感覺是十分實用，但對於首次接觸的我來說，還是有不小的難度（主要是 TS 的語法規範）&lt;/p&gt;
 &lt;p&gt;VS Code 發布流程也比 ST 更完整，目前沒有人工審查的要求，任何人在開發完成之後都可以藉由簡單的操作，立即將套件發布到 Marketplace，而後續的更新也有完整的指令支援。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Laravel Goto for Sublime Text</title>
-      <link>http://localhost:1313/post/2019-08-26_laravel-goto-for-sublime-text/</link>
-      <pubDate>Mon, 26 Aug 2019 20:31:24 +0800</pubDate>
-      
-      <guid>http://localhost:1313/post/2019-08-26_laravel-goto-for-sublime-text/</guid>
-      
-        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/absszero/LaravelGoto&#34;&gt;https://github.com/absszero/LaravelGoto&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;why&#34;&gt;Why&lt;/h2&gt;
-&lt;p&gt;去年下定決心買一套 Sublime Text 之後（USD $75 的樣子），也算是認可 ST 在工作幫我省了不少時間。不過隨著 VS Code 功能逐步豐富，一直有想轉換編輯器的念頭。上個月某個週末夜晚想確認一下 VS Code 目前相關的  Extension 是否已經到位了。便逐步安裝 VS Code 以及相關套件。結果&amp;hellip; 跟 ST 還是有段落差。&lt;code&gt;go to definition&lt;/code&gt;  在 ST 上能夠針對字串直接轉跳，VS Code 則必須是類或方法的使用才能夠轉跳。&lt;/p&gt;
-&lt;p&gt;但 ST 也不是所有的文字都能正確轉跳，例如 Laravel Route 定義的部份，能夠轉跳到指定的 Controller，但是 Method 則不行；Blade 檔案的引用由於路徑目錄是透過 &lt;code&gt;.&lt;/code&gt; 逗點來區隔（例如：my_dir&lt;code&gt;.&lt;/code&gt;my_view），透過 &lt;code&gt;Goto anything&lt;/code&gt; 也起不了作用。Package Control 上面能收尋到最接近的套件是 &lt;code&gt;Laravel OpenFile&lt;/code&gt;。不過路徑必須事先選取起來，並且必須透過 &lt;code&gt;return view(&#39;your_view_path&#39;)&lt;/code&gt; 叫用的檔案才能發揮作用。&lt;/p&gt;
-&lt;h2 id=&#34;功能需求&#34;&gt;功能需求&lt;/h2&gt;
-&lt;p&gt;基於以上的原因，決定自己來做一個 ST 套件，順便練習一下 Python，於是有了 &lt;code&gt;LaravelGoto&lt;/code&gt; 套件的實踐。目前最常用的功能包括：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;開啟 Controller@Method。內建的 Goto 只能開啟 Controller 不能開啟後連帶轉跳到 Method。&lt;/li&gt;
-&lt;li&gt;開啟 View file。內建必須用 &lt;code&gt;/&lt;/code&gt; 分隔目錄名稱，然後選取之後使用 &lt;code&gt;Goto anthing&lt;/code&gt; 搜尋。&lt;/li&gt;
-&lt;li&gt;開啟靜態檔案（js, css&amp;hellip;etc）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;找出字串範圍&#34;&gt;找出字串範圍&lt;/h2&gt;
-&lt;p&gt;建立一個 Plugin 並不困難，不過有些功能得設法實現。原本的 &lt;code&gt;Laravel OpenFile&lt;/code&gt; 套件必須選取整個字串才能夠發揮作用，但大部分的情況，我希望可以像 &lt;code&gt;Goto definition&lt;/code&gt; ，Ctrl + 滑鼠左鍵點擊該字串就可以直達指定的 View file 或者 Controller。藉此參考了 &lt;a href=&#34;https://github.com/noahcoad/open-url/blob/master/open_url.py#L186&#34;&gt;https://github.com/noahcoad/open-url/blob/master/open_url.py#L186&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;該方法可以根據你目前游標位置，找出字串範圍，或者根據你所選的字串。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# selected 可以透過 self.view.sel()[0] 帶入，代表所選的第一個文字範圍&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_selection&lt;/span&gt;(self, selected):
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        start &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; selected&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;begin()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        end &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; selected&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;end()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# 當所選範圍開頭跟結果在同一個位置，表示只是指標位置而未做任何選取&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; start &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; end:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# 找出當前位置指標所在的行範圍&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            line &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;line(start)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            delimiters &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; start &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; line&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;a:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;# 透過逐字檢查，找到開頭距離游標最接近的單引號或雙引號&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;substr(start &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; delimiters:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                start &lt;span style=&#34;color:#f92672&#34;&gt;-=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; end &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; line&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;b:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;# 透過逐字檢查，找到結尾距離游標最接近的單引號或雙引號&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;substr(end) &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; delimiters:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                end &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;# 將開頭與結尾位置作為所選範圍&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; sublime&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Region(start, end)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;範圍轉換為路徑&#34;&gt;範圍轉換為路徑&lt;/h2&gt;
-&lt;p&gt;有了選取範圍之後先轉為文字，然後判斷文字內容來決定路徑類型。&lt;/p&gt;
-&lt;p&gt;Controller 的部份比較困難的地方是當有兩個一樣的名稱的 Controller，需要透過附加 Namespace 來判定選取的是哪個 Controller（但找出 Namespace 同樣很困難！）&lt;/p&gt;
-&lt;p&gt;至於 View file，如果包含 &lt;code&gt;::&lt;/code&gt;  表示啟用了 View namespace，所以只取雙冒號之後的路徑名稱&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_path&lt;/span&gt;(self, selected):
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        selection &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_selection(selected)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# 轉換為字串&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        path &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;substr(selection)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;strip()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# 如果字串包含 @ 或 Controller 的字樣，判定為 Controller &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; path &lt;span style=&#34;color:#f92672&#34;&gt;or&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Controller&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; path):
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            namespace &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_namespace(selection)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; namespace:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                path &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; namespace &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; path
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# remove Blade Namespace&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            path &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; path&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;split(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;:&amp;#39;&lt;/span&gt;)[&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; path
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;搜尋&#34;&gt;搜尋&lt;/h2&gt;
-&lt;p&gt;找到部份檔案路徑之後，由於不同專案結構或使用方式（例如沒有使用 ST 的 Project 功能），很難找到完整的檔案路徑並且開啟。所以這邊是透過 &lt;code&gt;Goto anything&lt;/code&gt; 功能檢索可能的檔案路徑。&lt;/p&gt;
-&lt;p&gt;首先判斷是否是靜態檔案，靜態檔案的特性是路徑副檔名可能是常用的 &lt;code&gt;js&lt;/code&gt; ,&lt;code&gt;css&lt;/code&gt; ，所以首先定義了網頁開發常用的靜態副檔名，作為檢索的依據。&lt;/p&gt;
-&lt;p&gt;如果不是靜態檔案，試著判斷是否是控制器路徑。如果是控制器則顯示 &lt;code&gt;Goto anything&lt;/code&gt; 功能之後，呼叫 &lt;code&gt;insert&lt;/code&gt; 指令逐字把控制器路徑輸入進去。不直接透過 &lt;code&gt;Goto anything&lt;/code&gt; 查詢，是由於當我們使用 &lt;code&gt;insert&lt;/code&gt; 指令的輸入完控制器檔名後，接著輸入 &lt;code&gt;@&lt;/code&gt; 符號可以觸發 &lt;code&gt;Goto symbol&lt;/code&gt; 的功能，如此後續輸入可以自動跳到我們所想要的 Method 位置。&lt;/p&gt;
-&lt;p&gt;最後，如果上述都不符合則判定是 View file，將路徑的 &lt;code&gt;.&lt;/code&gt; 轉換成 &lt;code&gt;/&lt;/code&gt; ，並且在結尾附加上 &lt;code&gt;.blade.php&lt;/code&gt;，然後呼叫 &lt;code&gt;Goto anything&lt;/code&gt; 功能搜尋檔案。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;search&lt;/span&gt;(self, path):
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        args &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;overlay&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;goto&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;show_files&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;: path
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# 是否是靜態檔案，已經預先定義了靜態檔案的副檔名範圍&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;is_static_file(path)):
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;run_command(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;show_overlay&amp;#34;&lt;/span&gt;, args)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        is_controller &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;is_controller(path)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; is_controller:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            args[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:  &lt;span style=&#34;color:#75715e&#34;&gt;# it&amp;#39;s a view file&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            args[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; args[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.blade.php&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;run_command(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;show_overlay&amp;#34;&lt;/span&gt;, args)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# if it &amp;#39;s Controller path, use insert command to trigger symbol search&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; is_controller:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;run_command(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;insert&amp;#34;&lt;/span&gt;, {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;characters&amp;#34;&lt;/span&gt;: path&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;@&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.php@&amp;#39;&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            })
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;namespace&#34;&gt;Namespace&lt;/h2&gt;
-&lt;p&gt;由於控制器可能有檔名重複的情形，所以適當的加上 Namespace 可以更正確的檢索到合適的檔案。但由於複雜的 Namespace 在 Route 方面可能一層包一層，目前只能檢索到最外層的 Namespace。&lt;/p&gt;
-&lt;p&gt;根據 Laravel 跟 Lumen 各個版本的使用情況，目前有兩種設定 Namespace 的方式：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;patterns &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Route::namespace(&amp;#39;MyNamespace&amp;#39;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;compile(&lt;span style=&#34;color:#e6db74&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;namespace\s*\(\s*([&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;])\s*([^&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;]+)\1&amp;#34;&lt;/span&gt;),
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Route::group([&amp;#39;namespace&amp;#39; =&amp;gt; &amp;#39;MyNamespace&amp;#39;])&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    re&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;compile(&lt;span style=&#34;color:#e6db74&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;[&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;]namespace[&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;]\s*=&amp;gt;\s*([&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;])([^&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;]+)\1&amp;#34;&lt;/span&gt;),
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;]
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下來要透過 ST 語法解析內建的 selector 找出每一個 Route 函式包含的範圍，並且確保當前所選的控制器路由，是否包含在所選的函式範圍當中。如果是，則帶出可能的 Namespace。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_namespace&lt;/span&gt;(self, selected):
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# PHP 語法測試範例 https://github.com/sublimehq/Packages/blob/7c40526e68e07e0e4a6681bb2d04359115ec1331/PHP/syntax_test_php.php&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# 找出所有的函式範圍&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        functions &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;find_by_selector(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;meta.function-call&amp;#39;&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; function &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; functions:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        	&lt;span style=&#34;color:#75715e&#34;&gt;# 如果函式範圍不包含所選的位置則跳過&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; function&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;contains(selected)):
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# 一般函式的第一行應該就會包含 Namespace&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            region &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;view&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;line(function)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            block &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;substr(region)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;strip()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# 用正規表達式檢索批配出 Namespace&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; pattern &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; patterns:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                matched &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pattern&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;search(block)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (matched):
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; matched&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;group(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;總結&#34;&gt;總結&lt;/h2&gt;
-&lt;p&gt;由於 Python 是執行在 Sublime Text 的內部，所有也得透過內部的 Console 查看程式編寫的情況。另外這年頭寫程式一定要來點單元測試，這部份也在後來添加了上去。完成作品已經提交 Package Control，不過要排到審查上線，大概還有許多時間。&lt;/p&gt;
-&lt;p&gt;後續開發套件的經驗也拿來修改 SublimeLinter-contrib-php-cs-fixer 套件，以符合新版 SublimeLinter 的改版需求。基本上還是解決工作的需求，不過 ST 仍然有些功能即使已經使用多年仍然一知半解。希望找個時間細部摸索一下，期望開發的時間能做更有效的應用。&lt;/p&gt;
 </description>
       
     </item>
