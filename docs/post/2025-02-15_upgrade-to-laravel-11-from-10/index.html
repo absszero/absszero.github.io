@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          SublimeLinter-phpcs 使用自訂規則檔 - 黑書記事
+          Upgrade to Laravel 11 from Laravel 10 - 黑書記事
         </title>
     
 
@@ -29,7 +29,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="absszero" />
-  <meta name="description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &amp;#34;linters&amp;#34;: { &amp;#34;phpcs&amp;#34;: { &amp;#34;args&amp;#34;: &amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34; } } } 個別專案設定，設定在 *.sublime-project { &amp;#34;settings&amp;#34;: { &amp;#34;SublimeLinter.linters.phpcs.args&amp;#34;: &amp;#34;--standard=&amp;#39;${folder}/phpcs.xml&amp;#39;&amp;#34;" />
+  <meta name="description" content="去年五月將一個舊專案改寫成 Laravel。礙於當時的 PHP 版本只能維持在 8.1，所以最終沒能直接使用 Laravel 11。而今年在一番討論之後，決定各自升級手" />
+<meta name="keywords" content="Laravel, artisan, casts" />
 
 
 
@@ -40,7 +41,7 @@
 <meta name="generator" content="Hugo 0.127.0" />
 
 
-<link rel="canonical" href="https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/" />
+<link rel="canonical" href="https://absszero.github.io/post/2025-02-15_upgrade-to-laravel-11-from-10/" />
 
 
 
@@ -66,24 +67,25 @@
 
 
 
-<meta property="og:url" content="https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/">
+<meta property="og:url" content="https://absszero.github.io/post/2025-02-15_upgrade-to-laravel-11-from-10/">
   <meta property="og:site_name" content="黑書記事">
-  <meta property="og:title" content="SublimeLinter-phpcs 使用自訂規則檔">
-  <meta property="og:description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;">
+  <meta property="og:title" content="Upgrade to Laravel 11 from Laravel 10">
+  <meta property="og:description" content="去年五月將一個舊專案改寫成 Laravel。礙於當時的 PHP 版本只能維持在 8.1，所以最終沒能直接使用 Laravel 11。而今年在一番討論之後，決定各自升級手">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2019-08-03T16:57:39+08:00">
-    <meta property="article:modified_time" content="2019-08-03T16:57:39+08:00">
+    <meta property="article:published_time" content="2025-02-15T17:09:20+08:00">
+    <meta property="article:modified_time" content="2025-02-15T17:09:20+08:00">
 
-  <meta itemprop="name" content="SublimeLinter-phpcs 使用自訂規則檔">
-  <meta itemprop="description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;">
-  <meta itemprop="datePublished" content="2019-08-03T16:57:39+08:00">
-  <meta itemprop="dateModified" content="2019-08-03T16:57:39+08:00">
-  <meta itemprop="wordCount" content="235">
+  <meta itemprop="name" content="Upgrade to Laravel 11 from Laravel 10">
+  <meta itemprop="description" content="去年五月將一個舊專案改寫成 Laravel。礙於當時的 PHP 版本只能維持在 8.1，所以最終沒能直接使用 Laravel 11。而今年在一番討論之後，決定各自升級手">
+  <meta itemprop="datePublished" content="2025-02-15T17:09:20+08:00">
+  <meta itemprop="dateModified" content="2025-02-15T17:09:20+08:00">
+  <meta itemprop="wordCount" content="774">
+  <meta itemprop="keywords" content="Laravel,artisan,casts">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="SublimeLinter-phpcs 使用自訂規則檔">
-  <meta name="twitter:description" content="為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。 全編輯器設定 SublimeLinter Settings - User { &#34;linters&#34;: { &#34;phpcs&#34;: { &#34;args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34; } } } 個別專案設定，設定在 *.sublime-project { &#34;settings&#34;: { &#34;SublimeLinter.linters.phpcs.args&#34;: &#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;">
+  <meta name="twitter:title" content="Upgrade to Laravel 11 from Laravel 10">
+  <meta name="twitter:description" content="去年五月將一個舊專案改寫成 Laravel。礙於當時的 PHP 版本只能維持在 8.1，所以最終沒能直接使用 Laravel 11。而今年在一番討論之後，決定各自升級手">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -308,7 +310,7 @@
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">SublimeLinter-phpcs 使用自訂規則檔</h1>
+          <h1 class="post-title">Upgrade to Laravel 11 from Laravel 10</h1>
           
 
           <div class="post-meta">
@@ -319,8 +321,8 @@
   </div>
 
   <div class="post-meta-time">
-    <time datetime="2019-08-03">
-      2019-08-03
+    <time datetime="2025-02-15">
+      2025-02-15
     </time>
   </div>
 
@@ -346,37 +348,50 @@
 
         
         <div class="post-content">
-          <p>為了建立一個樣板專案，同時整合代碼風格檢查，今天莫名其妙踩了一些坑。</p>
-<p>全編輯器設定 SublimeLinter Settings - User
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;linters&#34;</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;phpcs&#34;</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;args&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;</span>
-</span></span><span style="display:flex;"><span>        }
+          <p>去年五月將一個舊專案改寫成 Laravel。礙於當時的 PHP 版本只能維持在 8.1，所以最終沒能直接使用 Laravel 11。而今年在一番討論之後，決定各自升級手邊系統，來到當前官方還在維護的版本。利用上週六需要補班的時間嘗試將專案升級到 Laravel 11。</p>
+<h2 id="eloquent-model-casts-method">Eloquent Model casts Method</h2>
+<p>由於本地環境已經使用 Laravel Herd 進行開發，透過 GUI 很容易的將 PHP 版本切換到 8.3。檢視過 8.1 到 8.3 之間的相容性問題之後，回來開始 Laravel 11 版本升級。官方提供的<a href="https://laravel.com/docs/11.x/upgrade">升級說明</a>所提到相容性衝擊的部分，對去年才改寫的專案衝擊不大。我主要修改的部分只有 <a href="https://laravel.com/docs/11.x/upgrade#eloquent-model-casts-method">Eloquent Model casts Method</a>，把 Model 的 <code>$casts</code> 屬性，改用 <code>casts</code> 方法替換。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>    <span style="color:#75715e">// 原本....
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">protected</span> $casts <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;create_order&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;order_result&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;payment_result&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;invoice_data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>    ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 改寫成....
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">casts</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">array</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;create_order&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;order_result&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;payment_result&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;invoice_data&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;json&#39;</span>,
+</span></span><span style="display:flex;"><span>        ];
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></p>
-<p>個別專案設定，設定在 *.sublime-project
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;settings&#34;</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SublimeLinter.linters.phpcs.args&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;--standard=&#39;${folder}/phpcs.xml&#39;&#34;</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></p>
-<p>由於設定路徑成功或失敗，都<strong>不會產生錯誤</strong>。另外即便規則檔有誤也<strong>不會有錯誤說明</strong>。所以檢查的方式是透過終端機執行 <code>phpcs</code> 先確定規則檔是否可以正確套用。</p>
-<p>先故意製造一個錯誤，例如以 PSR-2 規則而言，類別名稱必須以大寫開頭。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ phpcs --standard<span style="color:#f92672">=</span>D:/Develop/www/project-template/phpcs.xml
-</span></span><span style="display:flex;"><span>............................................E..
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>FILE: ...<span style="color:#ae81ff">\D</span>evelop<span style="color:#ae81ff">\w</span>ww<span style="color:#ae81ff">\p</span>roject-template<span style="color:#ae81ff">\s</span>ite<span style="color:#ae81ff">\t</span>ests<span style="color:#ae81ff">\F</span>eature<span style="color:#ae81ff">\E</span>xampleTest.php
-</span></span><span style="display:flex;"><span>----------------------------------------------------------------------
-</span></span><span style="display:flex;"><span>FOUND <span style="color:#ae81ff">1</span> ERROR AFFECTING <span style="color:#ae81ff">1</span> LINE
-</span></span><span style="display:flex;"><span>----------------------------------------------------------------------
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">8</span> | ERROR | Class name <span style="color:#e6db74">&#34;axampleTest&#34;</span> is not in camel caps format
-</span></span><span style="display:flex;"><span>----------------------------------------------------------------------
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Time: 1.32 secs; Memory: 8Mb</span></span></code></pre></div>
-<p>確定找得到問題之後，回到編輯器，看到底下畫面表示設定正確了。</p>
-<p><img alt="editor" src="/SublimeLinter-phpcs.jpg"></p>
+</span></span></code></pre></div><p>不改動應該也是不影響的，11 版的<a href="https://github.com/laravel/framework/blob/11.x/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php#L76">原始碼</a>還是留著對 <code>$casts</code> 屬性的支持。</p>
+<h2 id="application-structure">Application Structure</h2>
+<p>官方升級手冊提到<a href="https://laravel.com/docs/11.x/upgrade#application-structure">應用程式結構有變更</a>，但不建議 Laravel 10 的用戶升級到到 Laravel 11。但官方文件沒說明 <code>如何避免升級到新版結構</code> 。直到我踩了這個坑之後，總算曉得怎麼升級上去了。</p>
+<p>首先每次升級有過習慣，就是升級套件之外，整個應用程式其實有許多零碎的小修改，可以透過 <a href="https://github.com/laravel/laravel/compare/10.x...11.x">GitHub 比較工具</a>找出來。我會借機同步最新內容以利下次升級。</p>
+<p>可以看到幾個重要檔案或目錄被刪除。包括：</p>
+<ul>
+<li>app/Console/Kernel.php</li>
+<li>app/Exceptions/Handler.php</li>
+<li>app/Http/Kernel.php</li>
+<li>app/Http/Middleware 整個目錄</li>
+<li>app/Providers 整個目錄</li>
+</ul>
+<p>再來幾個進入點檔案修改，一個是 <code>artisan</code> ，還有 <code>bootstrap/app.php</code> 以及 <code>public/index.php</code> 。另外新增了 <code>bootstrap/providers.php</code> ，而自動載入 provider 的 <code>config/app.php</code> 移除了 <code>providers</code> 的部分。</p>
+<p>如果你按照這個勢態修改進入點檔案。其實整個應用程式的結構就會變成使用 11 版的結構。所以如果要保有 10 的結構，請保留底下檔案不要同步 11 版：</p>
+<ul>
+<li>artisan</li>
+<li>bootstrap/app.php</li>
+<li>public/index.php</li>
+</ul>
+<p>另外請保留 config/app.php 裡頭的 <code>providers</code> ，不要改用 <code>bootstrap/providers.php</code> 代替。</p>
+<h2 id="最後">最後</h2>
+<p>由於該專案是個重新改寫的專案，再改寫的過程中有機會補上相關測試進行升級。所以 9x% 的代碼覆蓋率對於這次升級應該有潛在的幫助。目前仍然有些舊專案由於中途才開始增加測試，目前覆蓋率可能落於 50% 以下。如果今年計劃要升級到維護中的版本，估計會增加不少不確定性。</p>
 
         </div>
 
@@ -390,7 +405,7 @@
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      2019-08-03
+      2025-02-15
       
     </span>
   </p>
@@ -414,22 +429,9 @@
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/">
-                
-                <i class="iconfont">
-                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-                </i>
-                <span class="prev-text nav-default">透過 PHP 解析包含 BOM 的 CSV 文件</span>
-                <span class="prev-text nav-mobile">Prev</span>
-              </a>
             
-              <a class="next" href="/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/">
-                <span class="next-text nav-default">Hugo 開始書寫</span>
+              <a class="next" href="/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/">
+                <span class="next-text nav-default">Set Bing Wallpaper After Login on Macos</span>
                 <span class="prev-text nav-mobile">Next</span>
                 
                 <i class="iconfont">
@@ -474,7 +476,18 @@
     </div>
 
     
-    
+    <nav class="toc" id="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#eloquent-model-casts-method">Eloquent Model casts Method</a></li>
+    <li><a href="#application-structure">Application Structure</a></li>
+    <li><a href="#最後">最後</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
 
 
   </div>

@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PHP on 黑書記事</title>
-    <link>http://localhost:1313/tags/php/</link>
+    <link>https://absszero.github.io/tags/php/</link>
     <description>Recent content in PHP on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 07 Oct 2015 04:06:05 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://absszero.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Eloquent 以 Camel-Case 定義關連函式</title>
-      <link>http://localhost:1313/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</link>
+      <link>https://absszero.github.io/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</link>
       <pubDate>Wed, 07 Oct 2015 04:06:05 +0800</pubDate>
-      <guid>http://localhost:1313/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
+      <guid>https://absszero.github.io/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</guid>
       <description>假設定義了一個書籍的 Model 並且每一本書有一個書皮封面 BookCover，所以定義以下的內容： &amp;lt;?php class Book extends Eloquent { public function book_cover() { return $this-&amp;gt;hasOne(&amp;#39;bookCover&amp;#39;); } } 現在我們查詢書籍並且使用</description>
     </item>
     <item>
       <title>Services_JSON 解決 JavaScript 物件轉換成 PHP 陣列</title>
-      <link>http://localhost:1313/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</link>
+      <link>https://absszero.github.io/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</link>
       <pubDate>Wed, 08 Apr 2015 15:21:40 +0800</pubDate>
-      <guid>http://localhost:1313/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</guid>
+      <guid>https://absszero.github.io/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</guid>
       <description>Services_JSON 是 json_encode/json_decode 的實做，雖然 PHP 5.2 已經可以直接使用，不過格式比須是嚴謹的 JSON 格式(RFC 4627)。 但 JavaScript 的物件結構本身跟 JSON 格式相仿，這時候可以透過 Services_JSON 提供的</description>
     </item>
     <item>
       <title>ftp_login() : SSL/TLS handshake failed</title>
-      <link>http://localhost:1313/post/2015-03-17_ftp_login-ssltls-handshake-failed/</link>
+      <link>https://absszero.github.io/post/2015-03-17_ftp_login-ssltls-handshake-failed/</link>
       <pubDate>Tue, 17 Mar 2015 10:10:56 +0800</pubDate>
-      <guid>http://localhost:1313/post/2015-03-17_ftp_login-ssltls-handshake-failed/</guid>
+      <guid>https://absszero.github.io/post/2015-03-17_ftp_login-ssltls-handshake-failed/</guid>
       <description>目前猜測是 openssl 的問題，從原本的 $ openssl version -a OpenSSL 0.9.8e-fips-rhel5 01 Jul 2008 安裝最新版 $ /usr/local/ssl/bin/openssl version -a OpenSSL 1.0.2 22 Jan 2015 然後重新編譯 php 指定新的預設 openssl 位置 ./configure --with-openssl=/usr/local/ssl 打完收工&amp;hellip;</description>
     </item>
     <item>
       <title>檢測大陸身份證字號 for PHP</title>
-      <link>http://localhost:1313/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</link>
+      <link>https://absszero.github.io/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</link>
       <pubDate>Mon, 23 Apr 2012 06:02:44 +0800</pubDate>
-      <guid>http://localhost:1313/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</guid>
+      <guid>https://absszero.github.io/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</guid>
       <description>PHP 版本的檢測大陸身份證字號 &amp;lt;?php $id = trim($id); //長度檢查 $string_length = strlen($id); if ( $string_length != 18) { return false; } //數字檢查 //前17碼必須為數字 for ($i = 0; $i &amp;amp;lt; $string_length - 1; $i++) { if ( ! is_numeric($id[$i]) ) { return</description>
     </item>
     <item>
       <title>[ Web ] Accelerate scripts running multiple tasks in parallel using asynchronous programming: Unusual Site Speedup Techniques: Part 3 - PHP Classes blog</title>
-      <link>http://localhost:1313/post/2010-11-15_web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</link>
+      <link>https://absszero.github.io/post/2010-11-15_web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</link>
       <pubDate>Mon, 15 Nov 2010 12:41:05 +0800</pubDate>
-      <guid>http://localhost:1313/post/2010-11-15_web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</guid>
+      <guid>https://absszero.github.io/post/2010-11-15_web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</guid>
       <description>http://www.phpclasses.org/blog/post/133-Accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-Unusual-Site-Speedup-Techniques-Part-3.html Introduction 許多伺服器上執行程序會花這麼長的時間，主要在於程序花了很多時間在等待其他程式或者硬體訊息或其他遠端電腦的回應。 那能不能在回應等待的這個時</description>
     </item>
     <item>
       <title>[ Web ] Accelerate Page Accesses Throttling Background Tasks: Unusual Site Speedup Techniques: Part 2 - PHP Classes blog</title>
-      <link>http://localhost:1313/post/2010-11-15_web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</link>
+      <link>https://absszero.github.io/post/2010-11-15_web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</link>
       <pubDate>Mon, 15 Nov 2010 12:31:49 +0800</pubDate>
-      <guid>http://localhost:1313/post/2010-11-15_web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</guid>
+      <guid>https://absszero.github.io/post/2010-11-15_web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</guid>
       <description>http://www.phpclasses.org/blog/post/132-Accelerate-Page-Accesses-Throttling-Background-Tasks-Unusual-Site-Speedup-Techniques-Part-2.html Introduction 通常網站速度決定了一個網站的成功與否。 而這方面是從使用者的觀點，觀察頁面是否能夠夠快的被處理呈現。 前一部分討論緩慢的原因是因為外部內容的</description>
     </item>
     <item>
       <title>[ PHP ] Unpredictable hashes for humans</title>
-      <link>http://localhost:1313/post/2010-07-11_php-unpredictable-hashes-for-humans/</link>
+      <link>https://absszero.github.io/post/2010-07-11_php-unpredictable-hashes-for-humans/</link>
       <pubDate>Sun, 11 Jul 2010 12:41:50 +0800</pubDate>
-      <guid>http://localhost:1313/post/2010-07-11_php-unpredictable-hashes-for-humans/</guid>
+      <guid>https://absszero.github.io/post/2010-07-11_php-unpredictable-hashes-for-humans/</guid>
       <description>Unpredictable hashes for humans http://seld.be/notes/unpredictable-hashes-for-humans 對網站開發人員產生隨機的 ID 或者雜湊值是很常見的事情， 舉個例子，大型的專案或者開發框架可能需要實現自己的 PHP session 處理器，或者在 API 當中把這</description>
     </item>
     <item>
       <title>[ PHP ] Filesystem encoding and PHP</title>
-      <link>http://localhost:1313/post/2010-06-18_php-filesystem-encoding-and-php/</link>
+      <link>https://absszero.github.io/post/2010-06-18_php-filesystem-encoding-and-php/</link>
       <pubDate>Sat, 19 Jun 2010 07:26:16 +0800</pubDate>
-      <guid>http://localhost:1313/post/2010-06-18_php-filesystem-encoding-and-php/</guid>
+      <guid>https://absszero.github.io/post/2010-06-18_php-filesystem-encoding-and-php/</guid>
       <description>許多 PHP 應用程式會將檔案儲存本地端的檔案系統當中。 對於大部分讀者而言在多數的情況下，妳很可能只使用 US-ASCII 編碼的方式儲存檔案， 可能是因為妳的檔名是基</description>
     </item>
   </channel>
