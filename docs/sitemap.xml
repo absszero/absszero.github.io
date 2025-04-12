@@ -1,834 +1,834 @@
-<?xml-stylesheet type="text/xsl" href="http://localhost:1313/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://absszero.github.io/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://absszero.github.io/post/</loc>
     <lastmod>2025-04-12T10:52:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2025-04-12_run-php-unit-coverage-with-github-action/</loc>
+    <loc>https://absszero.github.io/post/2025-04-12_run-php-unit-coverage-with-github-action/</loc>
     <lastmod>2025-04-12T10:52:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://absszero.github.io/</loc>
     <lastmod>2025-04-12T10:52:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2025-02-15_upgrade-to-laravel-11-from-10/</loc>
+    <loc>https://absszero.github.io/post/2025-02-15_upgrade-to-laravel-11-from-10/</loc>
     <lastmod>2025-02-15T17:09:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</loc>
+    <loc>https://absszero.github.io/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</loc>
     <lastmod>2024-10-18T22:22:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</loc>
+    <loc>https://absszero.github.io/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</loc>
     <lastmod>2024-10-14T20:23:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</loc>
+    <loc>https://absszero.github.io/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</loc>
     <lastmod>2024-06-22T08:11:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</loc>
+    <loc>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</loc>
     <lastmod>2024-06-11T21:19:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-04-20_test-and-sql-functions/</loc>
+    <loc>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</loc>
     <lastmod>2024-04-20T16:19:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-04-11_laravel-dynamic-facade/</loc>
+    <loc>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</loc>
     <lastmod>2024-04-11T18:42:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-02-09_after-extends-the-eslint-rules/</loc>
+    <loc>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</loc>
     <lastmod>2024-02-09T09:57:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-02-05_lint-only-diff-files/</loc>
+    <loc>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</loc>
     <lastmod>2024-02-05T13:51:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</loc>
+    <loc>https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</loc>
     <lastmod>2024-01-25T12:41:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-01-24-laravel-load-balancer-https/</loc>
+    <loc>https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/</loc>
     <lastmod>2024-01-24T12:35:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2024-01-06_phead/</loc>
+    <loc>https://absszero.github.io/post/2024-01-06_phead/</loc>
     <lastmod>2024-01-06T11:08:07+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2023-12-26_develop-in-docker/</loc>
+    <loc>https://absszero.github.io/post/2023-12-26_develop-in-docker/</loc>
     <lastmod>2023-12-26T20:45:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</loc>
+    <loc>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</loc>
     <lastmod>2023-12-23T20:23:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/class-name/</loc>
+    <loc>https://absszero.github.io/tags/class-name/</loc>
     <lastmod>2023-10-31T11:31:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/laravel/</loc>
+    <loc>https://absszero.github.io/tags/laravel/</loc>
     <lastmod>2023-10-31T11:31:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2023-10-31_laravel-command-classname/</loc>
+    <loc>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</loc>
     <lastmod>2023-10-31T11:31:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/plugin-development/</loc>
+    <loc>https://absszero.github.io/tags/plugin-development/</loc>
     <lastmod>2023-10-31T11:31:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://absszero.github.io/tags/</loc>
     <lastmod>2023-10-31T11:31:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2023-09-22_vsce-extension-dev-add-test-single-test/</loc>
+    <loc>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</loc>
     <lastmod>2023-09-22T10:17:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2023-09-19_sublime-laravel-goto-middleware-development/</loc>
+    <loc>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</loc>
     <lastmod>2023-09-19T10:27:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2023-03-25_phpunit-teardown--register_shutdown_function/</loc>
+    <loc>https://absszero.github.io/post/2023-03-25_phpunit-teardown--register_shutdown_function/</loc>
     <lastmod>2023-03-25T19:40:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/phpunit-teardown-laravel/</loc>
+    <loc>https://absszero.github.io/tags/phpunit-teardown-laravel/</loc>
     <lastmod>2023-03-25T19:40:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/prism-api-openapi-server/</loc>
+    <loc>https://absszero.github.io/tags/prism-api-openapi-server/</loc>
     <lastmod>2020-02-06T15:01:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</loc>
+    <loc>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</loc>
     <lastmod>2020-02-06T15:01:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/guzzle-api/</loc>
+    <loc>https://absszero.github.io/tags/guzzle-api/</loc>
     <lastmod>2019-10-06T15:01:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2019-10-06_guzzle-service-descriptions/</loc>
+    <loc>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</loc>
     <lastmod>2019-10-06T15:01:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2019-09-09_laravel-goto-for-vs-code/</loc>
+    <loc>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</loc>
     <lastmod>2019-09-09T20:16:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/vs-code/</loc>
+    <loc>https://absszero.github.io/tags/vs-code/</loc>
     <lastmod>2019-09-09T20:16:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2019-08-26_laravel-goto-for-sublime-text/</loc>
+    <loc>https://absszero.github.io/post/2019-08-26_laravel-goto-for-sublime-text/</loc>
     <lastmod>2019-08-26T20:31:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/sublime-text/</loc>
+    <loc>https://absszero.github.io/tags/sublime-text/</loc>
     <lastmod>2019-08-26T20:31:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/bom/</loc>
+    <loc>https://absszero.github.io/tags/bom/</loc>
     <lastmod>2019-08-26T20:12:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/csv/</loc>
+    <loc>https://absszero.github.io/tags/csv/</loc>
     <lastmod>2019-08-26T20:12:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</loc>
+    <loc>https://absszero.github.io/post/2019-08-26_%E9%80%8F%E9%81%8E-php-%E8%A7%A3%E6%9E%90%E5%8C%85%E5%90%AB-bom-%E7%9A%84-csv-%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2019-08-26T20:12:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</loc>
+    <loc>https://absszero.github.io/post/2019-08-03_sublimelinter-phpcs-%E4%BD%BF%E7%94%A8%E8%87%AA%E8%A8%82%E8%A6%8F%E5%89%87%E6%AA%94/</loc>
     <lastmod>2019-08-03T16:57:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/github/</loc>
+    <loc>https://absszero.github.io/tags/github/</loc>
     <lastmod>2019-08-03T14:29:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
+    <loc>https://absszero.github.io/tags/hugo/</loc>
     <lastmod>2019-08-03T14:29:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</loc>
+    <loc>https://absszero.github.io/post/2019-08-03_hugo-%E9%96%8B%E5%A7%8B%E6%9B%B8%E5%AF%AB/</loc>
     <lastmod>2019-08-03T14:29:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/wordpress/</loc>
+    <loc>https://absszero.github.io/tags/wordpress/</loc>
     <lastmod>2019-08-03T14:29:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/it-%E7%AD%86%E8%A8%98/</loc>
+    <loc>https://absszero.github.io/tags/it-%E7%AD%86%E8%A8%98/</loc>
     <lastmod>2016-07-25T14:34:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2016-07-25_redmine-container-with-docker/</loc>
+    <loc>https://absszero.github.io/post/2016-07-25_redmine-container-with-docker/</loc>
     <lastmod>2016-07-25T14:34:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2016-04-11_%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</loc>
+    <loc>https://absszero.github.io/post/2016-04-11_%E4%BD%BF%E7%94%A8-array_reduce-%E5%81%9A-and-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97/</loc>
     <lastmod>2016-04-12T02:23:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2016-04-06_%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</loc>
+    <loc>https://absszero.github.io/post/2016-04-06_%E6%97%A5%E5%85%89%E7%AF%80%E7%B4%84%E6%99%82%E9%96%93%E7%9A%84%E9%99%B7%E9%98%B1/</loc>
     <lastmod>2016-04-07T02:03:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2016-03-06_mocking-view-facade-in-laravel/</loc>
+    <loc>https://absszero.github.io/post/2016-03-06_mocking-view-facade-in-laravel/</loc>
     <lastmod>2016-03-07T04:06:15+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2016-02-24_baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96--nested-set-model/</loc>
+    <loc>https://absszero.github.io/post/2016-02-24_baum-%E5%9C%A8-laravel-%E5%AD%98%E5%8F%96--nested-set-model/</loc>
     <lastmod>2016-02-25T07:21:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/eloquent/</loc>
+    <loc>https://absszero.github.io/tags/eloquent/</loc>
     <lastmod>2015-10-07T04:06:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</loc>
+    <loc>https://absszero.github.io/post/2015-10-06_eloquent-%E4%BB%A5-camel-case-%E5%AE%9A%E7%BE%A9%E9%97%9C%E9%80%A3%E5%87%BD%E5%BC%8F/</loc>
     <lastmod>2015-10-07T04:06:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/php/</loc>
+    <loc>https://absszero.github.io/tags/php/</loc>
     <lastmod>2015-10-07T04:06:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/javascript/</loc>
+    <loc>https://absszero.github.io/tags/javascript/</loc>
     <lastmod>2015-07-22T14:15:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2015-07-22_javascript-%E9%97%9C%E9%8D%B5%E5%AD%97%E4%BD%BF%E7%94%A8-in-%E5%88%A4%E6%96%B7%E7%89%A9%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9C%89%E8%A9%B2%E5%B1%AC%E6%80%A7%E6%88%90%E5%93%A1/</loc>
+    <loc>https://absszero.github.io/post/2015-07-22_javascript-%E9%97%9C%E9%8D%B5%E5%AD%97%E4%BD%BF%E7%94%A8-in-%E5%88%A4%E6%96%B7%E7%89%A9%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9C%89%E8%A9%B2%E5%B1%AC%E6%80%A7%E6%88%90%E5%93%A1/</loc>
     <lastmod>2015-07-22T14:15:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/git/</loc>
+    <loc>https://absszero.github.io/tags/git/</loc>
     <lastmod>2015-06-27T03:28:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2015-06-26_git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/</loc>
+    <loc>https://absszero.github.io/post/2015-06-26_git-%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E9%9A%8E%E6%AE%B5%E7%9A%84%E6%81%A2%E5%BE%A9%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2015-06-27T03:28:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/json/</loc>
+    <loc>https://absszero.github.io/tags/json/</loc>
     <lastmod>2015-04-08T15:21:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/object/</loc>
+    <loc>https://absszero.github.io/tags/object/</loc>
     <lastmod>2015-04-08T15:21:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/services_json/</loc>
+    <loc>https://absszero.github.io/tags/services_json/</loc>
     <lastmod>2015-04-08T15:21:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</loc>
+    <loc>https://absszero.github.io/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</loc>
     <lastmod>2015-04-08T15:21:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/api/</loc>
+    <loc>https://absszero.github.io/tags/api/</loc>
     <lastmod>2015-04-07T14:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/history.js/</loc>
+    <loc>https://absszero.github.io/tags/history.js/</loc>
     <lastmod>2015-04-07T14:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/html5/</loc>
+    <loc>https://absszero.github.io/tags/html5/</loc>
     <lastmod>2015-04-07T14:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/pushstate/</loc>
+    <loc>https://absszero.github.io/tags/pushstate/</loc>
     <lastmod>2015-04-07T14:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2015-04-07_%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</loc>
+    <loc>https://absszero.github.io/post/2015-04-07_%E7%80%8F%E8%A6%BD%E6%AD%B7%E7%A8%8B-history.js/</loc>
     <lastmod>2015-04-07T14:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/lazyload/</loc>
+    <loc>https://absszero.github.io/tags/lazyload/</loc>
     <lastmod>2015-03-28T05:14:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/vissense/</loc>
+    <loc>https://absszero.github.io/tags/vissense/</loc>
     <lastmod>2015-03-28T05:14:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2015-03-27_vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</loc>
+    <loc>https://absszero.github.io/post/2015-03-27_vissense.js-%E8%88%87%E5%BB%B6%E9%81%B2%E8%BC%89%E5%85%A5/</loc>
     <lastmod>2015-03-28T05:14:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2015-03-17_ftp_login-ssltls-handshake-failed/</loc>
+    <loc>https://absszero.github.io/post/2015-03-17_ftp_login-ssltls-handshake-failed/</loc>
     <lastmod>2015-03-17T10:10:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/openssl/</loc>
+    <loc>https://absszero.github.io/tags/openssl/</loc>
     <lastmod>2015-03-17T10:10:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/xml/</loc>
+    <loc>https://absszero.github.io/tags/xml/</loc>
     <lastmod>2014-12-07T03:07:32+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2014-12-06_pi-processing-instruction/</loc>
+    <loc>https://absszero.github.io/post/2014-12-06_pi-processing-instruction/</loc>
     <lastmod>2014-12-07T03:07:32+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2014-03-24_%E5%B7%B7%E5%BC%84%E8%A3%A1%E7%9A%84%E4%BA%BA%E6%83%85%E5%91%B3/</loc>
+    <loc>https://absszero.github.io/post/2014-03-24_%E5%B7%B7%E5%BC%84%E8%A3%A1%E7%9A%84%E4%BA%BA%E6%83%85%E5%91%B3/</loc>
     <lastmod>2014-03-24T16:13:07+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/%E9%BB%91%E6%9B%B8/</loc>
+    <loc>https://absszero.github.io/tags/%E9%BB%91%E6%9B%B8/</loc>
     <lastmod>2014-03-24T16:13:07+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2014-03-15_%E5%A2%A8%E6%B2%92/</loc>
+    <loc>https://absszero.github.io/post/2014-03-15_%E5%A2%A8%E6%B2%92/</loc>
     <lastmod>2014-03-15T14:11:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2014-03-14_%E5%A2%83%E8%BD%89/</loc>
+    <loc>https://absszero.github.io/post/2014-03-14_%E5%A2%83%E8%BD%89/</loc>
     <lastmod>2014-03-14T16:36:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2013-11-09_one-benefit-of-being-mature/</loc>
+    <loc>https://absszero.github.io/post/2013-11-09_one-benefit-of-being-mature/</loc>
     <lastmod>2013-11-09T13:06:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2013-10-29_first-trip-with-alone/</loc>
+    <loc>https://absszero.github.io/post/2013-10-29_first-trip-with-alone/</loc>
     <lastmod>2013-10-29T14:04:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/hong-kong/</loc>
+    <loc>https://absszero.github.io/tags/hong-kong/</loc>
     <lastmod>2013-10-29T14:04:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2013-06-23_%E5%A4%8F%E9%9B%A8%E9%81%8E%E5%BE%8C/</loc>
+    <loc>https://absszero.github.io/post/2013-06-23_%E5%A4%8F%E9%9B%A8%E9%81%8E%E5%BE%8C/</loc>
     <lastmod>2013-06-23T15:01:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2012-09-30_sublime-2-plgugins/</loc>
+    <loc>https://absszero.github.io/post/2012-09-30_sublime-2-plgugins/</loc>
     <lastmod>2012-09-30T08:29:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/font/</loc>
+    <loc>https://absszero.github.io/tags/font/</loc>
     <lastmod>2012-08-18T10:22:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2012-08-18_%E5%AD%97%E9%AB%94%E7%9A%84%E5%BF%B5%E6%B3%95/</loc>
+    <loc>https://absszero.github.io/post/2012-08-18_%E5%AD%97%E9%AB%94%E7%9A%84%E5%BF%B5%E6%B3%95/</loc>
     <lastmod>2012-08-18T10:22:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/cmd/</loc>
+    <loc>https://absszero.github.io/tags/cmd/</loc>
     <lastmod>2012-05-12T10:56:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/python/</loc>
+    <loc>https://absszero.github.io/tags/python/</loc>
     <lastmod>2012-05-12T10:56:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83/</loc>
+    <loc>https://absszero.github.io/tags/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83/</loc>
     <lastmod>2012-05-12T10:56:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2012-05-12_formtting-json-from-terminal/</loc>
+    <loc>https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/</loc>
     <lastmod>2012-05-12T10:56:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/</loc>
+    <loc>https://absszero.github.io/tags/%E6%A0%BC%E5%BC%8F%E5%8C%96/</loc>
     <lastmod>2012-05-12T10:56:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/%E7%B8%AE%E6%8E%92/</loc>
+    <loc>https://absszero.github.io/tags/%E7%B8%AE%E6%8E%92/</loc>
     <lastmod>2012-05-12T10:56:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</loc>
+    <loc>https://absszero.github.io/post/2012-04-22_%E6%AA%A2%E6%B8%AC%E5%A4%A7%E9%99%B8%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F-for-php/</loc>
     <lastmod>2012-04-23T06:02:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/</loc>
+    <loc>https://absszero.github.io/tags/%E8%BA%AB%E4%BB%BD%E8%AD%89%E5%AD%97%E8%99%9F/</loc>
     <lastmod>2012-04-23T06:02:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/apache-chainsaw-jboss-log4j/</loc>
+    <loc>https://absszero.github.io/tags/apache-chainsaw-jboss-log4j/</loc>
     <lastmod>2012-04-15T02:54:42+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2012-04-14_monitoring-jboss-logfile-with-chainsaw-v2/</loc>
+    <loc>https://absszero.github.io/post/2012-04-14_monitoring-jboss-logfile-with-chainsaw-v2/</loc>
     <lastmod>2012-04-15T02:54:42+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-11-15_web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</loc>
+    <loc>https://absszero.github.io/post/2010-11-15_web-accelerate-scripts-running-multiple-tasks-in-parallel-using-asynchronous-programming-unusual-site-speedup-techniques-part-3-php-classes-blog/</loc>
     <lastmod>2010-11-15T12:41:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/asynchronous-programming/</loc>
+    <loc>https://absszero.github.io/tags/asynchronous-programming/</loc>
     <lastmod>2010-11-15T12:41:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/chrome/</loc>
+    <loc>https://absszero.github.io/tags/chrome/</loc>
     <lastmod>2010-11-15T12:41:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/gearman/</loc>
+    <loc>https://absszero.github.io/tags/gearman/</loc>
     <lastmod>2010-11-15T12:41:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/google/</loc>
+    <loc>https://absszero.github.io/tags/google/</loc>
     <lastmod>2010-11-15T12:41:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/node.js/</loc>
+    <loc>https://absszero.github.io/tags/node.js/</loc>
     <lastmod>2010-11-15T12:41:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/%E8%BC%AA%E8%A9%A2/</loc>
+    <loc>https://absszero.github.io/tags/%E8%BC%AA%E8%A9%A2/</loc>
     <lastmod>2010-11-15T12:41:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</loc>
+    <loc>https://absszero.github.io/tags/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</loc>
     <lastmod>2010-11-15T12:41:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-11-15_web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</loc>
+    <loc>https://absszero.github.io/post/2010-11-15_web-accelerate-page-accesses-throttling-background-tasks-unusual-site-speedup-techniques-part-2-php-classes-blog/</loc>
     <lastmod>2010-11-15T12:31:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/cpu/</loc>
+    <loc>https://absszero.github.io/tags/cpu/</loc>
     <lastmod>2010-11-15T12:31:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/loading/</loc>
+    <loc>https://absszero.github.io/tags/loading/</loc>
     <lastmod>2010-11-15T12:31:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-11-15_accelerate-page-loading-unusual-site-speedup-techniques-part-1/</loc>
+    <loc>https://absszero.github.io/post/2010-11-15_accelerate-page-loading-unusual-site-speedup-techniques-part-1/</loc>
     <lastmod>2010-11-15T12:20:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-11-02_entities-in-modular-xhtml/</loc>
+    <loc>https://absszero.github.io/post/2010-11-02_entities-in-modular-xhtml/</loc>
     <lastmod>2010-11-02T13:04:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/utf-8/</loc>
+    <loc>https://absszero.github.io/tags/utf-8/</loc>
     <lastmod>2010-11-02T13:04:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/xhtml/</loc>
+    <loc>https://absszero.github.io/tags/xhtml/</loc>
     <lastmod>2010-11-02T13:04:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-07-11_php-unpredictable-hashes-for-humans/</loc>
+    <loc>https://absszero.github.io/post/2010-07-11_php-unpredictable-hashes-for-humans/</loc>
     <lastmod>2010-07-11T12:41:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/hash/</loc>
+    <loc>https://absszero.github.io/tags/hash/</loc>
     <lastmod>2010-07-11T12:41:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/%E5%8A%A0%E5%AF%86/</loc>
+    <loc>https://absszero.github.io/tags/%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2010-07-11T12:41:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-06-18_mysql-checking-for-a-live-database-connection/</loc>
+    <loc>https://absszero.github.io/post/2010-06-18_mysql-checking-for-a-live-database-connection/</loc>
     <lastmod>2010-06-19T07:39:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/mysql/</loc>
+    <loc>https://absszero.github.io/tags/mysql/</loc>
     <lastmod>2010-06-19T07:39:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-06-18_php-filesystem-encoding-and-php/</loc>
+    <loc>https://absszero.github.io/post/2010-06-18_php-filesystem-encoding-and-php/</loc>
     <lastmod>2010-06-19T07:26:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/linux/</loc>
+    <loc>https://absszero.github.io/tags/linux/</loc>
     <lastmod>2010-06-19T07:26:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/mac/</loc>
+    <loc>https://absszero.github.io/tags/mac/</loc>
     <lastmod>2010-06-19T07:26:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-06-13_web-what-every-developer-should-know-about-urls/</loc>
+    <loc>https://absszero.github.io/post/2010-06-13_web-what-every-developer-should-know-about-urls/</loc>
     <lastmod>2010-06-13T09:48:42+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-06-12_program-seven-pillars-of-pretty-code/</loc>
+    <loc>https://absszero.github.io/post/2010-06-12_program-seven-pillars-of-pretty-code/</loc>
     <lastmod>2010-06-12T12:26:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/2010-06-11_new-arrival/</loc>
+    <loc>https://absszero.github.io/post/2010-06-11_new-arrival/</loc>
     <lastmod>2010-06-12T04:56:25+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://absszero.github.io/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

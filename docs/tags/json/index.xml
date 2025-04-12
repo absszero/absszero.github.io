@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JSON on 黑書記事</title>
-    <link>http://localhost:1313/tags/json/</link>
+    <link>https://absszero.github.io/tags/json/</link>
     <description>Recent content in JSON on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 08 Apr 2015 15:21:40 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://absszero.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Services_JSON 解決 JavaScript 物件轉換成 PHP 陣列</title>
-      <link>http://localhost:1313/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</link>
+      <link>https://absszero.github.io/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</link>
       <pubDate>Wed, 08 Apr 2015 15:21:40 +0800</pubDate>
-      <guid>http://localhost:1313/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</guid>
+      <guid>https://absszero.github.io/post/2015-04-08_services_json-%E8%A7%A3%E6%B1%BA-javascript-%E7%89%A9%E4%BB%B6%E8%BD%89%E6%8F%9B%E6%88%90-php-%E9%99%A3%E5%88%97/</guid>
       <description>Services_JSON 是 json_encode/json_decode 的實做，雖然 PHP 5.2 已經可以直接使用，不過格式比須是嚴謹的 JSON 格式(RFC 4627)。 但 JavaScript 的物件結構本身跟 JSON 格式相仿，這時候可以透過 Services_JSON 提供的</description>
     </item>
     <item>
       <title>在命令提示字元底下格式化顯示 JSON 內容</title>
-      <link>http://localhost:1313/post/2012-05-12_formtting-json-from-terminal/</link>
+      <link>https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/</link>
       <pubDate>Sat, 12 May 2012 10:56:17 +0800</pubDate>
-      <guid>http://localhost:1313/post/2012-05-12_formtting-json-from-terminal/</guid>
+      <guid>https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/</guid>
       <description>當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝</description>
     </item>
   </channel>
