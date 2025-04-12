@@ -2,151 +2,151 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 黑書記事</title>
-    <link>https://absszero.github.io/post/</link>
+    <link>http://localhost:1313/post/</link>
     <description>Recent content in Posts on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 15 Feb 2025 17:09:20 +0800</lastBuildDate>
-    <atom:link href="https://absszero.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Apr 2025 10:52:57 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Run PHPUnit coverage with Github action</title>
+      <link>http://localhost:1313/post/2025-04-12_run-php-unit-coverage-with-github-action/</link>
+      <pubDate>Sat, 12 Apr 2025 10:52:57 +0800</pubDate>
+      <guid>http://localhost:1313/post/2025-04-12_run-php-unit-coverage-with-github-action/</guid>
+      <description>由於中途導入單元測試，為了確保測試覆蓋率能穩定的成長，每個月我們會審視當月份覆蓋率是否往目標成長。而過去的做法就是每個月執行一次，然後將數據</description>
+    </item>
     <item>
       <title>Upgrade to Laravel 11 from Laravel 10</title>
-      <link>https://absszero.github.io/post/2025-02-15_upgrade-to-laravel-11-from-10/</link>
+      <link>http://localhost:1313/post/2025-02-15_upgrade-to-laravel-11-from-10/</link>
       <pubDate>Sat, 15 Feb 2025 17:09:20 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2025-02-15_upgrade-to-laravel-11-from-10/</guid>
+      <guid>http://localhost:1313/post/2025-02-15_upgrade-to-laravel-11-from-10/</guid>
       <description>去年五月將一個舊專案改寫成 Laravel。礙於當時的 PHP 版本只能維持在 8.1，所以最終沒能直接使用 Laravel 11。而今年在一番討論之後，決定各自升級手</description>
     </item>
     <item>
       <title>Set Bing Wallpaper After Login on Macos</title>
-      <link>https://absszero.github.io/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</link>
+      <link>http://localhost:1313/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</link>
       <pubDate>Fri, 18 Oct 2024 22:22:08 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</guid>
+      <guid>http://localhost:1313/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</guid>
       <description>每天上班都會看到同事的桌布更換，這也是 Windows 內建的功能。我很好奇那樣的景致是哪裡拍攝的，期望有一天排進我的旅遊清單。所以決定找一下有沒有類似的應</description>
     </item>
     <item>
       <title>Google spreadsheet updates by developer metadata</title>
-      <link>https://absszero.github.io/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</link>
+      <link>http://localhost:1313/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</link>
       <pubDate>Mon, 14 Oct 2024 20:23:43 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</guid>
+      <guid>http://localhost:1313/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</guid>
       <description>透過 Google Sheets API 可以很方便的寫入資料到 Google 試算表。而我最近的一個挑戰是要更新後續新增的的資料。主要的難處是檢索，由於 API 不支援資料搜尋，所以無法透過查</description>
     </item>
     <item>
       <title>Bootstrap and its breakpoint generation</title>
-      <link>https://absszero.github.io/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</link>
+      <link>http://localhost:1313/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</link>
       <pubDate>Sat, 22 Jun 2024 08:11:35 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</guid>
+      <guid>http://localhost:1313/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</guid>
       <description>自定義斷點 Bootstrap 在官方文件關於斷點(Breakpoint) 一開始就提到可以透過自訂變數設定斷點。最近在處理前端項目的時候，也注意到了前人已經設定</description>
     </item>
     <item>
       <title>Speed up Laravel test</title>
-      <link>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</link>
+      <link>http://localhost:1313/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</link>
       <pubDate>Tue, 11 Jun 2024 21:19:58 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</guid>
+      <guid>http://localhost:1313/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</guid>
       <description>In Memory 最近在進行一個既有專案的開發，為了能夠在上面做單元測試，著手進行準備工作。首先嘗試用 SQlite InMemory 的方式。然後在 TestCase 繼承了 RefreshDatabase 處理資料庫的初始化。 namespace Tests;</description>
     </item>
     <item>
       <title>Test non-existent SQL functions</title>
-      <link>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</link>
+      <link>http://localhost:1313/post/2024-04-20_test-and-sql-functions/</link>
       <pubDate>Sat, 20 Apr 2024 16:19:18 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</guid>
+      <guid>http://localhost:1313/post/2024-04-20_test-and-sql-functions/</guid>
       <description>Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資</description>
     </item>
     <item>
       <title>Laravel dynamic facade</title>
-      <link>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</link>
+      <link>http://localhost:1313/post/2024-04-11_laravel-dynamic-facade/</link>
       <pubDate>Thu, 11 Apr 2024 18:42:53 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</guid>
+      <guid>http://localhost:1313/post/2024-04-11_laravel-dynamic-facade/</guid>
       <description>Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 Illuminate\Support\Facades\Facade 建立自己的 Facade。唯獨 Dynamic Facade 我今天才發現它的好用！ 使用</description>
     </item>
     <item>
       <title>After extends the eslint rules</title>
-      <link>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</link>
+      <link>http://localhost:1313/post/2024-02-09_after-extends-the-eslint-rules/</link>
       <pubDate>Fri, 09 Feb 2024 09:57:24 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</guid>
+      <guid>http://localhost:1313/post/2024-02-09_after-extends-the-eslint-rules/</guid>
       <description>最早接觸到 TypeScript 開發是透過 VSCode 的 Your First Extension 範例。教學透過 Yeoman 使用 VS Code Extension Generator 產生。預設已經自帶 ESlint 檢查。所以也沒特別在意就直接開發。在近期我回頭檢視相關的規則</description>
     </item>
     <item>
       <title>Lint only diff files</title>
-      <link>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</link>
+      <link>http://localhost:1313/post/2024-02-05_lint-only-diff-files/</link>
       <pubDate>Mon, 05 Feb 2024 13:51:30 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</guid>
+      <guid>http://localhost:1313/post/2024-02-05_lint-only-diff-files/</guid>
       <description>過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做</description>
     </item>
     <item>
       <title>Mock multi openAPI documents with Prism via Traefik</title>
-      <link>https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</link>
+      <link>http://localhost:1313/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</link>
       <pubDate>Thu, 25 Jan 2024 12:41:15 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</guid>
+      <guid>http://localhost:1313/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</guid>
       <description>Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： Serving Multiple OpenAPI Documents。該文章說明主要是透過 Caddy 作為反向代</description>
     </item>
     <item>
       <title>Laravel x Load Balancer x HTTPS</title>
-      <link>https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/</link>
+      <link>http://localhost:1313/post/2024-01-24-laravel-load-balancer-https/</link>
       <pubDate>Wed, 24 Jan 2024 12:35:27 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/</guid>
+      <guid>http://localhost:1313/post/2024-01-24-laravel-load-balancer-https/</guid>
       <description>由於 Laravel 生成網址的功能是根據一些特定的 Headers，特別是生成 https 開頭網址。當產品環境單純直接使用 Web Server 掛載 SSL 憑證不會有類似問題。但如果搭配 Load Balancer</description>
     </item>
     <item>
       <title>Phead, A PHP code generator</title>
-      <link>https://absszero.github.io/post/2024-01-06_phead/</link>
+      <link>http://localhost:1313/post/2024-01-06_phead/</link>
       <pubDate>Sat, 06 Jan 2024 11:08:07 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2024-01-06_phead/</guid>
+      <guid>http://localhost:1313/post/2024-01-06_phead/</guid>
       <description>結果在此： https://github.com/absszero/phead/ 開發 API 的節奏大致底定。開立路由、建立控制器、建立 Model、表現層以及撰寫相關測試。由於過程諸多類似，想必一定有可以簡化的方法。</description>
     </item>
     <item>
       <title>Develop in Docker</title>
-      <link>https://absszero.github.io/post/2023-12-26_develop-in-docker/</link>
+      <link>http://localhost:1313/post/2023-12-26_develop-in-docker/</link>
       <pubDate>Tue, 26 Dec 2023 20:45:34 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2023-12-26_develop-in-docker/</guid>
+      <guid>http://localhost:1313/post/2023-12-26_develop-in-docker/</guid>
       <description>sDart Docker 在產品容器化使用確實方便，但在思索怎麼用在開發環境遇到的第一個難題是太慢。Docker Desktop 啟動速度慢，每次開啟心裡就開始計時到底要多久。看</description>
     </item>
     <item>
       <title>Laravl Goto 在新視窗開啟所有語系檔</title>
-      <link>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</link>
+      <link>http://localhost:1313/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</link>
       <pubDate>Fri, 22 Dec 2023 10:17:33 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</guid>
+      <guid>http://localhost:1313/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</guid>
       <description>十月的時候我從 Github 收到一個功能請求，希望能夠在 Laravel Goto for Sublime Text 實現選取語系的 key ，然後開啟所有對應語系檔在新視窗上面。實作過程並不特別困難。原理是檢索</description>
     </item>
     <item>
       <title>Laravel Command Class Name</title>
-      <link>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</link>
+      <link>http://localhost:1313/post/2023-10-31_laravel-command-classname/</link>
       <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</guid>
+      <guid>http://localhost:1313/post/2023-10-31_laravel-command-classname/</guid>
       <description>Why 隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 artisn list 只顯示每個指令所設定的 signature 屬性，但不曉得對應的檔案名稱。只期</description>
     </item>
     <item>
       <title>VSCode Extension Development, Run Single Test</title>
-      <link>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</link>
+      <link>http://localhost:1313/post/2023-09-22_vsce-extension-dev-add-test-single-test/</link>
       <pubDate>Fri, 22 Sep 2023 10:17:33 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</guid>
+      <guid>http://localhost:1313/post/2023-09-22_vsce-extension-dev-add-test-single-test/</guid>
       <description>隨著 VSCode 開發 Extension 愈趨複雜，相關的單元測試也越來越多。每次增加一個方法以及相對測試，整個套件的測試都得重新執行一遍。為了更有效率的進行開發，目前要</description>
     </item>
     <item>
       <title>開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</title>
-      <link>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</link>
+      <link>http://localhost:1313/post/2023-09-19_sublime-laravel-goto-middleware-development/</link>
       <pubDate>Tue, 19 Sep 2023 10:27:48 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</guid>
+      <guid>http://localhost:1313/post/2023-09-19_sublime-laravel-goto-middleware-development/</guid>
       <description>Laravel Goto for VSCode 的 Middleware 轉跳功能完成後。隨後也逐步在 Laravel Goto for Sublime Text 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用</description>
     </item>
     <item>
       <title>PHPUnit TearDown &amp; register_shutdown_function</title>
-      <link>https://absszero.github.io/post/2023-03-25_phpunit-teardown--register_shutdown_function/</link>
+      <link>http://localhost:1313/post/2023-03-25_phpunit-teardown--register_shutdown_function/</link>
       <pubDate>Sat, 25 Mar 2023 19:40:00 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2023-03-25_phpunit-teardown--register_shutdown_function/</guid>
+      <guid>http://localhost:1313/post/2023-03-25_phpunit-teardown--register_shutdown_function/</guid>
       <description>WHAT 近期在開發 Laravel Log 相關套件。於是利用 orchestra/testbench 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。 PHP Fatal error: Uncaught ReflectionException: Class config does not exist 原本這個問題以</description>
     </item>
     <item>
       <title>Prism 建立 API Server</title>
-      <link>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
+      <link>http://localhost:1313/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
       <pubDate>Thu, 06 Feb 2020 15:01:03 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
+      <guid>http://localhost:1313/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
       <description>Why Prism 撰寫一份 API 文件有許多方式，其中一種是根據 OpenAPI 規範。而在完成 API 規劃後通常搭配如 Swagger UI 將規範文件變成容易閱讀 API 文件。 但前端人員在真實 API 拿到之前，</description>
-    </item>
-    <item>
-      <title>Guzzle service descriptions - 使用描述檔建立 API Client</title>
-      <link>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</link>
-      <pubDate>Sun, 06 Oct 2019 15:01:03 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</guid>
-      <description>何謂 Service Descriptions 最近在查找關於 Fixer.io 的用戶端套件。發現平常慣用的 Guzzle HTTP Client 還有另外一種開發方式 - service descriptions。該方式借鏡 Swagger 利用定義 API 操作的方式</description>
     </item>
   </channel>
 </rss>

@@ -1,7 +1,7 @@
 ---
 title: Run PHPUnit coverage with Github action
 date: 2025-04-12T10:52:57+08:00
-draft: true
+draft: false
 keywords: ["Github Action", "PHPUnit", "awk", "sed"]
 ---
 

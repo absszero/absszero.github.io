@@ -2,21 +2,252 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>黑書記事</title>
-    <link>https://absszero.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on 黑書記事</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 15 Feb 2025 17:09:20 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Apr 2025 10:52:57 +0800</lastBuildDate>
     
-        <atom:link href="https://absszero.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Run PHPUnit coverage with Github action</title>
+      <link>http://localhost:1313/post/2025-04-12_run-php-unit-coverage-with-github-action/</link>
+      <pubDate>Sat, 12 Apr 2025 10:52:57 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/2025-04-12_run-php-unit-coverage-with-github-action/</guid>
+      
+        <description>&lt;p&gt;由於中途導入單元測試，為了確保測試覆蓋率能穩定的成長，每個月我們會審視當月份覆蓋率是否往目標成長。而過去的做法就是每個月執行一次，然後將數據收集起來。為了將這個覆蓋率的行為自動化，花了點時間整合到 Github Action。&lt;/p&gt;
+&lt;h2 id=&#34;coverage-report-as-comment-clover&#34;&gt;Coverage Report as Comment (Clover)&lt;/h2&gt;
+&lt;p&gt;從 Github marketplace 搜尋 &lt;code&gt;Coverage&lt;/code&gt; 其實&lt;a href=&#34;https://github.com/marketplace?query=coverage&amp;type=actions&#34;&gt;可以找到不少現成的方案&lt;/a&gt;。有些甚至跟單元測試工具無縫結合，可以省去自己整合的需求。&lt;/p&gt;
+&lt;p&gt;首先我挑選了 &lt;a href=&#34;https://github.com/marketplace/actions/coverage-report-as-comment-clover&#34;&gt;Coverage Report as Comment (Clover)&lt;/a&gt; ，他能夠將覆蓋率報告作為備註顯示在 comment 裡頭。具體結果類似如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Coverage report for commit: 0688430
+File: coverage.xml
+
+Cover ┌─────────────────────────┐ Freq.
+   0% │ ██░░░░░░░░░░░░░░░░░░░░░ │  5.6%
+  10% │ ░░░░░░░░░░░░░░░░░░░░░░░ │  0.0%
+  20% │ ░░░░░░░░░░░░░░░░░░░░░░░ │  0.0%
+  30% │ ░░░░░░░░░░░░░░░░░░░░░░░ │  0.0%
+  40% │ █░░░░░░░░░░░░░░░░░░░░░░ │  0.8%
+  50% │ █░░░░░░░░░░░░░░░░░░░░░░ │  2.4%
+  60% │ █░░░░░░░░░░░░░░░░░░░░░░ │  0.8%
+  70% │ █░░░░░░░░░░░░░░░░░░░░░░ │  1.6%
+  80% │ █░░░░░░░░░░░░░░░░░░░░░░ │  0.8%
+  90% │ ████░░░░░░░░░░░░░░░░░░░ │ 11.3%
+ 100% │ ███████████████████████ │ 76.6%
+      └─────────────────────────┘
+ *Legend:* █ = Current Distribution
+
+Summary - Lines: 90.93% | Methods: 75.71%
+
+🤖 comment via lucassabreu/comment-coverage-clover
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;由於他官方範例就是利用 PHPUnit 產生 clover 格式的覆蓋率報告，所以很容易的就整合到現在的單元測試流程。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Execute tests&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;src/vendor/bin/phpunit -c src/phpunit.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;src/vendor/bin/phpunit -c src/phpunit.xml --coverage-clover=coverage.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;XDEBUG_MODE&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;coverage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Coverage Report as Comment (Clover)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;lucassabreu/comment-coverage-clover@main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;file&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;coverage.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;code-coverage-summary&#34;&gt;Code Coverage Summary&lt;/h2&gt;
+&lt;p&gt;上面的結果看起來還不錯，但想試試看其他的套件結果如何，這次我改用 &lt;a href=&#34;https://github.com/irongut/CodeCoverageSummary&#34;&gt;Code Coverage Summary&lt;/a&gt;。雖然他的範例不是針對 PHPUnit，但他接受 cobertura 格式的覆蓋率檔案。PHPUnit 一樣支持。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Execute tests&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;src/vendor/bin/phpunit -c src/phpunit.xml --coverage-cobertura=coverage.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;XDEBUG_MODE&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;coverage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Code Coverage Report&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;irongut/CodeCoverageSummary@v1.3.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;filename&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;coverage.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;badge&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;fail_below_min&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;format&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;markdown&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;hide_branch_rate&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;hide_complexity&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;indicators&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;output&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;both&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;thresholds&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;50 75&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Add Coverage PR Comment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;marocchino/sticky-pull-request-comment@v2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;github.event_name == &amp;#39;pull_request&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;file&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;coverage.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;recreate&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;path&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;code-coverage-results.md&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;生成的結果類似如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Code Coverage&#34; src=&#34;https://img.shields.io/badge/Code%20Coverage-91%25-success?style=flat&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Package&lt;/th&gt;
+&lt;th&gt;Line Rate&lt;/th&gt;
+&lt;th&gt;Health&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Console/Kernel.php&lt;/td&gt;
+&lt;td&gt;67%&lt;/td&gt;
+&lt;td&gt;➖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Exceptions/Handler.php&lt;/td&gt;
+&lt;td&gt;50%&lt;/td&gt;
+&lt;td&gt;➖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Http/Kernel.php&lt;/td&gt;
+&lt;td&gt;0%&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Http/Middleware/Authenticate.php&lt;/td&gt;
+&lt;td&gt;100%&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;hellip;.&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;91%&lt;/strong&gt; (2070 / 2272)&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;顯示在-readmemd&#34;&gt;顯示在 README.md&lt;/h2&gt;
+&lt;p&gt;結果都對了，但新一輪的問題是，這些結果預設是顯示在 Pull requests 裡頭作為 Comment。我不希望每次查看覆蓋率都得去翻閱之前合併請求的備註內容。這樣很難顯眼的看到當前專案的覆蓋率。&lt;/p&gt;
+&lt;p&gt;為了將內容顯示在隨時可以存取的地方，我找到一篇將結果放在 Wiki 的文章&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@vlreshet/how-to-setup-phpunit-coverage-report-and-phpstan-report-using-github-actions-and-github-wiki-pages-86effdfd8c53&#34;&gt;How to setup PHPUnit Coverage Report and PHPStan Report using GitHub Actions and GitHub Wiki Pages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但隨即詢問同事才知道免費的 Github team 不支援 Wiki。既然如此不如就放在 README.md 吧！完整的需求如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只在 main 分支進行覆蓋率測試&lt;/li&gt;
+&lt;li&gt;其他 pull requests 一樣執行單元測試&lt;/li&gt;
+&lt;li&gt;將測試結果的文字顯示在 README.md，並且提交該變更。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我將上述的需求詢問 GPT 大神之後，得到一個粗略的版本，然後在幾次翻修後得到了我想要的版本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Run tests&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;on&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;push&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;branches&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;pull_request&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;jobs&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;php-tests&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;runs-on&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;ubuntu-latest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;steps&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Checkout code&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/checkout@v4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Setup PHP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;shivammathur/setup-php@v2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;php-version&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;8.3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;tools&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;composer:v2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;coverage&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;xdebug&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Run composer install&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;composer install -d`pwd`/src -n --prefer-dist --no-interaction --no-plugins&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Execute tests without coverage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;github.ref != &amp;#39;refs/heads/main&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;src/vendor/bin/phpunit -c src/phpunit.xml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;### Code Coverage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Execute tests with coverage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;github.ref == &amp;#39;refs/heads/main&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;src/vendor/bin/phpunit -c src/phpunit.xml --coverage-text --only-summary-for-coverage-text | tee coverage.txt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;XDEBUG_MODE&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;coverage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Extract Coverage Summary&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;github.ref == &amp;#39;refs/heads/main&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: |&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          CONTENT=$(sed -n &amp;#39;/^  Classes:/,/^```/p&amp;#39; coverage.txt)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          START=&amp;#34;## Code Coverage Report Summary&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          NEW_CONTENT=$(printf &amp;#34;%s\n\n\`\`\`sql\n%s\n\`\`\`&amp;#34; &amp;#34;$START&amp;#34; &amp;#34;$CONTENT&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          awk -v new_content=&amp;#34;$NEW_CONTENT&amp;#34; &amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          /## Code Coverage Report Summary/ {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;              in_block = 1;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          in_block {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;              if (/```$/) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                  in_block = 0;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                  print new_content; # 輸出新內容
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;              }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;              next
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          { print }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          &amp;#39; README.md &amp;gt; README.tmp
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          mv README.tmp README.md&lt;/span&gt;          
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Commit and Push Changes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;github.ref == &amp;#39;refs/heads/main&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: |&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          git config --global user.name &amp;#34;github-actions[bot]&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          git config --global user.email &amp;#34;github-actions[bot]@users.noreply.github.com&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          git add README.md
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          git commit -m &amp;#34;Update code coverage report summary&amp;#34; || echo &amp;#34;No changes to commit&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          git push origin ${{ github.head_ref }}&lt;/span&gt;          
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;GITHUB_TOKEN&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ secrets.GITHUB_TOKEN }}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;為了配合上述的內容，我需要在 README.md 裡頭添加一段覆蓋率報告文字&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## Code Coverage Report Summary
+
+```sql
+  Classes: XX.XX%
+  Methods: XX.XX%
+  Lines:   XX.XX%
+` ` `
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;單元測試後會產生類似內容，我將內容擷取出來後，透過 &lt;code&gt;awk&lt;/code&gt; 取代 README.md 相同的內容，改為最新的覆蓋率報告。最後結果呈現如下：&lt;/p&gt;
+&lt;h1 id=&#34;my-project&#34;&gt;My Project&lt;/h1&gt;
+&lt;h2 id=&#34;code-coverage-report-summary&#34;&gt;Code Coverage Report Summary&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Classes: &lt;span style=&#34;color:#ae81ff&#34;&gt;57&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;89&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;55&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;95&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Methods: &lt;span style=&#34;color:#ae81ff&#34;&gt;76&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;92&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;190&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;247&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Lines:   &lt;span style=&#34;color:#ae81ff&#34;&gt;91&lt;/span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;2070&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2272&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;踩坑&#34;&gt;踩坑&lt;/h2&gt;
+&lt;p&gt;在開發的過程中踩了幾個坑：&lt;/p&gt;
+&lt;h3 id=&#34;awk-newline-in-string--code-coverage-re-at-source-line-1&#34;&gt;awk: newline in string $## Code Coverage Re&amp;hellip; at source line 1&lt;/h3&gt;
+&lt;p&gt;首先希望先在本機端執行一次 awk 的內容取代。但出現了如標題的錯誤，原因是因為 awk 指令在 linux 跟 MacOS 版本有差異。尤其在處理換行字元的部分。但本地端只是測試，所以我將輸出的內容去掉換行字元。先在本地端能正確模擬就好。&lt;/p&gt;
+&lt;h3 id=&#34;覆蓋率的內容不見了&#34;&gt;覆蓋率的內容不見了&lt;/h3&gt;
+&lt;p&gt;將這個 action 放到另外一個專案，跑完之後內容卻只剩下如下標題：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## Code Coverage Report Summary
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這是由於 README.md 的換行字元所導致，該檔案是 &lt;code&gt;CRLF&lt;/code&gt; 儲存在 Windows 的環境，但 action 執行在 UNIX 上面採用的是 &lt;code&gt;LF&lt;/code&gt;。這似乎會導致 awk 執行結果不正確。重新儲存檔案為 &lt;code&gt;LF&lt;/code&gt; 字元後解決。&lt;/p&gt;
+&lt;h3 id=&#34;fatal-you-are-not-currently-on-a-branch&#34;&gt;fatal: You are not currently on a branch.&lt;/h3&gt;
+&lt;p&gt;由於開發的時候，我先在 pull request 所在的分支執行，在最終 &lt;code&gt;git commit&lt;/code&gt; 的環節出錯，該問題可以透過添加 &lt;code&gt;ref: ${{ github.head_ref }}&lt;/code&gt; 解決。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Checkout the correct branch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/checkout@v4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;ref&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ github.head_ref }}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>Upgrade to Laravel 11 from Laravel 10</title>
-      <link>https://absszero.github.io/post/2025-02-15_upgrade-to-laravel-11-from-10/</link>
+      <link>http://localhost:1313/post/2025-02-15_upgrade-to-laravel-11-from-10/</link>
       <pubDate>Sat, 15 Feb 2025 17:09:20 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2025-02-15_upgrade-to-laravel-11-from-10/</guid>
+      <guid>http://localhost:1313/post/2025-02-15_upgrade-to-laravel-11-from-10/</guid>
       
         <description>&lt;p&gt;去年五月將一個舊專案改寫成 Laravel。礙於當時的 PHP 版本只能維持在 8.1，所以最終沒能直接使用 Laravel 11。而今年在一番討論之後，決定各自升級手邊系統，來到當前官方還在維護的版本。利用上週六需要補班的時間嘗試將專案升級到 Laravel 11。&lt;/p&gt;
 &lt;h2 id=&#34;eloquent-model-casts-method&#34;&gt;Eloquent Model casts Method&lt;/h2&gt;
@@ -68,10 +299,10 @@
     
     <item>
       <title>Set Bing Wallpaper After Login on Macos</title>
-      <link>https://absszero.github.io/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</link>
+      <link>http://localhost:1313/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</link>
       <pubDate>Fri, 18 Oct 2024 22:22:08 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</guid>
+      <guid>http://localhost:1313/post/2024-10-18_set-bing-wallpaper-after-login-on-macos/</guid>
       
         <description>&lt;p&gt;每天上班都會看到同事的桌布更換，這也是 Windows 內建的功能。我很好奇那樣的景致是哪裡拍攝的，期望有一天排進我的旅遊清單。所以決定找一下有沒有類似的應用，可以幫我每日更換桌面。&lt;/p&gt;
 &lt;p&gt;看似簡單的需求相信已經有一堆應用可以實現。後來我確實找到 &lt;a href=&#34;https://apps.apple.com/us/app/daily-wallpaper-hd/id1507778016?mt=12&#34;&gt;Daily Wallpaper HD&lt;/a&gt; 能滿足我的需求。它會自動下載 Bing wallpaper 然後設置成桌布。但很快的我發現有兩個問題&amp;hellip; 首先是解析度， Bing Wallpaper 預設的解析度偏低，放在 2K 螢幕有明顯的顆粒感。再來是這個應用需要登入的時候常駐，但對於每天只需要用一次的應用，常駐似乎有點多餘。&lt;/p&gt;
@@ -127,10 +358,10 @@
     
     <item>
       <title>Google spreadsheet updates by developer metadata</title>
-      <link>https://absszero.github.io/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</link>
+      <link>http://localhost:1313/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</link>
       <pubDate>Mon, 14 Oct 2024 20:23:43 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</guid>
+      <guid>http://localhost:1313/post/2024-10-14_google-spreadsheet-updates-by-developer-metadata/</guid>
       
         <description>&lt;p&gt;透過 Google Sheets API 可以很方便的寫入資料到 Google 試算表。而我最近的一個挑戰是要更新後續新增的的資料。主要的難處是檢索，由於 API 不支援資料搜尋，所以無法透過查找特定內容取得資料位置。這個問題也同樣困擾其他使用者。&lt;/p&gt;
 &lt;p&gt;我在 &lt;a href=&#34;https://stackoverflow.com/questions/49161249/google-sheets-api-how-to-find-a-row-by-value-and-update-its-content&#34;&gt;Google Sheets API: How to find a row by value and update it&amp;rsquo;s content&lt;/a&gt; 找到想要的答案。方法是透過將特定的資料打上 &lt;code&gt;developer metadata&lt;/code&gt; ，後續就可以針對打上的 metadata 進行檢索。&lt;/p&gt;
@@ -193,10 +424,10 @@
     
     <item>
       <title>Bootstrap and its breakpoint generation</title>
-      <link>https://absszero.github.io/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</link>
+      <link>http://localhost:1313/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</link>
       <pubDate>Sat, 22 Jun 2024 08:11:35 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</guid>
+      <guid>http://localhost:1313/post/2024-06-22_bootstrap-and-its-breakpoint-generation/</guid>
       
         <description>&lt;h2 id=&#34;自定義斷點&#34;&gt;自定義斷點&lt;/h2&gt;
 &lt;p&gt;Bootstrap 在&lt;a href=&#34;https://getbootstrap.com/docs/5.1/layout/breakpoints/&#34;&gt;官方文件&lt;/a&gt;關於斷點(Breakpoint) 一開始就提到可以透過自訂變數設定斷點。最近在處理前端項目的時候，也注意到了前人已經設定該變數。支持開發上的斷點使用。&lt;/p&gt;
@@ -275,10 +506,10 @@
     
     <item>
       <title>Speed up Laravel test</title>
-      <link>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</link>
+      <link>http://localhost:1313/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</link>
       <pubDate>Tue, 11 Jun 2024 21:19:58 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</guid>
+      <guid>http://localhost:1313/post/2024-06-11_speed-up-laravel-test-with-a-dumped-schema/</guid>
       
         <description>&lt;h2 id=&#34;in-memory&#34;&gt;In Memory&lt;/h2&gt;
 &lt;p&gt;最近在進行一個既有專案的開發，為了能夠在上面做單元測試，著手進行準備工作。首先嘗試用 SQlite InMemory 的方式。然後在 TestCase 繼承了 &lt;code&gt;RefreshDatabase&lt;/code&gt; 處理資料庫的初始化。&lt;/p&gt;
@@ -354,10 +585,10 @@
     
     <item>
       <title>Test non-existent SQL functions</title>
-      <link>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</link>
+      <link>http://localhost:1313/post/2024-04-20_test-and-sql-functions/</link>
       <pubDate>Sat, 20 Apr 2024 16:19:18 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-04-20_test-and-sql-functions/</guid>
+      <guid>http://localhost:1313/post/2024-04-20_test-and-sql-functions/</guid>
       
         <description>&lt;p&gt;Laravel 測試預設配置 SQLite 做為資料庫，並使用 In memory 的方式執行測試。但產品資料庫會使用的 SQL Function 不一定能在 SQLite 上使用，目前在嘗試幾個做法來解決測試無法通過特定資料庫的 SQL Function 問題。目前在 PostgreSQL 上使用 &lt;code&gt;TO_CHAR&lt;/code&gt; 進行日期格式化。但 SQLite 並沒有相同的函式，但有相似的函式 &lt;code&gt;strftime&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;mock-dbraw&#34;&gt;Mock DB:raw()&lt;/h2&gt;
@@ -390,10 +621,10 @@
     
     <item>
       <title>Laravel dynamic facade</title>
-      <link>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</link>
+      <link>http://localhost:1313/post/2024-04-11_laravel-dynamic-facade/</link>
       <pubDate>Thu, 11 Apr 2024 18:42:53 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-04-11_laravel-dynamic-facade/</guid>
+      <guid>http://localhost:1313/post/2024-04-11_laravel-dynamic-facade/</guid>
       
         <description>&lt;p&gt;Laravel 在 Facade 的使用很普遍，內建就提供了多種 Facade。並且在過去的使用情境也透過繼承 &lt;code&gt;Illuminate\Support\Facades\Facade&lt;/code&gt; 建立自己的 Facade。唯獨 &lt;code&gt;Dynamic Facade&lt;/code&gt; 我今天才發現它的好用！&lt;/p&gt;
 &lt;h1 id=&#34;使用-app-容器的缺點&#34;&gt;使用 app 容器的缺點&lt;/h1&gt;
@@ -433,10 +664,10 @@
     
     <item>
       <title>After extends the eslint rules</title>
-      <link>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</link>
+      <link>http://localhost:1313/post/2024-02-09_after-extends-the-eslint-rules/</link>
       <pubDate>Fri, 09 Feb 2024 09:57:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-02-09_after-extends-the-eslint-rules/</guid>
+      <guid>http://localhost:1313/post/2024-02-09_after-extends-the-eslint-rules/</guid>
       
         <description>&lt;p&gt;最早接觸到 TypeScript 開發是透過 VSCode 的 &lt;a href=&#34;https://code.visualstudio.com/api/get-started/your-first-extension&#34;&gt;Your First Extension &lt;/a&gt; 範例。教學透過 Yeoman 使用 VS Code Extension Generator 產生。預設已經自帶 ESlint 檢查。所以也沒特別在意就直接開發。在近期我回頭檢視相關的規則檔，才發現預設的規則其實非常寬鬆。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
@@ -634,10 +865,10 @@
     
     <item>
       <title>Lint only diff files</title>
-      <link>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</link>
+      <link>http://localhost:1313/post/2024-02-05_lint-only-diff-files/</link>
       <pubDate>Mon, 05 Feb 2024 13:51:30 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-02-05_lint-only-diff-files/</guid>
+      <guid>http://localhost:1313/post/2024-02-05_lint-only-diff-files/</guid>
       
         <description>&lt;p&gt;過去我們會在提交的時候運行代碼風格檢查，但隨著檔案越來越多，檢查的時間也越來越長。但其實每次提交改動的檔案數量不多，所以可以根據改動的檔案做檢查即可。目前透過 Github action 嘗試進行設定，建立 Pull Request 的時候執行。&lt;/p&gt;
 &lt;h2 id=&#34;php&#34;&gt;PHP&lt;/h2&gt;
@@ -729,10 +960,10 @@
     
     <item>
       <title>Mock multi openAPI documents with Prism via Traefik</title>
-      <link>https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</link>
+      <link>http://localhost:1313/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</link>
       <pubDate>Thu, 25 Jan 2024 12:41:15 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</guid>
+      <guid>http://localhost:1313/post/2024-01-25_mock-multi-open-api-documents-with-prism-via-traefik/</guid>
       
         <description>&lt;p&gt;Prism 可以藉由 openAPI 文件生成 mock server，官方也有針對這一塊說明如何處理多個檔案的情況： &lt;a href=&#34;https://docs.stoplight.io/docs/prism/4bf78efbf9dd2-serving-multiple-open-api-documents&#34;&gt;Serving Multiple OpenAPI Documents&lt;/a&gt;。該文章說明主要是透過 &lt;a href=&#34;https://caddyserver.com/&#34;&gt;Caddy&lt;/a&gt; 作為反向代理伺服器，透過編修 &lt;code&gt;Caddyfile&lt;/code&gt; 設定反向代理伺服器。&lt;/p&gt;
 &lt;p&gt;而在近期接觸到 docker-compose 友好的  &lt;code&gt;Traefik&lt;/code&gt; 之後，便心想透過 Traefik 作為代理伺服器。&lt;/p&gt;
@@ -804,10 +1035,10 @@
     
     <item>
       <title>Laravel x Load Balancer x HTTPS</title>
-      <link>https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/</link>
+      <link>http://localhost:1313/post/2024-01-24-laravel-load-balancer-https/</link>
       <pubDate>Wed, 24 Jan 2024 12:35:27 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-01-24-laravel-load-balancer-https/</guid>
+      <guid>http://localhost:1313/post/2024-01-24-laravel-load-balancer-https/</guid>
       
         <description>&lt;p&gt;由於 Laravel 生成網址的功能是根據一些特定的 Headers，特別是生成 https 開頭網址。當產品環境單純直接使用 Web Server 掛載 SSL 憑證不會有類似問題。但如果搭配 Load Balancer 而相關的 Headers 沒有正確的透過 X-Forwarded Headers 轉送過來，結果就是沒能正確產生 HTTPS 連結。&lt;/p&gt;
 &lt;h2 id=&#34;判斷依據&#34;&gt;判斷依據&lt;/h2&gt;
@@ -852,10 +1083,10 @@
     
     <item>
       <title>Phead, A PHP code generator</title>
-      <link>https://absszero.github.io/post/2024-01-06_phead/</link>
+      <link>http://localhost:1313/post/2024-01-06_phead/</link>
       <pubDate>Sat, 06 Jan 2024 11:08:07 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2024-01-06_phead/</guid>
+      <guid>http://localhost:1313/post/2024-01-06_phead/</guid>
       
         <description>&lt;p&gt;結果在此： &lt;a href=&#34;https://github.com/absszero/phead/&#34;&gt;https://github.com/absszero/phead/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;開發 API 的節奏大致底定。開立路由、建立控制器、建立 Model、表現層以及撰寫相關測試。由於過程諸多類似，想必一定有可以簡化的方法。目前覺得最煩心的部分是開立檔案的同時也要開立相對的空目錄。雖然可以透過 &lt;code&gt;./arstian make:model MyDir/MyModel&lt;/code&gt; 的方式產生相對應的目錄跟檔案，但檔案一多這個操作就不是那麼俐落。於是就有了代碼產生器的概念。&lt;/p&gt;
@@ -985,10 +1216,10 @@
     
     <item>
       <title>Develop in Docker</title>
-      <link>https://absszero.github.io/post/2023-12-26_develop-in-docker/</link>
+      <link>http://localhost:1313/post/2023-12-26_develop-in-docker/</link>
       <pubDate>Tue, 26 Dec 2023 20:45:34 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-12-26_develop-in-docker/</guid>
+      <guid>http://localhost:1313/post/2023-12-26_develop-in-docker/</guid>
       
         <description>&lt;h2 id=&#34;sdart&#34;&gt;sDart&lt;/h2&gt;
 &lt;p&gt;Docker 在產品容器化使用確實方便，但在思索怎麼用在開發環境遇到的第一個難題是太慢。Docker Desktop 啟動速度慢，每次開啟心裡就開始計時到底要多久。看著右上角的鯨魚 icon 不停的堆貨櫃、卸貨櫃、堆貨櫃&amp;hellip;。不過這個問題在接觸到 &lt;a href=&#34;https://orbstack.dev/&#34;&gt;OrbStack&lt;/a&gt; 之後有很大的改善。一個可以替代 Docker Desktop 的輕量化容器執行工具。&lt;/p&gt;
@@ -1261,10 +1492,10 @@
     
     <item>
       <title>Laravl Goto 在新視窗開啟所有語系檔</title>
-      <link>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</link>
+      <link>http://localhost:1313/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</link>
       <pubDate>Fri, 22 Dec 2023 10:17:33 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</guid>
+      <guid>http://localhost:1313/post/2023-12-22_laravel-goto-open-all-lanaguage-files/</guid>
       
         <description>&lt;p&gt;十月的時候我從 Github 收到一個功能請求，希望能夠在 Laravel Goto for Sublime Text 實現選取語系的 key ，然後開啟所有對應語系檔在新視窗上面。實作過程並不特別困難。原理是檢索語系目錄把其他語系目錄找出來。接著另開新視窗，將每一個語系檔打開。後續比較陌生的功能是檔案佈局。由於開啟多個檔案需要均勻編排每一個檔案頁籤的寬度。Sublime Text 的 &lt;code&gt;set_layout&lt;/code&gt; API 提供這個功能。不過 &lt;code&gt;照舊&lt;/code&gt; 官網文章寫得不夠詳細，看了&lt;a href=&#34;https://forum.sublimetext.com/t/set-layout-reference/5713&#34;&gt;論壇上有的描述&lt;/a&gt;才大概曉得怎麼邊排。後續選擇使用水平佈局的方式，畢竟用戶寬螢幕的可能性比較高。&lt;/p&gt;
 &lt;p&gt;接著我希望把相同功能實作在 VSCode 上面。前面查找語系目錄的實現同樣不是太困難。但是 VSCode 在開啟新視窗以及操作新視窗的方式跟 Sublime Text 是完全不一樣的。底下是 Sublime Text 開啟新視窗、設定佈局，以及開啟檔案的方式。使用 &lt;code&gt;run_command(&#39;new_window&#39;)&lt;/code&gt; 開啟新視窗之後，透過 &lt;code&gt;active_window()&lt;/code&gt; 能夠拿到這個新視窗，並且進行操作。&lt;/p&gt;
@@ -1324,10 +1555,10 @@
     
     <item>
       <title>Laravel Command Class Name</title>
-      <link>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</link>
+      <link>http://localhost:1313/post/2023-10-31_laravel-command-classname/</link>
       <pubDate>Tue, 31 Oct 2023 11:31:24 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-10-31_laravel-command-classname/</guid>
+      <guid>http://localhost:1313/post/2023-10-31_laravel-command-classname/</guid>
       
         <description>&lt;h2 id=&#34;why&#34;&gt;Why&lt;/h2&gt;
 &lt;p&gt;隨著 Laravel 開發的指令越多，要記得每一個指令的檔案位置也相對困難。由於從指令列執行 &lt;code&gt;artisn list&lt;/code&gt; 只顯示每個指令所設定的 &lt;code&gt;signature&lt;/code&gt; 屬性，但不曉得對應的檔案名稱。只期望 signature 跟檔案名稱具有相似性，可以順藤摸瓜。也因此才有了開發相關套件的念頭。&lt;/p&gt;
@@ -1360,10 +1591,10 @@
     
     <item>
       <title>VSCode Extension Development, Run Single Test</title>
-      <link>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</link>
+      <link>http://localhost:1313/post/2023-09-22_vsce-extension-dev-add-test-single-test/</link>
       <pubDate>Fri, 22 Sep 2023 10:17:33 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-09-22_vsce-extension-dev-add-test-single-test/</guid>
+      <guid>http://localhost:1313/post/2023-09-22_vsce-extension-dev-add-test-single-test/</guid>
       
         <description>&lt;p&gt;隨著 VSCode 開發 Extension 愈趨複雜，相關的單元測試也越來越多。每次增加一個方法以及相對測試，整個套件的測試都得重新執行一遍。為了更有效率的進行開發，目前要解決幾個痛點：&lt;/p&gt;
 &lt;ul&gt;
@@ -1543,10 +1774,10 @@
     
     <item>
       <title>開發踩坑, Laravel Goto for Sublime Text, Goto Middleware</title>
-      <link>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</link>
+      <link>http://localhost:1313/post/2023-09-19_sublime-laravel-goto-middleware-development/</link>
       <pubDate>Tue, 19 Sep 2023 10:27:48 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-09-19_sublime-laravel-goto-middleware-development/</guid>
+      <guid>http://localhost:1313/post/2023-09-19_sublime-laravel-goto-middleware-development/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=absszero.vscode-laravel-goto&#34;&gt;Laravel Goto for VSCode&lt;/a&gt; 的 Middleware 轉跳功能完成後。隨後也逐步在 &lt;a href=&#34;https://packagecontrol.io/packages/Laravel%20Goto&#34;&gt;Laravel Goto for Sublime Text&lt;/a&gt; 把相同轉跳功能實做出來。正規表達式可以從 VSCode 研究結果套用，所以開發上還算快速。而且 Sublime Text Package 使用 Python 做同步執行，相較於 VSCode Extension 使用 JS 做非同步執行，開發單純的多。開發時間 VSCode 版本花了一週，這個版本則在一週內完成。但沒想到最困難的部分是單元測試，為此踩了三個坑。分別是：&lt;/p&gt;
 &lt;ul&gt;
@@ -1597,10 +1828,10 @@
     
     <item>
       <title>PHPUnit TearDown &amp; register_shutdown_function</title>
-      <link>https://absszero.github.io/post/2023-03-25_phpunit-teardown--register_shutdown_function/</link>
+      <link>http://localhost:1313/post/2023-03-25_phpunit-teardown--register_shutdown_function/</link>
       <pubDate>Sat, 25 Mar 2023 19:40:00 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2023-03-25_phpunit-teardown--register_shutdown_function/</guid>
+      <guid>http://localhost:1313/post/2023-03-25_phpunit-teardown--register_shutdown_function/</guid>
       
         <description>&lt;h2 id=&#34;what&#34;&gt;WHAT&lt;/h2&gt;
 &lt;p&gt;近期在開發 Laravel Log 相關套件。於是利用 &lt;code&gt;orchestra/testbench&lt;/code&gt; 作為開發套件的工具。但是當所有測試都正常執行之後，結尾卻意外發生錯誤。&lt;/p&gt;
@@ -1638,10 +1869,10 @@
     
     <item>
       <title>Prism 建立 API Server</title>
-      <link>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
+      <link>http://localhost:1313/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</link>
       <pubDate>Thu, 06 Feb 2020 15:01:03 +0800</pubDate>
       
-      <guid>https://absszero.github.io/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
+      <guid>http://localhost:1313/post/2020-02-06_prism-%E5%BB%BA%E7%AB%8B-api-server/</guid>
       
         <description>&lt;h2 id=&#34;why-prism&#34;&gt;Why Prism&lt;/h2&gt;
 &lt;p&gt;撰寫一份 API 文件有許多方式，其中一種是根據 &lt;code&gt;OpenAPI&lt;/code&gt; 規範。而在完成 API 規劃後通常搭配如 &lt;code&gt;Swagger UI&lt;/code&gt; 將規範文件變成容易閱讀 API 文件。&lt;/p&gt;
@@ -1712,95 +1943,6 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/guzzle/guzzle-services&#34;&gt;https://github.com/guzzle/guzzle-services&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://stoplight.io/p/docs/gh/stoplightio/prism/docs/guides/multiple-documents.md&#34;&gt;https://stoplight.io/p/docs/gh/stoplightio/prism/docs/guides/multiple-documents.md&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Guzzle service descriptions - 使用描述檔建立 API Client</title>
-      <link>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</link>
-      <pubDate>Sun, 06 Oct 2019 15:01:03 +0800</pubDate>
-      
-      <guid>https://absszero.github.io/post/2019-10-06_guzzle-service-descriptions/</guid>
-      
-        <description>&lt;h2 id=&#34;何謂-service-descriptions&#34;&gt;何謂 Service Descriptions&lt;/h2&gt;
-&lt;p&gt;最近在查找關於 Fixer.io 的用戶端套件。發現平常慣用的 Guzzle  HTTP Client 還有另外一種開發方式 - &lt;code&gt;service descriptions&lt;/code&gt;。該方式借鏡 Swagger 利用定義 API 操作的方式，藉由特定描述的 PHP Array 建立 API Client 操作。簡單的說，只要產生一個 PHP Array 裡面描述每一種 API 的格式說明，就可以呼叫 API 囉！&lt;/p&gt;
-&lt;h2 id=&#34;定義-service-descriptions&#34;&gt;定義 Service Descriptions&lt;/h2&gt;
-&lt;p&gt;基本上只要能把 PHP Array 生成的格式都可以用來定義 Service Descriptions，目前最方便的方法是透過 PHP  Array 或者 JSON。&lt;/p&gt;
-&lt;p&gt;底下以 Open Weather Map 提供的當前天氣 API 為例：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// description.php
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// API Base URL
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;baseUri&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;http://api.openweathermap.org/data/2.5/&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 各式 API 操作描述
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;operations&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// 調用方法，之後透過 $client-&amp;gt;current() 調用該 API
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;current&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;httpMethod&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 會跟上方的 baseUri 組合成完整的 API 網址
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;uri&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;weather&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 回傳內容，跟底下的 Model 相對應
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;responseModel&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;getResponse&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 參數
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;parameters&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;APPID&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#75715e&#34;&gt;// 參數放置: query, uri 或者 json 等等
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;location&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;query&amp;#34;&lt;/span&gt;, 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 必填欄位
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                ],
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;city&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;type&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;string&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;location&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;query&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;default&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;London,uk&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 預設值
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sentAs&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;q&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// 傳送時的欄位名稱，會將 city 改為 q 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;required&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#75715e&#34;&gt;// 傳送前用調用指定的方法做預處理
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;filters&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    	&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;strtolower&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    ]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                ]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ],
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ],
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;models&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;getResponse&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;type&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;object&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;additionalProperties&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;location&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;json&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;調用-api&#34;&gt;調用 API&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GuzzleHttp\Client&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GuzzleHttp\Command\Guzzle\GuzzleClient&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GuzzleHttp\Command\Guzzle\Description&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$client &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Client&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 引入描述檔
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;$desc &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description.php&amp;#39;&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$description &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Description&lt;/span&gt;($desc);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 提供每一個 API 通用的 query 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;$config &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;defaults&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;APPID&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;]];
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$guzzleClient &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GuzzleClient&lt;/span&gt;($client, $description, &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;, $config);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; $guzzleClient&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;current&lt;/span&gt;([&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;city&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;LONDON,UK&amp;#39;&lt;/span&gt;]);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; $result[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;main&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;temp&amp;#39;&lt;/span&gt;];
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;其他功能&#34;&gt;其他功能&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;responseClass ，將回傳的內容用特定的類別包裹&lt;/li&gt;
-&lt;li&gt;errorResponses，將錯誤訊息用特定的類別包裹並拋出&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;參考&#34;&gt;參考&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/guzzle/guzzle-services&#34;&gt;https://github.com/guzzle/guzzle-services&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://guzzle3.readthedocs.io/webservice-client/guzzle-service-descriptions.html&#34;&gt;https://guzzle3.readthedocs.io/webservice-client/guzzle-service-descriptions.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
       

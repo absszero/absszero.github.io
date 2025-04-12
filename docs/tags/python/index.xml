@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on 黑書記事</title>
-    <link>https://absszero.github.io/tags/python/</link>
+    <link>http://localhost:1313/tags/python/</link>
     <description>Recent content in Python on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 12 May 2012 10:56:17 +0800</lastBuildDate>
-    <atom:link href="https://absszero.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在命令提示字元底下格式化顯示 JSON 內容</title>
-      <link>https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/</link>
+      <link>http://localhost:1313/post/2012-05-12_formtting-json-from-terminal/</link>
       <pubDate>Sat, 12 May 2012 10:56:17 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2012-05-12_formtting-json-from-terminal/</guid>
+      <guid>http://localhost:1313/post/2012-05-12_formtting-json-from-terminal/</guid>
       <description>當我們需要在命令提示字元下顯示 JSON 字串的時候，通常得到的是一串沒有縮排的內文。 不過利用 python -mjson.tool 的協助，可以將內容格式化後顯示，看起來漂亮多了！ 安裝</description>
     </item>
   </channel>

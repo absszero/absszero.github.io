@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  itemscope
+  itemtype="http://schema.org/WebPage"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+          Run PHPUnit coverage with Github action - 黑書記事
+        </title>
+    
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="absszero" />
+  <meta name="description" content="由於中途導入單元測試，為了確保測試覆蓋率能穩定的成長，每個月我們會審視當月份覆蓋率是否往目標成長。而過去的做法就是每個月執行一次，然後將數據" />
+<meta name="keywords" content="Github Action, PHPUnit, awk, sed" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.127.0" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2025-04-12_run-php-unit-coverage-with-github-action/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.d8d87b982993a745e5e7b6a6cbf257be8c3e82aab5e485f0908ad7e6c3501ab2.css" integrity="sha256-2Nh7mCmTp0Xl57amy/JXvow&#43;gqq15IXwkIrX5sNQGrI=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+
+
+<meta property="og:url" content="http://localhost:1313/post/2025-04-12_run-php-unit-coverage-with-github-action/">
+  <meta property="og:site_name" content="黑書記事">
+  <meta property="og:title" content="Run PHPUnit coverage with Github action">
+  <meta property="og:description" content="由於中途導入單元測試，為了確保測試覆蓋率能穩定的成長，每個月我們會審視當月份覆蓋率是否往目標成長。而過去的做法就是每個月執行一次，然後將數據">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-12T10:52:57+08:00">
+    <meta property="article:modified_time" content="2025-04-12T10:52:57+08:00">
+
+  <meta itemprop="name" content="Run PHPUnit coverage with Github action">
+  <meta itemprop="description" content="由於中途導入單元測試，為了確保測試覆蓋率能穩定的成長，每個月我們會審視當月份覆蓋率是否往目標成長。而過去的做法就是每個月執行一次，然後將數據">
+  <meta itemprop="datePublished" content="2025-04-12T10:52:57+08:00">
+  <meta itemprop="dateModified" content="2025-04-12T10:52:57+08:00">
+  <meta itemprop="wordCount" content="1729">
+  <meta itemprop="keywords" content="Github Action,PHPUnit,awk,sed">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Run PHPUnit coverage with Github action">
+  <meta name="twitter:description" content="由於中途導入單元測試，為了確保測試覆蓋率能穩定的成長，每個月我們會審視當月份覆蓋率是否往目標成長。而過去的做法就是每個月執行一次，然後將數據">
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+  </head>
+  <body>
+    <div id="back-to-top"></div>
+
+    <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">I'm fine thank you</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="http://localhost:1313/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="http://localhost:1313/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="http://localhost:1313/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="http://localhost:1313/categories/">Categories</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+    
+      
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    
+
+    
+
+    
+
+
+    <header id="header" class="header">
+      <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      I'm fine thank you
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="http://localhost:1313/">Home</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="http://localhost:1313/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="http://localhost:1313/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="http://localhost:1313/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+    </header>
+
+    <div id="mobile-panel">
+      <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
+        
+        <header class="post-header">
+          <h1 class="post-title">Run PHPUnit coverage with Github action</h1>
+          
+
+          <div class="post-meta">
+  <div class="post-meta-author">
+    by
+      absszero
+    
+  </div>
+
+  <div class="post-meta-time">
+    <time datetime="2025-04-12">
+      2025-04-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    
+
+    
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <p>由於中途導入單元測試，為了確保測試覆蓋率能穩定的成長，每個月我們會審視當月份覆蓋率是否往目標成長。而過去的做法就是每個月執行一次，然後將數據收集起來。為了將這個覆蓋率的行為自動化，花了點時間整合到 Github Action。</p>
+<h2 id="coverage-report-as-comment-clover">Coverage Report as Comment (Clover)</h2>
+<p>從 Github marketplace 搜尋 <code>Coverage</code> 其實<a href="https://github.com/marketplace?query=coverage&type=actions">可以找到不少現成的方案</a>。有些甚至跟單元測試工具無縫結合，可以省去自己整合的需求。</p>
+<p>首先我挑選了 <a href="https://github.com/marketplace/actions/coverage-report-as-comment-clover">Coverage Report as Comment (Clover)</a> ，他能夠將覆蓋率報告作為備註顯示在 comment 裡頭。具體結果類似如下：</p>
+<pre tabindex="0"><code>Coverage report for commit: 0688430
+File: coverage.xml
+
+Cover ┌─────────────────────────┐ Freq.
+   0% │ ██░░░░░░░░░░░░░░░░░░░░░ │  5.6%
+  10% │ ░░░░░░░░░░░░░░░░░░░░░░░ │  0.0%
+  20% │ ░░░░░░░░░░░░░░░░░░░░░░░ │  0.0%
+  30% │ ░░░░░░░░░░░░░░░░░░░░░░░ │  0.0%
+  40% │ █░░░░░░░░░░░░░░░░░░░░░░ │  0.8%
+  50% │ █░░░░░░░░░░░░░░░░░░░░░░ │  2.4%
+  60% │ █░░░░░░░░░░░░░░░░░░░░░░ │  0.8%
+  70% │ █░░░░░░░░░░░░░░░░░░░░░░ │  1.6%
+  80% │ █░░░░░░░░░░░░░░░░░░░░░░ │  0.8%
+  90% │ ████░░░░░░░░░░░░░░░░░░░ │ 11.3%
+ 100% │ ███████████████████████ │ 76.6%
+      └─────────────────────────┘
+ *Legend:* █ = Current Distribution
+
+Summary - Lines: 90.93% | Methods: 75.71%
+
+🤖 comment via lucassabreu/comment-coverage-clover
+</code></pre><p>由於他官方範例就是利用 PHPUnit 產生 clover 格式的覆蓋率報告，所以很容易的就整合到現在的單元測試流程。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Execute tests</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">run</span>: <span style="color:#ae81ff">src/vendor/bin/phpunit -c src/phpunit.xml</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">run</span>: <span style="color:#ae81ff">src/vendor/bin/phpunit -c src/phpunit.xml --coverage-clover=coverage.xml</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">XDEBUG_MODE</span>: <span style="color:#ae81ff">coverage</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Coverage Report as Comment (Clover)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">lucassabreu/comment-coverage-clover@main</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file</span>: <span style="color:#ae81ff">coverage.xml</span>
+</span></span></code></pre></div><h2 id="code-coverage-summary">Code Coverage Summary</h2>
+<p>上面的結果看起來還不錯，但想試試看其他的套件結果如何，這次我改用 <a href="https://github.com/irongut/CodeCoverageSummary">Code Coverage Summary</a>。雖然他的範例不是針對 PHPUnit，但他接受 cobertura 格式的覆蓋率檔案。PHPUnit 一樣支持。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Execute tests</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">run</span>: <span style="color:#ae81ff">src/vendor/bin/phpunit -c src/phpunit.xml --coverage-cobertura=coverage.xml</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">XDEBUG_MODE</span>: <span style="color:#ae81ff">coverage</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Code Coverage Report</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">irongut/CodeCoverageSummary@v1.3.0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">filename</span>: <span style="color:#ae81ff">coverage.xml</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">badge</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">fail_below_min</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">format</span>: <span style="color:#ae81ff">markdown</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hide_branch_rate</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hide_complexity</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">indicators</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">output</span>: <span style="color:#ae81ff">both</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">thresholds</span>: <span style="color:#e6db74">&#39;50 75&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Add Coverage PR Comment</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">marocchino/sticky-pull-request-comment@v2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">if</span>: <span style="color:#ae81ff">github.event_name == &#39;pull_request&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">file</span>: <span style="color:#ae81ff">coverage.xml</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">recreate</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">path</span>: <span style="color:#ae81ff">code-coverage-results.md</span>
+</span></span></code></pre></div><p>生成的結果類似如下：</p>
+<p><img alt="Code Coverage" src="https://img.shields.io/badge/Code%20Coverage-91%25-success?style=flat"></p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Line Rate</th>
+<th>Health</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Console/Kernel.php</td>
+<td>67%</td>
+<td>➖</td>
+</tr>
+<tr>
+<td>Exceptions/Handler.php</td>
+<td>50%</td>
+<td>➖</td>
+</tr>
+<tr>
+<td>Http/Kernel.php</td>
+<td>0%</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Http/Middleware/Authenticate.php</td>
+<td>100%</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>&hellip;.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Summary</strong></td>
+<td><strong>91%</strong> (2070 / 2272)</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h2 id="顯示在-readmemd">顯示在 README.md</h2>
+<p>結果都對了，但新一輪的問題是，這些結果預設是顯示在 Pull requests 裡頭作為 Comment。我不希望每次查看覆蓋率都得去翻閱之前合併請求的備註內容。這樣很難顯眼的看到當前專案的覆蓋率。</p>
+<p>為了將內容顯示在隨時可以存取的地方，我找到一篇將結果放在 Wiki 的文章</p>
+<ul>
+<li><a href="https://medium.com/@vlreshet/how-to-setup-phpunit-coverage-report-and-phpstan-report-using-github-actions-and-github-wiki-pages-86effdfd8c53">How to setup PHPUnit Coverage Report and PHPStan Report using GitHub Actions and GitHub Wiki Pages</a></li>
+</ul>
+<p>但隨即詢問同事才知道免費的 Github team 不支援 Wiki。既然如此不如就放在 README.md 吧！完整的需求如下：</p>
+<ul>
+<li>只在 main 分支進行覆蓋率測試</li>
+<li>其他 pull requests 一樣執行單元測試</li>
+<li>將測試結果的文字顯示在 README.md，並且提交該變更。</li>
+</ul>
+<p>我將上述的需求詢問 GPT 大神之後，得到一個粗略的版本，然後在幾次翻修後得到了我想要的版本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Run tests</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">main</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">pull_request</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">php-tests</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout code</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup PHP</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">shivammathur/setup-php@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">php-version</span>: <span style="color:#ae81ff">8.3</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">tools</span>: <span style="color:#ae81ff">composer:v2</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">coverage</span>: <span style="color:#ae81ff">xdebug</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Run composer install</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">composer install -d`pwd`/src -n --prefer-dist --no-interaction --no-plugins</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Execute tests without coverage</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">if</span>: <span style="color:#ae81ff">github.ref != &#39;refs/heads/main&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">src/vendor/bin/phpunit -c src/phpunit.xml</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">### Code Coverage</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Execute tests with coverage</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">if</span>: <span style="color:#ae81ff">github.ref == &#39;refs/heads/main&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">src/vendor/bin/phpunit -c src/phpunit.xml --coverage-text --only-summary-for-coverage-text | tee coverage.txt</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">XDEBUG_MODE</span>: <span style="color:#ae81ff">coverage</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Extract Coverage Summary</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">if</span>: <span style="color:#ae81ff">github.ref == &#39;refs/heads/main&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          CONTENT=$(sed -n &#39;/^  Classes:/,/^```/p&#39; coverage.txt)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          START=&#34;## Code Coverage Report Summary&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          NEW_CONTENT=$(printf &#34;%s\n\n\`\`\`sql\n%s\n\`\`\`&#34; &#34;$START&#34; &#34;$CONTENT&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          awk -v new_content=&#34;$NEW_CONTENT&#34; &#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          /## Code Coverage Report Summary/ {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              in_block = 1;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          in_block {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              if (/```$/) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  in_block = 0;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  print new_content; # 輸出新內容
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              next
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          { print }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#39; README.md &gt; README.tmp
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          mv README.tmp README.md</span>          
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Commit and Push Changes</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">if</span>: <span style="color:#ae81ff">github.ref == &#39;refs/heads/main&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git config --global user.name &#34;github-actions[bot]&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git config --global user.email &#34;github-actions[bot]@users.noreply.github.com&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git add README.md
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git commit -m &#34;Update code coverage report summary&#34; || echo &#34;No changes to commit&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          git push origin ${{ github.head_ref }}</span>          
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">GITHUB_TOKEN</span>: <span style="color:#ae81ff">${{ secrets.GITHUB_TOKEN }}</span>
+</span></span></code></pre></div><p>為了配合上述的內容，我需要在 README.md 裡頭添加一段覆蓋率報告文字</p>
+<pre tabindex="0"><code>## Code Coverage Report Summary
+
+```sql
+  Classes: XX.XX%
+  Methods: XX.XX%
+  Lines:   XX.XX%
+` ` `
+</code></pre><p>單元測試後會產生類似內容，我將內容擷取出來後，透過 <code>awk</code> 取代 README.md 相同的內容，改為最新的覆蓋率報告。最後結果呈現如下：</p>
+<h1 id="my-project">My Project</h1>
+<h2 id="code-coverage-report-summary">Code Coverage Report Summary</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>  Classes: <span style="color:#ae81ff">57</span>.<span style="color:#ae81ff">89</span><span style="color:#f92672">%</span> (<span style="color:#ae81ff">55</span><span style="color:#f92672">/</span><span style="color:#ae81ff">95</span>)
+</span></span><span style="display:flex;"><span>  Methods: <span style="color:#ae81ff">76</span>.<span style="color:#ae81ff">92</span><span style="color:#f92672">%</span> (<span style="color:#ae81ff">190</span><span style="color:#f92672">/</span><span style="color:#ae81ff">247</span>)
+</span></span><span style="display:flex;"><span>  Lines:   <span style="color:#ae81ff">91</span>.<span style="color:#ae81ff">11</span><span style="color:#f92672">%</span> (<span style="color:#ae81ff">2070</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2272</span>)
+</span></span></code></pre></div><h2 id="踩坑">踩坑</h2>
+<p>在開發的過程中踩了幾個坑：</p>
+<h3 id="awk-newline-in-string--code-coverage-re-at-source-line-1">awk: newline in string $## Code Coverage Re&hellip; at source line 1</h3>
+<p>首先希望先在本機端執行一次 awk 的內容取代。但出現了如標題的錯誤，原因是因為 awk 指令在 linux 跟 MacOS 版本有差異。尤其在處理換行字元的部分。但本地端只是測試，所以我將輸出的內容去掉換行字元。先在本地端能正確模擬就好。</p>
+<h3 id="覆蓋率的內容不見了">覆蓋率的內容不見了</h3>
+<p>將這個 action 放到另外一個專案，跑完之後內容卻只剩下如下標題：</p>
+<pre tabindex="0"><code>## Code Coverage Report Summary
+</code></pre><p>這是由於 README.md 的換行字元所導致，該檔案是 <code>CRLF</code> 儲存在 Windows 的環境，但 action 執行在 UNIX 上面採用的是 <code>LF</code>。這似乎會導致 awk 執行結果不正確。重新儲存檔案為 <code>LF</code> 字元後解決。</p>
+<h3 id="fatal-you-are-not-currently-on-a-branch">fatal: You are not currently on a branch.</h3>
+<p>由於開發的時候，我先在 pull request 所在的分支執行，在最終 <code>git commit</code> 的環節出錯，該問題可以透過添加 <code>ref: ${{ github.head_ref }}</code> 解決。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout the correct branch</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v4</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">${{ github.head_ref }}</span>
+</span></span></code></pre></div>
+        </div>
+
+        
+        
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">absszero</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      2025-04-12
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+
+        
+        
+
+
+        <footer class="post-footer">
+          
+
+
+          
+          <nav class="post-nav">
+            
+            
+              <a class="next" href="/post/2025-02-15_upgrade-to-laravel-11-from-10/">
+                <span class="next-text nav-default">Upgrade to Laravel 11 from Laravel 10</span>
+                <span class="prev-text nav-mobile">Next</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+
+
+      
+      
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+    
+
+  
+
+  
+
+
+    </div>
+
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#coverage-report-as-comment-clover">Coverage Report as Comment (Clover)</a></li>
+    <li><a href="#code-coverage-summary">Code Coverage Summary</a></li>
+    <li><a href="#顯示在-readmemd">顯示在 README.md</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#code-coverage-report-summary">Code Coverage Report Summary</a></li>
+    <li><a href="#踩坑">踩坑</a>
+      <ul>
+        <li><a href="#awk-newline-in-string--code-coverage-re-at-source-line-1">awk: newline in string $## Code Coverage Re&hellip; at source line 1</a></li>
+        <li><a href="#覆蓋率的內容不見了">覆蓋率的內容不見了</a></li>
+        <li><a href="#fatal-you-are-not-currently-on-a-branch">fatal: You are not currently on a branch.</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+  </div>
+
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="icon-links">
+  
+  
+    <a href="https://www.github.com/absszero" rel="me noopener" class="iconfont"
+      title="github"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+    </a>
+
+
+<a href="http://localhost:1313/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2019 -
+    2025
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        absszero
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+      </footer>
+
+      <div class="button__back-to-top">
+        <a href="#back-to-top">
+          <i class="iconfont">
+            
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+          </i>
+        </a>
+      </div>
+    </div>
+    
+<script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.371305d7f17a1558f54cbbe1ae38cfe1becdedc44ef0b2e9af834df8410a86ab.js" integrity="sha256-NxMF1/F6FVj1TLvhrjjP4b7N7cRO8LLpr4NN&#43;EEKhqs=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

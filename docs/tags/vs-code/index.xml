@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VS Code on 黑書記事</title>
-    <link>https://absszero.github.io/tags/vs-code/</link>
+    <link>http://localhost:1313/tags/vs-code/</link>
     <description>Recent content in VS Code on 黑書記事</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 09 Sep 2019 20:16:24 +0800</lastBuildDate>
-    <atom:link href="https://absszero.github.io/tags/vs-code/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/vs-code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Laravel Goto for VS Code</title>
-      <link>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</link>
+      <link>http://localhost:1313/post/2019-09-09_laravel-goto-for-vs-code/</link>
       <pubDate>Mon, 09 Sep 2019 20:16:24 +0800</pubDate>
-      <guid>https://absszero.github.io/post/2019-09-09_laravel-goto-for-vs-code/</guid>
+      <guid>http://localhost:1313/post/2019-09-09_laravel-goto-for-vs-code/</guid>
       <description>https://github.com/absszero/vscode-laravel-goto Why 在完成 Laravel Goto for Sublime Text 之後，心想何不在 VS Code 上也試著實做一樣的套件？畢竟接觸到的套件多半只解決部份問題。其中一個未能解決的問題，就是 Namespace 的使用。 由</description>
     </item>
   </channel>
